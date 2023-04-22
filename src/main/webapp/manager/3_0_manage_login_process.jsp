@@ -11,7 +11,7 @@
     info="입력값을 받아 암호화를 수행한 후 검색 결과를 받아서 복호화를 한 후 세션에 저장"
     %>
     
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
