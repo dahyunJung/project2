@@ -14,44 +14,43 @@ public class DbConnection {
 
 	private static DbConnection dbCon;
 	
-	private DbConnection() {
-		
-	}//DbConnection
+	private DbConnection() {}// DBConnection
 	
 	public static DbConnection getInstance() {
 		if(dbCon == null) {
-			dbCon=new DbConnection();
-		}//end if
+			dbCon = new DbConnection();
+		}
+		
 		return dbCon;
-	}//getInstance
+	}// getInstance
 	
 	public Connection getConn() throws SQLException {
-		Connection con=null;
+		Connection con = null;
 		
-		//1. JNDI 사용객체 생성
+		// 1. JNDI 사용 객체 생성
 		try {
-			Context ctx=new InitialContext();
-			Context envContext  = (Context)ctx.lookup("java:/comp/env");
-			//2. JNDI로 찾아낸 DBCP에서 DataSource 얻기
-			DataSource ds=(DataSource)envContext.lookup("jdbc/useDbcp");
-			//3. Connection 얻기
-			con=ds.getConnection();
+			Context ctx = new InitialContext();
+			// 2. JNDI로 찾아낸 DBCP에서 DataSource 얻기
+			DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/project2");
+			// 3. Connection 얻기
+			con = ds.getConnection();
+			
 		} catch (NamingException e) {
 			e.printStackTrace();
-		}//end catch
+		}
 		
-		return con;
-	}
+		return con;		
+	}// getConnection
 	
-	public void dbClose(ResultSet rs, Statement stmt, Connection con)throws SQLException {
+	public void dbClose(ResultSet rs, Statement stmt, Connection con) throws SQLException {
 		
 		try {
-			if(rs!=null) {rs.close();}//end if
-			if(stmt!=null) {stmt.close();}//end if
-		}finally {
-			if(con!=null) {con.close();}//end if
-		}//end finally
+			if(rs != null) { rs.close(); }
+			if(stmt != null) { stmt.close(); }
+		} finally {
+			if(con != null) { con.close(); }
+		}
 		
-	}//dbClose
+	}// dbClose
 	
 }
