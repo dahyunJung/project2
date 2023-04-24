@@ -6,7 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-import kr.co.sist.dao.DbConnection;
+import LoginVO.FindIdVO;
+import LoginVO.FindPWVO;
+import LoginVO.InfoVO;
+import LoginVO.JoinVO;
+import LoginVO.SessionVO;
+import LoginVO.UpdateInfoVO;
+import conn.DbConnection;
+
 
 public class LoginDAO {
 	
@@ -287,35 +294,28 @@ public int updatePass(String id, String pw)throws SQLException {
 	return passUpdate;
 }
 
-public int insertLoginHistory(LoginHistoryVO lhVO)throws SQLException {
-	int a=0;
-	
-	Connection con = null;
-	PreparedStatement pstmt = null;
-	DbConnection dbCon = DbConnection.getInstance();
-	// 1. JNDI 사용 객체 생성
-	// 2. DataSource 얻기
-	// 3. Connection 얻기
-	try {
-		con = dbCon.getConn();
-		// 4. 쿼리문 객체 얻기
-		StringBuilder insertSql = new StringBuilder();
-		insertSql.append("insert into history(num_member) values()");
-
-		pstmt = con.prepareStatement(insertSql.toString());
-		
-		
-		// 5.바인드 변수 값 수정
-		
-
-		// 6. 쿼리문 수행 후 결과 얻기
-		
-	} finally {
-		dbCon.dbClose(null, pstmt, con);
-
-	}
-	return a;
-}
+/*
+ * public int insertLoginHistory(LoginHistoryVO lhVO)throws SQLException { int
+ * a=0;
+ * 
+ * Connection con = null; PreparedStatement pstmt = null; DbConnection dbCon =
+ * DbConnection.getInstance(); // 1. JNDI 사용 객체 생성 // 2. DataSource 얻기 // 3.
+ * Connection 얻기 try { con = dbCon.getConn(); // 4. 쿼리문 객체 얻기 StringBuilder
+ * insertSql = new StringBuilder();
+ * insertSql.append("insert into history(num_member) values()");
+ * 
+ * pstmt = con.prepareStatement(insertSql.toString());
+ * 
+ * 
+ * // 5.바인드 변수 값 수정
+ * 
+ * 
+ * // 6. 쿼리문 수행 후 결과 얻기
+ * 
+ * } finally { dbCon.dbClose(null, pstmt, con);
+ * 
+ * } return a; }
+ */
 	
 }
 

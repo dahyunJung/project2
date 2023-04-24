@@ -1,6 +1,6 @@
+<%@page import="LoginDAO.LoginDAO"%>
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="project.LoginDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%

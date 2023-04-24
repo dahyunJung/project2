@@ -1,5 +1,5 @@
-<%@page import="project.InfoVO"%>
-<%@page import="project.LoginDAO"%>
+<%@page import="LoginVO.InfoVO"%>
+<%@page import="LoginDAO.LoginDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 

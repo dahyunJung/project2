@@ -1,8 +1,8 @@
+<%@page import="LoginDAO.LoginDAO"%>
 <%@page import="kr.co.sist.util.cipher.DataDecrypt"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
-<%@page import="project.LoginDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -19,7 +19,7 @@ String email= de.encryption(email1); */
 
 
 %>
-<jsp:useBean id="fpVO" class="project.FindPWVO" scope="page"/>
+<jsp:useBean id="fpVO" class="LoginVO.FindPWVO" scope="page"/>
 <jsp:setProperty property="id" name="fpVO" value="<%=id %>" /> 
 <jsp:setProperty property="phone" name="fpVO" value="<%=phone %>" /> 
 <jsp:setProperty property="email" name="fpVO" value="<%=email %>" /> 

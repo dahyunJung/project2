@@ -1,5 +1,5 @@
+<%@page import="LoginDAO.LoginDAO"%>
 <%@page import="kr.co.sist.util.cipher.DataDecrypt"%>
-<%@page import="project.LoginDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
         <%
@@ -59,7 +59,7 @@
 		});
 	});	
 </script>
-<jsp:useBean id="fiVO" class="project.FindIdVO" scope="page"/>
+<jsp:useBean id="fiVO" class="LoginVO.FindIdVO" scope="page"/>
 <jsp:setProperty property="*" name="fiVO"/>
 <%
 LoginDAO lDAO = new LoginDAO();

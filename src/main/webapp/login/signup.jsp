@@ -1,8 +1,8 @@
+<%@page import="LoginDAO.LoginDAO"%>
 <%@page import="java.util.Date"%>
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="project.LoginDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -65,7 +65,7 @@ if("POST".equals(request.getMethod())){
 	
 
 %>
-<jsp:useBean id="jVO" class="project.JoinVO" scope="page"/>
+<jsp:useBean id="jVO" class="LoginVO.JoinVO" scope="page"/>
 <jsp:setProperty property="name" name="jVO" value="<%=name %>" /> 
 <jsp:setProperty property="id" name="jVO" value="<%=id %>" /> 
 <jsp:setProperty property="pw" name="jVO" value="<%=pw %>" /> 

@@ -1,5 +1,4 @@
-<%@page import="project.LoginDAO"%>
-<%@page import="project.UpdateInfoVO"%>
+<%@page import="LoginDAO.LoginDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -13,7 +12,7 @@ String email1 = request.getParameter("email1");
 String email2 = request.getParameter("email2");
 String email = email1+"@"+email2;
 %>
-<jsp:useBean id="uiVO" class="project.UpdateInfoVO" scope="page"/>
+<jsp:useBean id="uiVO" class="LoginVO.UpdateInfoVO" scope="page"/>
 <jsp:setProperty property="id" name="uiVO" value="<%=id %>" /> 
 <jsp:setProperty property="phone" name="uiVO" value="<%=phone1 %>" /> 
 <jsp:setProperty property="email" name="uiVO" value="<%=email %>" /> 
