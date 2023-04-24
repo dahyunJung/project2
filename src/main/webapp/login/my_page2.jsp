@@ -58,7 +58,7 @@ $(function() {
 		location.href="http://localhost/project2/novel/my_novel_space.jsp?order_novel=0";
 	})
 	$("#input_button2").click(function() {
-		location.href="http://localhost/project2/login/like.jsp?search=";
+		location.href="http://localhost/project2/login/like2.jsp?search=";
 	})
 })
 
