@@ -1,4 +1,4 @@
-package DAO;
+package ManagerDAO;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import VO.DashboardVO;
-import VO.LoginHistoryVO;
-import VO.MemberManageVO;
-import VO.PastAllMVO;
-import VO.PastJoinVO;
-import VO.PastVisitVO;
+import ManagerVO.DashboardVO;
+import ManagerVO.LoginHistoryVO;
+import ManagerVO.MemberManageVO;
+import ManagerVO.PastAllMVO;
+import ManagerVO.PastJoinVO;
+import ManagerVO.PastVisitVO;
 import conn.DbConnection;
 
 public class ManageDAO {
@@ -22,16 +22,16 @@ public DashboardVO selectDash()throws SQLException {
 		
 	DashboardVO dVO = null;
 		DbConnection dbCon = DbConnection.getInstance();
-		//1. JNDI ��� ��ü ����
-		//2. DataSource ���
+		//1. JNDI 占쏙옙占� 占쏙옙체 占쏙옙占쏙옙
+		//2. DataSource 占쏙옙占�
 		Connection con  = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-		//3. Connection ���
+		//3. Connection 占쏙옙占�
 			con=dbCon.getConn();
-		//4. ������ ���� ��ü ���
+		//4. 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙체 占쏙옙占�
 			StringBuilder  selectDash = new StringBuilder();
 			selectDash
 			.append(" SELECT ")
@@ -49,20 +49,20 @@ public DashboardVO selectDash()throws SQLException {
 			
 
 			pstmt = con.prepareStatement(selectDash.toString());
-			//5. ���ε� ���� �� ����
+			//5. 占쏙옙占싸듸옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙
 			
-		//6. ������ ���� �� ��� ���
+		//6. 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占� 占쏙옙占�
 			rs=pstmt.executeQuery();
 			
 			
-			if(rs.next()) { //�˻��� ���ڵ尡 �����ϴ�?
-				//VO�� �����Ͽ� �˻� ����� �Ҵ�
+			if(rs.next()) { //占싯삼옙占쏙옙 占쏙옙占쌘드가 占쏙옙占쏙옙占싹댐옙?
+				//VO占쏙옙 占쏙옙占쏙옙占싹울옙 占싯삼옙 占쏙옙占쏙옙占� 占쌀댐옙
 				dVO = new DashboardVO( rs.getInt("memberCnt"), rs.getInt("novelCnt"), rs.getInt("todaySignUpCnt"), 
 						rs.getInt("todayVisitCnt"), rs.getInt("todayCreateNovelCnt"), rs.getInt("todayCreateEpCnt") );
 			}//end while			
 			
 		}finally {
-			//7. ���� ����
+			//7. 占쏙옙占쏙옙 占쏙옙占쏙옙
 			dbCon.dbClose(rs, pstmt, con);
 		}//end finally
 		
@@ -75,16 +75,16 @@ public PastJoinVO selectsCnt() throws SQLException {
 	
 		PastJoinVO pVO = null;
 		DbConnection dbCon = DbConnection.getInstance();
-		//1. JNDI ��� ��ü ����
-		//2. DataSource ���
+		//1. JNDI 占쏙옙占� 占쏙옙체 占쏙옙占쏙옙
+		//2. DataSource 占쏙옙占�
 		Connection con  = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-		//3. Connection ���
+		//3. Connection 占쏙옙占�
 			con=dbCon.getConn();
-		//4. ������ ���� ��ü ���
+		//4. 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙체 占쏙옙占�
 			StringBuilder selectsCnt = new StringBuilder();
 			selectsCnt
 			.append(" select ")
@@ -112,22 +112,22 @@ public PastJoinVO selectsCnt() throws SQLException {
 		
 
 			pstmt = con.prepareStatement(selectsCnt.toString());
-			//5. ���ε� ���� �� ����
+			//5. 占쏙옙占싸듸옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙
 			
-		//6. ������ ���� �� ��� ���
+		//6. 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占� 占쏙옙占�
 			rs=pstmt.executeQuery();
 			
 		
 			
 			
-			if(rs.next()) { //�˻��� ���ڵ尡 �����ϴ�?
-				//VO�� �����Ͽ� �˻� ����� �Ҵ�
+			if(rs.next()) { //占싯삼옙占쏙옙 占쏙옙占쌘드가 占쏙옙占쏙옙占싹댐옙?
+				//VO占쏙옙 占쏙옙占쏙옙占싹울옙 占싯삼옙 占쏙옙占쏙옙占� 占쌀댐옙
 				
 				pVO = new PastJoinVO( rs.getInt("sCnt4"),  rs.getInt("sCnt3"),  rs.getInt("sCnt2"), rs.getInt("sCnt1"), rs.getInt("sCnt") );
 			}//end while			
 			
 		}finally {
-			//7. ���� ����
+			//7. 占쏙옙占쏙옙 占쏙옙占쏙옙
 			dbCon.dbClose(rs, pstmt, con);
 		}//end finally
 		
@@ -140,16 +140,16 @@ public PastVisitVO selectvCnt() throws SQLException {
 	
 	PastVisitVO vVO = null;
 	DbConnection dbCon = DbConnection.getInstance();
-	//1. JNDI ��� ��ü ����
-	//2. DataSource ���
+	//1. JNDI 占쏙옙占� 占쏙옙체 占쏙옙占쏙옙
+	//2. DataSource 占쏙옙占�
 	Connection con  = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
 	try {
-	//3. Connection ���
+	//3. Connection 占쏙옙占�
 		con=dbCon.getConn();
-	//4. ������ ���� ��ü ���
+	//4. 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙체 占쏙옙占�
 		StringBuilder selectvCnt = new StringBuilder();
 		selectvCnt
 		.append(" select ")
@@ -161,19 +161,19 @@ public PastVisitVO selectvCnt() throws SQLException {
 		.append(" from dual ");
 	
 		pstmt = con.prepareStatement(selectvCnt.toString());
-		//5. ���ε� ���� �� ����
+		//5. 占쏙옙占싸듸옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙
 		
-	//6. ������ ���� �� ��� ���
+	//6. 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占� 占쏙옙占�
 		rs=pstmt.executeQuery();
 		
-		if(rs.next()) { //�˻��� ���ڵ尡 �����ϴ�?
-			//VO�� �����Ͽ� �˻� ����� �Ҵ�
+		if(rs.next()) { //占싯삼옙占쏙옙 占쏙옙占쌘드가 占쏙옙占쏙옙占싹댐옙?
+			//VO占쏙옙 占쏙옙占쏙옙占싹울옙 占싯삼옙 占쏙옙占쏙옙占� 占쌀댐옙
 			
 			vVO = new PastVisitVO( rs.getInt("vCnt4"),  rs.getInt("vCnt3"),  rs.getInt("vCnt2"), rs.getInt("vCnt1"), rs.getInt("vCnt") );
 		}//end while			
 		
 	}finally {
-		//7. ���� ����
+		//7. 占쏙옙占쏙옙 占쏙옙占쏙옙
 		dbCon.dbClose(rs, pstmt, con);
 	}//end finally
 	
@@ -185,16 +185,16 @@ public PastAllMVO selectAcnt() throws SQLException {
 	
 	PastAllMVO aVO = null;
 	DbConnection dbCon = DbConnection.getInstance();
-	//1. JNDI ��� ��ü ����
-	//2. DataSource ���
+	//1. JNDI 占쏙옙占� 占쏙옙체 占쏙옙占쏙옙
+	//2. DataSource 占쏙옙占�
 	Connection con  = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
 	try {
-	//3. Connection ���
+	//3. Connection 占쏙옙占�
 		con=dbCon.getConn();
-	//4. ������ ���� ��ü ���
+	//4. 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙체 占쏙옙占�
 		StringBuilder selectaCnt = new StringBuilder();
 		selectaCnt
 		.append(" select ")
@@ -207,19 +207,19 @@ public PastAllMVO selectAcnt() throws SQLException {
 
 		
 		pstmt = con.prepareStatement(selectaCnt.toString());
-		//5. ���ε� ���� �� ����
+		//5. 占쏙옙占싸듸옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙
 		
-	//6. ������ ���� �� ��� ���
+	//6. 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占� 占쏙옙占�
 		rs=pstmt.executeQuery();
 		
-		if(rs.next()) { //�˻��� ���ڵ尡 �����ϴ�?
-			//VO�� �����Ͽ� �˻� ����� �Ҵ�
+		if(rs.next()) { //占싯삼옙占쏙옙 占쏙옙占쌘드가 占쏙옙占쏙옙占싹댐옙?
+			//VO占쏙옙 占쏙옙占쏙옙占싹울옙 占싯삼옙 占쏙옙占쏙옙占� 占쌀댐옙
 			
 			aVO = new PastAllMVO( rs.getInt("allMCNT4"),  rs.getInt("allMCNT3"),  rs.getInt("allMCNT2"), rs.getInt("allMCNT1"), rs.getInt("allMCNT") );
 		}//end while			
 		
 	}finally {
-		//7. ���� ����
+		//7. 占쏙옙占쏙옙 占쏙옙占쏙옙
 		dbCon.dbClose(rs, pstmt, con);
 	}//end finally
 	
@@ -254,8 +254,8 @@ public List<LoginHistoryVO> selectHistory() throws SQLException {
 	
 
 	LoginHistoryVO lhVO = null;
-	while(rs.next()) { // ���ڵ尡 �����ϴ��� �� �� ������ ������ �ٸ� ��� ���ڵ带 �����;� �Ѵ�.
-		//Ŀ�� ������ ���ڵ尡 �����ϸ� TRUE�� ��ȯ�Ͽ� Ŀ���� ��ġ�� �Ʒ��� �̵�
+	while(rs.next()) { // 占쏙옙占쌘드가 占쏙옙占쏙옙占싹댐옙占쏙옙 占쏙옙 占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌕몌옙 占쏙옙占� 占쏙옙占쌘드를 占쏙옙占쏙옙占싶억옙 占싼댐옙.
+		//커占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쌘드가 占쏙옙占쏙옙占싹몌옙 TRUE占쏙옙 占쏙옙환占싹울옙 커占쏙옙占쏙옙 占쏙옙치占쏙옙 占싣뤄옙占쏙옙 占싱듸옙
 		/*
 		 * id=rs.getString("id"); pass=rs.getString("pass"); name=rs.getString("name");
 		 * date=rs.getDate("input_date");
@@ -276,7 +276,7 @@ public List<LoginHistoryVO> selectHistory() throws SQLException {
 }//selectHistory	 
 	 
 	  
-////�Ϥô� ��/.//////////////////////////////////
+////占싹ㅓ댐옙 占쏙옙/.//////////////////////////////////
 public List<MemberManageVO> selectMemberManage() throws SQLException {
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -306,14 +306,14 @@ public List<MemberManageVO> selectMemberManage() throws SQLException {
 	
 
 	MemberManageVO mmVO = null;
-	while(rs.next()) { // ���ڵ尡 �����ϴ��� �� �� ������ ������ �ٸ� ��� ���ڵ带 �����;� �Ѵ�.
-		//Ŀ�� ������ ���ڵ尡 �����ϸ� TRUE�� ��ȯ�Ͽ� Ŀ���� ��ġ�� �Ʒ��� �̵�
+	while(rs.next()) { // 占쏙옙占쌘드가 占쏙옙占쏙옙占싹댐옙占쏙옙 占쏙옙 占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌕몌옙 占쏙옙占� 占쏙옙占쌘드를 占쏙옙占쏙옙占싶억옙 占싼댐옙.
+		//커占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쌘드가 占쏙옙占쏙옙占싹몌옙 TRUE占쏙옙 占쏙옙환占싹울옙 커占쏙옙占쏙옙 占쏙옙치占쏙옙 占싣뤄옙占쏙옙 占싱듸옙
 		/*
 		 * id=rs.getString("id"); pass=rs.getString("pass"); name=rs.getString("name");
 		 * date=rs.getDate("input_date");
 		 */
 		
-		//int novelCnt, int reportCnt�� �־���ϴµ� ���� db�� �־��� ���� �ʾƼ� �ӽÿ����� ��� �־�� ���� select���� �ٲ����
+		//int novelCnt, int reportCnt占쏙옙 占쌍억옙占쏙옙求쨉占� 占쏙옙占쏙옙 db占쏙옙 占쌍억옙占쏙옙 占쏙옙占쏙옙 占십아쇽옙 占쌈시울옙占쏙옙占쏙옙 占쏙옙占� 占쌍억옙占� 占쏙옙占쏙옙 select占쏙옙占쏙옙 占쌕뀐옙占쏙옙占�
 		mmVO = new MemberManageVO( rs.getString("id"), rs.getInt("num_member"), rs.getInt("novelcnt"), rs.getInt("reportcnt"),
 				rs.getDate("visit"), rs.getDate("join"), rs.getDate("stop") );
 		mmList.add(mmVO);

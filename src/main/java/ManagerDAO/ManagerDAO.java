@@ -1,4 +1,4 @@
-package DAO;
+package ManagerDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import VO.MNovelLookVO;
-import VO.MNovelVO;
-import VO.MemberManageInfoVO;
+import ManagerVO.MNovelLookVO;
+import ManagerVO.MNovelVO;
+import ManagerVO.MemberManageInfoVO;
 import conn.DbConnection;
 
 public class ManagerDAO {
 
-	// 회원 정보 보기
+	// �쉶�썝 �젙蹂� 蹂닿린
 	public MemberManageInfoVO selectMemberInfoAll(String id) throws SQLException {
 		MemberManageInfoVO mVO = new MemberManageInfoVO();
 
@@ -38,7 +38,7 @@ public class ManagerDAO {
 			pstmt = con.prepareStatement(selectMemberInfo.toString());
 
 			// pstmt.setString(1, id);
-			pstmt.setString(1, "haerin4");// 임시 아이디 지정
+			pstmt.setString(1, "haerin4");// �엫�떆 �븘�씠�뵒 吏��젙
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -85,7 +85,7 @@ public class ManagerDAO {
 		}
 	}
 
-	// 강제 중지
+	// 媛뺤젣 以묒�
 	public int forcedStop(String id) throws SQLException {
 		int result = 0;
 		Connection con = null;
@@ -107,13 +107,13 @@ public class ManagerDAO {
 		return result;
 	}// forcedStop
 
-//	// 강제 중지 해제
+//	// 媛뺤젣 以묒� �빐�젣
 //	public int cancelStop(String id) {
 //
 //		return 0;
 //	}// cancelStop
 
-	// 소설 관리
+	// �냼�꽕 愿�由�
 	public List<MNovelVO> selectNovelManageAll() throws SQLException {
 		List<MNovelVO> list = new ArrayList<MNovelVO>();
 
@@ -146,8 +146,8 @@ public class ManagerDAO {
 		return list;
 	}// selectNovelManageAll
 
-	// 소설 삭제,비공개
-//	public List<MNovelLookVO> selectNovelLook(int ){//매개변수로 int소설번호 넣어야 되는데 VO에 없?
+	// �냼�꽕 �궘�젣,鍮꾧났媛�
+//	public List<MNovelLookVO> selectNovelLook(int ){//留ㅺ컻蹂��닔濡� int�냼�꽕踰덊샇 �꽔�뼱�빞 �릺�뒗�뜲 VO�뿉 �뾾?
 //		
 //	}
 //	
@@ -159,7 +159,7 @@ public class ManagerDAO {
 //		
 //	}//updateNovel
 
-	// 소설 신고 보기
+	// �냼�꽕 �떊怨� 蹂닿린
 	public MNovelLookVO selectReportInfo(String novel_title) throws SQLException {
 		MNovelLookVO nVO = new MNovelLookVO();
 
@@ -176,7 +176,7 @@ public class ManagerDAO {
 					.append(" where novel_title = ? ");
 
 			pstmt = con.prepareStatement(selectReportInfo.toString());
-			pstmt.setString(1, "가나다라마바사");// 임시
+			pstmt.setString(1, "媛��굹�떎�씪留덈컮�궗");// �엫�떆
 			//pstmt.setString(1, novel_title);
 			rs = pstmt.executeQuery();
 

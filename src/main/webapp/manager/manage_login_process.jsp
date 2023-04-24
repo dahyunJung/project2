@@ -1,5 +1,5 @@
-<%@page import="VO.LoginVO"%>
-<%@page import="DAO.LoginDAO"%>
+<%@page import="ManagerVO.LoginVO"%>
+<%@page import="ManagerDAO.LoginDAO"%>
 <%@page import="java.io.IOException"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="kr.co.sist.util.cipher.DataDecrypt"%>
@@ -78,13 +78,13 @@ color:#d7d7d7;
 
 
 <div id="container">
-<jsp:useBean id="lVO" class="VO.LoginVO" scope="page"/>
+<jsp:useBean id="lVO" class="ManagerVO.LoginVO" scope="page"/>
 <jsp:setProperty property="*" name="lVO"/>
 <%
 //System.out.println("============"+lVO);
 //웹 파라메터의 아이디와 비밀번호가 존재하는 경우 비밀번호를
 if( lVO.getId()==null || "".equals( lVO.getId() ) || lVO.getPassword()==null||"".equals( lVO.getPassword() ) ){
-	response.sendRedirect("http://localhost/project2/manager/3_0_manage_login.jsp");
+	response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
 	return;
 }
 //MD5 알고리즘을 사용하여 일방향 해시로 암호화 수행한다.
@@ -104,10 +104,10 @@ session.setAttribute("sesId", idChk);
 //session.setMaxInactiveInterval(60);
 
 if(id.equals(idChk) && password.equals(pwChk) ){
-	response.sendRedirect("http://localhost/project2/manager/3_1_manager_home.jsp");
+	response.sendRedirect("http://localhost/project2/manager/manager_home.jsp");
 }//end if
 }catch(NullPointerException ne){
-		response.sendRedirect("http://localhost/project2/manager/3_0_manage_login.jsp");
+		response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
 }
 %>
 

@@ -1,5 +1,4 @@
-package VO;
-
+package ManagerVO;
 public class MNovelLookVO {
 	private String novelTitle, id, thumbnail, intro;
 	private int ageAble, reportReason, reportCnt;

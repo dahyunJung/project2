@@ -1,5 +1,4 @@
-package VO;
-
+package ManagerVO;
 public class PastVisitVO {
 	int vCnt, vCnt1, vCnt2, vCnt3, vCnt4;
 

@@ -18,8 +18,11 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/fd0af5d18a01c194.css" data-n-p="" />
 <link rel="stylesheet" type="text/css" href="http://localhost/project2/_next/static/css/font.css"/>
 
- 
+
 <style data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&display=swap">
+
+
+
 
 	h1{
 		margin-top: 15px;
@@ -48,25 +51,29 @@
 		margin-left: 150px;
 	}
 	
-	tr, td{
-		padding: 7px;
-	}
+	
 	
 	#seqence{
 		padding: 10px;
 	}
+	
+
+	
+
 	
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
   <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-
- <script type="text/javascript">
+  
+  <script type="text/javascript">
   $(function(){ 
+	  
+	  
 
     $.ajax({
-		url : "3_6_manager_user_jsonarr.jsp",
+		url : "manager_history_jsonarr.jsp",
 		dataType: "json",
 		error : function( xhr ){
 		alert("서버에서 전송 실패");
@@ -82,13 +89,10 @@
 			$.each( jsonArr, function(idx, jsonObj) {
 				cnt++;
 			tbody+="<tr><td>"+
-			jsonObj.num_member+"</td><td>"+
 			jsonObj.id+"</td><td>"+
-			jsonObj.novelCnt+"</td><td>"+
-			jsonObj.reportCnt+"</td><td>"+
-			jsonObj.visitDate+"</td><td>"+
-			jsonObj.joinDate+"</td><td>"+
-			jsonObj.stopDate+"</td></tr>";
+			jsonObj.DeviceOS+"</td><td>"+
+			jsonObj.ip+"</td><td>"+
+			jsonObj.loginDate+"</td></tr>";
 			});//each
 //date는 무조건 심플로 바꿔야함			
 			
@@ -104,6 +108,9 @@
 				    lengthChange: true, // 페이지당 보여질 데이터 수 조정 기능 비활성화
 				    searching: true // 검색 기능 비활성화
 				  });//dataTable
+				  
+		
+				
 	
 		}//success
 
@@ -117,16 +124,16 @@
 </head>
 
 <body>
-<div id="__next"">
+<div id="__next">
 <div style="display: none; background-color: canvas; color-scheme: light"></div>
 <div class="lightMode h-full">
 <div class="flex flex-col h-full">
 		<header class="relative bg-white border-b-1 border-grey20">
 		<div class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 flex-wrap items-center desktop:min-h-[72px] desktop:flex-nowrap desktop:py-12">
-			<a class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0" href="http://localhost/project2/manager/3_1_manager_home.jsp">
+			<a class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0" href="http://localhost/project2/manager/manager_home.jsp">
 			<img class="" width="157" height="27" src="http://localhost/project2/_next/static/images/logo.png" alt="소설조아 logo" /></a>
 			<div class="flex items-center ml-auto mr-15 desktop:mr-0">
-			<button onclick="location.href='http://localhost/project2/manager/3_0_manage_login.jsp'" class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white">로그아웃</button>
+			<button onclick="location.href='http://localhost/project2/manager/manage_login.jsp'" class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white">로그아웃</button>
 			</div>
 		</div>
 	</header>
@@ -134,45 +141,38 @@
 	
 	<main class="flex-1 mx-auto w-full max-w-default flex-row flex-wrap">
 	
-	<div style="margin-top: 20px;">
-		<button id="btn" onclick="location.href='manage_user.html'">회원관리</button>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button id="btn" onclick="location.href='manage_novel.html'">소설관리</button>
-	</div>
+
 	
 	<div>
-		<h1>회원 관리</h1>
+		<h1>히스토리</h1>
+		
+
 	</div>
-	
-    
+
    	
     <br>
     
     <div style="margin-top: 15px;">
-    
     <table id="myTable">
-      <thead>
-	    <tr>
-	    <th>번호</th>
-	    <th>아이디</th>
-	    <th>작품 개수</th>
-	    <th>신고누적 개수</th>
-	    <th>방문 날짜</th>
-	    <th>가입 날짜</th>
-	    <th>탈퇴 날짜</th>
-	    </tr>
-	    </thead>
-	    <tbody>
-	   
-	    </tbody>
-    </table>
-    
-    
-    
-    
+  <thead>
+    <tr>
+      <th>아이디</th>
+      <th>기기 / OS</th>
+      <th>로그인 IP</th>
+      <th>로그인 일시</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+     
+</table>
+
+
+
+
     </div>
     
- 
+  
     
 	</main>
 	

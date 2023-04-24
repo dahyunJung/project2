@@ -1,5 +1,4 @@
-package VO;
-
+package ManagerVO;
 public class PastJoinVO {
 	int sCnt, sCnt1, sCnt2, sCnt3, sCnt4;
 

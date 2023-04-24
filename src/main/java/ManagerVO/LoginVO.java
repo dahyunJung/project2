@@ -1,5 +1,4 @@
-package VO;
-
+package ManagerVO;
 import java.sql.Date;
 
 public class LoginVO {

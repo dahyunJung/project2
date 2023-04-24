@@ -1,5 +1,4 @@
-package VO;
-
+package ManagerVO;
 public class PastAllMVO {
 int allMCNT, allMCNT1, allMCNT2, allMCNT3, allMCNT4;
 

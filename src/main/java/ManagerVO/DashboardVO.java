@@ -1,5 +1,4 @@
-package VO;
-
+package ManagerVO;
 public class DashboardVO {
 	private int memberCnt, novelCnt, todaySignUpCnt, todayVisitCnt, todayCreateNovelCnt, todayCreateEpCnt;
 
