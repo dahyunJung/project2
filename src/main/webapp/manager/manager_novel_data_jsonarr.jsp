@@ -2,9 +2,9 @@
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="VO.MNovelVO"%>
+<%@page import="ManagerVO.MNovelVO"%>
 <%@page import="java.util.List"%>
-<%@page import="DAO.ManagerDAO"%>
+<%@page import="ManagerDAO.ManagerDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"
