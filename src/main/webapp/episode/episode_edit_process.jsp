@@ -30,7 +30,7 @@ request.setCharacterEncoding("UTF-8");
 		
 		if(editCnt > 0){
 			System.out.println(editCnt + ", 수정 완료 " + edVO.getOpenStatus());
-			response.sendRedirect("/project3/me/novel_list.jsp");		
+			response.sendRedirect("/project2/novel/novel_list.jsp");		
 		}else{
 			System.out.println(edVO.getEpNum()+", "+editCnt + ", 수정 실패");
 		}

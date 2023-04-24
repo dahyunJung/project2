@@ -16,7 +16,7 @@
 %>
 	<script type="text/javascript">
 		alert("세션 userNum의 값이 없음");
-		location.href="http://localhost/project3/login/loginpage.jsp";
+		location.href="http://localhost/project2/login/loginpage.jsp";
 		//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 	</script>
 <%	}	
@@ -25,7 +25,7 @@
 %>
 	<script type="text/javascript">
 		alert("파라미터 novelNum의 값이 없음");
-		location.href="http://localhost/project3/me/novel_list.jsp";
+		location.href="http://localhost/project2/novel/novel_list.jsp";
 		//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 	</script>
 <%	}	
@@ -34,7 +34,7 @@
 %>
 	<script type="text/javascript">
 		alert("파라미터 epNum의 값이 없음");
-		location.href="http://localhost/project3/me/novel_list.jsp";
+		location.href="http://localhost/project2/novel/novel_list.jsp";
 		//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 	</script>
 <%	}
@@ -54,7 +54,3 @@
 		e.printStackTrace();
 	}
 %>
-
-<script type="text/javascript">
-	
-</script>

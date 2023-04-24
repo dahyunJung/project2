@@ -11,7 +11,7 @@ request.setCharacterEncoding("UTF-8");
 <script type="text/javascript">
 	if("<%=request.getMethod()%>" == "GET") {
 		alert("정상적인 방식으로 요청하지 않았어요");
-		location.href = "http://localhost/project3/me/novel_list.jsp";
+		location.href = "http://localhost/project2/novel/novel_list.jsp";
 	}
 </script>
 
@@ -23,7 +23,7 @@ request.setCharacterEncoding("UTF-8");
 
 	try{
 		mDAO.insertEpisode(ceVO);
-		response.sendRedirect("/project3/me/novel_list.jsp");
+		response.sendRedirect("/project2/novel/novel_list.jsp");
 		
 	}catch(SQLException e){
 		e.printStackTrace();

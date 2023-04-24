@@ -14,11 +14,11 @@
 <title>글 수정 | 카카오페이지 스테이지</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap">
-<link rel="stylesheet" type="text/css" href="/project3/_next/static/css/0bde5e3867c0e9b2.css" />
-<link rel="stylesheet" type="text/css" href="/project3/_next/static/css/fd0af5d18a01c194.css" />
-<link rel="stylesheet" type="text/css" href="/project3/_next/static/css/44b5ac89a790a9aa.css" />
-<link rel="stylesheet" type="text/css" href="/project3/_next/static/css/6e5d8ba319c77348.css" data-n-g="">
-<link rel="stylesheet" type="text/css" href="/project3/_next/static/css/font.css" />
+<link rel="stylesheet" type="text/css" href="/project2/_next/static/css/0bde5e3867c0e9b2.css" />
+<link rel="stylesheet" type="text/css" href="/project2/_next/static/css/fd0af5d18a01c194.css" />
+<link rel="stylesheet" type="text/css" href="/project2/_next/static/css/44b5ac89a790a9aa.css" />
+<link rel="stylesheet" type="text/css" href="/project2/_next/static/css/6e5d8ba319c77348.css" data-n-g="">
+<link rel="stylesheet" type="text/css" href="/project2/_next/static/css/font.css" />
 <!-- jQuery CDN설정 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript">
@@ -89,7 +89,7 @@ $(function(){
 	
 	// 에피소드 삭제
 	$("#delete").click(function(){
-		window.open("/project3/me/delete_popup.jsp","popup","width=400,height=300,resizable=no,top="
+		window.open("/project2/episode/episode_delete_popup.jsp","popup","width=400,height=300,resizable=no,top="
 				+(window.screenY+100)	+",left="+(window.screenX+100)); 
 		window.close();
 	}); //delete 
@@ -116,8 +116,8 @@ $(function(){
 %>
 		<script type="text/javascript">
 			alert("세션 userNum의 값이 없음");
-			location.href="http://localhost/project3/login/loginpage.jsp";
-			//response.sendRedirect("http://localhost/project3/login/loginpage.jsp");
+			location.href="http://localhost/project2/login/loginpage.jsp";
+			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 		</script>
 <%	}	
 
@@ -125,8 +125,8 @@ $(function(){
 %>
 		<script type="text/javascript">
 			alert("파라미터 novelNum의 값이 없음");
-			location.href="http://localhost/project3/me/novel_list.jsp";
-			//response.sendRedirect("http://localhost/project3/login/loginpage.jsp");
+			location.href="http://localhost/project2/novel/novel_list.jsp";
+			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 		</script>
 <%	}	
 
@@ -134,8 +134,8 @@ $(function(){
 %>
 		<script type="text/javascript">
 			alert("파라미터 epNum의 값이 없음");
-			location.href="http://localhost/project3/me/novel_list.jsp";
-			//response.sendRedirect("http://localhost/project3/login/loginpage.jsp");
+			location.href="http://localhost/project2/novel/novel_list.jsp";
+			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 		</script>
 <%	}	
 	
@@ -156,11 +156,11 @@ $(function(){
 	<div class="lightMode h-full flex flex-col h-full">
 	<main class="flex-1">
 		
-		<form id="editFrm" action="novel_edit_process.jsp" method="post" class="flex flex-col h-full">
+		<form id="editFrm" action="episode_edit_process.jsp" method="post" class="flex flex-col h-full">
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
-					<a href="/project3/me/novel_list.jsp">
-						<img width="20" height="20" src="/project3/_next/static/images/list.png" />
+					<a href="/project2/novel/novel_list.jsp">
+						<img width="20" height="20" src="/project2/_next/static/images/list.png" />
 					</a>
 				</div>
 				<div class="flex absolute inset-x-0 bottom-10 mx-20 items-center justify-center text-12 font-bold desktop:bottom-auto desktop:mx-[220px] desktop:items-end desktop:text-16">

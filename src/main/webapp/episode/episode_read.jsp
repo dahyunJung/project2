@@ -34,9 +34,9 @@
 </head>
 
 <%
-	int userNum = 4;	//일단 테스트값
-	int novelNum = 22; 
-	int epNum = 8;
+	int userNum = 3;	//일단 테스트값
+	int novelNum = 23; 
+	int epNum = 66;
 	
 	MyPageDAO mDAO = new MyPageDAO();
 	LookEpisodeVO selectVO = null;
