@@ -1,4 +1,4 @@
-<%@page import="DAO.InjectionDAO"%>
+<%@page import="ManagerDAO.InjectionDAO"%>
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -83,7 +83,7 @@ if("<%=request.getMethod()  %>"=="GET"){
 <%
 if( "POST".equals(request.getMethod()) ){
 	 %>
-<jsp:useBean id="iVO" class="VO.InjectionVO" scope="page"></jsp:useBean>
+<jsp:useBean id="iVO" class="ManagerVO.InjectionVO" scope="page"></jsp:useBean>
 <jsp:setProperty property="*" name="iVO"/><!-- 모든 인풋으로 값을 넣어준다. -->
 <%
 
