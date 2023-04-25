@@ -101,7 +101,7 @@ LoginVO lChkVO = lDAO.selectLogin(id, password);
 String idChk = lChkVO.getId();
 String pwChk = lChkVO.getPassword();
 session.setAttribute("sesId", idChk);
-//session.setMaxInactiveInterval(60);
+session.setMaxInactiveInterval(60);
 
 if(id.equals(idChk) && password.equals(pwChk) ){
 	response.sendRedirect("http://localhost/project2/manager/manager_home.jsp");

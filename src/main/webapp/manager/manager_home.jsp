@@ -81,7 +81,7 @@ th, td{ height: 150px; font-weight: normal; border: 0px solid #333; text-align: 
 			<a class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0" href="http://localhost/project2/manager/manager_home.jsp">
 			<img class="" width="157" height="27" src="http://localhost/project2/_next/static/images/logo.png" alt="소설조아 logo" /></a>
 			<div class="flex items-center ml-auto mr-15 desktop:mr-0">
-			<button onclick="location.href='http://localhost/project2/manager/manage_login.jsp'" class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white">로그아웃</button>
+			<button  class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white" id="logoutBtn">로그아웃</button>
 			</div>
 		</div>
 	</header>
@@ -124,6 +124,10 @@ th, td{ height: 150px; font-weight: normal; border: 0px solid #333; text-align: 
 
 
 		<%
+		if(session.getAttribute("sesId")==null){
+			response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
+		}
+	
 ManageDAO mDAO = new ManageDAO();
 DashboardVO dVO = mDAO.selectDash();
 PastJoinVO pVO = mDAO.selectsCnt();
@@ -254,6 +258,14 @@ String current_4 = sdf.format(fourDaysBefore);
 </div>
 </div>
 <script type="text/javascript">
+
+$("#logoutBtn").click(function(){
+	
+	 location.href="http://localhost/project2/manager/manage_login.jsp"; 
+});
+
+
+
 //가입자 수
 var scnt = document.getElementById('sCnt').value;
 var scnt1 = document.getElementById('sCnt1').value;

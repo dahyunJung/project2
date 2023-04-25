@@ -3,6 +3,8 @@
 <%@page import="org.json.simple.JSONArray"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+    
 <!DOCTYPE html>
 <html>
 
@@ -124,6 +126,12 @@
 </head>
 
 <body>
+    <%
+if(session.getAttribute("sesId")==null){
+	response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
+}
+%>
+<%= session.getAttribute("sesId") %>
 <div id="__next">
 <div style="display: none; background-color: canvas; color-scheme: light"></div>
 <div class="lightMode h-full">

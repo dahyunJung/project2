@@ -156,7 +156,7 @@ function chkLeng(){
 			<a class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0" href="http://localhost/project22/4_home/4_1_main(logout).jsp">
 			<img class="object-contain" width="157" height="27" src="http://localhost/project2/_next/static/images/logo.png" alt="소설조아 logo" /></a>
 			<div class="flex items-center ml-auto mr-15 desktop:mr-0">
-				<button onclick="location.href='http://localhost/project2/manager/manage_login.jsp'" class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white">로그인</button>
+				<input type="button" onclick="location.href='http://localhost/project2/manager/manage_login.jsp'" class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white"  value="로그인" />
 			</div>
 		</div>
 	</header>

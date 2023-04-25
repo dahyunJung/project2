@@ -14,16 +14,16 @@ public class LoginDAO {
 		
 		LoginVO lVO = null;
 		DbConnection dbCon = DbConnection.getInstance();
-		//1. JNDI 占쏙옙占� 占쏙옙체 占쏙옙占쏙옙
-		//2. DataSource 占쏙옙占�
+		//1. JNDI 사용 객체 생성
+		//2. DataSource 얻기
 		Connection con  = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-		//3. Connection 占쏙옙占�
+			//3. Connection 얻기
 			con=dbCon.getConn();
-		//4. 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙체 占쏙옙占�
+			//4. 쿼리문 생성 객체 얻기
 			StringBuilder  selectInjection = new StringBuilder();
 			selectInjection
 			.append(" select id, password, create_date ")
@@ -31,20 +31,20 @@ public class LoginDAO {
 			.append(" where id=? and password=? ");
 			
 			pstmt = con.prepareStatement(selectInjection.toString());
-			//5. 占쏙옙占싸듸옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙
+			//5. 바인드 변수 값 설정
 			pstmt.setString(1, id);
 			pstmt.setString(2, password);
-		//6. 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占� 占쏙옙占�
+			//6. 쿼리문 수행 후 결과 얻기
 			rs=pstmt.executeQuery();
 			
-			if(rs.next()) { //占싯삼옙占쏙옙 占쏙옙占쌘드가 占쏙옙占쏙옙占싹댐옙?
-				//VO占쏙옙 占쏙옙占쏙옙占싹울옙 占싯삼옙 占쏙옙占쏙옙占� 占쌀댐옙
+			if(rs.next()) { //검색된 레코드가 존재하니?
+				//VO를 생성하여 검색 결과를 할당
 				
 				lVO = new LoginVO( id, password, rs.getDate("create_date") );
 			}//end while			
 			
 		}finally {
-			//7. 占쏙옙占쏙옙 占쏙옙占쏙옙
+			//7. 연결 끊기
 			dbCon.dbClose(rs, pstmt, con);
 		}//end finally
 		
