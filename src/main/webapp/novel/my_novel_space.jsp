@@ -6,6 +6,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+String id=session.getAttribute("user_id").toString();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -61,7 +64,7 @@ $(function () {
 										<div
 											class="mb-24 px-6 py-8 desktop:mb-0 desktop:px-0 desktop:py-0">
 											<h1 class="typo-dp2 mb-6 desktop:typo-dp1">
-												<div>아이디님의</div>
+												<div><%=id %>님의</div>
 												<div class="-mt-4 desktop:mt-0">창작공간</div>
 											</h1>
 										</div>
@@ -101,8 +104,8 @@ $(function () {
 												<select id="order_novel" name="order_novel" class="w-full typo-sm1 desktop:text-grey70"
 													aria-controls="최신 업데이트 순">
 													<option value="최신 업데이트 순">최신 업데이트 순</option>
-													<option value="0" selected="selected">신작 순</option>
-													<option value="1">오래된 순</option>
+													<option value="0" <%=(request.getParameter("order_novel").equals("0"))?"selected":"" %>>신작 순</option>
+													<option value="1" <%=(request.getParameter("order_novel").equals("1"))?"selected":"" %>>오래된 순</option>
 												</select>
 												</form>
 											</div>
@@ -113,7 +116,7 @@ $(function () {
 								<%
 								MyNovelDAO mDAO = new MyNovelDAO();
 								try{
-									List<MyNovelVO> selectList = mDAO.selectNovelAll(session.getAttribute("id").toString(), request.getParameter("order_novel").toString() );
+									List<MyNovelVO> selectList = mDAO.selectNovelAll(id.toString(), request.getParameter("order_novel").toString() );
 									
 								//	System.out.println( selectList.get(0) );
 									pageContext.setAttribute("selList", selectList);

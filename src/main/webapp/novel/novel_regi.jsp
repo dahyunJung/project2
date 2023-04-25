@@ -78,7 +78,7 @@ $(function(){
 </head>
 
 <%	//나중에 지울것
-String id=session.getAttribute("id").toString();
+String id=session.getAttribute("user_id").toString();
 %>
 
 <body>

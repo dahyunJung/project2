@@ -94,7 +94,7 @@ $(function(){
 							</div>
 							<form class="w-full" name="frm" method="post" action="novel_edit_sub.jsp" enctype="multipart/form-data">
 								<%
-								String id=session.getAttribute("id").toString();
+								String id=session.getAttribute("user_id").toString();
 								NewNovelDAO nDAO=new NewNovelDAO();
 								try{
 									NewNovelVO nVO=nDAO.selectNovel(id, Integer.parseInt(request.getParameter("num_novel")));

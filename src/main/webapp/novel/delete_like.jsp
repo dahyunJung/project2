@@ -7,7 +7,7 @@
 <%
 MyLikeDAO mDAO=new MyLikeDAO();
 try{
-mDAO.deleteNovel(request.getParameter("num_novel"), session.getAttribute("id").toString());
+mDAO.deleteNovel(request.getParameter("num_novel"), session.getAttribute("user_id").toString());
 }catch(SQLException se){
 	se.printStackTrace();
 }
