@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.util.List"%>
 <%@page import="org.json.simple.JSONArray"%>
@@ -63,56 +65,42 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
  <script type="text/javascript">
-  $(function(){ 
+  $(function() {
+	  $.ajax({
+	    url: "manager_user_jsonarr.jsp",
+	    dataType: "json",
+	    error: function(xhr) {
+	      alert("서버에서 전송 실패");
+	      console.log(xhr.status + " / " + xhr.statusText);
+	    },
+	    success: function(jsonArr) {
+	      var tbody = "";
+	      let cnt = 0;
+	      $.each(jsonArr, function(idx, jsonObj) {
+	        cnt++;
+	         tbody += "<tr><td>" +
+	          jsonObj.num_member + "</td><td><a href='manager_user_spc.jsp?id=" +
+	          jsonObj.id + "'>" + jsonObj.id + "</a></td><td>" +
+	          jsonObj.novelCnt + "</td><td>" +
+	          jsonObj.reportCnt + "</td><td>" +
+	          jsonObj.visitDate + "</td><td>" +
+	          jsonObj.joinDate + "</td><td>" +
+	          jsonObj.stopDate + "</td></tr>"; 
+	      });
+	      if (cnt == 0) {
+	        tbody = "<tr><td colspan='4'>모든 사원이 퇴사하였습니다.</td></tr>";
+	      }
+	      $("#myTable tbody").html(tbody);
 
-    $.ajax({
-		url : "manager_user_jsonarr.jsp",
-		dataType: "json",
-		error : function( xhr ){
-		alert("서버에서 전송 실패");
-		console.log( xhr.status + " / " + xhr.statusText );
-		},
-		success : function( jsonArr ){
-		
-			var tbody="";
-			
-			let cnt = 0;
-			//tr이 하나 이상이면 넣지 않는다.
-			
-			$.each( jsonArr, function(idx, jsonObj) {
-				cnt++;
-			tbody+="<tr><td>"+
-			jsonObj.num_member+"</td><td>"+
-			jsonObj.id+"</td><td>"+
-			jsonObj.novelCnt+"</td><td>"+
-			jsonObj.reportCnt+"</td><td>"+
-			jsonObj.visitDate+"</td><td>"+
-			jsonObj.joinDate+"</td><td>"+
-			jsonObj.stopDate+"</td></tr>";
-			});//each
-//date는 무조건 심플로 바꿔야함			
-			
-			if( cnt==0 ){
-				tbody="<tr><td colspan='4'>모든 사원이 퇴사하였습니다.</td></tr>";
-			}//end if
-	
-			 $("#myTable tbody").html( tbody ); 	
-			
-
-				$("#myTable").DataTable({
-				    paging: true, // 페이지네이션 기능 활성화
-				    lengthChange: true, // 페이지당 보여질 데이터 수 조정 기능 비활성화
-				    searching: true // 검색 기능 비활성화
-				  });//dataTable
-	
-		}//success
-
-	})//ajax
-	
-
-  });//ready
+	      $("#myTable").DataTable({
+	        paging: true,
+	        lengthChange: true,
+	        searching: true
+	      });
+	    }
+	  });
+	}); 
 </script>
-
 
 </head>
 
@@ -155,6 +143,7 @@
 	    <tr>
 	    <th>번호</th>
 	    <th>아이디</th>
+	    
 	    <th>작품 개수</th>
 	    <th>신고누적 개수</th>
 	    <th>방문 날짜</th>
@@ -167,13 +156,8 @@
 	    </tbody>
     </table>
     
-    
-    
-    
     </div>
-    
  
-    
 	</main>
 	
 	<footer	class="typo-sm1 border-t-1 border-grey20 bg-grey10 text-grey60 desktop:typo-sm2 mt-48 desktop:mt-116">
