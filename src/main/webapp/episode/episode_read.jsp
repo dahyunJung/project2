@@ -16,6 +16,8 @@
 <link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css"	as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css" data-n-p="" />
 <link rel="stylesheet" type="text/css" href="/project2/_next/static/css/login.css" />
+<!-- jQuery CDN설정 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 <style type="text/css">
 	.flex-container {
@@ -31,12 +33,30 @@
 </style>
 
 <noscript data-n-css=""></noscript>
+<script type="text/javascript">
+
+$(function(){
+	
+	$("#prev").click(function(){
+		// 파라미터????
+	}); //prev
+	
+	$("#next").click(function(){
+		
+	}); //next
+	
+	
+});// ready
+
+</script>
 </head>
+
+
 
 <%
 	int userNum = 3;	//일단 테스트값
 	int novelNum = 23; 
-	int epNum = 66;
+	int epNum = 63;
 	
 	MyPageDAO mDAO = new MyPageDAO();
 	LookEpisodeVO selectVO = null;
@@ -77,7 +97,7 @@
 		</div>
 
 		<div data-obj-id="pf8A1" data-obj-type="element" data-text-editable="true" class="" style="margin: auto; width: 1000px; height: 709px;">
-			<div data-text-content="true" style="/* height:780px; */ min-height:780px; padding:20px; padding-left:40px; padding-right:40px; font-size: 16px; background-color: rgba(224, 224, 224, 0.34);" class="">
+			<div data-text-content="true" style=" padding:20px; padding-left:40px; padding-right:40px; font-size: 16px; background-color: rgba(224, 224, 224, 0.34);" class="">
 				<div style="text-align: center;">
 					<span style="font-style:italic; ; font-size: x-large;"><%= selectVO.getEpTitle() %></span><br><br>
 				</div>
@@ -85,18 +105,14 @@
 				<div>
 					<%= selectVO.getEpDetail().replace("\n", "<br>") %>
 				</div>
-				<br><br>
+				<br><br><br><br><br><br>
 				
-				<div>
+				<div style="position: relative;">
 					<!-- 이전화 -->
-					<a href="#void">
-						<input type="button" value="← 이전 화" style="font-size:25px ; text-align: left;"/>
-					</a>
+					<input type="button" id="prev" value="← 이전 화" style="font-size:25px ; text-align: left;"/>
 					
 					<!-- 다음화 -->
-					<a href="#void">
-						<input type="button" value="다음 화 →" style="font-size:25px ; float: right;"/>
-					</a>
+					<input type="button" id="next" value="다음 화 →" style="font-size:25px ; float: right;"/>
 					<br><br>
 				</div>
 				
@@ -104,7 +120,10 @@
 			<br>
 		</div>
 	</main>
-	
+	<!-- footer -->
+	<div>
+		<jsp:include page="../_next/footer.jsp"/>
+	</div> 
 	</div>
 	</div>
 	</div>

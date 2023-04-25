@@ -29,10 +29,12 @@ request.setCharacterEncoding("UTF-8");
 		int editCnt = mDAO.updateEpisode(edVO);
 		
 		if(editCnt > 0){
-			System.out.println(editCnt + ", 수정 완료 " + edVO.getOpenStatus());
+			System.out.println(editCnt + ", 수정 완료 ");
+			
 			response.sendRedirect("/project2/novel/novel_list.jsp");		
 		}else{
 			System.out.println(edVO.getEpNum()+", "+editCnt + ", 수정 실패");
+			System.out.println("error");
 		}
 		
 	}catch(SQLException e){

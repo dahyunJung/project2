@@ -74,14 +74,14 @@ $(function(){
 	
 	// 에피소드 공개
 	$("#private").click(function(){
-		if($(this).val() == "공개"){
+		if($(this).val() == "공개"){			// 버튼이 공개로 되어있으면 비공개로 전환
 			$(this).val("비공개");
 			$("#openStatus").val(0);
-			alert($("#openStatus").val() + "비공개전환");
-		}else if($(this).val() == "비공개"){
+			alert("비공개 되었습니다!");
+		}else if($(this).val() == "비공개"){	// 버튼이 비공개로 되어있으면 공개로 전환
 			$(this).val("공개");
 			$("#openStatus").val(1);
-			alert($("#openStatus").val() + "공개전환");
+			alert("공개 되었습니다!");
 		}
 		
 	}); //private
@@ -89,7 +89,7 @@ $(function(){
 	
 	// 에피소드 삭제
 	$("#delete").click(function(){
-		window.open("/project2/episode/episode_delete_popup.jsp","popup","width=400,height=300,resizable=no,top="
+		window.open("/project2/episode/delete_popup.jsp","popup","width=400,height=300,resizable=no,top="
 				+(window.screenY+100)	+",left="+(window.screenX+100)); 
 		window.close();
 	}); //delete 
@@ -159,7 +159,7 @@ $(function(){
 		<form id="editFrm" action="episode_edit_process.jsp" method="post" class="flex flex-col h-full">
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
-					<a href="/project2/novel/novel_list.jsp">
+					<a href="/project2/me/novel_list.jsp">
 						<img width="20" height="20" src="/project2/_next/static/images/list.png" />
 					</a>
 				</div>
@@ -172,7 +172,7 @@ $(function(){
 					<div class="flex items-center justify-end">
 						<input type="button" id="edit" value="수정" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>&nbsp;
 						<input type="button" id="private" value="<%= (selectVO.getOpenStatus() == true) ? "공개":"비공개" %>" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>&nbsp;
-						<input type="button" id="delete" value="<%= selectVO.getOpenStatus() %> 삭제" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>
+						<input type="button" id="delete" value="삭제" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>
 					</div>
 				</div>
 			</header>
