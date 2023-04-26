@@ -44,17 +44,18 @@ $(function(){
 	
 	
 	$("#idChk").click(function(){
-		window.open("id_chk_dup.jsp","subWin","width=310,height=210");
+		window.open("id_chk_dup.jsp","subWin","width=310,height=310");
 		 
  	});
 	
 	$("#email_select").change(function(){
-		if($(this).val()=="self"){ //직접 입력시
-			$("#email2").removeAttr("disabled").focus(); // input text 활성화
-			$("#email2").val("");
-			
+		if($("#email_select").val()=="self"){ //직접 입력시
+			 $("#email2").removeAttr("readonly").focus(); // input text 활성화
+			$("#email2").val(""); 
 		}else{
-			$("#email2").attr("disabled",true).val($(this).val());
+			 $("#email2").attr("readonly",true);
+			$("#email2").val($("#email_select").val());
+			alert($("#email2").val());
 		}
 	});
 	

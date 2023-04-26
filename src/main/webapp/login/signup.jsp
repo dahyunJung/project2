@@ -56,11 +56,9 @@ if("POST".equals(request.getMethod())){
 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	Date birth = format.parse(birthDate);
 	String phone = request.getParameter("phone");
-	int phone1 = Integer.parseInt(phone);
 	String email1 = request.getParameter("email");
 	String email2 = request.getParameter("email2");
 	String email = email1 +'@'+ email2;
-	
 	
 	
 
@@ -70,7 +68,7 @@ if("POST".equals(request.getMethod())){
 <jsp:setProperty property="id" name="jVO" value="<%=id %>" /> 
 <jsp:setProperty property="pw" name="jVO" value="<%=pw %>" /> 
 <jsp:setProperty property="birthDate" name="jVO" value="<%=birth %>" /> 
-<jsp:setProperty property="phone" name="jVO" value="<%=phone1 %>" /> 
+<jsp:setProperty property="phone" name="jVO" value="<%=phone %>" /> 
 <jsp:setProperty property="email" name="jVO" value="<%=email %>" /> 
 
 <%

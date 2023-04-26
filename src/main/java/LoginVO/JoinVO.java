@@ -3,10 +3,20 @@ package LoginVO;
 import java.util.Date;
 
 public class JoinVO {
-	private String name,id,pw,email;
-	private int phone;
+	private String name,id,pw,email,phone;
 	private Date birthDate;
-	
+	public JoinVO(String name, String id, String pw, String email, String phone, Date birthDate) {
+		super();
+		this.name = name;
+		this.id = id;
+		this.pw = pw;
+		this.email = email;
+		this.phone = phone;
+		this.birthDate = birthDate;
+	}
+	public JoinVO() {
+		super();
+	}
 	public String getName() {
 		return name;
 	}
@@ -31,10 +41,10 @@ public class JoinVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public Date getBirthDate() {
@@ -43,23 +53,12 @@ public class JoinVO {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-	public JoinVO(String name, String id, String pw, String email, int phone, Date birthDate) {
-		super();
-		this.name = name;
-		this.id = id;
-		this.pw = pw;
-		this.email = email;
-		this.phone = phone;
-		this.birthDate = birthDate;
-	}
-	public JoinVO() {
-		super();
-	}
 	@Override
 	public String toString() {
 		return "JoinVO [name=" + name + ", id=" + id + ", pw=" + pw + ", email=" + email + ", phone=" + phone
 				+ ", birthDate=" + birthDate + "]";
 	}
+	
 	
 	
 	

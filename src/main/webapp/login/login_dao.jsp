@@ -1,3 +1,4 @@
+<%@page import="LoginVO.LoginHistoryVO"%>
 <%@page import="LoginVO.SessionVO"%>
 <%@page import="LoginDAO.LoginDAO"%>
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
@@ -8,8 +9,17 @@ String id = request.getParameter("id");
 String pw = request.getParameter("pw");
 String pw_de = DataEncrypt.messageDigest("MD5",pw);
 
+String ip = request.getRemoteAddr();
+String userAgent = request.getHeader("User-Agent");
+String os = null;
+
 LoginDAO lDAO = new LoginDAO();
-SessionVO sVO = lDAO.selectLogin(id, pw_de);
+LoginHistoryVO lhVO = new LoginHistoryVO();
+
+lhVO.setIp(ip);
+lhVO.setOS(os);
+
+SessionVO sVO = lDAO.selectLogin(id, pw_de,lhVO);
 
 if(sVO.getId()==null){
 	%>
@@ -19,6 +29,7 @@ if(sVO.getId()==null){
 	</script>
 <%	
 }else{
+	session.setAttribute("user_num_member", sVO.getNum_member());
 	session.setAttribute("user_id", sVO.getId());
 	session.setAttribute("user_name", sVO.getName());
 	session.setAttribute("user_photo", sVO.getPhoto());

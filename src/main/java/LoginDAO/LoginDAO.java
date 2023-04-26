@@ -10,6 +10,7 @@ import LoginVO.FindIdVO;
 import LoginVO.FindPWVO;
 import LoginVO.InfoVO;
 import LoginVO.JoinVO;
+import LoginVO.LoginHistoryVO;
 import LoginVO.SessionVO;
 import LoginVO.UpdateInfoVO;
 import conn.DbConnection;
@@ -39,7 +40,7 @@ public class LoginDAO {
 			pstmt.setString(2, jVO.getName());
 			pstmt.setString(3, jVO.getPw());
 			pstmt.setDate(4, new java.sql.Date(jVO.getBirthDate().getTime()));
-			pstmt.setInt(5, jVO.getPhone());
+			pstmt.setString(5, jVO.getPhone());
 			pstmt.setString(6, jVO.getEmail());
 
 			// 6. 쿼리문 수행 후 결과 얻기
@@ -166,11 +167,13 @@ public int updatePW(FindPWVO fpVO)throws SQLException {
 	return passTemp;
 }
 
-public SessionVO selectLogin(String id,String pw)throws SQLException {
+public SessionVO selectLogin(String id,String pw,LoginHistoryVO lhVO)throws SQLException {
 	
+	int resultNum_member=0;
 	String resultId = null;
 	String resultName = null;
 	String resultPhoto = null;
+	
 	
 	Connection con =null;
 	PreparedStatement pstmt = null;
@@ -180,7 +183,7 @@ public SessionVO selectLogin(String id,String pw)throws SQLException {
 	
 	try {
 		con = dbCon.getConn();
-		String sql="select id,name,photo from member where id=? and pw=?";
+		String sql="select num_member,id,name,photo from member where id=? and pw=?";
 		
 		pstmt=con.prepareStatement(sql);
 		pstmt.setString(1, id);
@@ -189,15 +192,19 @@ public SessionVO selectLogin(String id,String pw)throws SQLException {
 		rs=pstmt.executeQuery();
 		
 		while(rs.next()) {
+			resultNum_member=rs.getInt("num_member");
 			resultId=rs.getString("id");
 			resultName=rs.getString("name");
 			resultPhoto=rs.getString("photo");
 		}
+		LoginDAO lDAO = new LoginDAO();
+		
+		lDAO.insertLoginHistory(lhVO);
 		
 	}finally {
 		dbCon.dbClose(rs, pstmt, con);
 	}
-	return new SessionVO(resultId,resultName,resultPhoto);	
+	return new SessionVO(resultNum_member,resultId,resultName,resultPhoto);	
 }
 public InfoVO selectInfo(String id)throws SQLException {
 	
@@ -294,29 +301,32 @@ public int updatePass(String id, String pw)throws SQLException {
 	return passUpdate;
 }
 
-/*
- * public int insertLoginHistory(LoginHistoryVO lhVO)throws SQLException { int
- * a=0;
- * 
- * Connection con = null; PreparedStatement pstmt = null; DbConnection dbCon =
- * DbConnection.getInstance(); // 1. JNDI 사용 객체 생성 // 2. DataSource 얻기 // 3.
- * Connection 얻기 try { con = dbCon.getConn(); // 4. 쿼리문 객체 얻기 StringBuilder
- * insertSql = new StringBuilder();
- * insertSql.append("insert into history(num_member) values()");
- * 
- * pstmt = con.prepareStatement(insertSql.toString());
- * 
- * 
- * // 5.바인드 변수 값 수정
- * 
- * 
- * // 6. 쿼리문 수행 후 결과 얻기
- * 
- * } finally { dbCon.dbClose(null, pstmt, con);
- * 
- * } return a; }
- */
-	
+
+  public void insertLoginHistory(LoginHistoryVO lhVO)throws SQLException { 
+
+
+		Connection con =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		DbConnection dbCon =DbConnection.getInstance();
+		
+		try {
+		con= dbCon.getConn();
+		String sql = "insert into history(num_member,ip,visit,os) values(?,?,sysdate,?)";
+		
+		pstmt = con.prepareStatement(sql);
+		
+		pstmt.setInt(1,);
+		pstmt.setString(2,);
+		pstmt.setString(3,);
+		
+		}finally {
+			dbCon.dbClose(rs, pstmt, con);
+		}
+		
+		
+  }
 }
 
 
