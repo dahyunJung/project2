@@ -65,7 +65,11 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
  <script type="text/javascript">
+
+
   $(function() {
+	  
+	
 	  $.ajax({
 	    url: "manager_user_jsonarr.jsp",
 	    dataType: "json",
@@ -96,10 +100,18 @@
 	        paging: true,
 	        lengthChange: true,
 	        searching: true
-	      });
-	    }
+	      });//DataTable
+	      
+	      $("#logoutBtn").click(function(){
+	 		 location.href="http://localhost/project2/manager/manager_logout.jsp"; 
+	 	});//click
+	      
+	    }//success
 	  });
 	}); 
+  
+ 
+  
 </script>
 
 </head>
@@ -107,6 +119,11 @@
 <body>
 <%= session.getAttribute("sesId") %>
  <%
+ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+	response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+	response.setDateHeader("Expires", 0); // Proxies.
+ 
+ 
 if(session.getAttribute("sesId")==null){
 	response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
 }
@@ -120,7 +137,7 @@ if(session.getAttribute("sesId")==null){
 			<a class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0" href="http://localhost/project2/manager/manager_home.jsp">
 			<img class="" width="157" height="27" src="http://localhost/project2/_next/static/images/logo.png" alt="소설조아 logo" /></a>
 			<div class="flex items-center ml-auto mr-15 desktop:mr-0">
-			<button onclick="location.href='http://localhost/project2/manager/manage_login.jsp'" class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white">로그아웃</button>
+			<button  id="logoutBtn" class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white">로그아웃</button>
 			</div>
 		</div>
 	</header>
@@ -154,7 +171,7 @@ if(session.getAttribute("sesId")==null){
 	    <th>신고누적 개수</th>
 	    <th>방문 날짜</th>
 	    <th>가입 날짜</th>
-	    <th>탈퇴 날짜</th>
+	    <th>중지 날짜</th>
 	    </tr>
 	    </thead>
 	    <tbody>

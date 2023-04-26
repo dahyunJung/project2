@@ -156,7 +156,7 @@ function chkLeng(){
 </head>
 
 <body>
-<%= session.getAttribute("sesId") %>
+ <%= session.getAttribute("sesId") %> 
 <div id="__next" data-reactroot="">
 <div style="display: none; background-color: canvas; color-scheme: light"></div>
 <div class="lightMode h-full">
