@@ -126,12 +126,12 @@
 </head>
 
 <body>
+<%= session.getAttribute("sesId") %>
     <%
 if(session.getAttribute("sesId")==null){
 	response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
 }
 %>
-<%= session.getAttribute("sesId") %>
 <div id="__next">
 <div style="display: none; background-color: canvas; color-scheme: light"></div>
 <div class="lightMode h-full">

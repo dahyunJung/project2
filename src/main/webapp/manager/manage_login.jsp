@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+ // 각 페이지 상단에 다음 코드 추가
+ 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+ 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+ 		response.setDateHeader("Expires", 0); // Proxies.
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,9 +28,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- jQuery CDN 끝 -->
 <script type="text/javascript">
+
+
  
 /* 아이디, 비밀번호 입력여부, 길이제한 유효성검사 */
 $(function(){
+
+	
 	$("#id").keydown(function( evt ){
 		if( evt.which == 13 ){
 			chkNull();
@@ -145,6 +156,7 @@ function chkLeng(){
 </head>
 
 <body>
+<%= session.getAttribute("sesId") %>
 <div id="__next" data-reactroot="">
 <div style="display: none; background-color: canvas; color-scheme: light"></div>
 <div class="lightMode h-full">

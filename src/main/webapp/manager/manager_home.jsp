@@ -70,6 +70,7 @@ th, td{ height: 150px; font-weight: normal; border: 0px solid #333; text-align: 
 </head>
 
 <body>
+<%= session.getAttribute("sesId") %>
 <div id="__next" data-reactroot="">
 <div style="display: none; background-color: canvas; color-scheme: light"></div>
 <div class="lightMode h-full">
@@ -124,9 +125,15 @@ th, td{ height: 150px; font-weight: normal; border: 0px solid #333; text-align: 
 
 
 		<%
-		if(session.getAttribute("sesId")==null){
+		// 각 페이지 상단에 다음 코드 추가
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setDateHeader("Expires", 0); // Proxies.
+
+		
+		 if(session.getAttribute("sesId")==null){
 			response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
-		}
+		} 
 	
 ManageDAO mDAO = new ManageDAO();
 DashboardVO dVO = mDAO.selectDash();
@@ -260,8 +267,7 @@ String current_4 = sdf.format(fourDaysBefore);
 <script type="text/javascript">
 
 $("#logoutBtn").click(function(){
-	
-	 location.href="http://localhost/project2/manager/manage_login.jsp"; 
+	 location.href="http://localhost/project2/manager/manager_logout.jsp"; 
 });
 
 

@@ -80,15 +80,15 @@
 	        cnt++;
 	         tbody += "<tr><td>" +
 	          jsonObj.num_member + "</td><td><a href='manager_user_spc.jsp?id=" +
-	          jsonObj.id + "'>" + jsonObj.id + "</a></td><td>" +
-	          jsonObj.novelCnt + "</td><td>" +
-	          jsonObj.reportCnt + "</td><td>" +
-	          jsonObj.visitDate + "</td><td>" +
-	          jsonObj.joinDate + "</td><td>" +
-	          jsonObj.stopDate + "</td></tr>"; 
+	          jsonObj.id + "'>" + jsonObj.id + "</a></td><td><a href='manager_user_spc.jsp?id=" +
+	          jsonObj.id + "'>" +  jsonObj.novelCnt + "</a></td><td><a href='manager_user_spc.jsp?=" +
+	          jsonObj.id + "'>" +  jsonObj.reportCnt + "</a></td><td><a href='manager_user_spc.jsp?id=" +
+	          jsonObj.id + "'>" + jsonObj.visitDate + "</a></td><td><a href='manager_user_spc.jsp?id=" +
+	          jsonObj.id + "'>" + jsonObj.joinDate + "</a></td><td><a href='manager_user_spc.jsp?id=" +
+	          jsonObj.id + "'>" + jsonObj.stopDate + "</a></td></tr>"; 
 	      });
 	      if (cnt == 0) {
-	        tbody = "<tr><td colspan='4'>모든 사원이 퇴사하였습니다.</td></tr>";
+	        tbody = "<tr><td colspan='7' >모든 사원이 퇴사하였습니다.</td></tr>";
 	      }
 	      $("#myTable tbody").html(tbody);
 
@@ -105,6 +105,12 @@
 </head>
 
 <body>
+<%= session.getAttribute("sesId") %>
+ <%
+if(session.getAttribute("sesId")==null){
+	response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
+}
+%>
 <div id="__next"">
 <div style="display: none; background-color: canvas; color-scheme: light"></div>
 <div class="lightMode h-full">
