@@ -1,3 +1,5 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="ManagerDAO.ManagerDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,35 +36,27 @@
 </style>	
 </head>
 <body>
+<%
+ManagerDAO mDAO = new ManagerDAO();
+try{
+int mcnt = mDAO.forcedStopClear(request.getParameter("id"));
+System.out.print(mcnt);
+if(mcnt>0){
+	%>
+	<div style="color: blue; text-align: center; font-weight: bold; font-size: 20px">정지 해제 완료</div>
+	<% 
+}else{
+	%>
+	<div style="color: red; text-align: center; font-weight: bold; font-size: 20px">정지 해제 실패</div>
+	<%
+}
+	
+}catch(SQLException se){
+	se.printStackTrace();
+}
+%>
 
-	<div
-		class="flex rounded-t-0 relative z-1 max-h-[70%] flex-col overflow-hidden bg-white"
-		data-body-scroll-lock="ignore"
-		style="width: 502px; height: 250px; /* border: 1px solid #000000; */">
-		<div
-			class="flex flex-col h-full overflow-hidden px-18 py-24 desktop:p-30">
-			<div style="position: relative; top: 15px"
-				class="flex-1 overflow-y-scroll scrollbar-hide desktop:px-10 desktop:pt-10">
-				<div class="typo-md1 text-center desktop:typo-lg3 py-8">
-					<div class="whitespace-pre-line"
-						style="font-weight: bold; font-size: 20px">"아이디" 회원의
-						강제 중지를 해제하시겠습니까?</div>
-				</div>
-			</div>
-			<div class="w-full shrink-0" style="position: relative; bottom: 18px; top:20px">
-				<div class="flex mt-24 desktop:mt-32">
-					<button
-						class="flex items-center justify-center border-1 appearance-none px-24 py-12 typo-md2-b mr-8 flex-1"
-						type="button" style="font-weight: bold"
-						onclick="javascript:window.close()">취소</button>
-					<button
-						class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b flex-1"
-						type="button" style="font-weight: bold"
-						onclick="javascript:window.close()">강제 중지 해제</button>
-				</div>
-			</div>
-		</div>
-	</div>
 
+	
 </body>
 </html>

@@ -30,6 +30,10 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/fd0af5d18a01c194.css" data-n-p="" />
 <link rel="stylesheet" type="text/css" href="/project2/_next/static/css/font.css"/>
 
+<!-- jQuery CDN 시작 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- jQuery CDN 끝 -->
+
 <script type="text/javascript">
  window.onload=function(){
 	document.getElementById("stopBtn").addEventListener("click",stopPop);
@@ -37,17 +41,32 @@
 }
 
 function stopPop(){
-	window.open("manager_user_stop_popup.jsp","popup","width= 502; height= 250;,top="
+	if(confirm("정지기한은 2달입니다. 정지시키시겠습니까? \n이미 정지되었다면 기한이 늘어납니다.")){
+	    // 확인 버튼을 누르면 실행될 코드
+	window.open("manager_user_stop_popup.jsp?id="+$("#hid").val() ,"popup","width= 502; height= 250;,top="
 			+(window.screenY+100)	+",left="+(window.screenX+100));
+	} else {
+	    // 취소 버튼을 누르면 실행될 코드
+	    
+	}
 }//stopPop
 
 function cancelStopPop(){
-	window.open("manager_user_stop_popup.jsp","popup","width= 502; height= 250;,top="
-			+(window.screenY+100)	+",left="+(window.screenX+100));
+	if(confirm("정지를 해지하시겠습니까?")){
+	    // 확인 버튼을 누르면 실행될 코드
+		window.open("manager_user_stop_cancel_popup.jsp?id="+$("#hid").val() ,"popup","width= 502; height= 250;,top="
+				+(window.screenY+100)	+",left="+(window.screenX+100));
+	} else {
+	    // 취소 버튼을 누르면 실행될 코드
+	    
+	}
+	
 }//cancelStopPop
 
 
 </script>
+
+
 
 <style data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&display=swap">
 	
@@ -120,7 +139,7 @@ function cancelStopPop(){
 	<main class="flex-1 mx-auto w-full max-w-default flex-row flex-wrap">
 	
 	<div style="margin-top: 20px;">
-		<button id="btn" onclick="location.href='manager_user.jsp'">회원관리</button>
+		<button id="btn" onclick="location.href='manager_user.jsp">회원관리</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<button id="btn" onclick="location.href='manager_novel.jsp'">소설관리</button>
 	</div>
@@ -147,6 +166,7 @@ function cancelStopPop(){
 			<img src="/project2/_next/static/images/profile_home.png" style="width: 170px; height: 170px; right:300px" alt="회원사진"
 				<%= mVO.getThumbnail() %>>
 		</div>
+		<input type = "hidden" value="<%= mVO.getId() %>"  id="hid"/>
 		<div id="spc">
 			<ul>
 				<li>아이디 : <%= mVO.getId() %></li>

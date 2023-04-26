@@ -72,10 +72,46 @@ public class ManagerDAO {
 		try {
 			con = dbCon.getConn();
 			StringBuilder updateQuery = new StringBuilder();
-			updateQuery.append(" update member set stop = ? where id = ? ");
+			//updateQuery.append(" update member set stop = ? where id = ? ");
+			updateQuery.append(" update member set stop")
+			.append("=(select stop from member where id=? )+60 ")
+			.append(" where id = ? ");
+	
+				
+					
 
 			pstmt = con.prepareStatement(updateQuery.toString());
 			pstmt.setString(1, id);
+			pstmt.setString(2, id);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbCon.dbClose(null, pstmt, con);
+		}
+		return result;
+	}// forcedStop
+	
+	// 강제 중지 해체 //값 바꿔야함 -60이 아니라 강제중지 해제이면
+	public int forcedStopClear(String id) throws SQLException {
+		int result = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		DbConnection dbCon = DbConnection.getInstance();
+		try {
+			con = dbCon.getConn();
+			StringBuilder updateQuery = new StringBuilder();
+			//updateQuery.append(" update member set stop = ? where id = ? ");
+			updateQuery.append(" update member set stop")
+			.append("=(select stop from member where id=? )-60 ")
+			.append(" where id = ? ");
+	
+				
+					
+
+			pstmt = con.prepareStatement(updateQuery.toString());
+			pstmt.setString(1, id);
+			pstmt.setString(2, id);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -85,11 +121,7 @@ public class ManagerDAO {
 		return result;
 	}// forcedStop
 
-//	// 강제 중지 해제
-//	public int cancelStop(String id) {
-//
-//		return 0;
-//	}// cancelStop
+
 
 	// 소설 관리
 	public List<MNovelVO> selectNovelManageAll() throws SQLException {
