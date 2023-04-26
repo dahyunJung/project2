@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%	//나중에 지울것
-session.setAttribute("user_id", "id");
-%>
 <%
 String id=session.getAttribute("user_id").toString();
 %>
@@ -81,10 +78,12 @@ $(function(){
 		window.location.href="info.jsp";
 	});
 	$("#myNovel").click(function(){
-		window.location.href="../novel/my_novel_space.jsp?order_novel=0";
+		$("#frm_myNovel").submit();
+		//window.location.href="../novel/my_novel_space.jsp?order_novel=0";
 	});
 	$("#like").click(function(){
-		window.location.href="like.jsp?search=";
+		$("#frm_like").submit();
+		//window.location.href="like.jsp?search=";
 	});
 });
 
@@ -102,7 +101,10 @@ $(function(){
             <div id="input_name"><input type="text" readonly value="<%=session.getAttribute("name") %>님" class="name"></div>
             <div id="input_button1"><input type="button"class="button" id="myNovel" value=" 내 소설"></div>
             <div id="input_button2"><input type="button"class="button" id="like" value=" 좋아요"></div>
-
+            
+			<form action="../novel/my_novel_space.jsp" id="frm_myNovel" method="post"><input type="hidden" name="order_novel" value="0"></form>
+			<form action="like.jsp" id="frm_like" method="post"><input type="hidden" name="search"></form>
+			
 
            </div>
        </div>

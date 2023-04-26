@@ -50,6 +50,10 @@ function deleteNovel(num_novel){
 }
 </script>
 </head>
+	
+<%
+if("POST".equals(request.getMethod())){
+	%>
 
 <body>
 	<div id="__next" data-reactroot="">
@@ -153,4 +157,13 @@ function deleteNovel(num_novel){
 		<div id="modal-normal"></div>
 	</div>
 </body>
+
+<%}else{
+	%>
+	<script type="text/javascript">
+	alert("비정상적인 접근입니다");
+	window.history.back();
+	</script>
+	<%
+} %>
 </html>

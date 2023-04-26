@@ -33,11 +33,19 @@ $(function () {
 		$("#frm").submit();
 	})
 })
-
+function novel(num_novel) {
+	$("#"+num_novel).submit();
+}
+function new_novel() {
+	$("#new_novel").submit();
+}
 
 </script>
 
 </head>
+<%
+if("POST".equals(request.getMethod())){
+	%>
 
 <body>
 	<div id="__next" data-reactroot="">
@@ -70,10 +78,10 @@ $(function () {
 										</div>
 										<div
 											class="flex w-full shrink-0 desktop:my-2 desktop:h-full desktop:w-auto desktop:items-center desktop:pb-26">
-											<a class="flex-1 desktop:flex-none"
-												href="/project2/novel/novel_regi.jsp"><button
+											<a class="flex-1 desktop:flex-none" onclick="new_novel()"><button
 													class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b w-full border-1 !border-black"
 													type="button">
+													<form action="/project2/novel/novel_regi.jsp" id="new_novel" method="post"/>
 													<span class="">새 작품 등록</span>
 												</button></a>
 										</div>
@@ -100,7 +108,7 @@ $(function () {
 										<div class="flex ml-0 items-center desktop:ml-auto">
 											<div
 												class="relative typo-sm1 rounded-full bg-grey20 py-6 pl-14 pr-8 desktop:bg-transparent desktop:px-0">
-												<form action="/project2/novel/my_novel_space.jsp" id="frm">
+												<form action="/project2/novel/my_novel_space.jsp" id="frm" method="post">
 												<select id="order_novel" name="order_novel" class="w-full typo-sm1 desktop:text-grey70"
 													aria-controls="최신 업데이트 순">
 													<option value="최신 업데이트 순">최신 업데이트 순</option>
@@ -126,8 +134,10 @@ $(function () {
 									<div
 										class="border-black/10 desktop:border-b-1 desktop:pt-24 desktop:pb-24">
 										<div class="flex items-center py-8 desktop:py-0">
-											<a class="relative flex flex-1 items-center"
-												href="/project2/novel/novel_list.jsp?num_novel=${select.num_novel }">
+											<a class="relative flex flex-1 items-center" onclick="novel(${select.num_novel })">
+												<form action="/project2/novel/novel_list.jsp" id="${select.num_novel }" method="post">
+													<input type="hidden" name="num_novel" value="${select.num_novel }">
+												</form>
 												<div
 													class="flex relative shrink-0 items-start overflow-hidden mr-16 w-80 desktop:mr-24"
 													style="height: 125px;">
@@ -204,4 +214,13 @@ $(function () {
 		<jsp:include page="../_next/footer.jsp"/>
 	</div>
 </body>
+
+<%}else{
+	%>
+	<script type="text/javascript">
+	alert("비정상적인 접근입니다");
+	window.history.back();
+	</script>
+	<%
+} %>
 </html>

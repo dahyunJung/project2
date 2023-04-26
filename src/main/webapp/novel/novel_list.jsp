@@ -20,27 +20,24 @@
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-function location_modify(){
-	window.location.href="2_6_novel_write.jsp";
-}
-function location_delete(){
-	window.open('2_5_1_delete_popup.jsp', '삭제', 'width=500, height=300','scrollbars=yes');
-}
-function location_public(){
-	window.open('2_5_2_public_popup.jsp', '공개', 'width=500, height=300','scrollbars=yes');
-}
-function location_private(){
-	window.open('2_5_3_private_popup.jsp', '비공개', 'width=500, height=300','scrollbars=yes');
+function edit(){
+	$("#edit_frm").submit();
 }
 
 $(function () {
 	$("#del_novel").click(function () {
-		window.open("/project2/novel/delete_novel_popup.jsp?num_novel=<%=request.getParameter("num_novel")%>", "소설삭제", "width= 504, height= 354, top = 100, left = 100");
+		$("#del_frm").submit();
 	})
 })
 
 </script>
 </head>
+<form action="/project2/novel/delete_novel_popup.jsp" id="del_frm" method="post" target="del_popup" onsubmit="window.open('/project2/novel/delete_novel_popup.jsp','del_popup','width= 504, height= 354, top = 100, left = 100');">
+<input type="hidden" name="num_novel" value="<%=request.getParameter("num_novel")%>">
+</form>
+<%
+if("POST".equals(request.getMethod())){
+	%>
 <body>
 	<div id="__next" data-reactroot="">
 		<div
@@ -95,8 +92,10 @@ $(function () {
 															쓰기</a>
 														<a
 															class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b mr-8"
-															type="button"
-															href="/project2/novel/novel_edit.jsp?num_novel=<%=request.getParameter("num_novel")%>">수정</a>
+															type="button" onclick="edit()">수정</a>
+															<form action="/project2/novel/novel_edit.jsp" id="edit_frm" method="post">
+															<input type="hidden" name="num_novel" value="<%=request.getParameter("num_novel")%>">
+															</form>
 														<button id="del_novel"
 															class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b mr-8"
 															>삭제</button>
@@ -263,4 +262,13 @@ $(function () {
 		<jsp:include page="../_next/footer.jsp"/>
 	</div>
 </body>
+
+<%}else{
+	%>
+	<script type="text/javascript">
+	alert("비정상적인 접근입니다");
+	window.history.back();
+	</script>
+	<%
+} %>
 </html>

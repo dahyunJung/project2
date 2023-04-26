@@ -77,10 +77,13 @@ $(function(){
 
 </head>
 
-<%	//나중에 지울것
+<%
 String id=session.getAttribute("user_id").toString();
 %>
 
+<%
+if("POST".equals(request.getMethod())){
+	%>
 <body>
 	<div id="__next" data-reactroot="">
 		<div
@@ -335,5 +338,13 @@ String id=session.getAttribute("user_id").toString();
 		<jsp:include page="../_next/footer.jsp"/>
 	</div>
 </body>
+<%}else{
+	%>
+	<script type="text/javascript">
+	alert("비정상적인 접근입니다");
+	window.history.back();
+	</script>
+	<%
+} %>
 </html>
 

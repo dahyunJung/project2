@@ -76,8 +76,13 @@ if("POST".equals(request.getMethod())){
 		se.printStackTrace();
 	}//end catch
 }//end if
-response.sendRedirect("http://localhost/project2/novel/my_novel_space.jsp?order_novel=0");
 %>
+<form action="http://localhost/project2/novel/my_novel_space.jsp" id="frm" method="post">
+<input type="hidden" name="order_novel" value="0"/>
+</form>
+<script type="text/javascript">
+$("#frm").submit();
+</script>
 
 </div>
 

@@ -1,3 +1,4 @@
+<%@page import="novel.NewNovelDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,8 +25,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 function del() {
-	location.href="/project/novel/novel_del.jsp?num_novel=<%=request.getParameter("num_novel")%>";
-	opener.parent.location="http://localhost/project2/novel/my_novel_space.jsp?order_novel=0";
+	<%
+	NewNovelDAO nDAO=new NewNovelDAO();
+	nDAO.deleteNovel(Integer.parseInt(request.getParameter("num_novel")));
+	%>
+	opener.parent.location="http://localhost/project2/login/my_page.jsp";
 	window.close();
 }
 </script>

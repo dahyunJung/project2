@@ -85,7 +85,8 @@ if("POST".equals(request.getMethod())){
 	}//end catch
 		
 }//end if
-response.sendRedirect("http://localhost/project2/novel/my_novel_space.jsp?order_novel=0");
+response.sendRedirect("http://localhost/project2/login/my_page.jsp");
+
 %>
 
 </div>
