@@ -1,4 +1,5 @@
 package ManagerVO;
+
 import java.util.Date;
 
 public class MemberManageInfoVO {

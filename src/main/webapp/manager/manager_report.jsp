@@ -3,6 +3,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+  response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+  response.setDateHeader("Expires", 0); // Proxies.
+
+   if(session.getAttribute("sesId")==null){
+     response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
+  } 
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,16 +24,15 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
 <link rel="stylesheet" type="text/css" href="/project2/_next/static/css/login.css" />
 <script type="text/javascript">
-window.onload=function(){
-	document.getElementById("deleteBtn").addEventListener("click",deletePop);
-	document.getElementById("publicBtn").addEventListener("click",publicPop);
-	document.getElementById("privateBtn").addEventListener("click",privatePop);
-}
-
-function deletePop(){
-	window.open("manager_delete_popup.jsp","popup","width= 502; height= 250;,top="
-			+(window.screenY+100)	+",left="+(window.screenX+100));
-}//deletePop
+function deletePop() {
+	  var popup = window.open("manager_delete_popup.jsp", "popup", "width=502,height=250,top="
+			  + (window.screenY + 100) + ",left=" + (window.screenX + 100));
+	  popup.onbeforeunload = function() {
+	    var confirmDelete = popup.confirmDelete;
+	    if (confirmDelete) {
+	    }
+	  };
+	}
 
 function publicPop(){
 	window.open("manager_public_popup.jsp","popup","width= 502; height= 250;,top="
@@ -35,6 +43,7 @@ function privatePop(){
 	window.open("manager_private_popup.jsp","popup","width= 502; height= 250;,top="
 			+(window.screenY+100)	+",left="+(window.screenX+100));
 }//privatePop
+
 </script>
 <style>
 </style>
@@ -42,10 +51,36 @@ function privatePop(){
 <body>
 
 <%
-    String novel_title = request.getParameter("novel_title");
-    ManagerDAO mDAO = new ManagerDAO();
-    MNovelLookVO nVO = mDAO.selectReportInfo(novel_title);
+	String title = request.getParameter("title");
+	ManagerDAO mDAO = new ManagerDAO();
+	MNovelLookVO nVO = mDAO.selectReportInfo(title);
+	
+	//신고 사유 코드 변환
+	int reportReason = nVO.getReportReason(); 
+	String reportReasonStr = String.valueOf(reportReason); 
+	
+	String reportValue = "";
+	if (reportReason == 1) {
+	    reportValue = "영리목적/홍보성";
+	} else if (reportReason == 2) {
+	    reportValue = "욕설/인신공격";
+	} else if (reportReason == 3) {
+	    reportValue = "불법정보";
+	} else if (reportReason == 4) {
+	    reportValue = "개인정보노출";
+	} else if (reportReason == 5) {
+	    reportValue = "음란성/선정성";
+	} else if (reportReason == 6) {
+	    reportValue = "같은 내용 도배";
+	} else if (reportReason == 7) {
+	    reportValue = "권리침해 신고";
+	} else if (reportReason == 8) {
+	    reportValue = "불법촬영물 유통 신고";
+	} else if (reportReason == 9) {
+	    reportValue = "기타 사유";
+	}
 %>	
+
 	<div id="__next" data-reactroot="">
 		<div
 			style="display: none; background-color: canvas; color-scheme: light"></div>
@@ -61,7 +96,7 @@ function privatePop(){
 							href="/project2/manager/manager_home.jsp"><img class="object-contain" width="157" height="27"
 							src="/project2/_next/static/images/logo.png"
 							alt="소설조아 logo" /></a>
-							<a
+							<a 
 										class="typo-md1-b z-0 flex items-center py-[8.5px] ml-8 mr-8 px-16"
 										href="/">
 									</a> 
@@ -93,16 +128,24 @@ function privatePop(){
 							<div class="mt-16 desktop:mb-48 desktop:mt-56">
 								<div>
 									<div class="flex mb-4 items-end" >
-										<h1 class="typo-dp1 mr-40 flex-1 break-words" style="display:inline-flex;">소설 
-										제목&nbsp;<%= nVO.getNovelTitle() %><img alt="" src="/project2/_next/static/images/age.png" style="width: 45px; height: 42px"></h1>
-										
+										<h1 class="typo-dp1 mr-40 flex-1 break-words"
+											style="display: inline-flex;"><%=title%>
+											&nbsp;
+											<%
+											if (nVO.getAgeAble() == 1) {//0 -> false(전체 이용가) //1 -> true(15세 이용가)
+											%>
+											<img alt="" src="/project2/_next/static/images/age.png"
+												style="width: 45px; height: 42px">
+											<% } %>
+										</h1>
 										<div
 											class="flex w-full shrink-0 desktop:w-auto desktop:self-center">
 											<div class="flex typo-g-sm2 flex-1 items-center text-grey60">
 												<div
 													class="relative overflow-visible mt-auto mb-0 desktop:my-auto">
 													<button data-text-content="true"  id="deleteBtn"
-														style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;">삭제</button>
+														style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"
+														 type="button" style="font-weight: bold" onclick="deletePop('${novel.title}')">삭제</button>
 													<span style="display: inline-block; width: 10px;"></span>
 													<button data-text-content="true"  id="publicBtn"
 														style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;">공개</button>
@@ -118,7 +161,7 @@ function privatePop(){
 										</div>
 									</div>
 									<div class="flex typo-md3 items-center">
-										<span>아이디</span><span class="mx-4 text-10 mx-8 text-grey20"></span>
+										<span><%= nVO.getId() %></span><span class="mx-4 text-10 mx-8 text-grey20"></span>
 									</div>
 									<div class="flex mt-30 items-center">
 										<div
@@ -134,7 +177,7 @@ function privatePop(){
 										<div class="flex flex-col flex-1 self-stretch">
 											<div
 												class="typo-md3 text-14 text-grey70 desktop:max-w-[680px]">
-												<span width="0"><span><span>소설 소개</span><br>
+												<span width="0"><span><span><%= nVO.getIntro() %></span><br>
 														<span></span><br> <span></span></span><span
 													style="position: fixed; visibility: hidden; top: 0px; left: 0px;"><button
 															class="font-bold">
@@ -157,23 +200,27 @@ function privatePop(){
 							</div>
 							<section class="flex flex-col desktop:mb-96">
 
-								<article>
-									<a
-										class="flex border-black/10 bg-white px-18 visited:bg-grey10 desktop:border-b-1 desktop:px-30 "
-										><div
+								<article><!-- 링크 수정  -->
+									<a href="/project2/novel/novel_list.jsp?title=<%=title%>" 
+										class="flex border-black/10 bg-white px-18 visited:bg-grey10 desktop:border-b-1 desktop:px-30">
+										<div
 											class="border-b-1 border-black/10 desktop:border-0 flex flex-1 py-16 desktop:py-22">
-										
 											<div
 												class="flex flex-col flex-1 justify-between desktop:mr-16 desktop:flex-row desktop:items-center">
 												<div class="flex flex-col flex-1">
 													<div
 														class="flex mb-14 mt-0 flex-1 items-center desktop:mb-16 desktop:mt-2 typo-md2 text-black desktop:typo-lg2 max-h-[28px] overflow-hidden">
-														<div class="truncate after:inline-block after:w-0 shrink" style="text-align: center;">신고 사유 : 영리목적/홍보성 | 신고수 : 10회</div>
+														<div class="truncate after:inline-block after:w-0 shrink"
+															style="text-align: center;">
+															신고 사유 : <%=reportValue%> | 신고수 : <%=nVO.getReportCnt() %>회
+														</div>
 													</div>
 												</div>
 											</div>
-										</div></a>
+										</div>
+									</a>
 								</article>
+
 								<div class="flex items-center justify-center py-8 mx-auto my-40">
 									<a
 										class="flex h-34 w-34 items-center justify-center pointer-events-none mr-20 !w-24 opacity-40"

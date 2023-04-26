@@ -1,10 +1,17 @@
 <%@page import="java.sql.SQLException"%>
-<%@page import="ManagerDAO.ManagerDAO"%>
-<%@page import="ManagerVO.MNovelVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+  response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+  response.setDateHeader("Expires", 0); // Proxies.
+
+   if(session.getAttribute("sesId")==null){
+     response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
+  } 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,13 +91,14 @@ $(function(){
 				
 				$.each(jsonArr,function(idx,jsonObj){
 					cnt++;
-				tbody+="<tr><td>"+
-						jsonObj.num_novel+"</td><td>"+
-						jsonObj.novelTitle+"</td><td>"+
-						jsonObj.id+"</td><td>"+
-						jsonObj.likes+"</td><td>"+
-						jsonObj.num_report+"</td><td>"+ 
-						jsonObj.make+"</td></tr>";
+					tbody += "<tr><td>" +
+		                jsonObj.novelNum + "</td><td><a href='manager_report.jsp?title=" +
+		                jsonObj.novelTitle + "'>" + jsonObj.novelTitle + "</a></td><td>" +
+		                jsonObj.id + "</td><td>" +
+		                jsonObj.likeCnt + "</td><td>" +
+		                jsonObj.reportCnt + "</td><td>" + 
+		                jsonObj.createCnt + "</td></tr>";
+
 				});//each
 				
 				if(cnt == 0){

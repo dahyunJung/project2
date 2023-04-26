@@ -1,11 +1,20 @@
+<%@page import="ManagerVO.MemberManageInfoVO"%>
+<%@page import="ManagerDAO.ManagerDAO"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="ManagerVO.MemberManageInfoVO"%>
-<%@page import="ManagerDAO.ManagerDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+  response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+  response.setDateHeader("Expires", 0); // Proxies.
+
+   if(session.getAttribute("sesId")==null){
+     response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
+  } 
+%>
 <!DOCTYPE html>
 <html>
 
@@ -22,7 +31,7 @@
 <link rel="stylesheet" type="text/css" href="/project2/_next/static/css/font.css"/>
 
 <script type="text/javascript">
-/* window.onload=function(){
+ window.onload=function(){
 	document.getElementById("stopBtn").addEventListener("click",stopPop);
 	document.getElementById("cancelStopBtn").addEventListener("click",cancelStopPop);
 }
@@ -35,29 +44,7 @@ function stopPop(){
 function cancelStopPop(){
 	window.open("manager_user_stop_popup.jsp","popup","width= 502; height= 250;,top="
 			+(window.screenY+100)	+",left="+(window.screenX+100));
-}//cancelStopPop */
-
-
-window.onload = function() {
-    document.getElementById("stopBtn").addEventListener("click", stopMember);
-}
-
-function stopMember(button) {
-	  var id = button.dataset.id;
-	  
-	  var xhr = new XMLHttpRequest();
-	  xhr.onreadystatechange = function() {
-	    if (xhr.readyState == 4 && xhr.status == 200) {
-	      // Display a success message to the user
-	      alert(xhr.responseText);
-	    }
-	  };
-	  xhr.open("POST", "stopMember.jsp", true);
-	  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	  xhr.send("id=" + id);
-	}
-
-
+}//cancelStopPop
 
 
 </script>
@@ -137,19 +124,22 @@ function stopMember(button) {
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<button id="btn" onclick="location.href='manager_novel.jsp'">소설관리</button>
 	</div>
-	
+
 <%
-    String id = request.getParameter("id");
+    String id = request.getParameter("id"); 
     ManagerDAO mDAO = new ManagerDAO();
-    MemberManageInfoVO mVO = mDAO.selectMemberInfoAll(id);
-    
+   	MemberManageInfoVO mVO = mDAO.selectMemberInfoAll(id);
+   	
     //전화번호
-   	String phoneNumber = mVO.getPhone();
-	String formattedPhoneNumber = phoneNumber.substring(0,3) + "-" + phoneNumber.substring(3,7) + "-" + phoneNumber.substring(7);
+	String phoneNumber = mVO.getPhone();
+	String formattedPhoneNumber = "";
+	if (phoneNumber != null) {
+	    formattedPhoneNumber = phoneNumber.substring(0,3) + "-" + phoneNumber.substring(3,7) + "-" + phoneNumber.substring(7);
+	}
 %>	
 
 	<div>
-		<h1>"<%= mVO.getId() %>" 회원 정보</h1>
+		<h1>"<%= id%>" 회원 정보</h1>
 	</div>
 	
 	<div>
@@ -185,7 +175,6 @@ function stopMember(button) {
 	<div>
 		<button id="stopBtn">강제 중지</button> &nbsp;
 		<button id="cancelStopBtn">강제 중지 해제</button>
-		<button onclick="stopMember(this)" data-id="123">Stop Member</button>
 
 		
 	</div>
