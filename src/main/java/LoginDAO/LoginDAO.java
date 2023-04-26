@@ -199,6 +199,7 @@ public SessionVO selectLogin(String id,String pw,LoginHistoryVO lhVO)throws SQLE
 		}
 		LoginDAO lDAO = new LoginDAO();
 		
+		lhVO.setNum_member(resultNum_member);
 		lDAO.insertLoginHistory(lhVO);
 		
 	}finally {
@@ -316,10 +317,12 @@ public int updatePass(String id, String pw)throws SQLException {
 		String sql = "insert into history(num_member,ip,visit,os) values(?,?,sysdate,?)";
 		
 		pstmt = con.prepareStatement(sql);
+		System.out.println(lhVO.getNum_member()+" "+lhVO.getIp()+" "+lhVO.getOS());
+		pstmt.setInt(1,lhVO.getNum_member());
+		pstmt.setString(2,lhVO.getIp());
+		pstmt.setString(3,lhVO.getOS());
 		
-		pstmt.setInt(1,);
-		pstmt.setString(2,);
-		pstmt.setString(3,);
+		pstmt.executeUpdate();
 		
 		}finally {
 			dbCon.dbClose(rs, pstmt, con);

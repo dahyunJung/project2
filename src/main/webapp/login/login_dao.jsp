@@ -13,6 +13,20 @@ String ip = request.getRemoteAddr();
 String userAgent = request.getHeader("User-Agent");
 String os = null;
 
+if (userAgent != null) {
+    if (userAgent.contains("Windows")) {
+        os = "Windows";
+    } else if (userAgent.contains("Mac")) {
+        os = "Mac OS X";
+    } else if (userAgent.contains("Linux")) {
+        os = "Linux";
+    } else if (userAgent.contains("Android")) {
+        os = "Android";
+    } else if (userAgent.contains("iPhone")) {
+        os = "iOS";
+    }
+}
+
 LoginDAO lDAO = new LoginDAO();
 LoginHistoryVO lhVO = new LoginHistoryVO();
 
