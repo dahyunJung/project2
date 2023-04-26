@@ -7,5 +7,5 @@
 session.removeAttribute("sesId");
 
 // 로그인 페이지로 이동
-response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
+response.sendRedirect("http://localhost/project2/manager/manager_login.jsp");
 %>

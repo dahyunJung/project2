@@ -132,7 +132,7 @@ th, td{ height: 150px; font-weight: normal; border: 0px solid #333; text-align: 
 
 		
 		 if(session.getAttribute("sesId")==null){
-			response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
+			response.sendRedirect("http://localhost/project2/manager/manager_login.jsp");
 		} 
 	
 ManageDAO mDAO = new ManageDAO();
