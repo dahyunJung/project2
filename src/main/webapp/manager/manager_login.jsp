@@ -168,7 +168,7 @@ function chkLeng(){
 			<a class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0" href="http://localhost/project22/4_home/4_1_main(logout).jsp">
 			<img class="object-contain" width="157" height="27" src="http://localhost/project2/_next/static/images/logo.png" alt="소설조아 logo" /></a>
 			<div class="flex items-center ml-auto mr-15 desktop:mr-0">
-				<input type="button" onclick="location.href='http://localhost/project2/manager/manage_login.jsp'" class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white"  value="로그인" />
+				<input type="button" onclick="location.href='http://localhost/project2/manager/manager_login.jsp'" class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white"  value="로그인" />
 			</div>
 		</div>
 	</header>
@@ -178,7 +178,7 @@ function chkLeng(){
 	<!-- flex-row:아이템들이 행방향으로 배치 flex-wrap:줄넘김 -->
 	<main class="flex-1 mx-auto w-full max-w-default flex-row flex-wrap">
 	
-	<form name="form" method="post" action="http://localhost/project2/manager/manage_login_process.jsp" id="frm">
+	<form name="form" method="post" action="http://localhost/project2/manager/manager_login_process.jsp" id="frm">
 		<div>
 			<h1>&nbsp;</h1><br>
 			<h2>관리자 로그인</h2><br>
