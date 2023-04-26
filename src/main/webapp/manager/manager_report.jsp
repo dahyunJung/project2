@@ -9,7 +9,7 @@
   response.setDateHeader("Expires", 0); // Proxies.
 
    if(session.getAttribute("sesId")==null){
-     response.sendRedirect("http://localhost/project2/manager/manage_login.jsp");
+     response.sendRedirect("http://localhost/project2/manager/manager_login.jsp");
   } 
 %>
 <!DOCTYPE html>
