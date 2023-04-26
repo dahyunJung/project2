@@ -57,7 +57,7 @@ if(novelNum != null && !novelNum.equals("")) {
     ManagerDAO mDAO = new ManagerDAO();
     mDAO.deleteNovel(Integer.parseInt(novelNum));
 }
-%>
+%> 
 		<div 
 			class="flex rounded-t-0 relative z-1 max-h-[70%] flex-col overflow-hidden bg-white"
 			data-body-scroll-lock="ignore" style="width: 502px; height: 250px;">
