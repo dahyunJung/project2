@@ -23,7 +23,7 @@ public class MyPageDAO {
 	// 내 소설 에피소드 리스트 보여주는 창
 
 	
-	  // 작성한 소설 제목 출력 (에피소드 작성 
+	  // 작성한 소설 제목 출력 (에피소드 작성 )
 	public String selectNovelName(int novelNum) throws SQLException {
 		String novelTitle = "";	  
 		
@@ -34,9 +34,15 @@ public class MyPageDAO {
 			con = dbConnection.getConn();
 			StringBuilder selectNovelTitle = new StringBuilder();
 			
-			selectNovelTitle.append(" select distinct n.title ")
-							.append(" from episode e, novel n ")
-							.append(" where n.num_novel=e.num_novel and e.num_novel=?" );
+			selectNovelTitle.append(" select title ")
+							.append(" from novel ")
+							.append(" where num_novel=?" );
+			
+			/*
+			 * selectNovelTitle.append(" select distinct n.title ")
+			 * .append(" from episode e, novel n ")
+			 * .append(" where n.num_novel=e.num_novel and n.num_novel=?" );
+			 */
 	  
 			pstmt = con.prepareStatement(selectNovelTitle.toString());
 			pstmt.setInt(1, novelNum); 

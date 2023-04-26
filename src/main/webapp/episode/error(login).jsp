@@ -20,7 +20,7 @@
 	<div id="__next" data-reactroot="">
 		<div style="display: none; background-color: canvas; color-scheme: light"></div>
 		<div class="lightMode h-full">
-			<div class="flex flex-col h-full">
+		<div class="flex flex-col h-full">
 			
 	<!-- header -->
 	<div>
@@ -31,7 +31,7 @@
 	<br><br><br><br><br><br>
 		<div style="text-align: center;">
 			<h1 style="font-size: 30px">에러가 발생했습니다. </h1><br>
-			<a href="#void" history.back()><font style="color: #0000FF">다시 시도해주세요</font></a>
+			<a href="javascript:history.back();"><font style="color: #0000FF">다시 시도해주세요</font></a>
 		</div>
     </main>
      

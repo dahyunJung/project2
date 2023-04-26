@@ -81,17 +81,15 @@
 		userNum = Integer.parseInt(session.getAttribute("userNum").toString());		
 	}else{ 
 		// 세션에 값이 없다면, 에러페이지로 이동. 뒤로 못가게 해야되는데 아니면 아예 로그아웃된 홈페이지로 이동
-		// 에? 이게 맞냐
-		location.href = "http://localhost/project2/me/episodeError.jsp";
+		location.href = "http://localhost/project2/episode/error(logout).jsp";
 	}
-	*/
 	
-	/* 
 	// novelNum을 파라미터로 받아서 처리
-	int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
+	int novelNum = Integer.parseInt(request.getParameter("novelNum"));
+	
 	*/
-	int novelNum = 23; //일단 테스트값
-	int userNum = 3;
+	int userNum = 1;
+	int novelNum = 22; //일단 테스트값
 	
 	// 소설 제목 출력
 	MyPageDAO mDAO = new MyPageDAO();
@@ -111,7 +109,7 @@
 			
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
-					<a href="/project2/novel/novel_list.jsp">
+					<a href="/project2/episode/novel_list.jsp">
 						<img width="20" height="20" src="/project2/_next/static/images/list.png" />
 					</a>
 				</div>
