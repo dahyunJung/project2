@@ -44,5 +44,37 @@ public class NovelListDAO {
 		
 		return nVO;
 	}
+	
+	public int selectChk(String num_novel) throws SQLException {
+		int num_member=0;
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		DbConnection dbCon=DbConnection.getInstance();
+		
+		
+		try {
+			con=dbCon.getConn();
+			StringBuilder sb=new StringBuilder();
+			sb.append(" select num_member ")
+			.append(" from novel ")
+			.append(" where num_novel = ? ");
+				
+			pstmt=con.prepareStatement(sb.toString());
+			
+			pstmt.setInt(1, Integer.parseInt(num_novel));
+				
+			rs=pstmt.executeQuery();
+				
+			num_member=rs.getInt("num_member");
+				
+		}finally {
+			dbCon.dbClose(rs, pstmt, con);
+		}
+		
+		return num_member;
+	}
 
 }

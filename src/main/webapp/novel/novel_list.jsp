@@ -36,7 +36,9 @@ $(function () {
 <input type="hidden" name="num_novel" value="<%=request.getParameter("num_novel")%>">
 </form>
 <%
-if("POST".equals(request.getMethod())){
+NovelListDAO nDAO=new NovelListDAO();
+String num_novel=request.getParameter("num_novel");
+if(String.valueOf(nDAO.selectChk(num_novel)).equals(session.getAttribute("num_member"))){
 	%>
 <body>
 	<div id="__next" data-reactroot="">
@@ -61,7 +63,6 @@ if("POST".equals(request.getMethod())){
 								<div
 									class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18">
 									<%
-									NovelListDAO nDAO=new NovelListDAO();
 									try{
 										NovelListVO nVO=nDAO.selectNovel(request.getParameter("num_novel"));
 									%>

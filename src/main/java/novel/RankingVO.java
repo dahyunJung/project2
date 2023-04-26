@@ -2,10 +2,11 @@ package novel;
 
 public class RankingVO {
 	private String photo,title,id,story;
-	private int age,like,visit,rank;
+	private int num_novel, age,like,visit,rank;
 	public RankingVO() {
 	}
-	public RankingVO(String photo, String title, String id, String story, int age, int like, int visit, int rank) {
+	public RankingVO(int num_novel, String photo, String title, String id, String story, int age, int like, int visit, int rank) {
+		this.num_novel=num_novel;
 		this.photo = photo;
 		this.title = title;
 		this.id = id;
@@ -14,6 +15,12 @@ public class RankingVO {
 		this.like = like;
 		this.visit = visit;
 		this.rank = rank;
+	}
+	public int getNum_novel() {
+		return num_novel;
+	}
+	public void setNum_novel(int num_novel) {
+		this.num_novel = num_novel;
 	}
 	public String getPhoto() {
 		return photo;
