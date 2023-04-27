@@ -38,7 +38,7 @@ $(function () {
 <%
 NovelListDAO nDAO=new NovelListDAO();
 String num_novel=request.getParameter("num_novel");
-if(String.valueOf(nDAO.selectChk(num_novel)).equals(session.getAttribute("num_member"))){
+if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO.selectChk(num_novel)))){
 	%>
 <body>
 	<div id="__next" data-reactroot="">

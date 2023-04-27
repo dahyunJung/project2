@@ -52,6 +52,7 @@ function deleteNovel(num_novel){
 </head>
 	
 <%
+request.setCharacterEncoding("UTF-8");
 if("POST".equals(request.getMethod())){
 	%>
 

@@ -16,7 +16,7 @@
 				class="grid desktop:flex grid-flow-col flex-wrap max-w-full-view overflow-x-scroll overflow-y-hidden scrolling-touch desktop:overflow-x-visible desktop:overflow-y-visible before:grow-0 after:grow-0 before:content-[&quot;&quot;] after:content-[&quot;&quot;] before:flex-[0_1_0%] after:flex-[0_1_0%] desktop:after:hidden desktop:before:hidden auto-cols-max HorizontalScroll_horizontalScrollbar__5q9CM py-3">
 				<a
 					class="typo-md1-b z-0 flex items-center py-[8.5px] ml-8 mr-8 px-16"
-					href="/project2/home/main(login).jsp">
+					href="/project2/home/main.jsp">
 						<div class="relative">홈</div>
 				</a> <a class="typo-md1-b z-0 flex items-center py-[8.5px] mr-8 px-16"
 					href="/project2/home/ranking_day(login).jsp">

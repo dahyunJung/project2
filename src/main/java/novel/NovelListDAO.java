@@ -67,8 +67,10 @@ public class NovelListDAO {
 			pstmt.setInt(1, Integer.parseInt(num_novel));
 				
 			rs=pstmt.executeQuery();
-				
-			num_member=rs.getInt("num_member");
+			
+			if(rs.next()) {
+				num_member=rs.getInt("num_member");
+			}
 				
 		}finally {
 			dbCon.dbClose(rs, pstmt, con);

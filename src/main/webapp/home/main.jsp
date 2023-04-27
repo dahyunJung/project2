@@ -27,7 +27,11 @@
 			<div class="flex flex-col h-full">
 <!-- header -->
 	<div>
+		<%if(session.getAttribute("user_id")!=null){ %>
 		<jsp:include page="../_next/header_user_login_search.jsp"/>
+		<%}else{ %>
+		<jsp:include page="../_next/header_user_logout_key.jsp"/>
+		<%}%>
 	</div>
 				<main class="flex-1">
                         <div>
@@ -45,7 +49,7 @@
                                             %>
                                             <div class="grid grid-cols-1 gap-y-16 px-0 desktop:grid-cols-2 desktop:gap-x-34 desktop:gap-y-24 desktop:pl-30">
                                                 <div class="col-span-2">
-                                                    <a class="flex flex-col bg-grey10 py-20 px-18 desktop:-ml-30 desktop:py-30 desktop:px-30" href="../novel/novel_list_user?novel_info=<%=list.get(0).getNum_novel()%>">
+                                                    <a class="flex flex-col bg-grey10 py-20 px-18 desktop:-ml-30 desktop:py-30 desktop:px-30" href="../novel/novel_info.jsp?num_novel=<%=list.get(0).getNum_novel()%>">
                                                         <article class="flex items-center items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden ml-15 h-125 w-80 desktop:ml-0 desktop:h-[233px] desktop:w-149 order-1" style="height:233px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:149px;height:233px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
@@ -86,7 +90,7 @@
                                                 </div>
                                                 <%for(int i=1;i<5;i++){int j=i;if(i>list.size()-1){j=list.size()-1;} %>
                                                 <div class="col-start-1 desktop:col-[span_1/auto]">
-                                                    <a class="flex items-center" href="/novels/54699805">
+                                                    <a class="flex items-center" href="../novel/novel_info.jsp?num_novel=<%=list.get(j).getNum_novel()%>">
                                                         <article class="flex items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden h-98 w-64 desktop:h-125 desktop:w-80 order-1" style="height:125px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
@@ -146,7 +150,7 @@
                                             <div class="flex flex-col">
                                             <%for(int i=5;i<10;i++){int j=i;if(i>list.size()-1){j=list.size()-1;} %>
                                                 <div class="flex flex-col border-b-0 desktop:border-b-1 border-black/10 py-8 desktop:py-16 desktop:px-0  desktop:last-of-type:border-b-0 desktop:last-of-type:pb-0">
-                                                    <div class="flex items-center flex-row" data-testid="skeleton">
+                                                    <a class="flex items-center flex-row" data-testid="skeleton" href="../novel/novel_info.jsp?num_novel=<%=list.get(j).getNum_novel()%>">
                                                         <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14"></div>
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
                                                                         <span style="transform: translateY(-100%);"><%=j+1%></span>
@@ -168,7 +172,7 @@
                                                                             </span>
                                                                         </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                             <%} %>
                                             </div>
@@ -191,7 +195,7 @@
                                             %>
                                             <div class="grid grid-cols-1 gap-y-16 px-0 desktop:grid-cols-2 desktop:gap-x-34 desktop:gap-y-24 desktop:pl-30">
                                                 <div class="col-span-2">
-                                                    <a class="flex flex-col bg-grey10 py-20 px-18 desktop:-ml-30 desktop:py-30 desktop:px-30" href="/novels/48497284">
+                                                    <a class="flex flex-col bg-grey10 py-20 px-18 desktop:-ml-30 desktop:py-30 desktop:px-30" href="../novel/novel_info.jsp?num_novel=<%=list.get(0).getNum_novel()%>">
                                                         <article class="flex items-center items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden ml-15 h-125 w-80 desktop:ml-0 desktop:h-[233px] desktop:w-149 order-1" style="height:233px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:149px;height:233px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
@@ -232,7 +236,7 @@
                                                 </div>
                                                 <%for(int i=1;i<5;i++){int j=i;if(i>list.size()-1){j=list.size()-1;} %>
                                                 <div class="col-start-1 desktop:col-[span_1/auto]">
-                                                    <a class="flex items-center" href="/novels/54699805">
+                                                    <a class="flex items-center" href="../novel/novel_info.jsp?num_novel=<%=list.get(j).getNum_novel()%>">
                                                         <article class="flex items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden h-98 w-64 desktop:h-125 desktop:w-80 order-1" style="height:125px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
@@ -292,7 +296,7 @@
                                             <div class="flex flex-col">
                                             <%for(int i=5;i<10;i++){int j=i;if(i>list.size()-1){j=list.size()-1;} %>
                                                 <div class="flex flex-col border-b-0 desktop:border-b-1 border-black/10 py-8 desktop:py-16 desktop:px-0  desktop:last-of-type:border-b-0 desktop:last-of-type:pb-0">
-                                                    <div class="flex items-center flex-row" data-testid="skeleton">
+                                                    <a class="flex items-center flex-row" data-testid="skeleton" href="../novel/novel_info.jsp?num_novel=<%=list.get(j).getNum_novel()%>">
                                                         <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14"></div>
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
                                                                         <span style="transform: translateY(-100%);"><%=i+1%></span>
@@ -314,7 +318,7 @@
                                                                             </span>
                                                                         </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                             <%} %>
                                             </div>
@@ -337,7 +341,7 @@
                                             %>
                                             <div class="grid grid-cols-1 gap-y-16 px-0 desktop:grid-cols-2 desktop:gap-x-34 desktop:gap-y-24 desktop:pl-30">
                                                 <div class="col-span-2">
-                                                    <a class="flex flex-col bg-grey10 py-20 px-18 desktop:-ml-30 desktop:py-30 desktop:px-30" href="/novels/48497284">
+                                                    <a class="flex flex-col bg-grey10 py-20 px-18 desktop:-ml-30 desktop:py-30 desktop:px-30" href="../novel/novel_info.jsp?num_novel=<%=list.get(0).getNum_novel()%>">
                                                         <article class="flex items-center items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden ml-15 h-125 w-80 desktop:ml-0 desktop:h-[233px] desktop:w-149 order-1" style="height:233px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:149px;height:233px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
@@ -378,7 +382,7 @@
                                                 </div>
                                                 <%for(int i=1;i<5;i++){int j=i;if(i>list.size()-1){j=list.size()-1;} %>
                                                 <div class="col-start-1 desktop:col-[span_1/auto]">
-                                                    <a class="flex items-center" href="/novels/54699805">
+                                                    <a class="flex items-center" href="../novel/novel_info.jsp?num_novel=<%=list.get(j).getNum_novel()%>">
                                                         <article class="flex items-center">
                                                             <div class="flex relative shrink-0 items-start overflow-hidden h-98 w-64 desktop:h-125 desktop:w-80 order-1" style="height:125px">
                                                                 <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
@@ -438,7 +442,7 @@
                                             <div class="flex flex-col">
                                             <%for(int i=5;i<10;i++){int j=i;if(i>list.size()-1){j=list.size()-1;} %>
                                                 <div class="flex flex-col border-b-0 desktop:border-b-1 border-black/10 py-8 desktop:py-16 desktop:px-0  desktop:last-of-type:border-b-0 desktop:last-of-type:pb-0">
-                                                    <div class="flex items-center flex-row" data-testid="skeleton">
+                                                    <a class="flex items-center flex-row" data-testid="skeleton" href="../novel/novel_info.jsp?num_novel=<%=list.get(j).getNum_novel()%>">
                                                         <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14"></div>
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
                                                                         <span style="transform: translateY(-100%);"><%=i+1%></span>
@@ -460,7 +464,7 @@
                                                                             </span>
                                                                         </div>
                                                         </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                             <%} %>
                                             </div>
