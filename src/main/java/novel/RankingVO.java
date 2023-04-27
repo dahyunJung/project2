@@ -2,10 +2,10 @@ package novel;
 
 public class RankingVO {
 	private String photo,title,id,story;
-	private int num_novel, age,like,visit,rank;
+	private int num_novel, age,like,visit,rank, episode;
 	public RankingVO() {
 	}
-	public RankingVO(int num_novel, String photo, String title, String id, String story, int age, int like, int visit, int rank) {
+	public RankingVO(int num_novel, String photo, String title, String id, String story, int age, int like, int visit, int rank, int episode) {
 		this.num_novel=num_novel;
 		this.photo = photo;
 		this.title = title;
@@ -15,6 +15,7 @@ public class RankingVO {
 		this.like = like;
 		this.visit = visit;
 		this.rank = rank;
+		this.episode = episode;
 	}
 	public int getNum_novel() {
 		return num_novel;
@@ -70,12 +71,11 @@ public class RankingVO {
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
-	@Override
-	public String toString() {
-		return "RankingVO [" + (photo != null ? "photo=" + photo + ", " : "")
-				+ (title != null ? "title=" + title + ", " : "") + (id != null ? "id=" + id + ", " : "")
-				+ (story != null ? "story=" + story + ", " : "") + "age=" + age + ", like=" + like + ", visit=" + visit
-				+ ", rank=" + rank + "]";
+	public int getEpisode() {
+		return episode;
+	}
+	public void setEpisode(int episode) {
+		this.episode = episode;
 	}
 	
 }

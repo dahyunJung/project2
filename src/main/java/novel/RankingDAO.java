@@ -29,7 +29,7 @@ public class RankingDAO {
 		try {
 			con=dbCon.getConn();
 			StringBuilder sb=new StringBuilder();
-			sb.append(" SELECT n.num_novel, n.photo, n.age, n.title, m.id, COUNT(l.num_like) AS liken_count, e.visit, n.story,	")
+			sb.append(" SELECT n.num_novel, n.photo, n.age, n.title, m.id, COUNT(l.num_like) AS liken_count, e.visit, COUNT(ep.num_episode) AS episode_count, n.story,	")
 					.append("       RANK() OVER (ORDER BY e.visit DESC) AS visit_rank	")
 					.append("FROM novel n	")
 					.append("JOIN member m ON n.num_member = m.num_member	")
@@ -40,6 +40,7 @@ public class RankingDAO {
 					.append("  WHERE make >= SYSDATE - ").append(i)
 					.append("  GROUP BY num_novel	")
 					.append("    ) e ON n.num_novel = e.num_novel	")
+					.append("    LEFT JOIN episode ep ON n.num_novel = ep.num_novel AND e.visit = ep.visit	")
 					.append("    WHERE n.make >= SYSDATE - ").append(i)
 					.append("GROUP BY n.num_novel, n.photo, n.age, n.title, m.id, e.visit, n.story	")
 					.append("ORDER BY e.visit DESC ");
@@ -52,7 +53,7 @@ public class RankingDAO {
 			
 			while(rs.next()) {
 				rVO=new RankingVO(rs.getInt("num_novel"),rs.getString("photo"), rs.getString("title"), rs.getString("id"), rs.getString("story"),
-						rs.getInt("age"), rs.getInt("liken_count"), rs.getInt("visit"), rs.getInt("visit_rank"));
+						rs.getInt("age"), rs.getInt("liken_count"), rs.getInt("visit"), rs.getInt("visit_rank"), rs.getInt("episode_count"));
 				list.add(rVO);
 			}
 			

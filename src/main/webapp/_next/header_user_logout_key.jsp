@@ -20,7 +20,7 @@
 					href="/project2/home/main.jsp">
 					<div class="relative">홈</div>
 				</a> <a class="typo-md1-b z-0 flex items-center py-[8.5px] mr-8 px-16"
-					href="/project2/home/ranking_day(logout).jsp">
+					href="/project2/home/ranking.jsp?type=0">
 					<div class="relative">랭킹</div>
 				</a>
 			</div>

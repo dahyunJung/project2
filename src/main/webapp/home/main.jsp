@@ -138,7 +138,7 @@
                                         <section>
                                             <div class="flex flex-wrap w-full items-start desktop:items-center border-b-1 border-black pb-16">
                                                 <h2 class="typo-lg3-b flex-1 break-normal desktop:typo-lg1 desktop:flex-initial">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </h2>
-                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="/project2/home/ranking_day(login).jsp">
+                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="/project2/home/ranking.jsp?type=0">
                                                     <span class="mr-4 hidden desktop:inline">더보기</span>
                                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M11 8.00064L6.06282 13.0013L4.99541 11.9474L8.8921 8.00064L4.99541 4.05387L6.06282 3L11 8.00064Z" fill="currentColor"></path>
@@ -251,7 +251,7 @@
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
-                                                                        <span><%=i+1 %></span>
+                                                                        <span><%=j+1 %></span>
                                                                     </div>
                                                                     <div class="flex flex-col flex-1">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
@@ -284,7 +284,7 @@
                                         <section>
                                             <div class="flex flex-wrap w-full items-start desktop:items-center border-b-1 border-black pb-16">
                                                 <h2 class="typo-lg3-b flex-1 break-normal desktop:typo-lg1 desktop:flex-initial">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </h2>
-                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="/project2/home/ranking_day(login).jsp">
+                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="/project2/home/ranking.jsp?type=1">
                                                     <span class="mr-4 hidden desktop:inline">더보기</span>
                                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M11 8.00064L6.06282 13.0013L4.99541 11.9474L8.8921 8.00064L4.99541 4.05387L6.06282 3L11 8.00064Z" fill="currentColor"></path>
@@ -299,7 +299,7 @@
                                                     <a class="flex items-center flex-row" data-testid="skeleton" href="../novel/novel_info.jsp?num_novel=<%=list.get(j).getNum_novel()%>">
                                                         <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14"></div>
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
-                                                                        <span style="transform: translateY(-100%);"><%=i+1%></span>
+                                                                        <span style="transform: translateY(-100%);"><%=j+1%></span>
                                                                     </div>
                                                         <div class="flex flex-col w-full flex-1">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
@@ -397,7 +397,7 @@
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
-                                                                        <span><%=i+1 %></span>
+                                                                        <span><%=j+1 %></span>
                                                                     </div>
                                                                     <div class="flex flex-col flex-1">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
@@ -430,7 +430,7 @@
                                         <section>
                                             <div class="flex flex-wrap w-full items-start desktop:items-center border-b-1 border-black pb-16">
                                                 <h2 class="typo-lg3-b flex-1 break-normal desktop:typo-lg1 desktop:flex-initial">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </h2>
-                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="/project2/home/ranking_day(login).jsp">
+                                                <a class="typo-md3 ml-auto flex items-center text-black desktop:text-grey60" href="/project2/home/ranking.jsp?type=2">
                                                     <span class="mr-4 hidden desktop:inline">더보기</span>
                                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M11 8.00064L6.06282 13.0013L4.99541 11.9474L8.8921 8.00064L4.99541 4.05387L6.06282 3L11 8.00064Z" fill="currentColor"></path>
@@ -445,7 +445,7 @@
                                                     <a class="flex items-center flex-row" data-testid="skeleton" href="../novel/novel_info.jsp?num_novel=<%=list.get(j).getNum_novel()%>">
                                                         <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14"></div>
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
-                                                                        <span style="transform: translateY(-100%);"><%=i+1%></span>
+                                                                        <span style="transform: translateY(-100%);"><%=j+1%></span>
                                                                     </div>
                                                         <div class="flex flex-col w-full flex-1">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
