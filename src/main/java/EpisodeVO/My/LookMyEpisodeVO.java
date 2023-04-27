@@ -1,6 +1,6 @@
-package EpisodeVO;
+package EpisodeVO.My;
 
-public class LookEpisodeVO {
+public class LookMyEpisodeVO {
 
 	private String novelTitle;
 	private String epTitle;

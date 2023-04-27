@@ -15,8 +15,8 @@
 <style type="text/css">
 	#wrap { display: flex; align-items: center; justify-content: center; height: 100%; }
 	button, input, optgroup, select, textarea {
-    -webkit-appearance: auto;
-}
+    	-webkit-appearance: auto;
+	}
 </style>	
 
 <noscript data-n-css=""></noscript>
@@ -25,20 +25,29 @@
 	$(function(){
 		
 		$("#report").click(function(){
-			alert("신고되었습니다.");
-			$("#reportFrm").submit();
-			window.close();
-		}); //delete
+			var value = $("input[type=radio][name=report]:checked").val();
+	        if (value) {
+	            $("#reportCode").val(value);
+	            $("#reportFrm").submit();
+	            alert( $("#reportCode").val()+"신고되었습니다.");
+	            window.close();
+	        }
+	        else {
+	            alert('선택된 신고항목이 없습니다.');
+	        }
+			
+		}); //report
 		
 	});// ready
 
 </script>
 </head>
 <%
-	/* int userNum = (Integer)session.getAttribute("userNum");
-	int novelNum = Integer.parseInt(request.getParameter("novelNum"));  */
+	//int userNum = (Integer)session.getAttribute("userNum");
+	//int novelNum = Integer.parseInt(request.getParameter("novelNum"));
 	int userNum = 3;
-	int novelNum = 23;
+	int novelNum = 46; 
+	String reportId = request.getParameter("reportId");
 %>
 
 <body>
@@ -58,34 +67,34 @@
 		<form id="reportFrm" action="report_process.jsp" method="post">
 			<input type="hidden" id="novelNum" name="novelNum" value="<%= novelNum %>" />
 			<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
-			<input type="hidden" id="id" name="id" value="" />
+			<input type="hidden" id="reportId" name="reportId" value="<%= reportId %>" />
 			<input type="hidden" id="reportCode" name="reportCode" value="" />
 			
-			<div id="radi">
-				<label><input type="radio" name="reportCode" value="1" />영리목적/홍보성</label><br>
-				<label><input type="radio" name="reportCode" value="2" />욕설/인신공격</label><br>
-				<label><input type="radio" name="reportCode" value="3" />불법정보</label><br>
-				<label><input type="radio" name="reportCode" value="4" />개인정보노출</label><br>
-				<label><input type="radio" name="reportCode" value="5" />음란성/선정성</label><br>
-				<label><input type="radio" name="reportCode" value="6" />같은 내용 도배</label><br>
-				<label><input type="radio" name="reportCode" value="7" />권리 침해 신고</label><br>
+			<div>
+				<label><input type="radio" name="report" value="1" />영리목적/홍보성</label><br>
+				<label><input type="radio" name="report" value="2" />욕설/인신공격</label><br>
+				<label><input type="radio" name="report" value="3" />불법정보</label><br>
+				<label><input type="radio" name="report" value="4" />개인정보 노출</label><br>
+				<label><input type="radio" name="report" value="5" />음란성/선정성</label><br>
+				<label><input type="radio" name="report" value="6" />같은 내용 도배</label><br>
+				<label><input type="radio" name="report" value="7" />권리침해 신고</label><br>
 			</div>
 			
 		</form>
 		</div>
 		</div>
 		
-			<div class="w-full shrink-0" style="position: relative; bottom: 18px">
-			
-				<div class="flex mt-24 desktop:mt-32">
-					<button class="flex items-center justify-center border-1 appearance-none px-24 py-12 typo-md2-b mr-8 flex-1"
-						type="button" id="cancel" style="font-weight: bold" onclick="javascript:window.close()">취소</button>
-					
-					<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b flex-1"
-						type="button" id="report" style="font-weight: bold">신고</button>
-				</div>
+		<div class="w-full shrink-0" style="position: relative; bottom: 18px">
+		
+			<div class="flex mt-24 desktop:mt-32">
+				<button class="flex items-center justify-center border-1 appearance-none px-24 py-12 typo-md2-b mr-8 flex-1"
+					type="button" id="cancel" style="font-weight: bold" onclick="javascript:window.close()">취소</button>
 				
+				<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b flex-1"
+					type="button" id="report" style="font-weight: bold">신고</button>
 			</div>
+			
+		</div>
 		
 		
 	</div>

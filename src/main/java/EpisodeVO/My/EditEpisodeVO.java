@@ -1,4 +1,4 @@
-package EpisodeVO;
+package EpisodeVO.My;
 
 public class EditEpisodeVO {
 	

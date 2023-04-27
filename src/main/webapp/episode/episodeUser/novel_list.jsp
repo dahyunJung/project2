@@ -1,5 +1,5 @@
 <%@page import="java.sql.SQLException"%>
-<%@page import="EpisodeVO.LookNovelVO"%>
+<%@page import="EpisodeVO.User.LookNovelVO"%>
 <%@page import="EpisodeDAO.EpisodeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -19,6 +19,34 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <style data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&display=swap"></style>
 
+<%
+	//int userNum = (Integer)session.getAttribute("userNum");
+	int userNum = 3;
+	int novelNum = 46;
+	//int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
+	if(novelNum == 0){
+%>
+		<script type="text/javascript">
+			alert("파라미터 novelNum의 값이 없음");
+			location.href="http://localhost/project2/novel/novel_list.jsp";
+			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
+		</script>
+<%	}
+	
+	String good = "http://localhost/project2/_next/static/images/good_on.png";
+	String cancelGood = "http://localhost/project2/_next/static/images/good_off.png";
+
+	// 선택한 회차 화면에 출력
+ 	EpisodeDAO epDAO = new EpisodeDAO();
+	LookNovelVO selectNovelVO = null;
+	try{
+		// 에피소드 화면 출력
+		selectNovelVO = epDAO.selectNovel(novelNum);
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+%>
+
 <script type="text/javascript">
 
 $(function(){
@@ -30,13 +58,14 @@ $(function(){
 			console.log(xhr.status);
 		},
 		success : function(jsonArr){
+			var len = jsonArr.length;
 			var article="";
 			let cnt=0;
 			
 			$.each(jsonArr,function(idx, jsonObj){
 				cnt++;
 			 	article += "<article class='flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30'>"
-						+ "<div class='flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2'>"+cnt +"</div>"
+						+ "<div class='flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2'>"+len-- +"</div>"
 						+ "<div class='flex flex-1 flex-col desktop:flex-row'>"
 						+ "<a class='flex w-full shrink' href='episode_read.jsp?novelNum="+jsonObj.novelNum+"&epNum="+jsonObj.epNum+"'>"
 						+ "<div class='flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80'>"
@@ -77,10 +106,15 @@ $(function(){
 	}); //private
 	
 	$("#reportImg").click(function(){
-		window.open("/project2/episode/report_popup.jsp","popup","width=500,height=803,resizable=no,top="
+		window.open("/project2/episode/episodeUser/report_popup.jsp","popup","width=500,height=803,resizable=no,top="
 				+(window.screenY+100)	+",left="+(window.screenX+100)); 
 		//window.close();
-	});
+	});// 신고
+	
+	$("#firstEp").click(function(){
+		location.href='episode_read.jsp?novelNum=<%=novelNum%>&epNum=<%=epDAO.selectFirstEp(novelNum)%>';
+	}); //첫화 보기
+	
 	
 });//ready
 	
@@ -88,35 +122,10 @@ $(function(){
 
 </head>
 
-<%
-	//int userNum = (Integer)session.getAttribute("userNum");
-	int userNum = 4;
-	int novelNum = 23;
-	//int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
-	if(novelNum == 0){
-%>
-		<script type="text/javascript">
-			alert("파라미터 novelNum의 값이 없음");
-			location.href="http://localhost/project2/novel/novel_list.jsp";
-			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
-		</script>
-<%	}
-	
-	String good = "http://localhost/project2/_next/static/images/good_on.png";
-	String cancelGood = "http://localhost/project2/_next/static/images/good_off.png";
 
-	// 선택한 회차 화면에 출력
- 	EpisodeDAO epDAO = new EpisodeDAO();
-	LookNovelVO selectNovelVO = null;
-	try{
-		// 에피소드 화면 출력
-		selectNovelVO = epDAO.selectNovel(novelNum);
-	}catch(SQLException e){
-		e.printStackTrace();
-	}
-%>
 
 <body>
+	<input type="hidden" name="novelNum" value="<%= novelNum %>">
 	<div id="__next" data-reactroot="">
 	<div style="display: none; background-color: canvas; color-scheme: light"></div>
 	<div class="lightMode h-full">
@@ -125,7 +134,7 @@ $(function(){
 					
 	<!-- header -->
 	<div>
-		<jsp:include page="../_next/header_user_login_search.jsp"/>
+		<jsp:include page="../../_next/header_user_login_search.jsp"/>
 	</div>						
 	</div>
 	
@@ -158,9 +167,9 @@ $(function(){
 						
 							<div class="flex items-center">
 								<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b mr-8"
-									href="/project2/episode/novel_write.jsp" type="button">첫회 읽기</button>
+									id="firstEp" type="button" >첫회 읽기</button>
 									&nbsp;&nbsp;&nbsp;
-
+									
 								<!-- 좋아요 버튼 -->
 								<form action="like_process.jsp" id="likeFrm" method="post">
 									<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>"/>
@@ -176,6 +185,7 @@ $(function(){
 								<!-- 신고 버튼 -->
 								<form action="report_process.jsp" id="reportFrm" method="post">
 									<input type="hidden" id="report" name="report" value=""/>
+									<input type="hidden" id="reportId" name="reportId" value="<%= selectNovelVO.getId() %>"/>
 								</form>
 								
 								<img id="reportImg" src="http://localhost/project2/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/>
@@ -252,7 +262,7 @@ $(function(){
 		</main>
 	<!-- footer -->
 	<div>
-		<jsp:include page="../_next/footer.jsp"/>
+		<jsp:include page="../../_next/footer.jsp"/>
 	</div>
 </body>
 </html>

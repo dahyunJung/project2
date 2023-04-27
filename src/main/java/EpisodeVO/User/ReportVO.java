@@ -1,4 +1,4 @@
-package EpisodeVO;
+package EpisodeVO.User;
 
 import java.util.Date;
 

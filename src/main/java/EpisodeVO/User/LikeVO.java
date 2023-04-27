@@ -1,4 +1,4 @@
-package EpisodeVO;
+package EpisodeVO.User;
 
 public class LikeVO {
 	

@@ -33,15 +33,13 @@ $(function () {
 </script>
 </head>
 <form action="/project2/novel/delete_novel_popup.jsp" id="del_frm" method="post" target="del_popup" onsubmit="window.open('/project2/novel/delete_novel_popup.jsp','del_popup','width= 504, height= 354, top = 100, left = 100');">
-<input type="hidden" name="num_novel" value="23">
-<%-- <input type="hidden" name="num_novel" value="<%=request.getParameter("num_novel")%>"> --%>
+<input type="hidden" name="num_novel" value="<%=request.getParameter("num_novel")%>">
 </form>
 <%
 NovelListDAO nDAO=new NovelListDAO();
 /* String num_novel=request.getParameter("num_novel"); */
-String num_novel = "23";
-if(String.valueOf(nDAO.selectChk(num_novel)).equals("3")){
-/* if(String.valueOf(nDAO.selectChk(num_novel)).equals(session.getAttribute("num_member"))){ */
+String num_novel = "44";
+/* if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO.selectChk(num_novel)))){ */
 	%>
 <body>
 	<div id="__next" data-reactroot="">
@@ -67,7 +65,7 @@ if(String.valueOf(nDAO.selectChk(num_novel)).equals("3")){
 									class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18">
 									<%
 									try{
-										NovelListVO nVO=nDAO.selectNovel(request.getParameter("num_novel"));
+										NovelListVO nVO=nDAO.selectNovel("44");
 									%>
 									<header class="relative overflow-hidden">
 										<div class="flex my-48">
@@ -267,12 +265,12 @@ if(String.valueOf(nDAO.selectChk(num_novel)).equals("3")){
 	</div>
 </body>
 
-<%}else{
+<%-- <%}else{
 	%>
 	<script type="text/javascript">
 	alert("비정상적인 접근입니다");
 	window.history.back();
 	</script>
 	<%
-} %>
+} %> --%>
 </html>

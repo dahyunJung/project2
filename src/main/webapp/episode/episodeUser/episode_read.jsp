@@ -1,6 +1,8 @@
+<%@page import="EpisodeVO.User.LookEpisodeVO"%>
+<%@page import="EpisodeDAO.EpisodeDAO"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="EpisodeVO.LookEpisodeVO"%>
-<%@page import="EpisodeDAO.MyPageDAO"%>
+<%@page import="EpisodeVO.My.LookMyEpisodeVO"%>
+<%@page import="EpisodeDAO.EpisodeMyDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
   
 <!DOCTYPE html>
@@ -40,7 +42,6 @@ $(function(){
 	$("#prev").click(function(){
 		
 	}); //prev
-	
 	$("#next").click(function(){
 		
 	}); //next
@@ -52,30 +53,26 @@ $(function(){
 </head>
 
 <%
-
-	/* if((Integer)session.getAttribute("userNum")==null){
+/* if((Integer)session.getAttribute("userNum")==null){
 	    response.sendRedirect("http://localhost/project2/episode/novel_list.jsp");
 	}  */
 
-	/* int userNum = 3;	//일단 테스트값
-	int novelNum = 23; 
-	int epNum = 85; */
-	//int userNum = 4;
+	int userNum = 4;
+	//int novelNum = 23; 
+	//int epNum = 86;
 	
-	int userNum = 3;
 	//int userNum = (Integer)session.getAttribute("userNum");
 	int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
 	int epNum = Integer.parseInt(request.getParameter("epNum")); 
 	
-	MyPageDAO mDAO = new MyPageDAO();
+	EpisodeDAO epDAO = new EpisodeDAO();
 	LookEpisodeVO selectVO = null;
 	try{
-		selectVO = mDAO.selectEpisode(userNum, novelNum, epNum); 
+		selectVO = epDAO.selectEpisode(novelNum, epNum);
 		
 	}catch(SQLException e){
 		e.printStackTrace();
 	}
-
 %>
 
 <body>
@@ -106,9 +103,9 @@ $(function(){
 		</div>
 
 		<div data-obj-id="pf8A1" data-obj-type="element" data-text-editable="true" class="" style="margin: auto; width: 1000px; height: 709px;">
-			<div data-text-content="true" style=" padding:20px; padding-left:40px; padding-right:40px; font-size: 16px; background-color: rgba(224, 224, 224, 0.34);" class="">
+			<div data-text-content="true" style=" padding:30px; padding-left:40px; padding-right:40px; font-size: 16px; background-color: rgba(224, 224, 224, 0.34);" class="">
 				<div style="text-align: center;">
-					<span style="font-style:italic; ; font-size: x-large;"><%= selectVO.getEpTitle() %></span><br><br>
+					<span style="font-style:italic; ; font-size: x-large;"><%= selectVO.getEpTitle() %></span><br><br><br><br>
 				</div>
 				
 				<div>
@@ -131,7 +128,7 @@ $(function(){
 	</main>
 	<!-- footer -->
 	<div>
-		<jsp:include page="../_next/footer.jsp"/>
+		<jsp:include page="../../_next/footer.jsp"/>
 	</div> 
 	</div>
 	</div>

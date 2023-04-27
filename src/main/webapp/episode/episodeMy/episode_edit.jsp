@@ -1,10 +1,12 @@
+<%@page import="EpisodeVO.My.LookMyEpisodeVO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="EpisodeVO.LookEpisodeVO"%>
-<%@page import="EpisodeDAO.MyPageDAO"%>
+<%@page import="EpisodeDAO.EpisodeMyDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%	request.setCharacterEncoding("UTF-8"); %>
+<%
+    request.setCharacterEncoding("UTF-8");
+    %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -101,7 +103,7 @@ $(function(){
 </head>
 
 <%
-	int userNum = 3;	//일단 테스트값
+int userNum = 3;	//일단 테스트값
 	int novelNum = 23; 
 	int epNum = 85;
 
@@ -119,7 +121,8 @@ $(function(){
 			location.href="http://localhost/project2/login/loginpage.jsp";
 			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 		</script>
-<%	}	
+<%
+}	
 
 	if(novelNum == 0){
 %>
@@ -128,7 +131,8 @@ $(function(){
 			location.href="http://localhost/project2/novel/novel_list.jsp";
 			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 		</script>
-<%	}	
+<%
+}	
 
 	if(epNum == 0){
 %>
@@ -137,11 +141,12 @@ $(function(){
 			location.href="http://localhost/project2/novel/novel_list.jsp";
 			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 		</script>
-<%	}	
+<%
+}	
 	
 	// 선택한 회차 화면에 출력
-	MyPageDAO mDAO = new MyPageDAO();
-	LookEpisodeVO selectVO = null;
+	EpisodeMyDAO mDAO = new EpisodeMyDAO();
+	LookMyEpisodeVO selectVO = null;
 	try{
 		// 에피소드 화면 출력
 		selectVO = mDAO.selectEpisode(userNum, novelNum, epNum);

@@ -1,4 +1,4 @@
-<%@page import="EpisodeDAO.MyPageDAO"%>
+<%@page import="EpisodeDAO.EpisodeMyDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -73,7 +73,6 @@
 </head>
 
 <%
-	
 	/* 
 	//세션에 유저번호 값이 있는지 확인
 	int userNum = 0;
@@ -88,12 +87,11 @@
 	int novelNum = Integer.parseInt(request.getParameter("novelNum"));
 	
 	*/
-	int userNum = 1;
-	int novelNum = 22; //일단 테스트값
+	int userNum = 4;
+	int novelNum = 44; //일단 테스트값
 	
 	// 소설 제목 출력
-	MyPageDAO mDAO = new MyPageDAO();
-	
+	EpisodeMyDAO mDAO = new EpisodeMyDAO();
 %>
 
 <%-- vo: novelNum, epNum, userNum, epTitle, detail, openStatus, views, createDate--%>
@@ -105,12 +103,12 @@
 	<div class="lightMode h-full flex flex-col h-full">
 	<main class="flex-1">
 		
-		<form id="epFrm" action="/project2/episode/episode_write_process.jsp" method="post" class="flex flex-col h-full">
+		<form id="epFrm" action="/project2/episode/episodeMy/episode_write_process.jsp" method="post" class="flex flex-col h-full">
 			
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
 					<a href="/project2/episode/novel_list.jsp">
-						<img width="20" height="20" src="/project2/_next/static/images/list.png" />
+						<img width="20" height="20" src="http://localhost/project2/_next/static/images/list.png" />
 					</a>
 				</div>
 				<div class="flex absolute inset-x-0 bottom-10 mx-20 items-center justify-center text-12 font-bold desktop:bottom-auto desktop:mx-[220px] desktop:items-end desktop:text-16">

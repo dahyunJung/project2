@@ -1,4 +1,4 @@
-package EpisodeVO;
+package EpisodeVO.My;
 
 import java.sql.Date;
 

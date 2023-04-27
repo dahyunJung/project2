@@ -39,10 +39,11 @@
 	<div class="flex flex-col h-full">
 	<div class="z-1">
 					
-	<!-- header -->
-	<div>
-		<jsp:include page="../_next/header_user_login_search.jsp"/>
-	</div>						
+   <!-- header -->
+   <div>
+      <jsp:include page="../../_next/header_user_login_search.jsp"/>
+   </div> 					
+	
 	</div>
 	
 	<main class="flex-1">
@@ -147,7 +148,7 @@
 		</main>
 	<!-- footer -->
 	<div>
-		<jsp:include page="../_next/footer.jsp"/>
+		<jsp:include page="../../_next/footer.jsp"/>
 	</div>
 </body>
 </html>

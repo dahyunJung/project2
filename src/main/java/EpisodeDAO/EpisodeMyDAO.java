@@ -7,20 +7,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import EpisodeVO.CreateEpisodeVO;
-import EpisodeVO.EditEpisodeVO;
-import EpisodeVO.LookEpisodeVO;
+import EpisodeVO.My.CreateEpisodeVO;
+import EpisodeVO.My.EditEpisodeVO;
+import EpisodeVO.My.LookMyEpisodeVO;
 import conn.DbConnection;
 
-public class MyPageDAO {
+public class EpisodeMyDAO {
 
 	/*
 	 * CreateEpisodeVO: novelNum, epNum, userNum, epTitle, detail, openStatus,
 	 * views, createDate episode sql: num_episode, num_novel, num_member, title,
 	 * story, open, visit, make
 	 */
-
-	// 내 소설 에피소드 리스트 보여주는 창
 
 	
 	  // 작성한 소설 제목 출력 (에피소드 작성 )
@@ -37,12 +35,6 @@ public class MyPageDAO {
 			selectNovelTitle.append(" select title ")
 							.append(" from novel ")
 							.append(" where num_novel=?" );
-			
-			/*
-			 * selectNovelTitle.append(" select distinct n.title ")
-			 * .append(" from episode e, novel n ")
-			 * .append(" where n.num_novel=e.num_novel and n.num_novel=?" );
-			 */
 	  
 			pstmt = con.prepareStatement(selectNovelTitle.toString());
 			pstmt.setInt(1, novelNum); 
@@ -141,6 +133,7 @@ public class MyPageDAO {
 		return cnt;
 	}// updateEpisode
 
+	
 	// 에피소드 삭제
 	public int deleteEpisode(int userNum, int novelNum, int epNum) throws SQLException {
 		int cnt = 0;
@@ -155,7 +148,7 @@ public class MyPageDAO {
 			StringBuilder deleteEpisode = new StringBuilder();
 
 			deleteEpisode.append(" delete from episode ")
-					.append(" where num_member=? and num_novel=? and num_episode=? ");
+						.append(" where num_member=? and num_novel=? and num_episode=? ");
 
 			pstmt = con.prepareStatement(deleteEpisode.toString());
 
@@ -177,10 +170,10 @@ public class MyPageDAO {
 		return cnt;
 	}// deleteEpisode
 
+	
 	// 내가 작성한 에피소드 내용보여주는 창 (수정)
-	public LookEpisodeVO selectEpisode(int userNum, int novelNum, int epNum) throws SQLException {
-
-		LookEpisodeVO leVO = null;
+	public LookMyEpisodeVO selectEpisode(int userNum, int novelNum, int epNum) throws SQLException {
+		LookMyEpisodeVO leVO = null;
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -193,8 +186,8 @@ public class MyPageDAO {
 
 			StringBuilder selectEpisode = new StringBuilder();
 			selectEpisode.append(" select n.title novelTitle, e.title epTitle, e.story epDetail, e.open open ")
-					.append(" from episode e, novel n ")
-					.append(" where n.num_novel=e.num_novel and e.num_member=? and e.num_novel=? and e.num_episode=? ");
+						 .append(" from episode e, novel n ")
+						 .append(" where n.num_novel=e.num_novel and e.num_member=? and e.num_novel=? and e.num_episode=? ");
 
 			pstmt = con.prepareStatement(selectEpisode.toString());
 
@@ -205,7 +198,7 @@ public class MyPageDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				leVO = new LookEpisodeVO();
+				leVO = new LookMyEpisodeVO();
 				leVO.setNovelTitle(rs.getString("novelTitle"));
 				leVO.setEpTitle(rs.getString("epTitle"));
 				leVO.setEpDetail(rs.getString("epDetail"));
@@ -218,7 +211,8 @@ public class MyPageDAO {
 		return leVO;
 	}// selectEpisode
 
-	// 소설에 해당하는 모든 에피소드 리스트 가져오기
+	
+	// 내 소설에 해당하는 모든 에피소드 리스트 가져오기
 	public List<CreateEpisodeVO> selectEpisodeAll(int userNum, int novelNum) throws SQLException {
 		List<CreateEpisodeVO> epList = new ArrayList<CreateEpisodeVO>();
 

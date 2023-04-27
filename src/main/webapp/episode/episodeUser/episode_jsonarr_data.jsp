@@ -8,9 +8,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true" info="JSONArray" %><%
     
-    /* String novel = request.getParameter("novelNum");
-    int novelNum = Integer.parseInt(novel); */
-    int novelNum = 23;
+    
+    //int novelNum = Integer.parseInt(request.getParameter("novelNum"));
+    int novelNum = 46;
     
 	EpisodeDAO epDAO = new EpisodeDAO();
     
