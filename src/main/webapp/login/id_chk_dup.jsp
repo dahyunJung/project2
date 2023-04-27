@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"  href="http://localhost/jsp_prj/common/main_v20230217.css"/>
+<link rel="stylesheet" type="text/css"  href="http://211.63.89.150/common/main_v20230217.css"/>
 <style type="text/css">
 #warp{width: 300px; height: 200px}
 #header{width:300px;height: 40px; text-align: center;}
@@ -61,9 +61,11 @@ if("POST".equals(request.getMethod())&& !"".equals(id)){
 	
 	LoginDAO lDAO = new LoginDAO();
 	try{
-		DataEncrypt de = new DataEncrypt("FsRt4SfY4US0IWtK4JPJsw==");
+		/* DataEncrypt de = new DataEncrypt("FsRt4SfY4US0IWtK4JPJsw==");
 		String id_de = de.encryption(id);
-	String resultId=lDAO.selectIdCheck(id_de);
+	String resultId=lDAO.selectIdCheck(id_de); */
+	String resultId=lDAO.selectIdCheck(id);
+	
 %>
 <div id="select_result">
 <%

@@ -15,10 +15,8 @@
 <link rel="stylesheet" type="text/css" href="/project2/_next/static/css/login.css" />
 <noscript data-n-css=""></noscript>
 <style type="text/css">
-
 #wrap{ width: 1000px;height: 650px;margin: 0px auto;}
 #header{height: 150px;position: relative;}
-
 #container{height: 500px;display: flex;justify-content: center;align-items: center;position: relative;}
 #zoa{width: 200px; height: 70px; position: absolute;bottom: 420px;
     background:#FFFFFF url(\\211.63.89.130\sharing\07.프로젝트\2차\3조\_next\static\images\1/zoa.PNG);background-size : 100% 100%;}
@@ -33,7 +31,6 @@
 .input_pass{width: 100%; height: 30px; border-radius: 3px;background-color: #e8f0fe;
     border: none;border-bottom: 1px solid #CCC;}
 .input_button{width:100%; height:50px; border-radius: 10px; background-color: yellow;}
-
 </style>
 <!-- jQuery CDN 시작 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -46,7 +43,6 @@ function idsearch_pop(){
 function password_pop(){
 	window.open("password_issued.jsp","임시비밀번호 발급","height=750px,width=650px,top= 300px, left=500px");
 }
-
 $(function(){	
 $("#loginBtn").click(function(){
 	let id = $("#id").val();
@@ -59,7 +55,6 @@ $("#loginBtn").click(function(){
 	}
 });
 });
-
 </script>
 
 

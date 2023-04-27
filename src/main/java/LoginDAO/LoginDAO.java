@@ -330,6 +330,31 @@ public int updatePass(String id, String pw)throws SQLException {
 		
 		
   }
+  
+  public void insertProfile(String profile, int num) throws SQLException{
+	  Connection con =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		DbConnection dbCon =DbConnection.getInstance();
+		
+		try {
+			con= dbCon.getConn();
+			String sql = "update member set photo=? where num_member=?";
+			
+		
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,profile);
+			pstmt.setInt(2,num);
+			
+			
+			pstmt.executeUpdate();
+			
+		}finally {
+			dbCon.dbClose(rs, pstmt, con);
+		}
+			
+  }
 }
 
 

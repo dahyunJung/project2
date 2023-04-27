@@ -14,11 +14,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"  href="http://localhost/jsp_prj/common/main_v20230217.css"/>
+<link rel="stylesheet" type="text/css"  href="http://211.63.89.150/common/main_v20230217.css"/>
 <style type="text/css">
 #wrap{ width: 1000px; height: 1200px;margin: 0px auto; }
 #header{  height: 200px; position: relative;
-	background: #FFFFFF url(http://localhost/jsp_prj/common/images/header_bg.png)  repeat-x;}
+	background: #FFFFFF url(http://211.63.89.150/common/images/header_bg.png)  repeat-x;}
 
 #logo{ position:absolute;top: 40px;left:100px; width: 150px; font-weight: bold; font-size: 40px;
 	font-family: 고딕 ;}	

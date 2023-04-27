@@ -71,6 +71,10 @@ $(function(){
 	$("#logout").click(function(){
 		 $.ajax({
 		      url: "logout.jsp",
+		      error : function(xhr){
+					alert("서버에서 문제가 발생하였습니다");
+					console.log("에러코드 : "+xhr.status);
+				},
 		      success: function(){
 		        alert("로그아웃 되었습니다.");
 		        window.location.href = "loginpage.jsp";
@@ -81,15 +85,13 @@ $(function(){
 		window.location.href="info.jsp";
 	});
 	$("#myNovel").click(function(){
-		$("#frm_myNovel").submit();
-		//window.location.href="../novel/my_novel_space.jsp?order_novel=0";
+	$("#frm_myNovel").submit(); 
 	});
 	$("#like").click(function(){
 		$("#frm_like").submit();
-		//window.location.href="like.jsp?search=";
 	});
 	
-	$("#imgpf").click(function(){
+ 	$("#imgpf").click(function(){
 		$("#file").click();
 	});
 	
@@ -97,43 +99,44 @@ $(function(){
 		let blockExt = ["git","png","jpg","bmp"];
 		let blockFlag = false;
 		let fileName = $("#file").val();
-		let ext = fileName.substring(file.lastIndexOf(".")+1);
+		let ext = fileName.substring(fileName.lastIndexOf(".")+1);
 		
 		for(let i=0; i < blockExt.length; i++){
 			if(blockExt[i]==ext){
-				blockFlag = false;
+				blockFlag = true;
 				break;
 			}
 		}
-		
+		console.log(ext);
 		if(!blockFlag){
 			alert("이미지파일만 업로드 가능합니다");
 			return;
 		}else{
-			let file = event.target.file[0];
-			
+			const maxSize = 1024 * 1024;
+			console.log("event",event);
+			let file = event.target.files[0];
+			console.log('file',file);
+			if(file.size >maxSize){
+				alert("1MB 이하의 이미지파일을 올려주세요");
+				return;
+			}else{
+				
 			let reader = new FileReader();
+			console.log('reader',reader);
 			reader.onload = function(e){
 				$("imgpf").attr("src",e.target.result);
 			}
 			
 			reader.readAsDataURL(file);
 			$("#frm").submit();
+			}
 		}
-	});
+	}); 
 	
 });
 
 
 </script>
-</script>
-<form id="frm_myNovel" action="../novel/my_novel_space.jsp" method="post">
-<input type="hidden"name="order_novel"value="0">
-</form>
-<form id="frm_like" action="like.jsp" method="post">
-<input type="hidden"name="search">
-<input type="hidden"name="order_novel"value="0">
-</form>
            <form action = "my_page_profile.jsp" method="post" enctype="multipart/form-data" id="frm" name="frm">
     <div id="wrap">
 
@@ -143,13 +146,18 @@ $(function(){
             <div id="text_mypage"><%=session.getAttribute("user_id") %>님의 마이페이지</div>
             <div id="img_change"><img src="../_next/static/images/mypage.PNG" id="profile"></div>
             <div id="text_logout"><a href="#void" id="logout">로그아웃</a></div>
-            <div id="img_profile"><img src="../_next/static/images/profile_images/profile.PNG" class="profile"  id="imgpf" name="imgpf"/>
+            <div id="img_profile"><img src="../_next/static/images/profile_images/<%=session.getAttribute("user_photo") %>" class="profile"  id="imgpf" name="imgpf"/>
             <input type="file" id="file" name="file" style="display:none" /></div>
             
             <div id="input_name"><input type="text" readonly value="<%=session.getAttribute("user_name") %>님" class="name"></div>
             <div id="input_button1"><input type="button"class="button" id="myNovel" value=" 내 소설"></div>
             <div id="input_button2"><input type="button"class="button" id="like" value=" 좋아요"></div>
             
+			<form action="../novel/my_novel_space.jsp" id="frm_myNovel" method="post"></form>
+			
+			
+			<form action="like.jsp" id="frm_like" method="post"><input type="hidden" name="search"></form>
+			
            </div>
        </div>
 
