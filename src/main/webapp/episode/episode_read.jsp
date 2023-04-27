@@ -38,7 +38,7 @@
 $(function(){
 	
 	$("#prev").click(function(){
-		// 파라미터????
+		
 	}); //prev
 	
 	$("#next").click(function(){
@@ -51,12 +51,21 @@ $(function(){
 </script>
 </head>
 
-
-
 <%
-	int userNum = 3;	//일단 테스트값
+
+	/* if((Integer)session.getAttribute("userNum")==null){
+	    response.sendRedirect("http://localhost/project2/episode/novel_list.jsp");
+	}  */
+
+	/* int userNum = 3;	//일단 테스트값
 	int novelNum = 23; 
-	int epNum = 63;
+	int epNum = 85; */
+	//int userNum = 4;
+	
+	int userNum = 3;
+	//int userNum = (Integer)session.getAttribute("userNum");
+	int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
+	int epNum = Integer.parseInt(request.getParameter("epNum")); 
 	
 	MyPageDAO mDAO = new MyPageDAO();
 	LookEpisodeVO selectVO = null;

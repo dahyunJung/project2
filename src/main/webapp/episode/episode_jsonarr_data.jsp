@@ -34,6 +34,8 @@
 			jsonTemp = new JSONObject();
 			
 			// 생성된 JSONObject에 속성값을 넣는다.
+			jsonTemp.put("novelNum", leVO.getNovelNum());
+			jsonTemp.put("epNum", leVO.getEpNum());
 			jsonTemp.put("epTitle", leVO.getEpTitle());
 			jsonTemp.put("viewCnt", leVO.getViewCnt());
 			jsonTemp.put("createDate", sdf.format(leVO.getCreateDate()));

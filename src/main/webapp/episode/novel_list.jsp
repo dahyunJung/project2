@@ -38,7 +38,7 @@ $(function(){
 			 	article += "<article class='flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30'>"
 						+ "<div class='flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2'>"+cnt +"</div>"
 						+ "<div class='flex flex-1 flex-col desktop:flex-row'>"
-						+ "<a class='flex w-full shrink' href='/project2/episode/episode_read.jsp'>"
+						+ "<a class='flex w-full shrink' href='episode_read.jsp?novelNum="+jsonObj.novelNum+"&epNum="+jsonObj.epNum+"'>"
 						+ "<div class='flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80'>"
 						+ "<h3 class='flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16'>"
 						+ "<div class='truncate after:inline-block after:w-0 shrink'>"+ jsonObj.epTitle+"</div></h3>"
@@ -48,13 +48,11 @@ $(function(){
 						+ "<span class='mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8'>|</span>"
 						+ "<span class='typo-g-sm2 -mb-[0.2em]'>"+ jsonObj.createDate + "</span>"
 						+ "</div></div></div></a></div></article><br>"; 
-						
 			});//each
 			
 			if(cnt == 0){
 				article="<label>작성한 에피소드가 없습니다.</label>";
 			}//end if
-			// }
 			
 			$("#empTab").append(article);
 		}
@@ -93,7 +91,7 @@ $(function(){
 <%
 	//int userNum = (Integer)session.getAttribute("userNum");
 	int userNum = 4;
-	int novelNum = 21;
+	int novelNum = 23;
 	//int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
 	if(novelNum == 0){
 %>
@@ -160,7 +158,7 @@ $(function(){
 						
 							<div class="flex items-center">
 								<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b mr-8"
-									href="/project3/me/novel_write.jsp" type="button">첫회 읽기</button>
+									href="/project2/episode/novel_write.jsp" type="button">첫회 읽기</button>
 									&nbsp;&nbsp;&nbsp;
 
 								<!-- 좋아요 버튼 -->
@@ -215,7 +213,7 @@ $(function(){
 				</div>
 			</div>
 				
-			
+			<!-- 회차 목록들 -->
 			<div id="empTab">
 			
 			</div>
