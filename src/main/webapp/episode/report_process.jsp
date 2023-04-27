@@ -1,3 +1,4 @@
+<%@page import="EpisodeDAO.EpisodeDAO"%>
 <%@page import="EpisodeVO.EditEpisodeVO"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="EpisodeDAO.MyPageDAO"%>
@@ -15,23 +16,21 @@
 request.setCharacterEncoding("UTF-8");
 %>
 
-<jsp:useBean id="lVO" class="EpisodeVO.LikeVO" scope="page"/>
-<jsp:setProperty property="*" name="lVO"/>
+<jsp:useBean id="rVO" class="EpisodeVO.ReportVO" scope="page"/>
+<jsp:setProperty property="*" name="rVO"/>
 
 <%
 	// 공개여부 전환
-	String good=request.getParameter("good");
-	lVO.ge
+	String report = request.getParameter("report");
 
-	MyPageDAO mDAO = new MyPageDAO();
+	 EpisodeDAO epDAO = new EpisodeDAO();
 
-	try{
-		int editCnt = mDAO.updateEpisode(lVO);
+	/* try{
+		int editCnt;
 		
 		if(editCnt > 0){
 			System.out.println(editCnt + ", 수정 완료 ");
 			
-			response.sendRedirect("/project2/novel/novel_list.jsp");		
 		}else{
 			System.out.println(edVO.getEpNum()+", "+editCnt + ", 수정 실패");
 			System.out.println("error");
@@ -39,7 +38,7 @@ request.setCharacterEncoding("UTF-8");
 		
 	}catch(SQLException e){
 		e.printStackTrace();
-	}
+	} */
 %>
 
 

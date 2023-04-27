@@ -56,7 +56,39 @@ public class EpisodeDAO {
 		return lnVO;
 	}// selectNovel
 	
+	public int countEp(int novelNum) throws SQLException{
+		int cnt = 0;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		DbConnection dbConnection = DbConnection.getInstance();
+		ResultSet rs = null;
 
+		try {
+			con = dbConnection.getConn();
+
+			String countEp = " select count(*) from episode where num_novel=? ";
+
+			pstmt = con.prepareStatement(countEp);
+
+			pstmt.setInt(1, novelNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				cnt = rs.getInt(1);			
+			}
+
+			System.out.print(countEp);
+			System.out.println(novelNum + ", " + cnt + " 회차 개수");
+		} finally {
+			// 7. 연결 끊기
+			dbConnection.dbClose(null, pstmt, con);
+		} // end finally
+		return cnt;
+	}
+	
+	
 	// 에피소드 회차 리스트
 	public List<ListEpisodeVO> selectAllEp(int novelNum) throws SQLException{
 		List<ListEpisodeVO> list = new ArrayList<ListEpisodeVO>();
@@ -175,7 +207,7 @@ public class EpisodeDAO {
 		return cnt;
 	}//deleteLike
 	
-	
+	// 좋아요되어 있으면 좋아요 화면에 표시
 	public int confirmLike(int userNum, int novelNum) throws SQLException{
 		int cnt = 0;
 		
@@ -226,7 +258,7 @@ public class EpisodeDAO {
 
 			pstmt = con.prepareStatement(insertReport.toString());
 
-			pstmt.setInt(1, reportVO.getMemberNum());
+			pstmt.setInt(1, reportVO.getUserNum());
 			pstmt.setInt(2, reportVO.getNovelNum());
 			pstmt.setString(3, reportVO.getId());
 			pstmt.setInt(4, reportVO.getReportCode());

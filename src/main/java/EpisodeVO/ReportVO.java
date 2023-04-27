@@ -5,7 +5,7 @@ import java.util.Date;
 public class ReportVO {
 	
 	private int reportNum;
-	private int memberNum;  //신고하는 사람
+	private int userNum;  //신고하는 사람
 	private int novelNum;
 	private String id; // 신고당하는 사람
 	private int reportCode;
@@ -17,11 +17,11 @@ public class ReportVO {
 	public void setReportNum(int reportNum) {
 		this.reportNum = reportNum;
 	}
-	public int getMemberNum() {
-		return memberNum;
+	public int getUserNum() {
+		return userNum;
 	}
-	public void setMemberNum(int memberNum) {
-		this.memberNum = memberNum;
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
 	}
 	public int getNovelNum() {
 		return novelNum;

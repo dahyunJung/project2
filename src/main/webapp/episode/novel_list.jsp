@@ -22,44 +22,46 @@
 <script type="text/javascript">
 
 $(function(){
-	/* $.ajax({
-		url : "manager_novel_data_jsonarr.jsp",
+	 $.ajax({
+		url : "episode_jsonarr_data.jsp",
 		dataType : "JSON",
 		error : function(xhr){
 			alert("서버에서 문제가 발생했습니다. 다시 시도해주세요.");
 			console.log(xhr.status);
 		},
 		success : function(jsonArr){
-			var tbody="";
+			var article="";
 			let cnt=0;
 			
-			$.each(jsonArr,function(idx,jsonObj){
+			$.each(jsonArr,function(idx, jsonObj){
 				cnt++;
-			tbody+="<tr><td>"+
-					jsonObj.num_novel+"</td><td>"+
-					jsonObj.novelTitle+"</td><td>"+
-					jsonObj.id+"</td><td>"+
-					jsonObj.likes+"</td><td>"+
-					jsonObj.num_report+"</td><td>"+ 
-					jsonObj.make+"</td></tr>";
+			 	article += "<article class='flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30'>"
+						+ "<div class='flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2'>"+cnt +"</div>"
+						+ "<div class='flex flex-1 flex-col desktop:flex-row'>"
+						+ "<a class='flex w-full shrink' href='/project2/episode/episode_read.jsp'>"
+						+ "<div class='flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80'>"
+						+ "<h3 class='flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16'>"
+						+ "<div class='truncate after:inline-block after:w-0 shrink'>"+ jsonObj.epTitle+"</div></h3>"
+						+ "<div class='flex typo-sm2 whitespace-pre-line text-grey60 desktop:whitespace-normal mb-14 desktop:mb-0'>"
+						+ "<div class='flex flex-wrap items-center text-grey60'>"
+						+ "<span>"+ jsonObj.viewCnt+"</span>"
+						+ "<span class='mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8'>|</span>"
+						+ "<span class='typo-g-sm2 -mb-[0.2em]'>"+ jsonObj.createDate + "</span>"
+						+ "</div></div></div></a></div></article><br>"; 
+						
 			});//each
 			
 			if(cnt == 0){
-				tbody="<tr><td colspan='6'>모든 회원이 탈퇴하였습니다.</td></tr>";
+				article="<label>작성한 에피소드가 없습니다.</label>";
 			}//end if
+			// }
 			
-			$("#myTable tbody").html(tbody);
-			
-			    $("#myTable").DataTable({
-			      paging: true, // 페이지네이션 기능 활성화
-			      lengthChange: true, // 페이지당 보여질 데이터 수 조정 기능 활성화
-			      searching: true // 검색 기능 활성화
-			    });
+			$("#empTab").append(article);
 		}
-	});//ajax */
+	});//ajax
 	
 	// 에피소드 공개
-	$("#img").click(function(){
+	$("#goodImg").click(function(){
 		var good = "http://localhost/project2/_next/static/images/good_on.png";
 		var cancelGood = "http://localhost/project2/_next/static/images/good_off.png";
 		
@@ -76,11 +78,13 @@ $(function(){
 		
 	}); //private
 	
+	$("#reportImg").click(function(){
+		window.open("/project2/episode/report_popup.jsp","popup","width=500,height=803,resizable=no,top="
+				+(window.screenY+100)	+",left="+(window.screenX+100)); 
+		//window.close();
+	});
+	
 });//ready
-
-	function location_modify(){
-		window.location.href="/project3/me/novel_edit.jsp";
-	}
 	
 </script>
 
@@ -89,7 +93,7 @@ $(function(){
 <%
 	//int userNum = (Integer)session.getAttribute("userNum");
 	int userNum = 4;
-	int novelNum = 23;
+	int novelNum = 21;
 	//int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
 	if(novelNum == 0){
 %>
@@ -167,13 +171,16 @@ $(function(){
 									<input type="hidden" id="good" name="good" value=""/>
 								</form>	
 
-								<img id="img" src="<%= (epDAO.confirmLike(userNum, novelNum) == 1) ? "http://localhost/project2/_next/static/images/good_on.png":"http://localhost/project2/_next/static/images/good_off.png" %>" alt="좋아요"/>
+								<img id="goodImg" src="<%= (epDAO.confirmLike(userNum, novelNum) == 1) ? "http://localhost/project2/_next/static/images/good_on.png":"http://localhost/project2/_next/static/images/good_off.png" %>" alt="좋아요"/>
 								
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<%-- <!-- 신고 버튼 -->
-								<form action="report_process" id="reportFrm" method="post">
-									<input type="image" id="report" src="<%=  %>" style="width: 40px; height: 40px;" alt="좋아요"/>
-								</form>	 --%>
+								
+								<!-- 신고 버튼 -->
+								<form action="report_process.jsp" id="reportFrm" method="post">
+									<input type="hidden" id="report" name="report" value=""/>
+								</form>
+								
+								<img id="reportImg" src="http://localhost/project2/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/>
 							</div>
 						
 						</div>
@@ -197,7 +204,7 @@ $(function(){
 			<div>
 				<div class="flex items-center">
 					<div class="typo-dp3 mr-6">회차</div>
-					<span class="typo-g-sm2 -mb-[0.2em] !typo-g-lg1 text-grey60">(2)</span>
+					<span class="typo-g-sm2 -mb-[0.2em] !typo-g-lg1 text-grey60">(<%= epDAO.countEp(novelNum) %>)</span>
 				</div>
 				<div class="flex w-full items-center justify-between border-b-1 py-16">
 					<div class="relative typo-sm1 rounded-full bg-grey20 py-6 pl-14 pr-8 desktop:bg-transparent desktop:px-0 ml-8">
@@ -208,10 +215,18 @@ $(function(){
 				</div>
 			</div>
 				
+			
+			<div id="empTab">
+			
+			</div>
+			
+			<%--
 			<!-- 회차 목록들 -->
 			<article class="flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30">
+			
 				<div class="flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2">1.</div>
 				<div class="flex flex-1 flex-col desktop:flex-row">
+				
 					<a class="flex w-full shrink" href="/project2/episode/episode_read.jsp">
 					<div class="flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80">
 						<h3 class="flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16">
@@ -221,14 +236,16 @@ $(function(){
 							<div class="flex flex-wrap items-center text-grey60">
 								<span>조회 22</span> 
 								<span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
-								<span class="typo-sm2 flex items-center">
 								<span class="typo-g-sm2 -mb-[0.2em]">2023.02.23</span>
 							</div>
 						</div>
 					</div>
 					</a>
+					
 				</div>
+				
 			</article>
+			 --%>  
 				
 			</div>
 		</div>
