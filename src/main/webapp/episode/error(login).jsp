@@ -30,7 +30,7 @@
 	<main class="flex-1">
 	<br><br><br><br><br><br>
 		<div style="text-align: center;">
-			<h1 style="font-size: 30px">에러가 발생했습니다. </h1><br>
+			<h1 style="font-size: 30px; font-weight: bold;">에러가 발생했습니다.</h1><br>
 			<a href="javascript:history.back();"><font style="color: #0000FF">다시 시도해주세요</font></a>
 		</div>
     </main>

@@ -103,7 +103,7 @@ $(function(){
 <%
 	int userNum = 3;	//일단 테스트값
 	int novelNum = 23; 
-	int epNum = 63;
+	int epNum = 85;
 
 	/* 
 	int userNum = (Integer)session.getAttribute("userNum");

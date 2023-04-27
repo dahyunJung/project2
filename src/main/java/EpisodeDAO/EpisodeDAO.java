@@ -86,7 +86,7 @@ public class EpisodeDAO {
 			dbConnection.dbClose(null, pstmt, con);
 		} // end finally
 		return cnt;
-	}
+	}//countEp
 	
 	
 	// 에피소드 회차 리스트
@@ -102,9 +102,9 @@ public class EpisodeDAO {
 		try {
 			con = dbConnection.getConn();
 			StringBuilder selectallEp = new StringBuilder();
-			selectallEp.append("	select title, visit, make	")
+			selectallEp.append("	select num_novel, num_episode ,title, visit, make	")
 			 			.append("	from episode ")
-			 			.append("	where num_novel=?	");
+			 			.append("	where num_novel=? and open=1	");
 			
 			pstmt = con.prepareStatement(selectallEp.toString());
 
@@ -116,6 +116,8 @@ public class EpisodeDAO {
 			
 			while(rs.next()) {
 				leVO = new ListEpisodeVO();
+				leVO.setNovelNum(novelNum);
+				leVO.setEpNum(rs.getInt("num_episode"));
 				leVO.setEpTitle(rs.getString("title"));
 				leVO.setViewCnt(rs.getInt("visit"));
 				leVO.setCreateDate(rs.getDate("make"));

@@ -14,6 +14,9 @@
 
 <style type="text/css">
 	#wrap { display: flex; align-items: center; justify-content: center; height: 100%; }
+	button, input, optgroup, select, textarea {
+    -webkit-appearance: auto;
+}
 </style>	
 
 <noscript data-n-css=""></noscript>
@@ -67,7 +70,6 @@
 				<label><input type="radio" name="reportCode" value="6" />같은 내용 도배</label><br>
 				<label><input type="radio" name="reportCode" value="7" />권리 침해 신고</label><br>
 			</div>
-			
 			
 		</form>
 		</div>
