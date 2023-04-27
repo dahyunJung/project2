@@ -64,6 +64,9 @@ String id=session.getAttribute("user_id").toString();
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- jQuery CDN 끝 -->
 <script type="text/javascript">
+<%
+request.setCharacterEncoding("UTF-8");
+%>
 $(function(){
 	$("#logout").click(function(){
 		 $.ajax({
@@ -85,31 +88,68 @@ $(function(){
 		$("#frm_like").submit();
 		//window.location.href="like.jsp?search=";
 	});
+	
+	$("#imgpf").click(function(){
+		$("#file").click();
+	});
+	
+	$("#file").change(function(event){
+		let blockExt = ["git","png","jpg","bmp"];
+		let blockFlag = false;
+		let fileName = $("#file").val();
+		let ext = fileName.substring(file.lastIndexOf(".")+1);
+		
+		for(let i=0; i < blockExt.length; i++){
+			if(blockExt[i]==ext){
+				blockFlag = false;
+				break;
+			}
+		}
+		
+		if(!blockFlag){
+			alert("이미지파일만 업로드 가능합니다");
+			return;
+		}else{
+			let file = event.target.file[0];
+			
+			let reader = new FileReader();
+			reader.onload = function(e){
+				$("imgpf").attr("src",e.target.result);
+			}
+			
+			reader.readAsDataURL(file);
+			$("#frm").submit();
+		}
+	});
+	
 });
 
 
 </script>
+           <form action = "my_page_profile.jsp" method="post" enctype="multipart/form-data" id="frm" name="frm">
     <div id="wrap">
 
 
        <div id="container">
            <div id="frame">
             <div id="text_mypage"><%=session.getAttribute("user_id") %>님의 마이페이지</div>
-            <div id="img_change"><img src="../images/mypage.PNG" id="profile"></div>
+            <div id="img_change"><img src="../_next/static/images/mypage.PNG" id="profile"></div>
             <div id="text_logout"><a href="#void" id="logout">로그아웃</a></div>
-            <div id="img_profile"><img src="../images/profile.PNG" class="profile" ></div>
-            <div id="input_name"><input type="text" readonly value="<%=session.getAttribute("name") %>님" class="name"></div>
+            <div id="img_profile"><img src="../_next/static/images/profile_images/profile.PNG" class="profile"  id="imgpf" name="imgpf"/>
+            <input type="file" id="file" name="file" style="display:none" /></div>
+            
+            <div id="input_name"><input type="text" readonly value="<%=session.getAttribute("user_name") %>님" class="name"></div>
             <div id="input_button1"><input type="button"class="button" id="myNovel" value=" 내 소설"></div>
             <div id="input_button2"><input type="button"class="button" id="like" value=" 좋아요"></div>
             
 			<form action="../novel/my_novel_space.jsp" id="frm_myNovel" method="post"><input type="hidden" name="order_novel" value="0"></form>
 			<form action="like.jsp" id="frm_like" method="post"><input type="hidden" name="search"></form>
 			
-
            </div>
        </div>
 
         </div>
+		</form>
     </div>
 </div>
 	<!-- footer -->

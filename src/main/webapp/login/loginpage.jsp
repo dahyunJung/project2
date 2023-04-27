@@ -92,7 +92,7 @@ $("#loginBtn").click(function(){
               <td><input type="text" class="input_id"placeholder="아이디" id="id" name="id"></td>
               </tr>
               <tr height="10px">
-               <td><input type="text" class="input_pass"placeholder="비밀번호" id="pw" name="pw" ></td>
+               <td><input type="password" class="input_pass"placeholder="비밀번호" id="pw" name="pw" ></td>
                </tr>
                </table>
                
