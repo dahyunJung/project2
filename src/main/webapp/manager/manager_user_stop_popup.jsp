@@ -1,3 +1,6 @@
+
+<%@page import="java.time.LocalDate"%><%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="ManagerDAO.ManagerDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -38,10 +41,29 @@
 <body>
 <%
 ManagerDAO mDAO = new ManagerDAO();
+String stop = request.getParameter("stop");
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+LocalDate currentDate = LocalDate.now();
+Date date = sdf.parse(stop);//db값안에 있는 날짜
+Date curDate = Date.from(currentDate.atStartOfDay().atZone(java.time.ZoneId.systemDefault()).toInstant());//현재 날짜
+//System.out.print(date);
+//System.out.print(curDate);
+//System.out.print(date.before(curDate)); //db값의 날짜가 현재날짜보다 전이냐? 이것으로 61일 정지 60일 정지를 나눌것
 try{
-int mcnt = mDAO.forcedStop(request.getParameter("id"));
-System.out.print(mcnt);
+int mcnt = 0;
+if( date.before(curDate)==true ){
+mcnt = mDAO.forcedStop61(request.getParameter("id"));
+out.print("61일 정지"); //61일 정지의 이유는 db값에 들어가는 중지값이 null이 들어가면 안되기에 nvl로 오늘자를 기준으로 하루전으로 기본값을 설정했기에
+// 정지를 당하지 않은 사람에 대해서는 61일 정지 부여
+}
+else{
+	mcnt = mDAO.forcedStop60(request.getParameter("id"));
+	out.print("60일 정지");
+	
+}
+
 if(mcnt>0){
+	session.setAttribute("check", "1");
 	%>
 	<div style="color: blue; text-align: center; font-weight: bold; font-size: 20px">정지 완료</div>
 	<% 

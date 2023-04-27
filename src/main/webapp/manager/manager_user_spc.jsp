@@ -43,7 +43,7 @@
 function stopPop(){
 	if(confirm("정지기한은 2달입니다. 정지시키시겠습니까? \n이미 정지되었다면 기한이 늘어납니다.")){
 	    // 확인 버튼을 누르면 실행될 코드
-	window.open("manager_user_stop_popup.jsp?id="+$("#hid").val() ,"popup","width= 502; height= 250;,top="
+	window.open("manager_user_stop_popup.jsp?id="+$("#hid").val()+"&stop="+$("#hstop").val() ,"popup","width= 502; height= 250;,top="
 			+(window.screenY+100)	+",left="+(window.screenX+100));
 	} else {
 	    // 취소 버튼을 누르면 실행될 코드
@@ -54,7 +54,7 @@ function stopPop(){
 function cancelStopPop(){
 	if(confirm("정지를 해지하시겠습니까?")){
 	    // 확인 버튼을 누르면 실행될 코드
-		window.open("manager_user_stop_cancel_popup.jsp?id="+$("#hid").val() ,"popup","width= 502; height= 250;,top="
+		window.open("manager_user_stop_cancel_popup.jsp?id="+$("#hid").val()+"&stop="+$("#hstop").val() ,"popup","width= 502; height= 250;,top="
 				+(window.screenY+100)	+",left="+(window.screenX+100));
 	} else {
 	    // 취소 버튼을 누르면 실행될 코드
@@ -139,7 +139,7 @@ function cancelStopPop(){
 	<main class="flex-1 mx-auto w-full max-w-default flex-row flex-wrap">
 	
 	<div style="margin-top: 20px;">
-		<button id="btn" onclick="location.href='manager_user.jsp">회원관리</button>
+		<button id="btn" onclick="location.href='manager_user.jsp'">회원관리</button>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<button id="btn" onclick="location.href='manager_novel.jsp'">소설관리</button>
 	</div>
@@ -167,6 +167,7 @@ function cancelStopPop(){
 				<%= mVO.getThumbnail() %>>
 		</div>
 		<input type = "hidden" value="<%= mVO.getId() %>"  id="hid"/>
+		<input type = "hidden" value="<%= mVO.getSusPeriod() %>"  id="hstop"/>
 		<div id="spc">
 			<ul>
 				<li>아이디 : <%= mVO.getId() %></li>

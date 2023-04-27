@@ -289,10 +289,10 @@ public List<MemberManageVO> selectMemberManage() throws SQLException {
 	con=dbCon.getConn();
 	
 
-	
+	//sysdate-373752
 	StringBuilder selectMemberManage = new StringBuilder();
-	selectMemberManage
-	.append(" SELECT m.num_member, m.id, m.join, nvl(m.stop, sysdate-373752) stop, nvl(h.visit, sysdate-373752) visit, nvl(m.novelcnt, 0) novelcnt, nvl(n.reportcnt, 0) reportcnt ") //, m.num_member, m.num_member
+	selectMemberManage	
+	.append(" SELECT DISTINCT m.num_member, m.id, m.join, nvl(m.stop, sysdate-1) stop, nvl(h.visit, m.join) visit,  nvl(m.novelcnt, 0) novelcnt, nvl(n.reportcnt, 0) reportcnt ") //, m.num_member, m.num_member
 	.append(" FROM member m ")
 	.append(" left Outer JOIN novel n ON m.num_member = n.num_member ")
 	.append(" left Outer JOIN report r ON n.num_member = r.num_member ")
