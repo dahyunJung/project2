@@ -30,7 +30,7 @@ String id=session.getAttribute("user_id").toString();
 
 $(function () {
 	$("#order_novel").change(function() {
-		$("#frm").submit();
+		$("#frm2").submit();
 	})
 })
 function novel(num_novel) {
@@ -45,7 +45,7 @@ function new_novel() {
 </head>
 <%
 if("POST".equals(request.getMethod())){
-	%>
+%>
 
 <body>
 	<div id="__next" data-reactroot="">
@@ -72,7 +72,7 @@ if("POST".equals(request.getMethod())){
 										<div
 											class="mb-24 px-6 py-8 desktop:mb-0 desktop:px-0 desktop:py-0">
 											<h1 class="typo-dp2 mb-6 desktop:typo-dp1">
-												<div><%=id %>님의</div>
+												<div><%=id%>님의</div>
 												<div class="-mt-4 desktop:mt-0">창작공간</div>
 											</h1>
 										</div>
@@ -81,7 +81,8 @@ if("POST".equals(request.getMethod())){
 											<a class="flex-1 desktop:flex-none" onclick="new_novel()"><button
 													class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b w-full border-1 !border-black"
 													type="button">
-													<form action="/project2/novel/novel_regi.jsp" id="new_novel" method="post"/>
+													 <form action="/project2/novel/novel_regi.jsp" id="new_novel" method="post">
+													 </form>
 													<span class="">새 작품 등록</span>
 												</button></a>
 										</div>
@@ -108,12 +109,10 @@ if("POST".equals(request.getMethod())){
 										<div class="flex ml-0 items-center desktop:ml-auto">
 											<div
 												class="relative typo-sm1 rounded-full bg-grey20 py-6 pl-14 pr-8 desktop:bg-transparent desktop:px-0">
-												<form action="/project2/novel/my_novel_space.jsp" id="frm" method="post">
-												<select id="order_novel" name="order_novel" class="w-full typo-sm1 desktop:text-grey70"
-													aria-controls="최신 업데이트 순">
-													<option value="최신 업데이트 순">최신 업데이트 순</option>
-													<option value="0" <%=(request.getParameter("order_novel").equals("0"))?"selected":"" %>>신작 순</option>
-													<option value="1" <%=(request.getParameter("order_novel").equals("1"))?"selected":"" %>>오래된 순</option>
+												<form id="frm2" name="frm2" method="post" >
+												<select id="order_novel" name="order_novel" class="w-full typo-sm1 desktop:text-grey70">
+													<option value="0" <%=(request.getParameter("order_novel").equals("0"))?"selected":""%>>신작 순</option>
+													<option value="1" <%=(request.getParameter("order_novel").equals("1"))?"selected":""%>>오래된 순</option>
 												</select>
 												</form>
 											</div>
@@ -123,12 +122,11 @@ if("POST".equals(request.getMethod())){
 								<div>
 								<%
 								MyNovelDAO mDAO = new MyNovelDAO();
-								try{
-									List<MyNovelVO> selectList = mDAO.selectNovelAll(id.toString(), request.getParameter("order_novel").toString() );
-									
-								//	System.out.println( selectList.get(0) );
-									pageContext.setAttribute("selList", selectList);
-									%>
+														try{
+															List<MyNovelVO> selectList = mDAO.selectNovelAll(id.toString(), request.getParameter("order_novel"));
+															
+															pageContext.setAttribute("selList", selectList);
+								%>
 									<c:forEach var="select" items="${ selList  }" varStatus="sNum">
 								
 									<div

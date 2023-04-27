@@ -29,7 +29,7 @@ public class MyNovelDAO {
 			.append(" where (n.num_member = m.num_member) and (m.id = '")
 			.append(id)
 			.append("') order by n.make");
-			if(type=="0") {
+			if(type.equals("0")) {
 				sb.append(" desc");
 			}
 				

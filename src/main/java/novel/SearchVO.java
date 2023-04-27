@@ -2,15 +2,15 @@ package novel;
 
 import java.sql.Date;
 
-public class MyLikeVO {
+public class SearchVO {
 	private String photo,subject,id;
 	private int num_novel,episode;
 	private Date make;
 	
-	public MyLikeVO() {
+	public SearchVO() {
 		
 	}
-	public MyLikeVO(String photo, String subject, String id, int num_novel,int episode,Date make) {
+	public SearchVO(String photo, String subject, String id, int num_novel,int episode,Date make) {
 		this.photo = photo;
 		this.subject = subject;
 		this.id = id;

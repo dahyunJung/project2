@@ -11,7 +11,7 @@ import conn.DbConnection;
 
 public class MyLikeDAO {
 	
-	public List<MyLikeVO> selectNovelAll(String id,String search) throws SQLException {
+	public List<MyLikeVO> selectNovelAll(String id,String search,String type) throws SQLException {
 		List<MyLikeVO> list=new ArrayList<MyLikeVO>();
 		
 		Connection con=null;
@@ -25,13 +25,24 @@ public class MyLikeDAO {
 			con=dbCon.getConn();
 			
 			StringBuilder sb=new StringBuilder();
-			sb.append(" select n.photo, n.title, m.id, n.num_novel ")
-			.append(" from member m, novel n, liken l ")
-			.append(" where (n.num_member=m.num_member and l.num_novel=n.num_novel) and (l.id=?) and (n.title like '%")
+			sb.append(" select n.photo, n.title, m.id, n.num_novel, e.num_episodes, e.max_make ")
+			.append(" from member m	")
+			.append(" join novel n ON n.num_member = m.num_member ")
+			.append(" join liken l ON n.num_novel = l.num_novel ")
+			.append(" LEFT JOIN (	")
+			.append(" SELECT num_novel, COUNT(*) AS num_episodes, MAX(make) AS max_make	")
+			.append(" FROM episode	")
+			.append(" GROUP BY num_novel	")
+			.append(" ) e ON n.num_novel = e.num_novel	")
+			.append(" WHERE l.id = ? AND n.title LIKE '%")
 			.append(search)
-			.append("%')")
-			.append(" order by l.num_like ");
-				
+			.append("%'")
+			.append(" order by e.max_make ");
+			
+			if(type.equals("0")) {
+			sb.append(" DESC ");
+			}
+			
 			pstmt=con.prepareStatement(sb.toString());
 
 			pstmt.setString(1, id);
@@ -42,7 +53,7 @@ public class MyLikeDAO {
 			
 			while(rs.next()) {
 				 
-				mVO=new MyLikeVO(rs.getString("photo"), rs.getString("title"), rs.getString("id"), rs.getInt("num_novel"));
+				mVO=new MyLikeVO(rs.getString("photo"), rs.getString("title"), rs.getString("id"), rs.getInt("num_novel"), rs.getInt("num_episodes"), rs.getDate("max_make"));
 				list.add(mVO);
 			}
 				

@@ -1,110 +1,83 @@
-<%@page import="java.util.List"%>
-<%@page import="novel.MyLikeVO"%>
+<%@page import="novel.SearchVO"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="novel.MyLikeDAO"%>
+<%@page import="novel.SearchDAO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charSet="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
-<title>좋아요 작품 | 카카오페이지 스테이지</title>
-<link rel="preconnect" href="https://fonts.gstatic.com"
-	crossorigin="anonymous" />
-<link rel="stylesheet"
-	data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
-<link rel="preload"
-	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css"
-	as="style" />
-<link rel="stylesheet"
-	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css"
-	data-n-g="" />
-<link rel="preload"
-	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css"
-	as="style" />
-<link rel="stylesheet"
-	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css"
-	data-n-p="" />
-<link rel="stylesheet" type="text/css" href="/project2/_next/static/css/login.css" />	
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+<title>검색 | 카카오페이지 스테이지</title>
+<link rel="preconnect" href="https://fonts.gstatic.com"	crossorigin="anonymous" />
+<link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
+<link rel="preload" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" as="style" />
+<link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
+<link rel="stylesheet" type="text/css" href="/project/_next/static/css/login.css" />
 <noscript data-n-css=""></noscript>
-</style>
-<!-- jQuery CDN 시작 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- jQuery CDN 끝 -->
-
 <script type="text/javascript">
-
 $(function () {
-	$("#order_novel").change(function() {
+	$("#searchimg").click(function () {
+		alert("sdfadsf");
 		$("#frm").submit();
 	})
 })
 function selectNovel(num_novel){
 	location.href="/project2/novel/novel_info.jsp?num_novel="+num_novel;
 }
-function findNovel(){
-	frm.submit();
-}
-function deleteNovel(num_novel){
-	location.href="/project2/novel/delete_like.jsp?num_novel="+num_novel;
-}
 </script>
 </head>
-	
-
 <body>
 	<div id="__next" data-reactroot="">
 		<div
 			style="display: none; background-color: canvas; color-scheme: light"></div>
 		<div class="lightMode h-full">
 			<div class="flex flex-col h-full">
-			
 <!-- header -->
 	<div>
 		<jsp:include page="../_next/header_user_login_search.jsp"/>
 	</div>	
-				
 				<main class="flex-1">
-					<section class="flex flex-col">
-						<div style="border-bottom: 1px solid #eee;">
+					<div
+						class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 max-w-[848px]">
+						<div class="flex flex-col mb-120 flex-1">
 							<div
-								class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18 relative py-20">
-								<form id="frm" name="frm" action="/project2/login/like.jsp"
-									class="flex mt-16 w-full items-center border-none border-black/10 max-w-full-view first:mt-0">
-									<div class="typo-md3 w-103 flex-[0_0_auto] px-0" style="font-size: 20px">좋아요 작품</div>
-									
-												<select id="order_novel" name="order_novel" class="w-full typo-sm1 desktop:text-grey70" style="width: 50px; margin-left: 500px">
-													<option value="0" <%=(request.getParameter("order_novel").equals("0"))?"selected":""%>>최신 순</option>
-													<option value="1" <%=(request.getParameter("order_novel").equals("1"))?"selected":""%>>오래된 순</option>
-												</select>
-								<div class="flex w-full items-center" style="position: absolute;right: 10px;width: 300px;background-color: white;">
-									<img onclick="findNovel()"
-										src="/project2/_next/static/images/search.png"
-										width="24" height="24" > &nbsp;
-									<div style="width: 250px">
-										<input
-										class="flex-1 bg-transparent text-el-60 outline-none placeholder:text-el-40 disabled:text-el-35 font-small1"
-										style="width: 250px"
-										name="search" maxLength="50" placeholder=" 제목을 입력하세요." size="1" />
-									</div>
+								class="mt-40 mb-32 px-18 desktop:mt-50 desktop:mb-42 desktop:px-0">
+								<div class="w-full">
+									<form id="frm">
+										<div
+											class="flex items-center rounded-4 border-1 border-grey30 py-4 px-16">
+											<div class="flex h-16 w-16 items-center text-grey60">
+												<svg id="searchimg" width="20" height="20" viewBox="0 0 20 20" fill="none"
+													xmlns="http://www.w3.org/2000/svg" role="img">
+                                                        <path
+														fill-rule="evenodd" clip-rule="evenodd"
+														d="M12.739 2.966a7 7 0 10-9.9 9.9 7 7 0 009.9-9.9zm-9.193 9.192a6 6 0 118.486-8.485 6 6 0 01-8.486 8.485z"
+														fill="#666"></path>
+                                                        <path
+														d="M13.168 12.087l4.95 4.95-.708.707-4.95-4.95.708-.707z"
+														fill="#666"></path>
+                                                    </svg>
+											</div>
+											<input type="search"
+												class="typo-md3 py-14 px-16 outline-none rounded-3 border-1 border-grey30 placeholder:text-grey60 w-full border-0 text-16 outline-none desktop:!text-16"
+												name="search" placeholder="검색어 입력" maxLength="100" />
+										</div>
+										<button type="submit" class="hidden">검색</button>
+									</form>
 								</div>
-								</form>
 							</div>
+							<div class="px-18 desktop:px-0"></div>
 						</div>
-						<div
-							class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 my-0 h-full w-full desktop:my-24">
-							<div class="flex flex-col flex-1">
-								<div class="col-span-full grid gap-x-64 desktop:grid-cols-2">
+						
+						<div class="col-span-full grid gap-x-64 desktop:grid-cols-2">
 								
 								<%
-																MyLikeDAO mDAO=new MyLikeDAO();
+																SearchDAO sDAO=new SearchDAO();
 																						try{
-																							List<MyLikeVO> selectList=mDAO.selectNovelAll(session.getAttribute("user_id").toString(),request.getParameter("search"),request.getParameter("order_novel"));
+																							List<SearchVO> selectList=sDAO.selectNovelAll(request.getParameter("search"));
 																							pageContext.setAttribute("selList", selectList);
 																%>
 								
@@ -145,23 +118,28 @@ function deleteNovel(num_novel){
 								</c:forEach>
 									
 									<% 
-								}catch(SQLException e){
+								}catch(Exception e){
 									e.printStackTrace();
 								}
 								%>
 								</div>
-							</div>
-						</div>
-					</section>
+						
+					</div>
 				</main>
-					<!-- footer -->
+
+
+			<!-- footer -->
 	<div>
 		<jsp:include page="../_next/footer.jsp"/>
 	</div>
+
+
 			</div>
 		</div>
 		<div id="modal-normal"></div>
 	</div>
+	<!--  <script id="__NEXT_DATA__" type="application/json">
+            {"props":{"pageProps":{}},"page":"/search","query":{},"buildId":"DTTq-pEjkraM1eJOqnaey","assetPrefix":"https://pagestage-cdn.kakaoent.com/web","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":[]}
+        </script> -->
 </body>
-
 </html>
