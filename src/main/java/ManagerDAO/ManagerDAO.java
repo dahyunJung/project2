@@ -28,12 +28,11 @@ public class ManagerDAO {
 			con = dbCon.getConn();
 			StringBuilder selectMemberInfo = new StringBuilder();
 			selectMemberInfo.append("	select m.id, m.name, m.birth, m.phone, m.email, m.photo, m.join, m.stop, ")
-					.append("	count(n.num_novel) as novel_cnt, count(r.num_report) as report_cnt, ")
+					.append("	m.novelcnt, count(r.num_report) as report_cnt, ")
 					.append("	h.visit as visitdate ").append("	from member m ")
-					.append("	left join novel n on n.num_member = m.num_member ")
 					.append("	left join report r on r.id = m.id ")
 					.append("	left join history h on h.num_member = m.num_member ").append("	where m.id = ? ")
-					.append("	group by m.id, m.name, m.birth, m.phone, m.email, m.photo, m.join, m.stop, h.visit ");
+					.append("	group by m.id, m.name, m.birth, m.phone, m.email, m.photo, m.join, m.stop, m.novelcnt,  h.visit ");
 
 			pstmt = con.prepareStatement(selectMemberInfo.toString());
 			pstmt.setString(1, id);
@@ -50,7 +49,7 @@ public class ManagerDAO {
 				mVO.setVisitDate(rs.getDate("visitDate"));
 				mVO.setJoinDate(rs.getDate("join"));
 				mVO.setSusPeriod(rs.getDate("stop"));
-				mVO.setNovelCnt(rs.getInt("novel_cnt"));
+				mVO.setNovelCnt(rs.getInt("novelcnt"));
 				mVO.setReportCnt(rs.getInt("report_cnt"));
 			}
 		} catch (SQLException e) {

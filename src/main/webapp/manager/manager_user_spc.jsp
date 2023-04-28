@@ -180,8 +180,7 @@ function cancelStopPop(){
 				<li>방문 날짜 : <%= mVO.getVisitDate() %></li>					
 				<li>가입 날짜 : <%= mVO.getJoinDate() %></li>
 					<% if (mVO.getSusPeriod() != null) { %>
-				<li>중지 기한 : <%= mVO.getSusPeriod() %>
-				 	 ~ <%= LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(mVO.getSusPeriod())).plusDays(60) %> (60일)</li>
+				<li>중지 기한 : <%= mVO.getSusPeriod() %>까지</li>
 					<% } else { %>
 				<li>중지 기한 : </li>
 					<% } %>
