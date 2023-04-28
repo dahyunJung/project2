@@ -47,7 +47,6 @@ function stopPop(){
 			+(window.screenY+100)	+",left="+(window.screenX+100));
 	} else {
 	    // 취소 버튼을 누르면 실행될 코드
-	    
 	}
 }//stopPop
 
@@ -60,14 +59,8 @@ function cancelStopPop(){
 	    // 취소 버튼을 누르면 실행될 코드
 	    
 	}
-	
 }//cancelStopPop
-
-
 </script>
-
-
-
 <style data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&display=swap">
 	
 	h1{
@@ -122,7 +115,6 @@ function cancelStopPop(){
 		margin-top: 0px;
 		margin-left: 800px;
 	}
-	
 </style>
 </head>
 
@@ -152,19 +144,18 @@ function cancelStopPop(){
     //전화번호
 	String phoneNumber = mVO.getPhone();
 	String formattedPhoneNumber = "";
-	if (phoneNumber != null) {
+	if (phoneNumber != null && phoneNumber.length() >= 10) {
 	    formattedPhoneNumber = phoneNumber.substring(0,3) + "-" + phoneNumber.substring(3,7) + "-" + phoneNumber.substring(7);
 	}
 %>	
-
 	<div>
 		<h1>"<%= id%>" 회원 정보</h1>
 	</div>
 	
 	<div>
 		<div id="pic" style="text-align: center;">
-			<img src="/project2/_next/static/images/profile_home.png" style="width: 170px; height: 170px; right:300px" alt="회원사진"
-				<%= mVO.getThumbnail() %>>
+			<img src="<%= (mVO.getThumbnail() != null) ? "/project2/_next/static/images/profile_images/" 
+				+ mVO.getThumbnail() : "/project2/_next/static/images/profile_home.png" %>" style="width: 170px; height: 170px; right:300px" alt="회원사진" >
 		</div>
 		<input type = "hidden" value="<%= mVO.getId() %>"  id="hid"/>
 		<input type = "hidden" value="<%= mVO.getSusPeriod() %>"  id="hstop"/>
@@ -194,8 +185,6 @@ function cancelStopPop(){
 	<div>
 		<button id="stopBtn">강제 중지</button> &nbsp;
 		<button id="cancelStopBtn">강제 중지 해제</button>
-
-		
 	</div>
     <br>
 	</main>
