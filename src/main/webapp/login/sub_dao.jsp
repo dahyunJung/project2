@@ -5,11 +5,11 @@
 <%
 String id = (String)session.getAttribute("user_id");
 String pw = request.getParameter("pw");
-/* String pw_de = DataEncrypt.messageDigest("MD5",pw); */
+String pw_de = DataEncrypt.messageDigest("MD5",pw);
 int update =0;
 
 LoginDAO lDAO = new LoginDAO();
-update = lDAO.updatePass(id, pw);
+update = lDAO.updatePass(id, pw_de);
 
 if(update == 0){
 	%>
