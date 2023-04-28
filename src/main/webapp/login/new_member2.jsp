@@ -63,7 +63,7 @@ $(function(){
 		alert("a");
 		 if($("#name").val()=="" || $("#id").val()=="" || $("#pw").val()=="" || $("#pw_chk").val()=="" || $("#birthDate").val()==""
 			 || $("#phone").val()=="" || $("#email").val()=="" || $("#email2").val()==""){
-			 alert("넘어감");
+			 alert("빈칸을 모두 채워주세요");
 			return;
 		}else if($("#pw").val() != $("#pw_chk").val()){
 			alert("비밀번호와 비밀번호 확인이 다릅니다");
@@ -105,7 +105,7 @@ $(function(){
                     <td width="150px"align="center" class="td1">이름</td><td width="600px"><input type="text" placeholder="이름" name="name" id="name"></td>
                 </tr>
                 <tr>
-                    <td align="center"class="td1">아이디</td><td><input type="text" placeholder="아이디" name="id" id="id" readonly="readonly" value="asa">
+                    <td align="center"class="td1">아이디</td><td><input type="text" placeholder="아이디" name="id" id="id" readonly="readonly">
                     <input type="button" class="button1" id = "idChk" value="중복 확인"></td>
                 </tr>
                 <tr>

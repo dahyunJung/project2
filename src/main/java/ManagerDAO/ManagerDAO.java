@@ -26,7 +26,7 @@ public class ManagerDAO {
 		DbConnection dbCon = DbConnection.getInstance();
 		try {
 			con = dbCon.getConn();
-			StringBuilder selectMemberInfo = new StringBuilder();
+			StringBuilder selectMemberInfo = new StringBuilder();//필요없는 값이 있긴함 report_cnt빼도 됨
 			selectMemberInfo.append("	select m.id, m.name, m.birth, m.phone, m.email, m.photo, m.join, m.stop, ")
 					.append("	m.novelcnt, count(r.num_report) as report_cnt, ")
 					.append("	h.visit as visitdate ").append("	from member m ")

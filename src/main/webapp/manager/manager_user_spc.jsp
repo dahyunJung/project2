@@ -175,8 +175,7 @@ function cancelStopPop(){
 				<li>생년월일 : <%= mVO.getBirthDate() %></li>
 				<li>이메일 : <%= mVO.getEmail() %></li>
 				<li>전화번호 : <%= formattedPhoneNumber %></li>
-				<li>소설 수 : <%= mVO.getNovelCnt() %></li>					
-				<li>신고 누적 수 : <%= mVO.getReportCnt() %></li>					
+				<li>소설 수 : <%= mVO.getNovelCnt() %></li>										
 				<li>방문 날짜 : <%= mVO.getVisitDate() %></li>					
 				<li>가입 날짜 : <%= mVO.getJoinDate() %></li>
 					<% if (mVO.getSusPeriod() != null) { %>
