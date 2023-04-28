@@ -103,15 +103,14 @@ $(function(){
 </head>
 
 <%
-int userNum = 3;	//일단 테스트값
-	int novelNum = 23; 
-	int epNum = 85;
-
-	/* 
+	//int userNum = 3;	//일단 테스트값
+	//int novelNum = 23; 
+	//int epNum = 85;
+	 
 	int userNum = (Integer)session.getAttribute("userNum");
 	int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
 	int epNum = Integer.parseInt(request.getParameter("epNum")); 
-	 */
+	
 	
 	// 유저번호 값이 있는지 확인 (세션)
 	if(userNum == 0){
