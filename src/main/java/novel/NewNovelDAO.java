@@ -94,9 +94,6 @@ public class NewNovelDAO {
 			pstmt.setInt(6, nVO.getEnd());
 			pstmt.setInt(7, Integer.parseInt(num_novel));
 			
-			System.out.println(sb.toString());
-			System.out.println(nVO.getTitle()+" / "+nVO.getAge()+" / "+nVO.getFilephoto()+" / "+nVO.getStory()+" / "+nVO.getOpen()+" / "+nVO.getEnd()+" / "+Integer.parseInt(num_novel));
-			
 			pstmt.executeQuery();
 			
 		}finally {

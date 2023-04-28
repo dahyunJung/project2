@@ -87,7 +87,7 @@ function deleteNovel(num_novel){
 										src="/project2/_next/static/images/search.png"
 										width="24" height="24" > &nbsp;
 									<div style="width: 250px">
-										<input
+										<input onKeypress="findNovel()"
 										class="flex-1 bg-transparent text-el-60 outline-none placeholder:text-el-40 disabled:text-el-35 font-small1"
 										style="width: 250px"
 										name="search" maxLength="50" placeholder=" 제목을 입력하세요." size="1" />
