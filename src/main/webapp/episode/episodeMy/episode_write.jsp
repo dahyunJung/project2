@@ -73,28 +73,29 @@
 </head>
 
 <%
-	/* 
+	 
 	//세션에 유저번호 값이 있는지 확인
 	int userNum = 0;
-	if(session.getAttribute("userNum") != null){
-		userNum = Integer.parseInt(session.getAttribute("userNum").toString());		
+	if(session.getAttribute("user_num_member") != null){
+		userNum = Integer.parseInt(session.getAttribute("user_num_member").toString());		
 	}else{ 
 		// 세션에 값이 없다면, 에러페이지로 이동. 뒤로 못가게 해야되는데 아니면 아예 로그아웃된 홈페이지로 이동
-		location.href = "http://localhost/project2/episode/error(logout).jsp";
+		response.sendRedirect("http://localhost/project2/episode/error(logout).jsp");
+		return;
 	}
 	
-	// novelNum을 파라미터로 받아서 처리
-	int novelNum = Integer.parseInt(request.getParameter("novelNum"));
+	// num_novel을 파라미터로 받아서 처리
+	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
 	
-	*/
-	int userNum = 4;
-	int novelNum = 44; //일단 테스트값
+	
+	//int userNum = 4;
+	//int num_novel = 44; //일단 테스트값
 	
 	// 소설 제목 출력
 	EpisodeMyDAO mDAO = new EpisodeMyDAO();
 %>
 
-<%-- vo: novelNum, epNum, userNum, epTitle, detail, openStatus, views, createDate--%>
+<%-- vo: num_novel, epNum, userNum, epTitle, detail, openStatus, views, createDate--%>
 <%-- sql: num_episode, num_novel, num_member, title, story, open, visit, make --%>
 					
 <body>
@@ -112,7 +113,7 @@
 					</a>
 				</div>
 				<div class="flex absolute inset-x-0 bottom-10 mx-20 items-center justify-center text-12 font-bold desktop:bottom-auto desktop:mx-[220px] desktop:items-end desktop:text-16">
-					<div class="truncate after:inline-block after:w-0"> <%= mDAO.selectNovelName(novelNum) %> </div>
+					<div class="truncate after:inline-block after:w-0"> <%= mDAO.selectNovelName(num_novel) %> </div>
 				</div>
 				<div class="mt-16 ml-auto desktop:mt-0">
 					<div class="flex items-center justify-end">
@@ -126,7 +127,7 @@
 			<div class="h-0 flex-[1_1_auto] overflow-auto">
 				<div class="flex flex-col mx-18 mt-30 max-w-[648px] desktop:mx-auto desktop:mt-64">
 					
-					<input type="hidden" id="novelNum" name="novelNum" value="<%= novelNum %>" />
+					<input type="hidden" id="num_novel" name="num_novel" value="<%= num_novel %>" />
 					<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
 					
 					<input type="text" class="mb-24 border-0 border-b-1 border-black/10 px-0 pt-0 pb-16 text-24 outline-none desktop:pb-36 desktop:text-36"

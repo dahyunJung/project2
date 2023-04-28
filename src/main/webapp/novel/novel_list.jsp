@@ -1,3 +1,5 @@
+<%@page import="EpisodeVO.User.LookNovelVO"%>
+<%@page import="EpisodeDAO.EpisodeDAO"%>
 <%@page import="novel.NovelListVO"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="novel.NovelListDAO"%>
@@ -15,10 +17,38 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
 <link rel="stylesheet" type="text/css" href="/project2/_next/static/css/font.css" />
 <noscript data-n-css=""></noscript>
-
 <style data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&display=swap">
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<%
+	//int userNum = (Integer)session.getAttribute("user_num_member");
+	int userNum = 3;
+	//int novelNum = 44;
+	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
+	if(novelNum == 0){
+%>
+		<script type="text/javascript">
+			alert("파라미터 novelNum의 값이 없음");
+			location.href="http://localhost/project2/novel/novel_list.jsp";
+			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
+		</script>
+<%	}
+	
+	String good = "http://localhost/project2/_next/static/images/good_on.png";
+	String cancelGood = "http://localhost/project2/_next/static/images/good_off.png";
+
+	// 선택한 회차 화면에 출력
+ 	EpisodeDAO epDAO = new EpisodeDAO();
+	LookNovelVO selectNovelVO = null;
+	try{
+		// 에피소드 화면 출력
+		selectNovelVO = epDAO.selectNovel(novelNum);
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+%>
+
 <script type="text/javascript">
 function edit(){
 	$("#edit_frm").submit();
@@ -89,7 +119,7 @@ if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO
 														<a
 															class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b mr-8"
 															type="button"
-															href="/project2/novel/novel_write.jsp">연재 작품
+															href="/project2/episode/episodeMy/episode_write.jsp?num_novel=<%=request.getParameter("num_novel")%>">연재 작품
 															쓰기</a>
 														<a
 															class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b mr-8"
