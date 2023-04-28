@@ -24,26 +24,23 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
 <link rel="stylesheet" type="text/css" href="/project2/_next/static/css/login.css" />
 <script type="text/javascript">
-function deletePop() {
-	  var popup = window.open("manager_delete_popup.jsp", "popup", "width=502,height=250,top="
-			  + (window.screenY + 100) + ",left=" + (window.screenX + 100));
-	  popup.onbeforeunload = function() {
-	    var confirmDelete = popup.confirmDelete;
-	    if (confirmDelete) {
-	    }
-	  };
-	}
-
-function publicPop(){
-	window.open("manager_public_popup.jsp","popup","width= 502; height= 250;,top="
-			+(window.screenY+100)	+",left="+(window.screenX+100));
+function deletePop(novelNum) {
+    var popupUrlD = "manager_delete_popup.jsp?novelNum=" + novelNum;
+    var popupD = window.open(popupUrlD, "popupD", "width=502,height=250,top="
+        + (window.screenY + 100) + ",left=" + (window.screenX + 100));
 }//deletePop
+	
+function publicPop(novelNum){
+    var popupUrlPu = "manager_public_popup.jsp?novelNum=" + novelNum;
+    var popupPu = window.open(popupUrlPu, "popupPu", "width=502,height=250,top="
+        + (window.screenY + 100) + ",left=" + (window.screenX + 100));
+}//publicPop
 
-function privatePop(){
-	window.open("manager_private_popup.jsp","popup","width= 502; height= 250;,top="
-			+(window.screenY+100)	+",left="+(window.screenX+100));
+function privatePop(novelNum){
+    var popupUrlPr = "manager_private_popup.jsp?novelNum=" + novelNum;
+    var popupPr = window.open(popupUrlPr, "popupPr", "width=502,height=250,top="
+        + (window.screenY + 100) + ",left=" + (window.screenX + 100));
 }//privatePop
-
 </script>
 <style>
 </style>
@@ -80,6 +77,7 @@ function privatePop(){
 	    reportValue = "기타 사유";
 	}
 %>	
+<input type="hidden" name="novelNum" value="<%= nVO.getNovelNum() %>">
 
 	<div id="__next" data-reactroot="">
 		<div
@@ -96,7 +94,7 @@ function privatePop(){
 							href="/project2/manager/manager_home.jsp"><img class="object-contain" width="157" height="27"
 							src="/project2/_next/static/images/logo.png"
 							alt="소설조아 logo" /></a>
-							<a 
+							<a
 										class="typo-md1-b z-0 flex items-center py-[8.5px] ml-8 mr-8 px-16"
 										href="/">
 									</a> 
@@ -107,7 +105,7 @@ function privatePop(){
 							</div>
 						</div>
 						<div class="flex items-center ml-auto mr-15 desktop:mr-0">
-								<a href="/project2/manager/manager_novel_report.jsp">
+								<a href="/project2/manager/manager_novel.jsp">
 							<button
 								class="typo-md3 ml-auto flex cursor-pointer items-center rounded-50 bg-transparent text-black desktop:border-1 desktop:desktop:bg-black desktop:px-13 desktop:py-7 desktop:text-white">돌아가기</button>
 								</a>
@@ -143,15 +141,17 @@ function privatePop(){
 											<div class="flex typo-g-sm2 flex-1 items-center text-grey60">
 												<div
 													class="relative overflow-visible mt-auto mb-0 desktop:my-auto">
-													<button data-text-content="true"  id="deleteBtn"
+													<button data-text-content="true"  id=""
 														style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"
-														 type="button" style="font-weight: bold" onclick="deletePop('${novel.title}')">삭제</button>
+														 type="button" class="btn-delete" onclick="deletePop('<%= nVO.getNovelNum() %>')">삭제</button>
 													<span style="display: inline-block; width: 10px;"></span>
-													<button data-text-content="true"  id="publicBtn"
-														style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;">공개</button>
+													<button data-text-content="true"  id=""
+														style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"
+														type="button" class="btn-public" onclick="publicPop('<%= nVO.getNovelNum() %>')">공개</button>
 													<span style="display: inline-block; width: 10px;"></span>
-													<button data-text-content="true"  id="privateBtn"
-														style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;">비공개</button>
+													<button data-text-content="true"  id=""
+														style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"
+														type="button" class="btn-private" onclick="privatePop('<%= nVO.getNovelNum() %>')">비공개</button>
 												</div>
 											</div>
 										</div>
@@ -200,8 +200,9 @@ function privatePop(){
 							</div>
 							<section class="flex flex-col desktop:mb-96">
 
-								<article><!-- 링크 수정  -->
-									<a href="/project2/novel/novel_list.jsp?title=<%=title%>" 
+								<article>
+								<!-- 해당 id의 novel_info페이지로 이동인데  -->
+									<a href="/project2/novel/novel_info.jsp?title=<%=title%>" 
 										class="flex border-black/10 bg-white px-18 visited:bg-grey10 desktop:border-b-1 desktop:px-30">
 										<div
 											class="border-b-1 border-black/10 desktop:border-0 flex flex-1 py-16 desktop:py-22">
@@ -212,7 +213,7 @@ function privatePop(){
 														class="flex mb-14 mt-0 flex-1 items-center desktop:mb-16 desktop:mt-2 typo-md2 text-black desktop:typo-lg2 max-h-[28px] overflow-hidden">
 														<div class="truncate after:inline-block after:w-0 shrink"
 															style="text-align: center;">
-															신고 사유 : <%=reportValue%> | 신고수 : <%=nVO.getReportCnt() %>회
+															신고 사유 : <%=reportValue%> | 신고 수 : <%=nVO.getReportCnt() %>회
 														</div>
 													</div>
 												</div>

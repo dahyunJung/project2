@@ -120,7 +120,7 @@ $(function(){
 </head>
 
 <body>
-<div id="__next"">
+<div id="__next">
 <div style="display: none; background-color: canvas; color-scheme: light"></div>
 <div class="lightMode h-full">
 <div class="flex flex-col h-full">
