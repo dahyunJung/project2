@@ -1,3 +1,5 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="project2.ManagerDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,7 +16,6 @@
 <link rel="preload"	href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css"	as="style" />
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
 <link rel="stylesheet" type="text/css" href="/project2/_next/static/css/login.css" />
-
 <style type="text/css">
 #wrap {
   display: flex;
@@ -23,13 +24,8 @@
   height: 100%;
 }
 </style>	
-	
-<noscript data-n-css=""></noscript>
-
-</style>
 </head>
 <body>
-
 		<div 
 			class="flex rounded-t-0 relative z-1 max-h-[70%] flex-col overflow-hidden bg-white"
 			data-body-scroll-lock="ignore" style="width: 502px; height: 250px; ">
@@ -42,16 +38,24 @@
 							style="font-weight: bold; font-size: 20px">공개하시겠습니까?</div>
 					</div>
 				</div>
-				<div class="w-full shrink-0" style="position: relative; bottom: 18px; top:20px">
+
+			<form id="publicForm" method="post"	action="manager_public_process.jsp">
+				<input type="hidden" name="novelNum"
+					value="<%=request.getParameter("novelNum")%>"> <input
+					type="hidden" name="title"
+					value="<%=request.getParameter("title")%>">
+				<div class="w-full shrink-0"
+					style="position: relative; bottom: 18px; top: 20px">
 					<div class="flex mt-24 desktop:mt-32">
-						<button
+				 <button
 							class="flex items-center justify-center border-1 appearance-none px-24 py-12 typo-md2-b mr-8 flex-1"
-							type="button" style="font-weight: bold">취소</button>
+							type="button" style="font-weight: bold" onclick="window.close()">취소</button>
 						<button
 							class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b flex-1"
-							type="button" style="font-weight: bold">공개</button>
-					</div>
+							type="submit" style="font-weight: bold" id="publicBtn">공개</button>
+				 	</div>
 				</div>
+			</form>
 			</div>
 		</div>
 	
