@@ -3,15 +3,16 @@ package novel;
 public class MyNovelVO {
 	private String thumbnail,novelTitle;
 	private boolean ageAble,openStatus;
-	private int num_novel;
+	private int num_novel,end;
 	public MyNovelVO() {
 	}
-	public MyNovelVO(String thumbnail, String novelTitle, boolean ageAble, boolean openStatus, int num_novel) {
+	public MyNovelVO(String thumbnail, String novelTitle, boolean ageAble, boolean openStatus, int num_novel, int end) {
 		this.thumbnail = thumbnail;
 		this.novelTitle = novelTitle;
 		this.ageAble = ageAble;
 		this.openStatus = openStatus;
 		this.num_novel = num_novel;
+		this.end = end;
 	}
 	public String getThumbnail() {
 		return thumbnail;
@@ -43,11 +44,11 @@ public class MyNovelVO {
 	public void setNum_novel(int num_novel) {
 		this.num_novel = num_novel;
 	}
-	@Override
-	public String toString() {
-		return "MyNovelVO [" + (thumbnail != null ? "thumbnail=" + thumbnail + ", " : "")
-				+ (novelTitle != null ? "novelTitle=" + novelTitle + ", " : "") + "ageAble=" + ageAble + ", openStatus="
-				+ openStatus + ", num_novel=" + num_novel + "]";
+	public int getEnd() {
+		return end;
+	}
+	public void setEnd(int end) {
+		this.end = end;
 	}
 	
 }

@@ -54,6 +54,25 @@ $(function(){
 	    reader.readAsDataURL(file);
 	});
 	
+	$("#textBox").keyup(function (e) {
+		var content = $(this).val();
+	    
+	    // 글자수 세기
+	    if (content.length == 0 || content == '') {
+	    	$("#textCount").text('0');
+	    } else {
+	    	$("#textCount").text(content.length);
+	    }
+	    
+	    // 글자수 제한
+	    if (content.length > 100) {
+	    	// 100자 부터는 타이핑 되지 않도록
+	        $(this).val($(this).val().substring(0, 100));
+	        // 100자 넘으면 알림창 뜨도록
+	        alert('글자수는 100자까지 입력 가능합니다.');
+	    };
+	});
+	
 	$("#regi").click(function(){
 		
 		if(!$("#terms").is(":checked")){
@@ -191,14 +210,14 @@ if("POST".equals(request.getMethod())){
 														<div
 															class="grid Textarea_autoGrow__tT5K5 typo-md3 max-h-200"
 															data-replicated-value="">
-															<textarea
+															<textarea id="textBox"
 																class="typo-md3 rounded-3 border-1 border-grey30 py-14 px-16 placeholder:text-grey60 flex-[1_1_100%] resize-none outline-none typo-md3 w-full !border-0 !p-0"
 																name="story" rows="3"></textarea>
 														</div>
 													</div>
 													<div class="flex mt-12 justify-end">
 														<p class="typo-g-x-sm1">
-															<span class="text-grey80">0</span><span
+															<span class="text-grey80" id="textCount">0</span><span
 																class="text-grey60"> / 100</span>
 														</p>
 													</div>

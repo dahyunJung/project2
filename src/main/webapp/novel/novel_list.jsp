@@ -22,18 +22,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <%
-	//int userNum = (Integer)session.getAttribute("user_num_member");
-	int userNum = 3;
 	//int novelNum = 44;
 	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
-	if(novelNum == 0){
-%>
-		<script type="text/javascript">
-			alert("파라미터 novelNum의 값이 없음");
-			location.href="http://localhost/project2/home/main.jsp";
-			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
-		</script>
-<%	}
 	
 	// 선택한 회차 화면에 출력
  	EpisodeDAO epDAO = new EpisodeDAO();
@@ -140,11 +130,18 @@ if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO
 														style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 116px; height: 181px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
 														srcset="/project2/_next/static/images/novel_thumb/<%=nVO.getPhoto() %>" decoding="async"
 														data-nimg="fixed"
-														style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"></span>
+														style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;">
+													</span>
+                                                    <%=nVO.getAge()==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                    <%=nVO.getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""%>
 												</div>
 											</div>
 											<div class="flex flex-col ml-28 flex-1 items-start">
-												<h1 class="typo-dp1 mb-8 flex items-center break-all"><%=nVO.getTitle() %></h1>
+												<h1 class="typo-dp1 mb-8 flex items-center break-all"><%=nVO.getTitle() %>
+														<span class="inline-flex flex-[0_0_auto] text-grey60 bg-grey20 border-grey20 !font-bold rounded-full typo-sm2 py-2 px-6 ml-8 align-middle align-[3px]">
+															<%=nVO.getOpen()==1?"공개":"비공개" %>
+														</span>
+												</h1>
 												<div class="flex typo-md3 items-center">
 													<span><%=nVO.getId() %></span>
 												</div>

@@ -73,6 +73,8 @@
 											data-testid="skeleton">
 											<div class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16">
 												<img alt="썸네일 이미지" src="/project2/_next/static/images/novel_thumb/<%=list.get(i).getPhoto() %>" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                <%=list.get(i).getAge()==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(i).getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""%>
 											</div>
 											<div class="flex flex-col w-full flex-1">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">

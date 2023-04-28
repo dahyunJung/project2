@@ -29,7 +29,7 @@ function del() {
 	NewNovelDAO nDAO=new NewNovelDAO();
 	nDAO.deleteNovel(Integer.parseInt(request.getParameter("num_novel")));
 	%>
-	opener.parent.location="http://localhost/project2/login/my_page.jsp";
+	opener.parent.location="my_novel_space.jsp?order_novel=0";
 	window.close();
 }
 </script>

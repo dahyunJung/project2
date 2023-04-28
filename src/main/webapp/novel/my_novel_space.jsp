@@ -6,9 +6,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-String id=session.getAttribute("user_id").toString();
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -44,7 +41,8 @@ function new_novel() {
 
 </head>
 <%
-if("POST".equals(request.getMethod())){
+if(session.getAttribute("user_id")!=null){
+	String id=session.getAttribute("user_id").toString();
 %>
 
 <body>
@@ -147,6 +145,9 @@ if("POST".equals(request.getMethod())){
 														data-nimg="fixed"
 														style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"
 														>
+                                          		${select.ageAble?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                          		${select.end==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
+														
 													</span>
 												</div>
 												<div class="flex flex-col flex-1 justify-center">

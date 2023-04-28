@@ -24,7 +24,7 @@ public class MyNovelDAO {
 		try {
 			con=dbCon.getConn();
 			StringBuilder sb=new StringBuilder();
-			sb.append(" select n.num_novel, n.photo, n.title, n.age, n.open ")
+			sb.append(" select n.num_novel, n.photo, n.title, n.age, n.open, n.end ")
 			.append(" from novel n, member m ")
 			.append(" where (n.num_member = m.num_member) and (m.id = '")
 			.append(id)
@@ -40,7 +40,7 @@ public class MyNovelDAO {
 			MyNovelVO mVO=null;
 				
 			while(rs.next()) {
-				mVO=new MyNovelVO(rs.getString("photo"), rs.getString("title"), (rs.getInt("age")==1), (rs.getInt("open")==1), rs.getInt("num_novel"));
+				mVO=new MyNovelVO(rs.getString("photo"), rs.getString("title"), (rs.getInt("age")==1), (rs.getInt("open")==1), rs.getInt("num_novel"), rs.getInt("end"));
 				list.add(mVO);
 			}
 				

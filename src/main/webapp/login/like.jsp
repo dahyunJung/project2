@@ -139,6 +139,8 @@ function deleteNovel(num_novel){
 														data-nimg="fixed"
 														style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"
 														>
+                                          		${select.age==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""}
+                                          		${select.end==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""}
 											</div>
 										</div>
 									</div>

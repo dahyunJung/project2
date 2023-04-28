@@ -23,7 +23,7 @@ public class NovelListDAO {
 		try {
 			con=dbCon.getConn();
 			StringBuilder sb=new StringBuilder();
-			sb.append(" select n.photo, n.title, m.id, n.story ")
+			sb.append(" select n.photo, n.title, m.id, n.story, n.age, n.end, n.open ")
 			.append(" from novel n ")
 			.append(" join member m on n.num_member = m.num_member ")
 			.append(" where n.num_novel = ? ");
@@ -35,7 +35,7 @@ public class NovelListDAO {
 			rs=pstmt.executeQuery();
 				
 			while(rs.next()) {
-				nVO=new NovelListVO(rs.getString("photo"), rs.getString("title"), (rs.getString("id")), rs.getString("story"));
+				nVO=new NovelListVO(rs.getString("photo"), rs.getString("title"), (rs.getString("id")), rs.getString("story"), rs.getInt("age"), rs.getInt("end"), rs.getInt("open"));
 			}
 				
 		}finally {

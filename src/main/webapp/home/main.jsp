@@ -58,7 +58,8 @@
                                                                         <img alt="스트리밍 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=250&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                <%=list.get(0).getAge()==1?"<img class='absolute top-4 right-4' src='/project/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(0).getAge()==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(0).getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""%>
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
@@ -99,8 +100,8 @@
                                                                         <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                <%=list.get(j).getAge()==1?"<img class='absolute top-4 right-4' src='/project/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
-                                                            
+                                                                <%=list.get(j).getAge()==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(j).getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""%>
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
@@ -151,7 +152,16 @@
                                             <%for(int i=5;i<10;i++){int j=i;if(i>list.size()-1){j=list.size()-1;} %>
                                                 <div class="flex flex-col border-b-0 desktop:border-b-1 border-black/10 py-8 desktop:py-16 desktop:px-0  desktop:last-of-type:border-b-0 desktop:last-of-type:pb-0">
                                                     <a class="flex items-center flex-row" data-testid="skeleton" href="../episode/novel.jsp?num_novel=<%=list.get(j).getNum_novel()%>">
-                                                        <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14"></div>
+                                                        <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14">
+                                                                <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
+                                                                    <img alt="" src="/project2/_next/static/images/novel_thumb/<%=list.get(j).getPhoto() %>" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <noscript>
+                                                                        <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
+                                                                    </noscript>
+                                                                </span>
+                                                                <%=list.get(j).getAge()==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(j).getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""%>
+                                                        </div>
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
                                                                         <span style="transform: translateY(-100%);"><%=j+1%></span>
                                                                     </div>
@@ -204,7 +214,7 @@
                                                                         <img alt="스트리밍 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=250&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                <%=list.get(0).getAge()==1?"<img class='absolute top-4 right-4' src='/project/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(0).getAge()==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
@@ -245,7 +255,8 @@
                                                                         <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                <%=list.get(j).getAge()==1?"<img class='absolute top-4 right-4' src='/project/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(j).getAge()==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(j).getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""%>
                                                             
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
@@ -297,7 +308,16 @@
                                             <%for(int i=5;i<10;i++){int j=i;if(i>list.size()-1){j=list.size()-1;} %>
                                                 <div class="flex flex-col border-b-0 desktop:border-b-1 border-black/10 py-8 desktop:py-16 desktop:px-0  desktop:last-of-type:border-b-0 desktop:last-of-type:pb-0">
                                                     <a class="flex items-center flex-row" data-testid="skeleton" href="../episode/novel.jsp?num_novel=<%=list.get(j).getNum_novel()%>">
-                                                        <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14"></div>
+                                                        <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14">
+                                                                <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
+                                                                    <img alt="" src="/project2/_next/static/images/novel_thumb/<%=list.get(j).getPhoto() %>" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <noscript>
+                                                                        <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
+                                                                    </noscript>
+                                                                </span>
+                                                                <%=list.get(j).getAge()==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(j).getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""%>
+                                                        </div>
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
                                                                         <span style="transform: translateY(-100%);"><%=j+1%></span>
                                                                     </div>
@@ -350,7 +370,7 @@
                                                                         <img alt="스트리밍 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=250&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FrdsqY%2FbtrXVRY8hQm%2F2v5pbDaqEgWlFV6HlrnK00%2Foriginal.jpeg&amp;w=350&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                <%=list.get(0).getAge()==1?"<img class='absolute top-4 right-4' src='/project/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(0).getAge()==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
                                                                 <div class="flex">
@@ -391,7 +411,8 @@
                                                                         <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
                                                                     </noscript>
                                                                 </span>
-                                                                <%=list.get(j).getAge()==1?"<img class='absolute top-4 right-4' src='/project/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(j).getAge()==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(j).getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""%>
                                                             
                                                             </div>
                                                             <div class="flex flex-col order-2 flex-1">
@@ -443,7 +464,16 @@
                                             <%for(int i=5;i<10;i++){int j=i;if(i>list.size()-1){j=list.size()-1;} %>
                                                 <div class="flex flex-col border-b-0 desktop:border-b-1 border-black/10 py-8 desktop:py-16 desktop:px-0  desktop:last-of-type:border-b-0 desktop:last-of-type:pb-0">
                                                     <a class="flex items-center flex-row" data-testid="skeleton" href="../episode/novel.jsp?num_novel=<%=list.get(j).getNum_novel()%>">
-                                                        <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14"></div>
+                                                        <div class="relative overflow-hidden rounded-3 bg-grey10 w-64 desktop:w-56 h-98 desktop:h-88 mr-14">
+                                                                <span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:80px;height:125px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
+                                                                    <img alt="" src="/project2/_next/static/images/novel_thumb/<%=list.get(j).getPhoto() %>" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover"/>
+                                                                    <noscript>
+                                                                        <img alt="서림동 편지 가게 : 유난히 긴 밤을 걷는 자들을 위해 열립니다. 썸네일 이미지" srcSet="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=80&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75 2x" src="/_next/image?url=https%3A%2F%2Fdn-api1-kage.kakao.com%2Fdn%2FsWOwd%2FbtrZclrilZ3%2FJr5jLK8U4HCSDRSK47nsK1%2Foriginal.jpeg&amp;w=250&amp;q=75" decoding="async" data-nimg="fixed" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:cover" loading="lazy"/>
+                                                                    </noscript>
+                                                                </span>
+                                                                <%=list.get(j).getAge()==1?"<img class='absolute top-4 right-4' src='/project2/_next/static/icons/badge_thumbnail_adult15_s.svg' alt='15세 관람가 아이콘'/>":""%>
+                                                                <%=list.get(j).getEnd()==1?"<img class='absolute top-4 left-4' src='/project2/_next/static/icons/badge_thumbnail_finish_s.svg' alt='완결'/>":""%>
+                                                        </div>
                                                                     <div class="flex flex-col typo-g-md1 items-center ml-16 mr-12 w-11 desktop:mx-8 desktop:w-26">
                                                                         <span style="transform: translateY(-100%);"><%=j+1%></span>
                                                                     </div>

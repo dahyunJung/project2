@@ -25,7 +25,7 @@ public class SearchDAO {
 			con=dbCon.getConn();
 			
 			StringBuilder sb=new StringBuilder();
-			sb.append(" select n.photo, n.title, m.id, n.num_novel, e.num_episodes, e.max_make ")
+			sb.append(" select n.photo, n.title, m.id, n.num_novel, e.num_episodes, e.max_make, n.age, n.end ")
 			.append(" from member m	")
 			.append(" join novel n ON n.num_member = m.num_member ")
 			.append(" LEFT JOIN (	")
@@ -45,7 +45,7 @@ public class SearchDAO {
 			
 			while(rs.next()) {
 				 
-				mVO=new SearchVO(rs.getString("photo"), rs.getString("title"), rs.getString("id"), rs.getInt("num_novel"), rs.getInt("num_episodes"), rs.getDate("max_make"));
+				mVO=new SearchVO(rs.getString("photo"), rs.getString("title"), rs.getString("id"), rs.getInt("num_novel"), rs.getInt("num_episodes"), rs.getInt("age"), rs.getInt("end"), rs.getDate("max_make"));
 				list.add(mVO);
 			}
 				

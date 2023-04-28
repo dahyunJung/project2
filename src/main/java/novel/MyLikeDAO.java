@@ -25,7 +25,7 @@ public class MyLikeDAO {
 			con=dbCon.getConn();
 			
 			StringBuilder sb=new StringBuilder();
-			sb.append(" select n.photo, n.title, m.id, n.num_novel, e.num_episodes, e.max_make ")
+			sb.append(" select n.photo, n.title, m.id, n.num_novel, n.age, n.end, e.num_episodes, e.max_make ")
 			.append(" from member m	")
 			.append(" join novel n ON n.num_member = m.num_member ")
 			.append(" join liken l ON n.num_novel = l.num_novel ")
@@ -53,7 +53,7 @@ public class MyLikeDAO {
 			
 			while(rs.next()) {
 				 
-				mVO=new MyLikeVO(rs.getString("photo"), rs.getString("title"), rs.getString("id"), rs.getInt("num_novel"), rs.getInt("num_episodes"), rs.getDate("max_make"));
+				mVO=new MyLikeVO(rs.getString("photo"), rs.getString("title"), rs.getString("id"), rs.getInt("num_novel"), rs.getInt("num_episodes"), rs.getInt("age"), rs.getInt("end"), rs.getDate("max_make"));
 				list.add(mVO);
 			}
 				
