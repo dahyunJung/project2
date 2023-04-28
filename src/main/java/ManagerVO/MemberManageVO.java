@@ -3,19 +3,18 @@ import java.sql.Date;
 
 public class MemberManageVO {
 	private String id;
-	private int num_member, novelCnt, reportCnt;
+	private int num_member, novelCnt;
 	private Date visitDate, joinDate, susPeriod;
 	
 	public MemberManageVO() {
 		
 	}
 
-	public MemberManageVO(String id, int num_member, int novelCnt, int reportCnt, Date visitDate, Date joinDate,
+	public MemberManageVO(String id, int num_member, int novelCnt,  Date visitDate, Date joinDate,
 			Date susPeriod) {
 		this.id = id;
 		this.num_member = num_member;
 		this.novelCnt = novelCnt;
-		this.reportCnt = reportCnt;
 		this.visitDate = visitDate;
 		this.joinDate = joinDate;
 		this.susPeriod = susPeriod;
@@ -45,13 +44,6 @@ public class MemberManageVO {
 		this.novelCnt = novelCnt;
 	}
 
-	public int getReportCnt() {
-		return reportCnt;
-	}
-
-	public void setReportCnt(int reportCnt) {
-		this.reportCnt = reportCnt;
-	}
 
 	public Date getVisitDate() {
 		return visitDate;
@@ -79,8 +71,8 @@ public class MemberManageVO {
 
 	@Override
 	public String toString() {
-		return "MemberManageVO [id=" + id + ", num_member=" + num_member + ", novelCnt=" + novelCnt + ", reportCnt="
-				+ reportCnt + ", visitDate=" + visitDate + ", joinDate=" + joinDate + ", susPeriod=" + susPeriod + "]";
+		return "MemberManageVO [id=" + id + ", num_member=" + num_member + ", novelCnt=" + novelCnt 
+				 + ", visitDate=" + visitDate + ", joinDate=" + joinDate + ", susPeriod=" + susPeriod + "]";
 	}
 	
 	

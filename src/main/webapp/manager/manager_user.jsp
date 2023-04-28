@@ -86,7 +86,6 @@
 	          jsonObj.num_member + "</td><td><a href='manager_user_spc.jsp?id=" +
 	          jsonObj.id + "'>" + jsonObj.id + "</a></td><td><a href='manager_user_spc.jsp?id=" +
 	          jsonObj.id + "'>" +  jsonObj.novelCnt + "</a></td><td><a href='manager_user_spc.jsp?=" +
-	          jsonObj.id + "'>" +  jsonObj.reportCnt + "</a></td><td><a href='manager_user_spc.jsp?id=" +
 	          jsonObj.id + "'>" + jsonObj.visitDate + "</a></td><td><a href='manager_user_spc.jsp?id=" +
 	          jsonObj.id + "'>" + jsonObj.joinDate + "</a></td><td><a href='manager_user_spc.jsp?id=" +
 	          jsonObj.id + "'>" + jsonObj.stopDate + "</a></td></tr>"; 
@@ -168,7 +167,6 @@ if(session.getAttribute("sesId")==null){
 	    <th>아이디</th>
 	    
 	    <th>작품 개수</th>
-	    <th>신고누적 개수</th>
 	    <th>방문 날짜</th>
 	    <th>가입 날짜</th>
 	    <th>중지 날짜</th>

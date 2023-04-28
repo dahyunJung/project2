@@ -35,7 +35,6 @@ try{
     	jsonObj.put("num_member", mmVO.getNum_member() );
     	jsonObj.put("id", mmVO.getId() );
     	jsonObj.put("novelCnt", mmVO.getNovelCnt() );
-    	jsonObj.put("reportCnt", mmVO.getReportCnt() );
      	jsonObj.put("visitDate", sdf.format(mmVO.getVisitDate()) );
      	jsonObj.put("joinDate", sdf.format(mmVO.getJoinDate() ) );
     	jsonObj.put("stopDate", sdf.format(mmVO.getSusPeriod() ) ); 

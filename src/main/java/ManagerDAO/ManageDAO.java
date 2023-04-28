@@ -292,7 +292,7 @@ public List<MemberManageVO> selectMemberManage() throws SQLException {
 	//sysdate-373752
 	StringBuilder selectMemberManage = new StringBuilder();
 	selectMemberManage	
-	.append(" SELECT DISTINCT m.num_member, m.id, m.join, nvl(m.stop, sysdate-1) stop, nvl(h.visit, m.join) visit,  nvl(m.novelcnt, 0) novelcnt, nvl(n.reportcnt, 0) reportcnt ") //, m.num_member, m.num_member
+	.append(" SELECT DISTINCT m.id, m.num_member, m.join, nvl(m.stop, sysdate-1) stop, nvl(h.visit, m.join) visit,  nvl(m.novelcnt, 0) novelcnt ") //, m.num_member, m.num_member
 	.append(" FROM member m ")
 	.append(" left Outer JOIN novel n ON m.num_member = n.num_member ")
 	.append(" left Outer JOIN report r ON n.num_member = r.num_member ")
@@ -312,7 +312,7 @@ public List<MemberManageVO> selectMemberManage() throws SQLException {
 		 * date=rs.getDate("input_date");
 		 */
 		
-		mmVO = new MemberManageVO( rs.getString("id"), rs.getInt("num_member"), rs.getInt("novelcnt"), rs.getInt("reportcnt"),
+		mmVO = new MemberManageVO( rs.getString("id"), rs.getInt("num_member"), rs.getInt("novelcnt"), 
 				rs.getDate("visit"), rs.getDate("join"), rs.getDate("stop") );
 		mmList.add(mmVO);
 		

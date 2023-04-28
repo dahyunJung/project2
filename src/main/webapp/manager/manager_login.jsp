@@ -67,8 +67,10 @@ function chkNull(){
 	
 	if( $("#password").val()=="" ){
 		alert("비밀번호는 필수 입력");
+		
 		$("#password").focus();
 		return;
+		
 	}//end if
 	
 	chkLeng();
