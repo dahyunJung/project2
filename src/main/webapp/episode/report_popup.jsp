@@ -43,10 +43,9 @@
 </script>
 </head>
 <%
-	//int userNum = (Integer)session.getAttribute("userNum");
-	//int novelNum = Integer.parseInt(request.getParameter("novelNum"));
-	int userNum = 3;
-	int novelNum = 46; 
+	int userNum = (Integer)session.getAttribute("user_num_member");
+	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
+	
 	String reportId = request.getParameter("reportId");
 %>
 

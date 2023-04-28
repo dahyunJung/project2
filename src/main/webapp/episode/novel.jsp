@@ -21,15 +21,14 @@
 
 <%
 	//int userNum = (Integer)session.getAttribute("user_num_member");
-	int userNum = 3;
-	//int novelNum = 44;
-	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
+	int userNum = 7;
+	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
+	
 	if(novelNum == 0){
 %>
 		<script type="text/javascript">
 			alert("파라미터 novelNum의 값이 없음");
-			location.href="http://localhost/project2/novel/novel_list.jsp";
-			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
+			response.sendRedirect("http://localhost/project2/novel/novel_list.jsp?num_novel?<%= novelNum %>");
 		</script>
 <%	}
 	
@@ -48,6 +47,9 @@
 %>
 
 <script type="text/javascript">
+
+	var good = "http://localhost/project2/_next/static/images/good_on.png";
+	var cancelGood = "http://localhost/project2/_next/static/images/good_off.png";
 
 $(function(){
 	 $.ajax({
@@ -90,8 +92,8 @@ $(function(){
 	
 	// 에피소드 공개
 	$("#goodImg").click(function(){
-		var good = "http://localhost/project2/_next/static/images/good_on.png";
-		var cancelGood = "http://localhost/project2/_next/static/images/good_off.png";
+		/* var good = "http://localhost/project2/_next/static/images/good_on.png";
+		var cancelGood = "http://localhost/project2/_next/static/images/good_off.png"; */
 		
 		if($(this).attr("src") == cancelGood){	
 			alert("좋아요");
@@ -113,6 +115,10 @@ $(function(){
 	});// 신고
 	
 	$("#firstEp").click(function(){
+		if(<%=epDAO.selectFirstEp(novelNum)%> ==0 ){
+			alert("작성된 에피소드가 없습니다");
+			return;
+		}
 		location.href='episode_read.jsp?num_novel=<%=novelNum%>&epNum=<%=epDAO.selectFirstEp(novelNum)%>';
 	}); //첫화 보기
 	
@@ -136,10 +142,6 @@ $(function(){
 	</div>						
 	</div>
 	
-	<%-- <form id="novl" action="episode_jsonarr.jsp" method="get">
-		
-	</form> --%>
-	<input type="hidden" id="novelNum" name="novelNum" value="<%= novelNum %>">
 	<main class="flex-1">
 		<div class="relative -z-1"></div>
 		<div class="flex-1">
@@ -173,9 +175,9 @@ $(function(){
 									&nbsp;&nbsp;&nbsp;
 									
 								<!-- 좋아요 버튼 -->
-								<form action="like_process.jsp" id="likeFrm" method="post">
+								<form action="like_process.jsp?num_novel=<%= novelNum %>" id="likeFrm" method="post">
 									<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>"/>
-									<input type="hidden" id="novelNum" name="novelNum" value="<%= novelNum %>" />
+									<input type="hidden" id="num_novel" name="num_novel" value="<%=novelNum%>" />
 									<input type="hidden" id="id" name="id" value="<%= selectNovelVO.getId() %>"/>
 									<input type="hidden" id="good" name="good" value=""/>
 								</form>	

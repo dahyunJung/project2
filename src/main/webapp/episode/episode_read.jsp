@@ -26,10 +26,6 @@
 /* if((Integer)session.getAttribute("userNum")==null){
 	    response.sendRedirect("http://localhost/project2/episode/novel_list.jsp");
 	}  */
-
-	/* int userNum = 4;
-	int novelNum = 44; 
-	int epNum = 105; */
 	
 	int userNum = (Integer)session.getAttribute("user_num_member");
 	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 

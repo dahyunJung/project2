@@ -40,7 +40,6 @@
 		
 		// 3. JSONArray 출력 
 		out.print(jsonArr.toJSONString());
-		System.out.print("------"+jsonArr.toJSONString());
     	
     }catch(SQLException se){
     	se.printStackTrace();

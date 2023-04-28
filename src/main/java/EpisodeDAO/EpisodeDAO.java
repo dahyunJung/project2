@@ -48,8 +48,8 @@ public class EpisodeDAO {
 				lnVO.setIntro(rs.getString("story"));
 				lnVO.setThumbnail(rs.getString("photo"));
 			}
-			System.out.println("select novelNum" + novelNum);
-
+			
+			System.out.println("읽기 리스트 소설 윗부분만 보여주기");
 		} finally {
 			dbConnection.dbClose(null, pstmt, con);
 		}
@@ -61,6 +61,7 @@ public class EpisodeDAO {
 	// 에피소드 회차 리스트 보여주기
 	public List<ListEpisodeVO> selectAllEp(int novelNum) throws SQLException {
 		List<ListEpisodeVO> list = new ArrayList<ListEpisodeVO>();
+		ListEpisodeVO leVO = null;
 
 		DbConnection dbConnection = DbConnection.getInstance();
 
@@ -71,16 +72,15 @@ public class EpisodeDAO {
 		try {
 			con = dbConnection.getConn();
 			StringBuilder selectallEp = new StringBuilder();
-			selectallEp.append("	select num_novel, num_episode ,title, visit, make	").append("	from episode ")
-					.append("	where num_novel=? and open=1	").append("	order by num_episode desc	");
+			selectallEp.append("	select num_novel, num_episode ,title, visit, make	")
+					   .append("	from episode ")
+					   .append("	where num_novel=? and open=1	")
+					   .append("	order by num_episode desc	");
 
 			pstmt = con.prepareStatement(selectallEp.toString());
 
 			pstmt.setInt(1, novelNum);
-
 			rs = pstmt.executeQuery();
-
-			ListEpisodeVO leVO = null;
 
 			while (rs.next()) {
 				leVO = new ListEpisodeVO();
@@ -92,10 +92,10 @@ public class EpisodeDAO {
 
 				list.add(leVO);
 			}
+			System.out.println("에피소드 회차 리스트 보여주기");
 		} finally {
 			dbConnection.dbClose(rs, pstmt, con);
 		}
-
 		return list;
 	} // selectAllEp
 
@@ -109,16 +109,15 @@ public class EpisodeDAO {
 		ResultSet rs = null;
 
 		DbConnection dbConnection = DbConnection.getInstance();
-		
-		episodeCount(epNum);
+		episodeCount(epNum); // 조회수 증가
 
 		try {
 			con = dbConnection.getConn();
 
 			StringBuilder selectEpisode = new StringBuilder();
 			selectEpisode.append(" select n.title novelTitle, e.title epTitle, e.story epDetail ")
-					.append(" from episode e, novel n ")
-					.append(" where n.num_novel=e.num_novel and e.num_novel=? and e.num_episode=? and e.open=1");
+						 .append(" from episode e, novel n ")
+						 .append(" where n.num_novel=e.num_novel and e.num_novel=? and e.num_episode=? and e.open=1 ");
 
 			pstmt = con.prepareStatement(selectEpisode.toString());
 
@@ -133,7 +132,7 @@ public class EpisodeDAO {
 				leVO.setEpTitle(rs.getString("epTitle"));
 				leVO.setEpDetail(rs.getString("epDetail"));
 			}
-			System.out.println("select novelNum-" + novelNum + "epNum-" + epNum);
+			System.out.println("해당 소설 보여주기 novelNum - " + novelNum + "epNum - " + epNum);
 
 		} finally {
 			dbConnection.dbClose(null, pstmt, con);
@@ -165,8 +164,6 @@ public class EpisodeDAO {
 				cnt = rs.getInt(1);
 			}
 
-			System.out.print(countEp);
-			System.out.println(novelNum + ", " + cnt + " 회차 개수");
 		} finally {
 			// 7. 연결 끊기
 			dbConnection.dbClose(null, pstmt, con);
@@ -198,7 +195,6 @@ public class EpisodeDAO {
 			if (rs.next()) {
 				first = rs.getInt(1);
 			}
-			System.out.println("select novelNum" + novelNum + ", " + first);
 
 		} finally {
 			dbConnection.dbClose(null, pstmt, con);
@@ -207,7 +203,7 @@ public class EpisodeDAO {
 		return first;
 	}// selectFirstEp
 	
-	
+	// 이전화 보여주기
 	public int prevEp(int novelNum, int epNum) throws SQLException {
 
 		PrevNextVO pnVO = null;
@@ -243,9 +239,9 @@ public class EpisodeDAO {
 		}
 
 		return pnVO.getPrevEpNum();
-	}
+	}//prevEp
 	
-	
+	// 다음화 보여주기
 	public int nextEp(int novelNum, int epNum) throws SQLException {
 
 		PrevNextVO pnVO = null;
@@ -281,7 +277,7 @@ public class EpisodeDAO {
 		}
 
 		return pnVO.getNextEpNum();
-	}
+	}// nextEp
 	
 	
 	// 에피소드 조회수 증가
@@ -307,17 +303,15 @@ public class EpisodeDAO {
 			dbConnection.dbClose(null, pstmt, con);
 		} // end finally
 		
-		
 	}//episodeCount
 
 	// 좋아요 추가
 	public int insertLike(LikeVO likeVO) throws SQLException {
 		int cnt = 0;
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		DbConnection dbConnection = DbConnection.getInstance();
-
-		System.out.println("insert 좋아요 " + likeVO.getId() + ", " + likeVO.getNovelNum() + ", " + likeVO.getUserNum());
 
 		try {
 			con = dbConnection.getConn();
@@ -326,8 +320,8 @@ public class EpisodeDAO {
 
 			// epNum 자동증가, 에피소드 등록시 무조건 공개로 시작, 뷰수는 0,
 			insertLike.append(" insert into liken(num_like,id,num_novel,num_member) ")
-					.append("	select num_like.nextval,?,?,? FROM DUAL	")
-					.append(" where NOT EXISTS (SELECT 0 FROM liken where num_member=? and num_novel=? ) ");
+					  .append("	select num_like.nextval,?,?,? FROM DUAL	")
+					  .append(" where NOT EXISTS (SELECT 0 FROM liken where num_member=? and num_novel=? ) ");
 
 			pstmt = con.prepareStatement(insertLike.toString());
 
@@ -338,7 +332,7 @@ public class EpisodeDAO {
 			pstmt.setInt(4, likeVO.getUserNum());
 			pstmt.setInt(5, likeVO.getNovelNum());
 
-			System.out.print("좋아요 추가");
+			System.out.println("아이디: "+ likeVO.getId() + ", 소설번호: " + likeVO.getNovelNum()+ ", 유저번호: " +likeVO.getUserNum()+" 좋아요 추가");
 
 			// 6. 쿼리문 수행 수 결과 얻기
 			cnt = pstmt.executeUpdate();
@@ -360,19 +354,15 @@ public class EpisodeDAO {
 		try {
 			con = dbConnection.getConn();
 
-			StringBuilder deleteEpisode = new StringBuilder();
+			String deleteLike = " delete from liken where num_member=? and num_novel=? ";
 
-			deleteEpisode.append(" delete from liken ").append(" where num_member=? and num_novel=? ");
-
-			pstmt = con.prepareStatement(deleteEpisode.toString());
+			pstmt = con.prepareStatement(deleteLike);
 
 			// 5. 바인드 변수값 설정
 			pstmt.setInt(1, userNum);
 			pstmt.setInt(2, novelNum);
 
-			System.out.println(deleteEpisode);
-			System.out.println(userNum + ", " + novelNum);
-			System.out.print("좋아요 삭제");
+			System.out.println(deleteLike + ", " + userNum + ", " + novelNum + " 좋아요 삭제");
 
 			// 6. 쿼리문 수행 수 결과 얻기
 			cnt = pstmt.executeUpdate();
@@ -409,8 +399,7 @@ public class EpisodeDAO {
 				cnt = rs.getInt(1);
 			}
 
-			System.out.print(selectLike);
-			System.out.println(", " + userNum + ", " + novelNum + ", " + cnt + " 좋아요 확인");
+			System.out.println(userNum + ", " + novelNum + ", " + (cnt==0? "좋아요 안함":"좋아요 함"));
 		} finally {
 			// 7. 연결 끊기
 			dbConnection.dbClose(null, pstmt, con);
@@ -448,8 +437,6 @@ public class EpisodeDAO {
 			pstmt.setInt(2, reportVO.getNovelNum());
 			pstmt.setString(3, reportVO.getId());
 			pstmt.setInt(4, reportVO.getReportCode());
-
-			System.out.print("좋아요 추가");
 
 			// 6. 쿼리문 수행 수 결과 얻기
 			cnt = pstmt.executeUpdate();

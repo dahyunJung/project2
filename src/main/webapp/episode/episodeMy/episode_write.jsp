@@ -75,7 +75,7 @@
 <%
 	 
 	//세션에 유저번호 값이 있는지 확인
-	int userNum = 0;
+	/* int userNum = 0;
 	if(session.getAttribute("user_num_member") != null){
 		userNum = Integer.parseInt(session.getAttribute("user_num_member").toString());		
 	}else{ 
@@ -85,26 +85,23 @@
 	}
 	
 	// num_novel을 파라미터로 받아서 처리
-	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
+	int num_novel = Integer.parseInt(request.getParameter("num_novel")); */
 	
 	
-	//int userNum = 4;
-	//int num_novel = 44; //일단 테스트값
+	int userNum = 8;
+	int num_novel = 47; //일단 테스트값
 	
 	// 소설 제목 출력
 	EpisodeMyDAO mDAO = new EpisodeMyDAO();
 %>
 
-<%-- vo: num_novel, epNum, userNum, epTitle, detail, openStatus, views, createDate--%>
-<%-- sql: num_episode, num_novel, num_member, title, story, open, visit, make --%>
-					
 <body>
 	<div id="__next" data-reactroot="">
 	<div style="display: none; background-color: canvas; color-scheme: light;"></div>
 	<div class="lightMode h-full flex flex-col h-full">
 	<main class="flex-1">
 		
-		<form id="epFrm" action="/project2/episode/episodeMy/episode_write_process.jsp" method="post" class="flex flex-col h-full">
+		<form id="epFrm" action="/project2/episode/episode_write_process.jsp" method="post" class="flex flex-col h-full">
 			
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
