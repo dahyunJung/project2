@@ -138,8 +138,13 @@ $(function(){
 
 
 </script>
-			<form action="../novel/my_novel_space.jsp" id="frm_myNovel" method="post"></form>
-			<form action="like.jsp" id="frm_like" method="post"><input type="hidden" name="search"></form>
+<form id="frm_myNovel" action="../novel/my_novel_space.jsp" method="post">
+<input type="hidden"name="order_novel"value="0">
+</form>
+<form id="frm_like" action="like.jsp" method="post">
+<input type="hidden"name="search">
+<input type="hidden"name="order_novel"value="0">
+</form>
            <form action = "my_page_profile.jsp" method="post" enctype="multipart/form-data" id="frm" name="frm">
     <div id="wrap">
 
