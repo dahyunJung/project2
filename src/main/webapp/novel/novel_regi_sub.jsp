@@ -53,7 +53,7 @@
 <%
 if("POST".equals(request.getMethod())){
 	
-	File saveDirectory=new File("C:/Users/user/git/project2/src/main/webapp/_next/static/images/");
+	File saveDirectory=new File("C:/Users/user/git/project2/src/main/webapp/_next/static/images/novel_thumb/");
 	int totalMaxSize=500*1024*1024;	//500mb제한
 	
 	MultipartRequest mr=new MultipartRequest(request,saveDirectory.getAbsolutePath(),totalMaxSize,"UTF-8",new DefaultFileRenamePolicy());
@@ -67,7 +67,9 @@ if("POST".equals(request.getMethod())){
 	String photoName=mr.getFilesystemName("filephoto");
 	
 	File uploadFile=new File(saveDirectory.getAbsolutePath()+"/"+photoName);
-	
+	if(photoName==null){	//이미지가 없다면 photoName을 기본값으로 바꾼다
+		photoName="photo_default.png";
+	}
 	NewNovelDAO nDAO=new NewNovelDAO();
 	try{
 		NewNovelVO nVO=new NewNovelVO(id, title, photoName, story, Integer.parseInt(age) , Integer.parseInt(open), 0);

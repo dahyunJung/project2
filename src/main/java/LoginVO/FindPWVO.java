@@ -2,7 +2,7 @@ package LoginVO;
 
 public class FindPWVO {
 private String id,email,passTemp;
-private int phone;
+private String phone;
 
 public FindPWVO() {
 	super();
@@ -11,7 +11,7 @@ public FindPWVO() {
 
 
 
-public FindPWVO(String id, String email, String passTemp, int phone) {
+public FindPWVO(String id, String email, String passTemp, String phone) {
 	super();
 	this.id = id;
 	this.email = email;
@@ -36,10 +36,10 @@ public String getPassTemp() {
 public void setPassTemp(String passTemp) {
 	this.passTemp = passTemp;
 }
-public int getPhone() {
+public String getPhone() {
 	return phone;
 }
-public void setPhone(int phone) {
+public void setPhone(String phone) {
 	this.phone = phone;
 }
 @Override

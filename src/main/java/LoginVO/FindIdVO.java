@@ -2,14 +2,14 @@ package LoginVO;
 
 public class FindIdVO {
 private String name;
-private int phone;
+private String phone;
 
 
 
 public FindIdVO() {
 	super();
 }
-public FindIdVO(String name, int phone) {
+public FindIdVO(String name, String phone) {
 	super();
 	this.name = name;
 	this.phone = phone;
@@ -20,10 +20,10 @@ public String getName() {
 public void setName(String name) {
 	this.name = name;
 }
-public int getPhone() {
+public String getPhone() {
 	return phone;
 }
-public void setPhone(int phone) {
+public void setPhone(String phone) {
 	this.phone = phone;
 }
 

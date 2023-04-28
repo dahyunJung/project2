@@ -11,7 +11,7 @@ import conn.DbConnection;
 
 public class MyLikeDAO {
 	
-	public List<MyLikeVO> selectNovelAll(String id,String search,String type) throws SQLException {
+	public List<MyLikeVO> selectNovelAll(String num_member,String search,String type) throws SQLException {
 		List<MyLikeVO> list=new ArrayList<MyLikeVO>();
 		
 		Connection con=null;
@@ -34,7 +34,7 @@ public class MyLikeDAO {
 			.append(" FROM episode	")
 			.append(" GROUP BY num_novel	")
 			.append(" ) e ON n.num_novel = e.num_novel	")
-			.append(" WHERE l.id = ? AND n.title LIKE '%")
+			.append(" WHERE l.num_member = ? AND n.title LIKE '%")
 			.append(search)
 			.append("%'")
 			.append(" order by e.max_make ");
@@ -45,7 +45,7 @@ public class MyLikeDAO {
 			
 			pstmt=con.prepareStatement(sb.toString());
 
-			pstmt.setString(1, id);
+			pstmt.setString(1, num_member);
 				
 			rs=pstmt.executeQuery();
 				

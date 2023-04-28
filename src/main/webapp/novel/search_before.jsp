@@ -25,7 +25,7 @@ function findNovel(){
      $("#frm").submit();
 }
 function selectNovel(num_novel){
-   location.href="/project2/novel/novel_info.jsp?num_novel="+num_novel;
+   location.href="/project2/episode/novel.jsp?num_novel="+num_novel;
 }
 </script>
 </head>

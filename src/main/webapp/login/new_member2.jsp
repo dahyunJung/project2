@@ -48,6 +48,14 @@ $(function(){
 		 
  	});
 	
+	 	$("#phone").on("keyup", function() {
+	   if (!$.isNumeric($(this).val())) {
+	alert("숫자만 써주세요.");
+	    $(this).val("");
+	  } 
+	}); 
+	
+	
 	$("#email_select").change(function(){
 		if($("#email_select").val()=="self"){ //직접 입력시
 			 $("#email2").removeAttr("readonly").focus(); // input text 활성화
@@ -65,6 +73,9 @@ $(function(){
 			 || $("#phone").val()=="" || $("#email").val()=="" || $("#email2").val()==""){
 			 alert("빈칸을 모두 채워주세요");
 			return;
+		 }else if($("#pw").val().length < 8){
+			 alert("비밀번호는 8자 이상으로 작성해주세요.");
+			 return;
 		}else if($("#pw").val() != $("#pw_chk").val()){
 			alert("비밀번호와 비밀번호 확인이 다릅니다");
 			return;
@@ -106,7 +117,7 @@ $(function(){
                 </tr>
                 <tr>
                     <td align="center"class="td1">아이디</td><td><input type="text" placeholder="아이디" name="id" id="id" readonly="readonly">
-                    <input type="button" class="button1" id = "idChk" value="중복 확인"></td>
+                    <input type="button" class="button1" id = "idChk" value="중복 확인" style='cursor:pointer'></td>
                 </tr>
                 <tr>
                     <td align="center"class="td1">비밀번호</td><td><input type="password" placeholder="비밀번호" name="pw" id="pw"></td>
@@ -132,8 +143,8 @@ $(function(){
                 </tr>
             </table>
             <div id="buttonId">
-                <input type="button"class="button" value="확인" id = "idBtn" name="idBtn">
-                <input type="button"class="button" value="취소" onclick="window.location.href='loginpage.jsp'">
+                <input type="button"class="button" value="확인" id = "idBtn" name="idBtn" style='cursor:pointer'>
+                <input type="button"class="button" value="취소" onclick="window.location.href='loginpage.jsp'" style='cursor:pointer'>
 
                 
             </div>
