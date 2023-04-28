@@ -9,8 +9,8 @@
  <% 
  if("POST".equals(request.getMethod())){   //post로 들어왔을 때 작동 
 	 String id = request.getParameter("id");
-	 String phone1 = request.getParameter("phone");
-	 int phone = Integer.parseInt(phone1);
+	 String phone = request.getParameter("phone");
+	 
 	 String email = request.getParameter("email");
 LoginDAO lDAO = new LoginDAO();
 

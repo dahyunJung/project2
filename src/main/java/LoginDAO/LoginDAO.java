@@ -92,7 +92,7 @@ public class LoginDAO {
 			
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, fiVO.getName());
-			pstmt.setInt(2, fiVO.getPhone());
+			pstmt.setString(2, fiVO.getPhone());
 			
 			rs=pstmt.executeQuery();
 			
@@ -123,7 +123,7 @@ public boolean selectCheckPW(FindPWVO fpVO)throws SQLException {
 		pstmt = con.prepareStatement(sql);
 		
 		pstmt.setString(1, fpVO.getId());
-		pstmt.setInt(2, fpVO.getPhone());
+		pstmt.setString(2, fpVO.getPhone());
 		pstmt.setString(3, fpVO.getEmail());
 		
 		rs = pstmt.executeQuery();
