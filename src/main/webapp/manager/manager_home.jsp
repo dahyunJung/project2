@@ -106,7 +106,7 @@ th, td{ height: 150px; font-weight: normal; border: 0px solid #333; text-align: 
 	
 	
 	
-		<h1>일간 이용자 지표 </h1>
+		<h1 style="margin-top: 25px;">일간 이용자 지표 </h1>
 	<div style="display: flex; justify-content: center; align-items: center; margin-top: 10px">
 	
 		<table style="margin: 0 auto;">
