@@ -59,11 +59,11 @@ function cancel(){
 	$(function() {
 		$("#email_select").change(function() {
 			if ($(this).val() == "self") { //직접 입력시
-				$("#email2").removeAttr("disabled").focus(); // input text 활성화
+				$("#email2").removeAttr("readonly").focus(); // input text 활성화
 				$("#email2").val("");
 
 			} else {
-				$("#email2").attr("disabled", true).val($(this).val());
+				$("#email2").attr("readonly", true).val($(this).val());
 			}
 		});
 		$("#change").click(function(){
@@ -122,7 +122,7 @@ String email2 = email_part[1];
                     <td align="center"class="td1">전화번호</td><td><input type="text" value="<%=iVO.getPhone()%>" id="phone" name="phone" placeholder="전화번호"></td>
                 </tr>
                 <tr>
-                    <td align="center"class="td1">이메일</td><td><input type="text"  id="email" name="email2" value="<%=email1%>" placeholder="이메일"> @ 
+                    <td align="center"class="td1">이메일</td><td><input type="text"  id="email1" name="email1" value="<%=email1%>" placeholder="이메일"> @ 
                         <input type="text" id="email2" name="email2" value="<%=email2%>">
                         <select id="email_select">
                         <option value="self">직접입력</option>
