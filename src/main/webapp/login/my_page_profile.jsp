@@ -15,7 +15,7 @@
     String user_num_member = session.getAttribute("user_num_member").toString();
   //1. 저장디렉토리를 설정
     File saveDirectory=new File("C:/Users/user/git/project2/src/main/webapp/_next/static/images/profile_images");
-    int fileSize=1024*1024;
+    int fileSize=1024*1024*2;
     //2. FileUpload Component 생성(multipartRequest) => 생성함과 동시에 파일이 업로드된다
     MultipartRequest mr =new MultipartRequest(request,saveDirectory.getAbsolutePath(),fileSize,"UTF-8",new DefaultFileRenamePolicy());
     //3.<input type = "file">의 값을 받는다
@@ -56,5 +56,11 @@
         lDAO.insertProfile(savedFileName,Integer.parseInt(user_num_member));
         session.setAttribute("user_photo", savedFileName);
     }
+    
+    File originalFile = new File(saveDirectory, originalFileName);
+    if (originalFile.exists()) {
+        originalFile.delete();
+    }
+    
     response.sendRedirect("my_page.jsp");
     	%>

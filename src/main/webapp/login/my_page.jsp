@@ -49,9 +49,10 @@ String id=session.getAttribute("user_id").toString();
 #container{width:1300px; height: 800px; position: relative;display: flex;justify-content: center;align-items: center; top: 100px;}
 #frame{width: 1100px;height: 700px;display: flex;position: absolute;justify-content: center;position: absolute;background-color: #E0E0E0;border-radius: 200px;}
 #text_mypage{position: absolute;left: 100px;top: 60px;font-size: 30px; font-weight: bold;}
-#img_change{position: absolute;top:55px;left:355px}
-#text_logout{position: absolute;left: 100px;top: 90px;font-size: 15px;}
-#img_profile{position: absolute;top: 170px}
+#img_change{position: absolute;top:65px;left:315px}
+#text_logout{position: absolute;left: 100px;top: 100px;font-size: 15px;}
+#img_profile{position: absolute;top: 130px}
+#imgpf{width: 150px; height: 180px}
 #input_name{position: absolute; top: 320px}
 .name{width: 200px; height: 30px;text-align: center; font-size: 20px;font-weight: bold;}
 #input_button1{position: absolute; top:420px;left: 100px;}
@@ -112,12 +113,12 @@ $(function(){
 			alert("이미지파일만 업로드 가능합니다");
 			return;
 		}else{
-			const maxSize = 1024 * 1024;
+			const maxSize = 1024 * 1024*2;
 			console.log("event",event);
 			let file = event.target.files[0];
 			console.log('file',file);
 			if(file.size >maxSize){
-				alert("1MB 이하의 이미지파일을 올려주세요");
+				alert("2MB 이하의 이미지파일을 올려주세요");
 				return;
 			}else{
 				
@@ -137,6 +138,8 @@ $(function(){
 
 
 </script>
+			<form action="../novel/my_novel_space.jsp" id="frm_myNovel" method="post"></form>
+			<form action="like.jsp" id="frm_like" method="post"><input type="hidden" name="search"></form>
            <form action = "my_page_profile.jsp" method="post" enctype="multipart/form-data" id="frm" name="frm">
     <div id="wrap">
 
@@ -149,14 +152,11 @@ $(function(){
             <div id="img_profile"><img src="../_next/static/images/profile_images/<%=session.getAttribute("user_photo") %>" class="profile"  id="imgpf" name="imgpf"/>
             <input type="file" id="file" name="file" style="display:none" /></div>
             
+            <%System.out.println(session.getAttribute("user_photo")); %>
             <div id="input_name"><input type="text" readonly value="<%=session.getAttribute("user_name") %>님" class="name"></div>
             <div id="input_button1"><input type="button"class="button" id="myNovel" value=" 내 소설"></div>
             <div id="input_button2"><input type="button"class="button" id="like" value=" 좋아요"></div>
             
-			<form action="../novel/my_novel_space.jsp" id="frm_myNovel" method="post"></form>
-			
-			
-			<form action="like.jsp" id="frm_like" method="post"><input type="hidden" name="search"></form>
 			
            </div>
        </div>
