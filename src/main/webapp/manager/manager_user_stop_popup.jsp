@@ -63,7 +63,7 @@ else{
 }
 
 if(mcnt>0){
-	session.setAttribute("check", "1");
+	//session.setAttribute("check", "1");
 	%>
 	<div style="color: blue; text-align: center; font-weight: bold; font-size: 20px">정지 완료</div>
 	<% 

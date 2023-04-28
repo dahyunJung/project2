@@ -1,3 +1,7 @@
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.util.Date"%>
+<%@page import="ManagerVO.MemberManageInfoVO"%>
+<%@page import="ManagerDAO.ManagerDAO"%>
 <%@page import="ManagerDAO.ManagerLoginDAO"%>
 <%@page import="ManagerVO.LoginVO"%>
 <%@page import="java.io.IOException"%>
@@ -5,7 +9,6 @@
 <%@page import="kr.co.sist.util.cipher.DataDecrypt"%>
 <%@page import="javax.xml.crypto.Data"%>
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
-<%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     info="입력값을 받아 암호화를 수행한 후 검색 결과를 받아서 복호화를 한 후 세션에 저장"
@@ -100,6 +103,20 @@ String password = lVO.getPassword();
 LoginVO lChkVO = lDAO.selectLogin(id, password);
 String idChk = lChkVO.getId();
 String pwChk = lChkVO.getPassword();
+
+ /* ManagerDAO mDAO = new ManagerDAO();
+	MemberManageInfoVO mVO = mDAO.selectMemberInfoAll("1ary");
+Date date = new java.util.Date(mVO.getSusPeriod().getTime());//db값안에 있는 날짜
+LocalDate currentDate = LocalDate.now();
+Date curDate = Date.from(currentDate.atStartOfDay().atZone(java.time.ZoneId.systemDefault()).toInstant());//현재 날짜
+if( date.before(curDate)==true ){
+session.setAttribute("sesId", idChk);
+
+//db값에 들어가는 중지값이 null이 들어가면 안되기에 nvl로 오늘자를 기준으로 하루전으로 기본값을 설정했기에
+//정지를 당하지 않은 사람
+}
+ */
+
 session.setAttribute("sesId", idChk);
 //session.setMaxInactiveInterval(60*60);
 
