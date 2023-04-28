@@ -1,5 +1,5 @@
+<%@page import="ManagerDAO.ManagerLoginDAO"%>
 <%@page import="ManagerVO.LoginVO"%>
-<%@page import="ManagerDAO.LoginDAO"%>
 <%@page import="java.io.IOException"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="kr.co.sist.util.cipher.DataDecrypt"%>
@@ -92,7 +92,7 @@ if( lVO.getId()==null || "".equals( lVO.getId() ) || lVO.getPassword()==null||""
 lVO.setPassword( DataEncrypt.messageDigest("MD5", lVO.getPassword() ) );
 //System.out.println("============"+lVO);
 //DAO를 사용하여 로그인 작업 수행
-LoginDAO lDAO = new LoginDAO();
+ManagerLoginDAO lDAO = new ManagerLoginDAO();
 try{
 String id = lVO.getId();
 String password = lVO.getPassword();

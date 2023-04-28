@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import ManagerVO.LoginVO;
 import conn.DbConnection;
 
-public class LoginDAO {
+public class ManagerLoginDAO {
 	
 	public ManagerVO.LoginVO selectLogin( String id, String password )throws SQLException {
 		
