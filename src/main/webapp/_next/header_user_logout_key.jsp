@@ -6,7 +6,7 @@
 		<h1 class="sr-only">카카오페이지 스테이지</h1>
 		<a
 			class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0"
-			href="/project2/home/main(logout).jsp"><img
+			href="/project2/home/main.jsp"><img
 			class="object-contain" width="157" height="27"
 			src="/project2/_next/static/images/logo.png"
 			srcSet="/static/images/logo@2x.png 2x, /static/images/logo@3x.png 3x"

@@ -170,7 +170,7 @@ if("POST".equals(request.getMethod())){
 											<div>
 												<div class="flex">
 													<div>
-														<img src="http://localhost/project2/_next/static/images/photo_default.png" id="photo" style="width: 100px;height: 150px"/>
+														<img src="http://localhost/project2/_next/static/images/novel_thumb/photo_default.png" id="photo" style="width: 100px;height: 150px"/>
 													</div>
 													<input type="file" name="filephoto" id="filephoto" value="" style="display: none;">
 												</div>

@@ -57,8 +57,8 @@
 											style="height: 180px;">
 											<span
 												style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 118px; height: 180px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"><img
-												srcset="/project2/_next/static/images/<%=nVO.getPhoto() %>"
-												src="/project2/_next/static/images/<%=nVO.getPhoto() %>" decoding="async"
+												srcset="/project2/_next/static/images/novel_thumb/<%=nVO.getPhoto() %>"
+												src="/project2/_next/static/images/novel_thumb/<%=nVO.getPhoto() %>" decoding="async"
 												data-nimg="fixed"
 												style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"></span>
 										</div>

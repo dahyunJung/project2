@@ -6,7 +6,7 @@
 		<h1 class="sr-only">카카오페이지 스테이지</h1>
 		<a
 			class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0"
-			href="/project2/home/main(login).jsp"><img class="object-contain"
+			href="/project2/home/main.jsp"><img class="object-contain"
 			width="157" height="27" src="/project2/_next/static/images/logo.png"
 			srcSet="/static/images/logo@2x.png 2x, /static/images/logo@3x.png 3x"
 			alt="소설조아 logo" /></a>
@@ -19,7 +19,7 @@
 					href="/project2/home/main.jsp">
 					<div class="relative">홈</div>
 				</a> <a class="typo-md1-b z-0 flex items-center py-[8.5px] mr-8 px-16"
-					href="/project2/home/ranking_day(login).jsp">
+					href="/project2/home/ranking.jsp?type=0">
 					<div class="relative">랭킹</div>
 				</a>
 			</div>

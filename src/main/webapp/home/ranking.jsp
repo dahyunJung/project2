@@ -67,7 +67,7 @@
                                     	List<RankingVO> list=rDAO.selectRanking(Integer.parseInt(request.getParameter("type")));
                                     	for(int i=0;i<30&&i<list.size();i++){
                                     %>
-									<div class="px-18 py-12 desktop:px-0 desktop:py-24">
+									<a class="px-18 py-12 desktop:px-0 desktop:py-24" href="../episode/novel.jsp?num_novel=<%=list.get(i).getNum_novel()%>">
 										<div
 											class="flex items-center flex-row w-full flex-row-reverse"
 											data-testid="skeleton">
@@ -101,7 +101,7 @@
                                                                         <span style="transform: translateY(-150%);font-size: 25px"><%=i+1%></span>
                                                                     </div>
 										</div>
-									</div>
+									</a>
 									
                                     <%
                                     	}//end for

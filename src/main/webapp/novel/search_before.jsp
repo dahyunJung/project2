@@ -52,7 +52,7 @@ function selectNovel(num_novel){
                                  <div id="searchimg" class="flex h-16 w-16 items-center text-grey60" onclick="findNovel()">
                                     <img width="20" height="20" viewBox="0 0 20 20" src="/project2/_next/static/images/search.png"/>
                                  </div>
-                                 <input type="search" onKeypress="findNovel()"
+                                 <input type="search" onKeypress="javascript:if(event.keyCode==13){findNovel()}"
                                     class="typo-md3 py-14 px-16 outline-none rounded-3 border-1 border-grey30 placeholder:text-grey60 w-full border-0 text-16 outline-none desktop:!text-16"
                                     name="search" placeholder="검색어 입력" maxLength="100" />
                               </div>

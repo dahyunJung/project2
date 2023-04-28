@@ -6,7 +6,7 @@
 		<h1 class="sr-only">카카오페이지 스테이지</h1>
 		<a
 			class="ml-15 mr-16 max-w-[145px] flex-shrink flex-grow basis-0 py-[13.5px] desktop:ml-0 desktop:mr-32 desktop:max-w-[174px] desktop:py-0"
-			href="/project2/home/main(login).jsp"> <img
+			href="/project2/home/main.jsp"> <img
 			class="object-contain" width="157" height="27"
 			src="/project2/_next/static/images/logo.png" alt="소설조아 logo" />
 		</a>
@@ -31,7 +31,7 @@
 				height="24"></a> &nbsp; &nbsp; &nbsp; <a
 				class="mr-16 flex items-center text-grey70"
 				href="/project2/login/my_page.jsp"><img
-				src="/project2/_next/static/images/profile_home.png" width="48"
+				src="/project2/_next/static/images/profile_images/<%=session.getAttribute("user_photo") %>" width="48"
 				height="48"></a>
 		</div>
 	</div>

@@ -142,8 +142,8 @@ if("POST".equals(request.getMethod())){
 													<span style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 80px; height: 125px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
 														<img
 														alt="ㄴㄹㅇㄹ"
-														srcset="/project2/_next/static/images/${select.thumbnail}"
-														src="/project2/_next/static/images/${select.thumbnail}" decoding="async"
+														srcset="/project2/_next/static/images/novel_thumb/${select.thumbnail}"
+														src="/project2/_next/static/images/novel_thumb/${select.thumbnail}" decoding="async"
 														data-nimg="fixed"
 														style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"
 														>

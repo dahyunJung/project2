@@ -53,7 +53,7 @@
 <%
 if("POST".equals(request.getMethod())){
 	
-	File saveDirectory=new File("C:/Users/user/git/project2/src/main/webapp/_next/static/images/");
+	File saveDirectory=new File("C:/Users/user/git/project2/src/main/webapp/_next/static/images/novel_thumb/");
 	int totalMaxSize=500*1024*1024;	//500mb제한
 	
 	MultipartRequest mr=new MultipartRequest(request,saveDirectory.getAbsolutePath(),totalMaxSize,"UTF-8",new DefaultFileRenamePolicy());

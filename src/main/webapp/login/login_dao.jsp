@@ -1,6 +1,6 @@
+<%@page import="LoginDAO.LoginDAO"%>
 <%@page import="LoginVO.LoginHistoryVO"%>
 <%@page import="LoginVO.SessionVO"%>
-<%@page import="LoginDAO.LoginDAO"%>
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
