@@ -73,7 +73,7 @@ $(function () {
 				 	article += "<article class='flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30'>"
 							+ "<div class='flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2'>"+len-- +"</div>"
 							+ "<div class='flex flex-1 flex-col desktop:flex-row'>"
-							+ "<a class='flex w-full shrink' href='episode_read.jsp?num_novel="+jsonObj.novelNum+"&epNum="+jsonObj.epNum+"'>"
+							+ "<a class='flex w-full shrink' href='../episode/episodeMy/episode_edit.jsp?num_novel="+jsonObj.num_novel+"&epNum="+jsonObj.epNum+"'>"
 							+ "<div class='flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80'>"
 							+ "<h3 class='flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16'>"
 							+ "<div class='truncate after:inline-block after:w-0 shrink'>"+ jsonObj.epTitle+"</div></h3>"
