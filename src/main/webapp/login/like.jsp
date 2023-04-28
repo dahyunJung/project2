@@ -104,7 +104,7 @@ function deleteNovel(num_novel){
 								<%
 																MyLikeDAO mDAO=new MyLikeDAO();
 																						try{
-																							List<MyLikeVO> selectList=mDAO.selectNovelAll(session.getAttribute("user_id").toString(),request.getParameter("search"),request.getParameter("order_novel"));
+																							List<MyLikeVO> selectList=mDAO.selectNovelAll(session.getAttribute("user_num_member").toString(),request.getParameter("search"),request.getParameter("order_novel"));
 																							pageContext.setAttribute("selList", selectList);
 																%>
 								
