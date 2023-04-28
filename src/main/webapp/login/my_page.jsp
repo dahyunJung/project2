@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-String id=session.getAttribute("user_id").toString();
-%>
+
 <!DOCTYPE html>
 <html lang="ko" style="height: 1000px;">
 <head>
@@ -49,7 +47,7 @@ String id=session.getAttribute("user_id").toString();
 #container{width:1300px; height: 800px; position: relative;display: flex;justify-content: center;align-items: center; top: 100px;}
 #frame{width: 1100px;height: 700px;display: flex;position: absolute;justify-content: center;position: absolute;background-color: #E0E0E0;border-radius: 200px;}
 #text_mypage{position: absolute;left: 100px;top: 60px;font-size: 30px; font-weight: bold;}
-#img_change{position: absolute;top:65px;left:315px}
+#img_change{position: absolute;top:100px;left:155px}
 #text_logout{position: absolute;left: 100px;top: 100px;font-size: 15px;}
 #img_profile{position: absolute;top: 130px}
 #imgpf{width: 150px; height: 180px}
@@ -97,10 +95,10 @@ $(function(){
 	});
 	
 	$("#file").change(function(event){
-		let blockExt = ["git","png","jpg","bmp"];
+		let blockExt = ["git","png","jpg","bmp"]; //대소
 		let blockFlag = false;
 		let fileName = $("#file").val();
-		let ext = fileName.substring(fileName.lastIndexOf(".")+1);
+		let ext = fileName.substring(fileName.lastIndexOf(".")+1).toLowerCase();
 		
 		for(let i=0; i < blockExt.length; i++){
 			if(blockExt[i]==ext){
@@ -114,7 +112,6 @@ $(function(){
 			return;
 		}else{
 			const maxSize = 1024 * 1024*2;
-			console.log("event",event);
 			let file = event.target.files[0];
 			console.log('file',file);
 			if(file.size >maxSize){
@@ -123,7 +120,6 @@ $(function(){
 			}else{
 				
 			let reader = new FileReader();
-			console.log('reader',reader);
 			reader.onload = function(e){
 				$("imgpf").attr("src",e.target.result);
 			}
@@ -152,15 +148,14 @@ $(function(){
        <div id="container">
            <div id="frame">
             <div id="text_mypage"><%=session.getAttribute("user_id") %>님의 마이페이지</div>
-            <div id="img_change"><img src="../_next/static/images/mypage.PNG" id="profile"></div>
-            <div id="text_logout"><a href="#void" id="logout">로그아웃</a></div>
-            <div id="img_profile"><img src="../_next/static/images/profile_images/<%=session.getAttribute("user_photo") %>" class="profile"  id="imgpf" name="imgpf"/>
+            <div id="img_change"><img src="../_next/static/images/mypage.PNG" id="profile"style='cursor:pointer'/></div>
+            <div id="text_logout"><a href="#void" id="logout" style="color: blue">로그아웃</a></div>
+            <div id="img_profile"><img src="../_next/static/images/profile_images/<%=session.getAttribute("user_photo") %>" class="profile"  id="imgpf" name="imgpf" style='cursor:pointer'/>
             <input type="file" id="file" name="file" style="display:none" /></div>
             
-            <%System.out.println(session.getAttribute("user_photo")); %>
             <div id="input_name"><input type="text" readonly value="<%=session.getAttribute("user_name") %>님" class="name"></div>
-            <div id="input_button1"><input type="button"class="button" id="myNovel" value=" 내 소설"></div>
-            <div id="input_button2"><input type="button"class="button" id="like" value=" 좋아요"></div>
+            <div id="input_button1"><input type="button"class="button" id="myNovel" value=" 내 소설" style='cursor:pointer'></div>
+            <div id="input_button2"><input type="button"class="button" id="like" value=" 좋아요" style='cursor:pointer'></div>
             
 			
            </div>

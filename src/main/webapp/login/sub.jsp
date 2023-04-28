@@ -18,10 +18,10 @@
 <noscript data-n-css=""></noscript>
 <style type="text/css">
 
-#wrap{ width: 1000px;height: 650px;margin: 0px auto;}
+#wrap{ width: 1000px;height: 350px;margin: 0px auto;}
 #header{height: 150px;position: relative;}
 
-#container{height: 500px;display: flex;position: relative;}
+#container{height: 350px;display: flex;position: relative;}
 #zoa{width: 150px; height: 70px; position: absolute;bottom: 420px;
     background:#FFFFFF url(\\211.63.89.130\sharing\07.프로젝트\2차\3조\_next\static\images\1/zoa.PNG);background-size : 100% 100%;}
 #loginId{width: 50%;height: 70%;position: relative;display: flex;justify-content: center;}
@@ -35,7 +35,7 @@
     border: none;border-bottom: 1px solid #CCC;}
 .input_pass{width: 100%; height: 30px; border-radius: 3px;background-color: #e8f0fe;
     border: none;border-bottom: 1px solid #CCC;}
-.input_button{width:100%; height:50px; border-radius: 10px; background-color: yellow;}
+.input_button{width:100%; height:50px; border-radius: 10px; background-color: #808080;}
 
 </style>
 <!-- jQuery CDN 시작 -->
@@ -63,10 +63,7 @@
 </head>
 
 <body>
-	<div id="__next" data-reactroot="">
 		<div style="display: none; background-color: canvas; color-scheme: light"></div>
-		<div class="lightMode h-full">
-			<div class="flex flex-col h-full">
 				<form action="sub_dao.jsp" method="post" id="frm" name="frm">
     <div id="wrap">
         <div id="container">
@@ -90,9 +87,6 @@
         </div>
     </div>
 </form>
-			</div>
-		</div>
 		<div id="modal-normal"></div>
-	</div>
 </body>
 </html>

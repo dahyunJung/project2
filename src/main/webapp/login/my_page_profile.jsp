@@ -32,7 +32,7 @@
  int lastIndex = originalFileName.lastIndexOf(".");
  
  if(lastIndex>= 0){
-	 extension = originalFileName.substring(lastIndex);
+	 extension = originalFileName.substring(lastIndex).toLowerCase();
  }
 
     // 저장할 파일 이름 설정
@@ -53,7 +53,7 @@
         }
         
         LoginDAO lDAO = new LoginDAO();
-        lDAO.insertProfile(savedFileName,Integer.parseInt(user_num_member));
+        lDAO.updateProfile(savedFileName,Integer.parseInt(user_num_member));
         session.setAttribute("user_photo", savedFileName);
     }
     

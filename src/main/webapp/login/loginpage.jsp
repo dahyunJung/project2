@@ -30,7 +30,7 @@
     border: none;border-bottom: 1px solid #CCC;}
 .input_pass{width: 100%; height: 30px; border-radius: 3px;background-color: #e8f0fe;
     border: none;border-bottom: 1px solid #CCC;}
-.input_button{width:100%; height:50px; border-radius: 10px; background-color: yellow;}
+.input_button{width:100%; height:50px; border-radius: 10px; background-color: #808080;}
 </style>
 <!-- jQuery CDN 시작 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

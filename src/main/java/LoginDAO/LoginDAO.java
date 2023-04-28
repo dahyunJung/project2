@@ -331,7 +331,7 @@ public int updatePass(String id, String pw)throws SQLException {
 		
   }
   
-  public void insertProfile(String profile, int num) throws SQLException{
+  public void updateProfile(String profile, int num) throws SQLException{
 	  Connection con =null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
