@@ -73,24 +73,23 @@
 </head>
 
 <%
-	 
+	int userNum = (Integer)session.getAttribute("user_num_member");
+	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
+	
 	//세션에 유저번호 값이 있는지 확인
-	/* int userNum = 0;
-	if(session.getAttribute("user_num_member") != null){
-		userNum = Integer.parseInt(session.getAttribute("user_num_member").toString());		
+	//int userNum = (Integer)session.getAttribute("user_num_member");
+	//int num_novel = Integer.parseInt(request.getParameter("num_novel"));
+	
+	/*  if(session.getAttribute("user_num_member") != null){
+		userNum = Integersession.getAttribute("user_num_member");		
 	}else{ 
 		// 세션에 값이 없다면, 에러페이지로 이동. 뒤로 못가게 해야되는데 아니면 아예 로그아웃된 홈페이지로 이동
 		response.sendRedirect("http://localhost/project2/episode/error(logout).jsp");
 		return;
-	}
+	} */
 	
 	// num_novel을 파라미터로 받아서 처리
-	int num_novel = Integer.parseInt(request.getParameter("num_novel")); */
-	
-	
-	int userNum = 8;
-	int num_novel = 47; //일단 테스트값
-	
+		
 	// 소설 제목 출력
 	EpisodeMyDAO mDAO = new EpisodeMyDAO();
 %>

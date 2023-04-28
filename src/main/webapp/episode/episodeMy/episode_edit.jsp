@@ -107,8 +107,8 @@ $(function(){
 	//int novelNum = 23; 
 	//int epNum = 85;
 	 
-	int userNum = (Integer)session.getAttribute("userNum");
-	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
+	int userNum = (Integer)session.getAttribute("user_num_member");
+	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
 	int epNum = Integer.parseInt(request.getParameter("epNum")); 
 	
 	
@@ -127,7 +127,7 @@ $(function(){
 %>
 		<script type="text/javascript">
 			alert("파라미터 novelNum의 값이 없음");
-			location.href="http://localhost/project2/novel/novel_list.jsp";
+			location.href="http://localhost/project2/home/main.jsp";
 			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 		</script>
 <%
@@ -137,7 +137,7 @@ $(function(){
 %>
 		<script type="text/javascript">
 			alert("파라미터 epNum의 값이 없음");
-			location.href="http://localhost/project2/novel/novel_list.jsp";
+			location.href="http://localhost/project2/novel/novel_list.jsp?num_novel=" + novelNum;
 			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 		</script>
 <%

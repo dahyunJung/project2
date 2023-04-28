@@ -376,6 +376,36 @@ public class EpisodeDAO {
 
 		return cnt;
 	}// deleteLike
+	
+	// 좋아요 개수
+	public int cntLike(int novelNum) throws SQLException{
+		int cnt = 0;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		DbConnection dbConnection = DbConnection.getInstance();
+		ResultSet rs = null;
+
+		try {
+			con = dbConnection.getConn();
+
+			String cntLike = " select count(*) from liken where num_novel=? ";
+
+			pstmt = con.prepareStatement(cntLike);
+			pstmt.setInt(1, novelNum);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				cnt = rs.getInt(1);
+			}
+
+		} finally {
+			// 7. 연결 끊기
+			dbConnection.dbClose(null, pstmt, con);
+		} // end finally
+		return cnt;
+	}
 
 	// 좋아요되어 있으면 좋아요 화면에 표시
 	public int confirmLike(int userNum, int novelNum) throws SQLException {

@@ -65,7 +65,6 @@ $(function(){
 			var len = jsonArr.length;
 			var article="";
 			let cnt=0;
-			alert("d");
 			
 			$.each(jsonArr,function(idx, jsonObj){
 				cnt++;

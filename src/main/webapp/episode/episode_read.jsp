@@ -100,13 +100,18 @@ $(function(){
 		<div class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 flex-wrap items-center desktop:min-h-[72px] desktop:flex-nowrap desktop:py-12">
 		<div class="flex typo-g-sm2 flex-1 items-center text-grey60" style="display: flex; align-items: center;">
 			<div class="relative overflow-visible mt-auto mb-0 desktop:my-auto">
+			
+				<!-- 해당 소설 리스트로 이동 -->
 				<a href="http://localhost/project2/episode/novel.jsp?num_novel=<%= novelNum %>">
 					<img width="20" height="20" src="/project2/_next/static/images/list.png" style="top: 10px;" />
 				</a>
 				
-				<span class="button" style="position: relative; top: -8px; left: 348px; text-align: center; ">
-					<label style="font-size: 25px; height: 38px; color: rgb(0, 0, 0); font-weight: bold;"> <%= selectVO.getNovelTitle() %> </label>
-				</span> 
+				<!-- 소설 제목 -->
+				<div>
+					<span class="button" style=" top: -8px; left: 348px; align-items: center; ">
+						<label style="font-size: 25px; height: 38px; color: rgb(0, 0, 0); font-weight: bold; text-align: center;"> <%= selectVO.getNovelTitle() %> </label>
+					</span> 
+				</div>
 				
 			</div>
 		</div>
@@ -129,11 +134,9 @@ $(function(){
 				</div>
 				<br><br><br><br><br><br>
 				
+				<!-- 에피소드 변경 -->
 				<div style="position: relative;">
-					<!-- 이전화 -->
 					<input type="button" id="prev" value="← 이전 화"  style="font-size:25px ; text-align: left;"/>
-					
-					<!-- 다음화 -->
 					<input type="button" id="next" value="다음 화 →" style="font-size:25px ; float: right;"/>
 					<br><br>
 				</div>
