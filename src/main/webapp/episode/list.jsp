@@ -37,9 +37,8 @@ $(function () {
 </form>
 <%
 NovelListDAO nDAO=new NovelListDAO();
-/* String num_novel=request.getParameter("num_novel"); */
-String num_novel = "44";
-/* if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO.selectChk(num_novel)))){ */
+String num_novel=request.getParameter("num_novel");
+if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO.selectChk(num_novel)))){
 	%>
 <body>
 	<div id="__next" data-reactroot="">
@@ -65,7 +64,7 @@ String num_novel = "44";
 									class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18">
 									<%
 									try{
-										NovelListVO nVO=nDAO.selectNovel("44");
+										NovelListVO nVO=nDAO.selectNovel(request.getParameter("num_novel"));
 									%>
 									<header class="relative overflow-hidden">
 										<div class="flex my-48">
@@ -265,12 +264,12 @@ String num_novel = "44";
 	</div>
 </body>
 
-<%-- <%}else{
+<%}else{
 	%>
 	<script type="text/javascript">
 	alert("비정상적인 접근입니다");
 	window.history.back();
 	</script>
 	<%
-} %> --%>
+} %>
 </html>

@@ -9,25 +9,21 @@
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true" info="JSONArray" %><%
     
     
-    //int novelNum = Integer.parseInt(request.getParameter("novelNum"));
-    int novelNum = 46;
-    
+   	// int novelNum = Integer.parseInt(request.getParameter("num_novel"));
+     int novelNum=44; 
+       
 	EpisodeDAO epDAO = new EpisodeDAO();
     
     try{
     	// 에피소드 회차 출력
 		List<ListEpisodeVO> list = epDAO.selectAllEp(novelNum);
     	
-		/* private String epTitle;
-		private int viewCnt;
-		private Date createDate; */
-		
 		// 1. JSONArray 생성
 		JSONArray jsonArr = new JSONArray();
 		
 		// 2. 데이터베이스에서 조회한 결과로 JSONObject 생성하고, JSONArray에 추가
 		JSONObject jsonTemp = null;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
 		for(ListEpisodeVO leVO : list){
 			// JSONObject을 생성하고

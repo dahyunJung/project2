@@ -19,6 +19,38 @@ public class EpisodeMyDAO {
 	 * views, createDate episode sql: num_episode, num_novel, num_member, title,
 	 * story, open, visit, make
 	 */
+	
+	// 자신이 쓴 소설인지 확인
+	public int userCheck(int novelNum) throws SQLException {
+		int userNum = 0;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		DbConnection dbConnection = DbConnection.getInstance();
+		
+		try {
+			con = dbConnection.getConn();
+			
+			String checkId = " select num_member from novel where num_novel = ?";
+				
+			pstmt=con.prepareStatement(checkId);
+			
+			pstmt.setInt(1, novelNum);
+				
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				userNum = rs.getInt("num_member");
+			}
+				
+		}finally {
+			dbConnection.dbClose(rs, pstmt, con);
+		}
+		
+		return userNum;
+	}//userCheck
 
 	
 	  // 작성한 소설 제목 출력 (에피소드 작성 )

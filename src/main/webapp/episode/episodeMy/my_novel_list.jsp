@@ -1,3 +1,6 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="EpisodeVO.User.LookNovelVO"%>
+<%@page import="EpisodeDAO.EpisodeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +15,44 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/6e5d8ba319c77348.css" data-n-g="" />
 <link rel="stylesheet" type="text/css" href="/project3/_next/static/css/font.css" />
 <noscript data-n-css=""></noscript>
+
+<%-- <%
+	EpisodeDAO epDao = new EpisodeDAO();
+	int userNum = (Integer)session.getAttribute("userNum");
+	String num_novel=request.getParameter("num_novel");
+	if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO.selectChk(num_novel)))){
+%> --%>
+	
+<%
+	//int userNum = (Integer)session.getAttribute("userNum");
+	int userNum = 3;
+	int novelNum = 44;
+	//int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
+	if(novelNum == 0){
+%>
+		<script type="text/javascript">
+			alert("파라미터 novelNum의 값이 없음");
+			location.href="http://localhost/project2/novel/novel_list.jsp";
+			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
+		</script>
+	
+<%	}
+	String good = "http://localhost/project2/_next/static/images/good_on.png";
+	String cancelGood = "http://localhost/project2/_next/static/images/good_off.png";
+
+	// 선택한 회차 화면에 출력
+ 	EpisodeDAO epDAO = new EpisodeDAO();
+	LookNovelVO selectNovelVO = null;
+	try{
+		// 에피소드 화면 출력
+		selectNovelVO = epDAO.selectNovel(novelNum);
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+%>
+
+
+
 
 <style data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&display=swap">
 </style>

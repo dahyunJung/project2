@@ -20,10 +20,10 @@
 <style data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&display=swap"></style>
 
 <%
-	//int userNum = (Integer)session.getAttribute("userNum");
+	//int userNum = (Integer)session.getAttribute("user_num_member");
 	int userNum = 3;
-	int novelNum = 46;
-	//int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
+	//int novelNum = 44;
+	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
 	if(novelNum == 0){
 %>
 		<script type="text/javascript">
@@ -50,9 +50,11 @@
 <script type="text/javascript">
 
 $(function(){
+	
 	 $.ajax({
 		url : "episode_jsonarr_data.jsp",
 		dataType : "JSON",
+		
 		error : function(xhr){
 			alert("서버에서 문제가 발생했습니다. 다시 시도해주세요.");
 			console.log(xhr.status);
@@ -67,7 +69,7 @@ $(function(){
 			 	article += "<article class='flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30'>"
 						+ "<div class='flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2'>"+len-- +"</div>"
 						+ "<div class='flex flex-1 flex-col desktop:flex-row'>"
-						+ "<a class='flex w-full shrink' href='episode_read.jsp?novelNum="+jsonObj.novelNum+"&epNum="+jsonObj.epNum+"'>"
+						+ "<a class='flex w-full shrink' href='episode_read.jsp?num_novel="+jsonObj.novelNum+"&epNum="+jsonObj.epNum+"'>"
 						+ "<div class='flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80'>"
 						+ "<h3 class='flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16'>"
 						+ "<div class='truncate after:inline-block after:w-0 shrink'>"+ jsonObj.epTitle+"</div></h3>"
@@ -106,26 +108,23 @@ $(function(){
 	}); //private
 	
 	$("#reportImg").click(function(){
-		window.open("/project2/episode/episodeUser/report_popup.jsp","popup","width=500,height=803,resizable=no,top="
+		window.open("/project2/episode/report_popup.jsp","popup","width=500,height=803,resizable=no,top="
 				+(window.screenY+100)	+",left="+(window.screenX+100)); 
 		//window.close();
 	});// 신고
 	
 	$("#firstEp").click(function(){
-		location.href='episode_read.jsp?novelNum=<%=novelNum%>&epNum=<%=epDAO.selectFirstEp(novelNum)%>';
+		location.href='episode_read.jsp?num_novel=<%=novelNum%>&epNum=<%=epDAO.selectFirstEp(novelNum)%>';
 	}); //첫화 보기
 	
 	
 });//ready
-	
 </script>
 
 </head>
 
-
-
 <body>
-	<input type="hidden" name="novelNum" value="<%= novelNum %>">
+	
 	<div id="__next" data-reactroot="">
 	<div style="display: none; background-color: canvas; color-scheme: light"></div>
 	<div class="lightMode h-full">
@@ -134,10 +133,14 @@ $(function(){
 					
 	<!-- header -->
 	<div>
-		<jsp:include page="../../_next/header_user_login_search.jsp"/>
+		<jsp:include page="../_next/header_user_login_search.jsp"/>
 	</div>						
 	</div>
 	
+	<%-- <form id="novl" action="episode_jsonarr.jsp" method="get">
+		
+	</form> --%>
+	<input type="hidden" id="novelNum" name="novelNum" value="<%= novelNum %>">
 	<main class="flex-1">
 		<div class="relative -z-1"></div>
 		<div class="flex-1">
@@ -228,41 +231,12 @@ $(function(){
 			
 			</div>
 			
-			<%--
-			<!-- 회차 목록들 -->
-			<article class="flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30">
-			
-				<div class="flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2">1.</div>
-				<div class="flex flex-1 flex-col desktop:flex-row">
-				
-					<a class="flex w-full shrink" href="/project2/episode/episode_read.jsp">
-					<div class="flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80">
-						<h3 class="flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16">
-							<div class="truncate after:inline-block after:w-0 shrink">제목</div>
-						</h3>
-						<div class="flex typo-sm2 whitespace-pre-line text-grey60 desktop:whitespace-normal mb-14 desktop:mb-0">
-							<div class="flex flex-wrap items-center text-grey60">
-								<span>조회 22</span> 
-								<span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
-								<span class="typo-g-sm2 -mb-[0.2em]">2023.02.23</span>
-							</div>
-						</div>
-					</div>
-					</a>
-					
-				</div>
-				
-			</article>
-			 --%>  
-				
-			</div>
-		</div>
 		</div>
 		</div>
 		</main>
 	<!-- footer -->
 	<div>
-		<jsp:include page="../../_next/footer.jsp"/>
+		<jsp:include page="../_next/footer.jsp"/>
 	</div>
 </body>
 </html>

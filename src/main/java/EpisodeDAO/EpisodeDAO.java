@@ -11,6 +11,7 @@ import EpisodeVO.ListEpisodeVO;
 import EpisodeVO.User.LikeVO;
 import EpisodeVO.User.LookEpisodeVO;
 import EpisodeVO.User.LookNovelVO;
+import EpisodeVO.User.PrevNextVO;
 import EpisodeVO.User.ReportVO;
 import conn.DbConnection;
 
@@ -56,38 +57,7 @@ public class EpisodeDAO {
 		return lnVO;
 	}// selectNovel
 
-	// 에피소드 개수 출력
-	public int countEp(int novelNum) throws SQLException {
-		int cnt = 0;
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		DbConnection dbConnection = DbConnection.getInstance();
-		ResultSet rs = null;
-
-		try {
-			con = dbConnection.getConn();
-
-			String countEp = " select count(*) from episode where num_novel=? ";
-
-			pstmt = con.prepareStatement(countEp);
-			pstmt.setInt(1, novelNum);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				cnt = rs.getInt(1);
-			}
-
-			System.out.print(countEp);
-			System.out.println(novelNum + ", " + cnt + " 회차 개수");
-		} finally {
-			// 7. 연결 끊기
-			dbConnection.dbClose(null, pstmt, con);
-		} // end finally
-		return cnt;
-	}// countEp
-
+	
 	// 에피소드 회차 리스트 보여주기
 	public List<ListEpisodeVO> selectAllEp(int novelNum) throws SQLException {
 		List<ListEpisodeVO> list = new ArrayList<ListEpisodeVO>();
@@ -129,6 +99,7 @@ public class EpisodeDAO {
 		return list;
 	} // selectAllEp
 
+	
 	// 에피소드 내용보여주는 창 (다른사용자)
 	public LookEpisodeVO selectEpisode(int novelNum, int epNum) throws SQLException {
 		LookEpisodeVO leVO = null;
@@ -169,6 +140,148 @@ public class EpisodeDAO {
 		} // end finally
 		return leVO;
 	}// selectEpisode
+	
+
+	// 에피소드 개수 출력
+	public int countEp(int novelNum) throws SQLException {
+		int cnt = 0;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		DbConnection dbConnection = DbConnection.getInstance();
+		ResultSet rs = null;
+
+		try {
+			con = dbConnection.getConn();
+
+			String countEp = " select count(*) from episode where num_novel=? ";
+
+			pstmt = con.prepareStatement(countEp);
+			pstmt.setInt(1, novelNum);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				cnt = rs.getInt(1);
+			}
+
+			System.out.print(countEp);
+			System.out.println(novelNum + ", " + cnt + " 회차 개수");
+		} finally {
+			// 7. 연결 끊기
+			dbConnection.dbClose(null, pstmt, con);
+		} // end finally
+		return cnt;
+	}// countEp
+	
+	
+	// 첫 에피소드 보여주기
+	public int selectFirstEp(int novelNum) throws SQLException {
+		int first = 0;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		DbConnection dbConnection = DbConnection.getInstance();
+
+		try {
+			con = dbConnection.getConn();
+
+			String selectFir = " select num_episode from episode where rownum=1 and num_novel=? and open=1 ORDER BY NUM_EPISODE ASC ";
+
+			pstmt = con.prepareStatement(selectFir);
+			pstmt.setInt(1, novelNum);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				first = rs.getInt(1);
+			}
+			System.out.println("select novelNum" + novelNum + ", " + first);
+
+		} finally {
+			dbConnection.dbClose(null, pstmt, con);
+		}
+
+		return first;
+	}// selectFirstEp
+	
+	
+	public int prevEp(int novelNum, int epNum) throws SQLException {
+
+		PrevNextVO pnVO = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		DbConnection dbConnection = DbConnection.getInstance();
+
+		try {
+			con = dbConnection.getConn();
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(" SELECT * FROM " )
+				.append(" (SELECT lag(NUM_EPISODE, 1, 0) over(ORDER BY NUM_EPISODE) AS prev, NUM_EPISODE ")
+				.append(" FROM EPISODE WHERE num_novel=? and OPEN=1) WHERE NUM_EPISODE=? " ); 
+
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setInt(1, novelNum);
+			pstmt.setInt(2, epNum);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				pnVO = new PrevNextVO();
+				pnVO.setPrevEpNum(rs.getInt("prev"));
+			}
+			System.out.println("select novelNum" + novelNum + "prev " + pnVO.getPrevEpNum());
+
+		} finally {
+			dbConnection.dbClose(null, pstmt, con);
+		}
+
+		return pnVO.getPrevEpNum();
+	}
+	
+	
+	public int nextEp(int novelNum, int epNum) throws SQLException {
+
+		PrevNextVO pnVO = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		DbConnection dbConnection = DbConnection.getInstance();
+
+		try {
+			con = dbConnection.getConn();
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(" SELECT * FROM " )
+				.append(" (SELECT lead(NUM_EPISODE, 1, 0) over(ORDER BY NUM_EPISODE) AS next, NUM_EPISODE ")
+				.append(" FROM EPISODE WHERE num_novel=? and OPEN=1) WHERE NUM_EPISODE=? " ); 
+
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setInt(1, novelNum);
+			pstmt.setInt(2, epNum);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				pnVO = new PrevNextVO();
+				pnVO.setNextEpNum(rs.getInt("next"));
+			}
+			System.out.println("select novelNum" + novelNum + "prev " + pnVO.getNextEpNum());
+
+		} finally {
+			dbConnection.dbClose(null, pstmt, con);
+		}
+
+		return pnVO.getNextEpNum();
+	}
 	
 	
 	// 에피소드 조회수 증가
@@ -347,36 +460,5 @@ public class EpisodeDAO {
 		return cnt;
 	}
 
-	// 첫 에피소드 보여주기
-	public int selectFirstEp(int novelNum) throws SQLException {
-		int first = 0;
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		DbConnection dbConnection = DbConnection.getInstance();
-
-		try {
-			con = dbConnection.getConn();
-
-			String selectFir = " select num_episode from episode where rownum=1 and num_novel=? and open=1 ORDER BY NUM_EPISODE ASC ";
-
-			pstmt = con.prepareStatement(selectFir);
-			pstmt.setInt(1, novelNum);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				first = rs.getInt(1);
-			}
-			System.out.println("select novelNum" + novelNum + ", " + first);
-
-		} finally {
-			dbConnection.dbClose(null, pstmt, con);
-		}
-
-		return first;
-	}// selectFirstEp
 
 }

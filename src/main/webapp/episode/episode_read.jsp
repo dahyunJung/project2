@@ -1,3 +1,4 @@
+<%@page import="EpisodeVO.User.PrevNextVO"%>
 <%@page import="EpisodeVO.User.LookEpisodeVO"%>
 <%@page import="EpisodeDAO.EpisodeDAO"%>
 <%@page import="java.sql.SQLException"%>
@@ -21,6 +22,35 @@
 <!-- jQuery CDN설정 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
+<%
+/* if((Integer)session.getAttribute("userNum")==null){
+	    response.sendRedirect("http://localhost/project2/episode/novel_list.jsp");
+	}  */
+
+	int userNum = 4;
+	int novelNum = 44; 
+	int epNum = 105;
+	
+	//int userNum = (Integer)session.getAttribute("userNum");
+	//int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
+	//int epNum = Integer.parseInt(request.getParameter("epNum")); 
+	
+	EpisodeDAO epDAO = new EpisodeDAO();
+	LookEpisodeVO selectVO = null;
+	PrevNextVO prevNextVO = null;
+	int prev = 0;
+	int next = 0;
+	
+	try{
+		selectVO = epDAO.selectEpisode(novelNum, epNum);
+		prev = epDAO.prevEp(novelNum, epNum);
+		next = epDAO.nextEp(novelNum, epNum);
+		
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+%>
+
 <style type="text/css">
 	.flex-container {
 		display: flex;
@@ -39,11 +69,22 @@
 
 $(function(){
 	
+	/* 이전 화 */
 	$("#prev").click(function(){
-		
+		if(<%= prev %> == 0){
+			alert("이전 에피소드가 없어요");
+			return;
+		}
+ 		$(location).attr("href", "http://localhost/project2/episode/episode_read.jsp?novelNum="+<%= novelNum %>+"&epNum="+<%= prev %>);
 	}); //prev
+	
+	/* 다음 화 */
 	$("#next").click(function(){
-		
+		if(<%= next %> == 0){
+			alert("다음 에피소드가 없어요");
+			return;
+		}
+		$(location).attr("href", "http://localhost/project2/episode/episode_read.jsp?novelNum="+<%= novelNum %>+"&epNum="+<%= next %>);
 	}); //next
 	
 	
@@ -52,33 +93,12 @@ $(function(){
 </script>
 </head>
 
-<%
-/* if((Integer)session.getAttribute("userNum")==null){
-	    response.sendRedirect("http://localhost/project2/episode/novel_list.jsp");
-	}  */
-
-	int userNum = 4;
-	//int novelNum = 23; 
-	//int epNum = 86;
-	
-	//int userNum = (Integer)session.getAttribute("userNum");
-	int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
-	int epNum = Integer.parseInt(request.getParameter("epNum")); 
-	
-	EpisodeDAO epDAO = new EpisodeDAO();
-	LookEpisodeVO selectVO = null;
-	try{
-		selectVO = epDAO.selectEpisode(novelNum, epNum);
-		
-	}catch(SQLException e){
-		e.printStackTrace();
-	}
-%>
-
 <body>
 <div id="__next" data-reactroot="">
 <div class="lightMode h-full">
 <div class="flex flex-col h-full">
+
+<input type="hidden" name="novelNum" value="<%= novelNum %>">
 
 	<header class="relative bg-white border-b-1 border-grey20">
 		<div class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 flex-wrap items-center desktop:min-h-[72px] desktop:flex-nowrap desktop:py-12">
@@ -115,7 +135,7 @@ $(function(){
 				
 				<div style="position: relative;">
 					<!-- 이전화 -->
-					<input type="button" id="prev" value="← 이전 화" style="font-size:25px ; text-align: left;"/>
+					<input type="button" id="prev" value="← 이전 화"  style="font-size:25px ; text-align: left;"/>
 					
 					<!-- 다음화 -->
 					<input type="button" id="next" value="다음 화 →" style="font-size:25px ; float: right;"/>
@@ -128,7 +148,7 @@ $(function(){
 	</main>
 	<!-- footer -->
 	<div>
-		<jsp:include page="../../_next/footer.jsp"/>
+		<jsp:include page="../_next/footer.jsp"/>
 	</div> 
 	</div>
 	</div>
