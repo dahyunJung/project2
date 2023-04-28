@@ -212,7 +212,7 @@ public InfoVO selectInfo(String id)throws SQLException {
 	String resultName = null;
 	String resultId = null;
 	String resultEmail = null;
-	int resultPhone = 0;
+	String resultPhone = null;
 	Date resultBirth = null;
 	
 	Connection con =null;
@@ -234,7 +234,7 @@ public InfoVO selectInfo(String id)throws SQLException {
 			resultName=rs.getString("name");
 			resultId=rs.getString("id");
 			resultBirth=rs.getDate("birth");
-			resultPhone=rs.getInt("phone");
+			resultPhone=rs.getString("phone");
 			resultEmail=rs.getString("email");
 		}
 		

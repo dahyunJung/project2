@@ -50,7 +50,7 @@ if(sVO.getId()==null){
 	
 	  
 	 ManagerDAO mDAO = new ManagerDAO();
-		MemberManageInfoVO mVO = mDAO.selectMemberInfoAll("1ary");
+		MemberManageInfoVO mVO = mDAO.selectMemberInfoAll(id);
 	Date date = new java.util.Date(mVO.getSusPeriod().getTime());//db값안에 있는 날짜
 	LocalDate currentDate = LocalDate.now();
 	Date curDate = Date.from(currentDate.atStartOfDay().atZone(java.time.ZoneId.systemDefault()).toInstant());//현재 날짜

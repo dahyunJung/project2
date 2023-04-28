@@ -5,11 +5,11 @@ import java.util.Date;
 public class InfoVO {
 private String name, id, email;
 private Date birth;
-private int phone;
+private String phone;
 public InfoVO() {
 	super();
 }
-public InfoVO(String name, String id, String email, Date birth, int phone) {
+public InfoVO(String name, String id, String email, Date birth, String phone) {
 	super();
 	this.name = name;
 	this.id = id;
@@ -41,10 +41,10 @@ public Date getBirth() {
 public void setBirth(Date birth) {
 	this.birth = birth;
 }
-public int getPhone() {
+public String getPhone() {
 	return phone;
 }
-public void setPhone(int phone) {
+public void setPhone(String phone) {
 	this.phone = phone;
 }
 @Override
