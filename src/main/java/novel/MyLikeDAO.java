@@ -63,7 +63,7 @@ public class MyLikeDAO {
 		
 		return list;
 	}
-	public void deleteNovel(String num_novel,String id) throws SQLException {
+	public void deleteNovel(String num_novel,String num_member) throws SQLException {
 		
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -75,11 +75,11 @@ public class MyLikeDAO {
 			StringBuilder sb=new StringBuilder();
 			sb.append(" delete ")
 			.append(" from liken ")
-			.append(" where id=? and num_novel=? ");
+			.append(" where num_member=? and num_novel=? ");
 			
 			pstmt=con.prepareStatement(sb.toString());
 			
-			pstmt.setString(1, id);
+			pstmt.setString(1, num_member);
 			pstmt.setInt(2, Integer.parseInt(num_novel));
 			
 			pstmt.executeUpdate();

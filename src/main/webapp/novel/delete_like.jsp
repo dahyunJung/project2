@@ -7,9 +7,9 @@
 <%
 MyLikeDAO mDAO=new MyLikeDAO();
 try{
-mDAO.deleteNovel(request.getParameter("num_novel"), session.getAttribute("user_id").toString());
+mDAO.deleteNovel(request.getParameter("num_novel"), session.getAttribute("user_num_member").toString());
 }catch(SQLException se){
 	se.printStackTrace();
 }
-response.sendRedirect("http://localhost/project2/login/like.jsp?search=");
+response.sendRedirect("/project2/login/like.jsp?search=&order_novel=0");
 %>
