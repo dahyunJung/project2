@@ -260,7 +260,7 @@ public int updateInfo(UpdateInfoVO uiVO)throws SQLException {
 	pstmt=con.prepareStatement(sql);
 	
 	
-	pstmt.setInt(1,uiVO.getPhone() );
+	pstmt.setString(1,uiVO.getPhone() );
 	pstmt.setString(2,uiVO.getEmail() );
 	pstmt.setString(3,uiVO.getId() );
 	

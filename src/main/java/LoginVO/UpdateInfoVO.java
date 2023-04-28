@@ -2,8 +2,8 @@ package LoginVO;
 
 public class UpdateInfoVO {
 private String id,email;
-private int phone;
-public UpdateInfoVO(String id, String email, int phone) {
+private String phone;
+public UpdateInfoVO(String id, String email, String phone) {
 	super();
 	this.id = id;
 	this.email = email;
@@ -24,10 +24,10 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
-public int getPhone() {
+public String getPhone() {
 	return phone;
 }
-public void setPhone(int phone) {
+public void setPhone(String phone) {
 	this.phone = phone;
 }
 @Override

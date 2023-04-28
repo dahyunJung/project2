@@ -58,7 +58,11 @@ function sendId(id){
 <%
 String id=request.getParameter("id");
 if("POST".equals(request.getMethod())&& !"".equals(id)){
-	
+	if(id.length() <7){
+		%>
+		7자 이상으로 작성해주세요
+		<%
+	}else{
 	LoginDAO lDAO = new LoginDAO();
 	try{
 		/* DataEncrypt de = new DataEncrypt("FsRt4SfY4US0IWtK4JPJsw==");
@@ -82,7 +86,8 @@ if("".equals(resultId)){ //데이터베이스 검색 결과 아이디 없음%>
 	데이터 베이스 접근 오류
 <%}%>
 
-<%} %>
+<%}
+	} %>
 </div>
 </body>
 </html>

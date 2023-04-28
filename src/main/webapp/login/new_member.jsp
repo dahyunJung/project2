@@ -409,8 +409,8 @@ textarea{width: 700px; height: 400px;}
     </div>
     
     <div id="buttonId">
-        <input type="button"class="button"  id="agreeBtn" value="확인">
-        <input type="button"class="button" value="취소" onclick="window.location.href='loginpage.jsp'">
+        <input type="button"class="button"  id="agreeBtn" value="확인" style='cursor:pointer'>
+        <input type="button"class="button" value="취소" onclick="window.location.href='loginpage.jsp'" style='cursor:pointer'>
      
     </div>
 
