@@ -33,7 +33,7 @@ public class EpisodeMyDAO {
 		try {
 			con = dbConnection.getConn();
 			
-			String checkId = " select num_member from novel where num_novel = ?";
+			String checkId = " select num_member from novel where num_novel = ? ";
 				
 			pstmt=con.prepareStatement(checkId);
 			
@@ -101,7 +101,7 @@ public class EpisodeMyDAO {
 
 			// 4. 쿼리문 생성객체 얻기
 			StringBuilder insertEpisode = new StringBuilder();
-
+			
 			// epNum 자동증가, 에피소드 등록시 무조건 공개로 시작, 뷰수는 0,
 			insertEpisode.append(" insert into episode(num_episode,num_novel,num_member,title,story,open,visit,make) ")
 						 .append(" values (num_episode.nextval,?,?,?,?,1,0,sysdate) ");
@@ -113,6 +113,8 @@ public class EpisodeMyDAO {
 			pstmt.setInt(2, ceVO.getUserNum());
 			pstmt.setString(3, ceVO.getEpTitle());
 			pstmt.setString(4, ceVO.getDetail());
+			
+			System.out.println("INSERT novelNum: " + ceVO.getNovelNum()+", userNum: "+ ceVO.getUserNum());
 
 			// 6. 쿼리문 수행 수 결과 얻기
 			pstmt.executeQuery();

@@ -101,7 +101,7 @@
 	<div class="lightMode h-full flex flex-col h-full">
 	<main class="flex-1">
 		
-		<form id="epFrm" action="/project2/episode/episode_write_process.jsp" method="post" class="flex flex-col h-full">
+		<form id="epFrm" action="episode_write_process.jsp" method="post" class="flex flex-col h-full">
 			
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
