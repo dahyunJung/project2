@@ -50,11 +50,10 @@
 <script type="text/javascript">
 
 $(function(){
-	
 	 $.ajax({
 		url : "episode_jsonarr_data.jsp",
+		data : "num_novel=<%=request.getParameter("num_novel")%>",
 		dataType : "JSON",
-		
 		error : function(xhr){
 			alert("서버에서 문제가 발생했습니다. 다시 시도해주세요.");
 			console.log(xhr.status);

@@ -27,13 +27,13 @@
 	    response.sendRedirect("http://localhost/project2/episode/novel_list.jsp");
 	}  */
 
-	int userNum = 4;
+	/* int userNum = 4;
 	int novelNum = 44; 
-	int epNum = 105;
+	int epNum = 105; */
 	
-	//int userNum = (Integer)session.getAttribute("userNum");
-	//int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
-	//int epNum = Integer.parseInt(request.getParameter("epNum")); 
+	int userNum = (Integer)session.getAttribute("user_num_member");
+	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
+	int epNum = Integer.parseInt(request.getParameter("epNum")); 
 	
 	EpisodeDAO epDAO = new EpisodeDAO();
 	LookEpisodeVO selectVO = null;
@@ -75,7 +75,7 @@ $(function(){
 			alert("이전 에피소드가 없어요");
 			return;
 		}
- 		$(location).attr("href", "http://localhost/project2/episode/episode_read.jsp?novelNum="+<%= novelNum %>+"&epNum="+<%= prev %>);
+ 		$(location).attr("href", "http://localhost/project2/episode/episode_read.jsp?num_novel="+<%= novelNum %>+"&epNum="+<%= prev %>);
 	}); //prev
 	
 	/* 다음 화 */
@@ -84,7 +84,7 @@ $(function(){
 			alert("다음 에피소드가 없어요");
 			return;
 		}
-		$(location).attr("href", "http://localhost/project2/episode/episode_read.jsp?novelNum="+<%= novelNum %>+"&epNum="+<%= next %>);
+		$(location).attr("href", "http://localhost/project2/episode/episode_read.jsp?num_novel="+<%= novelNum %>+"&epNum="+<%= next %>);
 	}); //next
 	
 	
@@ -98,13 +98,13 @@ $(function(){
 <div class="lightMode h-full">
 <div class="flex flex-col h-full">
 
-<input type="hidden" name="novelNum" value="<%= novelNum %>">
+<%-- <input type="hidden" name="novelNum" value="<%= novelNum %>"> --%>
 
 	<header class="relative bg-white border-b-1 border-grey20">
 		<div class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 flex-wrap items-center desktop:min-h-[72px] desktop:flex-nowrap desktop:py-12">
 		<div class="flex typo-g-sm2 flex-1 items-center text-grey60" style="display: flex; align-items: center;">
 			<div class="relative overflow-visible mt-auto mb-0 desktop:my-auto">
-				<a href="/project2/novel/novel_info.jsp">
+				<a href="http://localhost/project2/episode/novel.jsp?num_novel=<%= novelNum %>">
 					<img width="20" height="20" src="/project2/_next/static/images/list.png" style="top: 10px;" />
 				</a>
 				
