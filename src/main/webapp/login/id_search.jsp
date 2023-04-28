@@ -50,33 +50,45 @@
 			if($("#name").val() == "" || phone == ""){
 				alert("빈칸을 다 채워주세요");
 				
-			} else if(!(call)){
-				alert("전화번호는 -없이 숫자만 입력해주세요");
-			} else{
+			}else{
 				$("#frm").submit();
 			} 
 		
 		});
+		
+		$("#phone").on("keyup", function() {
+			   if (!$.isNumeric($(this).val())) {
+			alert("숫자만 써주세요.");
+			    $(this).val("");
+			  } 
+			}); 
+		
 	});	
 </script>
 <jsp:useBean id="fiVO" class="LoginVO.FindIdVO" scope="page"/>
 <jsp:setProperty property="*" name="fiVO"/>
 <%
 LoginDAO lDAO = new LoginDAO();
-String resultId= lDAO.selectIdFind(fiVO);
-if("POST".equals(request.getMethod())&& resultId != null && !resultId.isEmpty()){
+String id= lDAO.selectIdFind(fiVO);
+//String resultId= lDAO.selectIdFind(fiVO);
+if("POST".equals(request.getMethod())&& id != null && !id.isEmpty()){
 
-DataDecrypt dd=new DataDecrypt("FsRt4SfY4US0IWtK4JPJsw==");
-String id = dd.decryption(resultId);
+//DataDecrypt dd=new DataDecrypt("FsRt4SfY4US0IWtK4JPJsw==");
+//String id = dd.decryption(resultId);
 
 request.setAttribute("id", id);
 request.getRequestDispatcher("id.jsp").forward(request, response);
-}else if(resultId == null || resultId==""){
+
+
+if(id == null || id==""){
 	%>
 	<script>alert("일치하는 정보가 없습니다");</script>
 <%
 }
+}
 %>
+
+
 </head>
 <body>
 		<div

@@ -18,13 +18,12 @@
 <link rel="stylesheet" href="https://pagestage-cdn.kakaoent.com/web/_next/static/css/593189bb3d3dd926.css" data-n-p="" />
 <link rel="stylesheet" type="text/css" href="/html_prj/common/main_v20230217.css">
 <link rel="stylesheet" type="text/css" href="/project2/_next/static/css/login.css" />
-<noscript data-n-css=""></noscript>
 
 <title>Insert title here</title>
 <style type="text/css">
-#wrap{ width: 1300px;height: 900px;margin: 0px auto;}
+#wrap{ width: 600px;height: 500px;margin: 0px auto;}
 
-#container{width:1300px; height: 500px; position: relative;display: flex;justify-content: center;align-items: center;top: 250px;}
+#container{width:600px; height: 500px; position: relative;display: flex;justify-content: center;align-items: center;top: 250px;}
 #frame{width: 500px;height: 300px;display: flex;justify-content: center;position: absolute; bottom: 200px; border-radius: 30px;background-color: #E0E0E0;}
 #text_pass{width: 500px;height: 50px;position: absolute; bottom: 350px;text-align: center;}
 #text1{width: 70%;position: absolute;top: 90px; font-size: 17px;font-weight: bold;text-align: center;}
@@ -42,11 +41,8 @@ String id=(String)request.getAttribute("id");
 %>
 </head>
 <body>
-	<div id="__next" data-reactroot="">
 		<div
 			style="display: none; background-color: canvas; color-scheme: light"></div>
-		<div class="lightMode h-full">
-			<div class="flex flex-col h-full">
 <%-- 				<jsp:include page="../_next/header_logout.jsp"/> --%>
     <div id="wrap">
 
@@ -59,17 +55,13 @@ String id=(String)request.getAttribute("id");
                 <div id="text2">입니다</div>
                 </div>
             <div id="buttonId">
-                <input type="button"class="button" value="로그인" onclick="window.close()">
+                <input type="button"class="button" value="로그인" onclick="window.close()" style='cursor:pointer'>
             </div>
 
        </div>
 
     </div>
-</div>
 
-			</div>
-		</div>
 		<div id="modal-normal"></div>
-	</div>
 </body>
 </html>

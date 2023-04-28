@@ -25,10 +25,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#btn").click(function(){
-		if($("#id").val()==""){
-			alert("아이디를 입력해주세요");
-			return;
-		}
+		
 		
 		$("#frm").submit(); //스스로에게 POST방식으로 값 전달 request.getParameter 사용하기 위해. get도 가능하지만 보안상 이유
 	});
