@@ -108,7 +108,7 @@ $(function(){
 	//int epNum = 85;
 	 
 	int userNum = (Integer)session.getAttribute("userNum");
-	int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
+	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
 	int epNum = Integer.parseInt(request.getParameter("epNum")); 
 	
 	

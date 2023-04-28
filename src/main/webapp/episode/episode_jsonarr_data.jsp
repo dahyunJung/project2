@@ -7,6 +7,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true" info="JSONArray" %><%
+    
    	 int novelNum = Integer.parseInt(request.getParameter("num_novel"));
      //int novelNum=44; 
        

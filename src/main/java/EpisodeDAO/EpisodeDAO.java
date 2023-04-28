@@ -340,6 +340,7 @@ public class EpisodeDAO {
 			// 7. 연결 끊기
 			dbConnection.dbClose(null, pstmt, con);
 		} // end finally
+		System.out.println(cnt);
 		return cnt;
 	}// insertLike
 
@@ -370,6 +371,8 @@ public class EpisodeDAO {
 			// 7. 연결 끊기
 			dbConnection.dbClose(null, pstmt, con);
 		} // end finally
+		
+		System.out.println(cnt);
 
 		return cnt;
 	}// deleteLike
@@ -399,7 +402,7 @@ public class EpisodeDAO {
 				cnt = rs.getInt(1);
 			}
 
-			System.out.println(userNum + ", " + novelNum + ", " + (cnt==0? "좋아요 안함":"좋아요 함"));
+			System.out.println(userNum + ", " + novelNum + ", 좋아요" + (cnt==0? "안함":"함"));
 		} finally {
 			// 7. 연결 끊기
 			dbConnection.dbClose(null, pstmt, con);
