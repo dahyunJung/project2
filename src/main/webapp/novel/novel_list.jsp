@@ -30,14 +30,11 @@
 %>
 		<script type="text/javascript">
 			alert("파라미터 novelNum의 값이 없음");
-			location.href="http://localhost/project2/novel/novel_list.jsp";
+			location.href="http://localhost/project2/home/main.jsp";
 			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 		</script>
 <%	}
 	
-	String good = "http://localhost/project2/_next/static/images/good_on.png";
-	String cancelGood = "http://localhost/project2/_next/static/images/good_off.png";
-
 	// 선택한 회차 화면에 출력
  	EpisodeDAO epDAO = new EpisodeDAO();
 	LookNovelVO selectNovelVO = null;
@@ -58,6 +55,43 @@ $(function () {
 	$("#del_novel").click(function () {
 		$("#del_frm").submit();
 	})
+	 $.ajax({
+			url : "../episode/episode_jsonarr_data.jsp",
+			data : "num_novel=<%=request.getParameter("num_novel")%>",
+			dataType : "JSON",
+			error : function(xhr){
+				alert("서버에서 문제가 발생했습니다. 다시 시도해주세요.");
+				console.log(xhr.status);
+			},
+			success : function(jsonArr){
+				var len = jsonArr.length;
+				var article="";
+				let cnt=0;
+				
+				$.each(jsonArr,function(idx, jsonObj){
+					cnt++;
+				 	article += "<article class='flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30'>"
+							+ "<div class='flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2'>"+len-- +"</div>"
+							+ "<div class='flex flex-1 flex-col desktop:flex-row'>"
+							+ "<a class='flex w-full shrink' href='episode_read.jsp?num_novel="+jsonObj.novelNum+"&epNum="+jsonObj.epNum+"'>"
+							+ "<div class='flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80'>"
+							+ "<h3 class='flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16'>"
+							+ "<div class='truncate after:inline-block after:w-0 shrink'>"+ jsonObj.epTitle+"</div></h3>"
+							+ "<div class='flex typo-sm2 whitespace-pre-line text-grey60 desktop:whitespace-normal mb-14 desktop:mb-0'>"
+							+ "<div class='flex flex-wrap items-center text-grey60'>"
+							+ "<span>"+ jsonObj.viewCnt+"</span>"
+							+ "<span class='mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8'>|</span>"
+							+ "<span class='typo-g-sm2 -mb-[0.2em]'>"+ jsonObj.createDate + "</span>"
+							+ "</div></div></div></a></div></article><br>"; 
+				});//each
+				
+				if(cnt == 0){
+					article="<label>작성한 에피소드가 없습니다.</label>";
+				}//end if
+				
+				$("#empTab").append(article);
+			}
+		});//ajax
 })
 
 </script>
@@ -160,7 +194,7 @@ if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO
 												<div class="flex items-center">
 													<div class="typo-dp3 mr-6">회차</div>
 													<span
-														class="typo-g-sm2 -mb-[0.2em] !typo-g-lg1 text-grey60">(2)</span>
+														class="typo-g-sm2 -mb-[0.2em] !typo-g-lg1 text-grey60">(<%= epDAO.countEp(novelNum) %>)</span>
 												</div>
 												<div
 													class="flex w-full items-center justify-between border-b-1 py-16">
@@ -169,120 +203,15 @@ if(session.getAttribute("user_num_member").toString().equals(String.valueOf(nDAO
 														<path fill-rule="evenodd" clip-rule="evenodd"
 															d="M7.99936 11L2.99872 6.06282L4.05259 4.99541L7.99936 8.8921L11.9461 4.99541L13 6.06282L7.99936 11Z"
 															fill="currentColor"></path>
-														</svg>
-														</button>
 													</div>
 												</div>
 											</div>
-											<article
-												class="flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30">
-												<div
-													class="flex typo-g-md2 mt-2 mr-12 desktop:mr-16 desktop:typo-g-lg2">1.</div>
-												<div class="flex flex-1 flex-col desktop:flex-row">
-													<a class="flex w-full shrink"
-														href="/project2/novel/novel_read.jsp"><div
-															class="flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80">
-															<h3
-																class="flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16">
-																<div
-																	class="truncate after:inline-block after:w-0 shrink">제목</div>
-															</h3>
-															<div
-																class="flex typo-sm2 whitespace-pre-line text-grey60 desktop:whitespace-normal mb-14 desktop:mb-0">
-																<div class="flex flex-wrap items-center text-grey60">
-																	</span>조회 22</span> <span
-																		class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
-																	<span class="typo-sm2 flex items-center"><span
-																		class="typo-g-sm2 -mb-[0.2em]"></span>좋아요 44</span> <span
-																		class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
-																	<span class="typo-sm2 flex items-center"><span
-																		class="typo-g-sm2 -mb-[0.2em]"></span>2023.02.23</span>
-																</div>
-															</div>
-														</div></a>
-													<div
-														class="flex w-full shrink-0 desktop:w-auto desktop:self-center">
-														<div
-															class="flex typo-g-sm2 flex-1 items-center text-grey60">
-															<div
-																class="relative overflow-visible mt-auto mb-0 desktop:my-auto">
-																<button data-text-content="true"
-																	style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"onclick="location_modify()">수정</button>
-																<span style="display: inline-block; width: 10px;"></span>
-																<button data-text-content="true"
-																	style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"onclick="location_delete()">삭제</button>
-																<span style="display: inline-block; width: 10px;"></span>
-																<button data-text-content="true"
-																	style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"onclick="location_public()">공개</button>
-																<span style="display: inline-block; width: 10px;"></span>
-																<button data-text-content="true"
-																	style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"onclick="location_private()">비공개</button>
-															</div>
-														</div>
-													</div>
-											</article>
-											<article
-												class="flex items-start border-b-1 border-black/10 py-16 px-0 desktop:py-22 desktop:px-30">
-												<div class="flex flex-1 flex-col desktop:flex-row">
-													<a class="flex w-full shrink"
-														href="/project2/novel/novel_read.jsp"><div
-															class="flex flex-1 flex-col justify-start overflow-hidden desktop:mr-80">
-															<h3
-																class="flex typo-md2 desktop:typo-lg2 mb-8 items-center desktop:mb-16">
-																<div
-																	class="truncate after:inline-block after:w-0 shrink">제목</div>
-																<span
-																	class="inline-flex flex-[0_0_auto] text-grey60 bg-grey20 border-grey20 !font-bold rounded-full typo-sm2 py-2 px-6 shrink-0 ml-6 desktop:ml-8">비공개</span>
-															</h3>
-															<div
-																class="flex typo-sm2 whitespace-pre-line text-grey60 desktop:whitespace-normal mb-14 desktop:mb-0">비공개된
-																회차입니다.</div>
-														</div></a>
-
-													<div
-														class="flex w-full shrink-0 desktop:w-auto desktop:self-center">
-														<div
-															class="flex typo-g-sm2 flex-1 items-center text-grey60">
-															<div
-																class="relative overflow-visible mt-auto mb-0 desktop:my-auto">
-																<button data-text-content="true"
-																	style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"onclick="location_modify()">수정</button>
-																<span style="display: inline-block; width: 10px;"></span>
-																<button data-text-content="true"
-																	style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"onclick="location_delete()">삭제</button>
-																<span style="display: inline-block; width: 10px;"></span>
-																<button data-text-content="true"
-																	style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"onclick="location_public()">공개</button>
-																<span style="display: inline-block; width: 10px;"></span>
-																<button data-text-content="true"
-																	style="font-size: 16px; width: 69px; height: 38px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-radius: 4px; background-color: rgb(0, 0, 0); font-weight: bold;"onclick="location_private()">비공개</button>
-															</div>
-														</div>
-													</div>
-												</div>
-											</article>
-											<div
-												class="flex items-center justify-center py-8 mx-auto mt-40 mb-0">
-												<a
-													class="flex h-34 w-34 items-center justify-center pointer-events-none mr-20 !w-24 opacity-40"
-													href="/workshop/novels/91258264?filter=PUBLISHED%2CPRIVATE%2CBLOCK&amp;sort=&amp;page=-1"><svg
-														width="24" height="24" viewBox="0 0 24 24" fill="none"
-														xmlns="http://www.w3.org/2000/svg" role="img"
-														class="rotate-180" title="prev">
-														<path fill-rule="evenodd" clip-rule="evenodd"
-															d="M18.0605 12.0001L8.99989 21.0608L7.93923 20.0001L15.9392 12.0001L7.93923 4.00011L8.99989 2.93945L18.0605 12.0001Z"
-															fill="currentColor"></path></svg></a><a
-													class="flex h-34 w-34 items-center justify-center mx-4"
-													href="/workshop/novels/91258264?filter=PUBLISHED%2CPRIVATE%2CBLOCK&amp;sort=&amp;page=0"><div
-														class="flex typo-g-sm1 flex h-full w-full items-center justify-center rounded-full bg-black !font-bold text-white">1</div></a><a
-													class="flex h-34 w-34 items-center justify-center pointer-events-none ml-20 !w-24 opacity-40"
-													href="/workshop/novels/91258264?filter=PUBLISHED%2CPRIVATE%2CBLOCK&amp;sort=&amp;page=1"><svg
-														width="24" height="24" viewBox="0 0 24 24" fill="none"
-														xmlns="http://www.w3.org/2000/svg" role="img" title="next">
-														<path fill-rule="evenodd" clip-rule="evenodd"
-															d="M18.0605 12.0001L8.99989 21.0608L7.93923 20.0001L15.9392 12.0001L7.93923 4.00011L8.99989 2.93945L18.0605 12.0001Z"
-															fill="currentColor"></path></svg></a>
+				
+											<!-- 회차 목록들 -->
+											<div id="empTab">
+											
 											</div>
+											
 										</div>
 									</div>
 								</div>
