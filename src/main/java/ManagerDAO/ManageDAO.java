@@ -292,12 +292,9 @@ public List<MemberManageVO> selectMemberManage() throws SQLException {
 	//sysdate-373752
 	StringBuilder selectMemberManage = new StringBuilder();
 	selectMemberManage	
-	.append(" SELECT DISTINCT m.id, m.num_member, m.join, nvl(m.stop, sysdate-1) stop, nvl(h.visit, m.join) visit,  nvl(m.novelcnt, 0) novelcnt ") //, m.num_member, m.num_member
-	.append(" FROM member m ")
-	.append(" left Outer JOIN novel n ON m.num_member = n.num_member ")
-	.append(" left Outer JOIN report r ON n.num_member = r.num_member ")
-	.append(" left Outer JOIN history h ON r.num_member = h.num_member ")
-	.append(" order by m.num_member ");
+	.append(" SELECT m.id, m.num_member, nvl(m.novelcnt, 0) novelcnt, ") //, m.num_member, m.num_member
+	.append(" nvl((SELECT MAX(h.visit) FROM history h WHERE m.num_member = h.num_member), m.join) AS visit, ")
+	.append(" m.join, nvl(m.stop, sysdate-1) stop FROM member m "); 
 	
 	
 	pstmt=con.prepareStatement(selectMemberManage.toString());
