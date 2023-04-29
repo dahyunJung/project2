@@ -147,6 +147,18 @@ function cancelStopPop(){
 	if (phoneNumber != null && phoneNumber.length() >= 10) {
 	    formattedPhoneNumber = phoneNumber.substring(0,3) + "-" + phoneNumber.substring(3,7) + "-" + phoneNumber.substring(7);
 	}
+	
+	Date date = new java.util.Date(mVO.getSusPeriod().getTime());//db값안에 있는 날짜
+	LocalDate currentDate = LocalDate.now();
+	Date curDate = Date.from(currentDate.atStartOfDay().atZone(java.time.ZoneId.systemDefault()).toInstant());//현재 날짜
+	String str = "";
+	if( date.before(curDate)==true ){
+	str = "정상 회원";
+	}else{
+	str = mVO.getSusPeriod().toString()+"까지";	
+	}
+	
+	
 %>	
 	<div>
 		<h1>"<%= id%>" 회원 정보</h1>
@@ -168,12 +180,9 @@ function cancelStopPop(){
 				<li>전화번호 : <%= formattedPhoneNumber %></li>
 				<li>소설 수 : <%= mVO.getNovelCnt() %></li>										
 				<li>방문 날짜 : <%= mVO.getVisitDate() %></li>					
-				<li>가입 날짜 : <%= mVO.getJoinDate() %></li>
-					<% if (mVO.getSusPeriod() != null) { %>
-				<li>중지 기한 : <%= mVO.getSusPeriod() %>까지</li>
-					<% } else { %>
-				<li>중지 기한 : </li>
-					<% } %>
+				<li>가입 날짜 : <%= mVO.getJoinDate() %></li>				
+				<li>중지 기한 : <%= str %></li>
+
 			</ul>
 		</div>
 	</div>
