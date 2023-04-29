@@ -30,13 +30,14 @@
 <jsp:setProperty property="*" name="edVO"/>
 
 <%
+	edVO.setNovelNum(Integer.parseInt( request.getParameter("num_novel")) );
 	// 공개여부 전환
 	String open=request.getParameter("openStatus");
-	/* edVO.setOpenStatus("1".equals(open)); */
+	edVO.setOpenStatus("1".equals(open));
 	/* edVO.setNovelNum(num_novel); */
 
 	EpisodeMyDAO emDAO = new EpisodeMyDAO();
-	edVO.setNovelNum(novelNum);
+	//edVO.setNovelNum(novelNum);
 	edVO.setEpNum(epNum);
 
 	try{
