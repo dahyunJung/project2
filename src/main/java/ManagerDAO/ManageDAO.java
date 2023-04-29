@@ -292,16 +292,21 @@ public List<MemberManageVO> selectMemberManage() throws SQLException {
 	//sysdate-373752
 	StringBuilder selectMemberManage = new StringBuilder();
 	selectMemberManage	
-	.append(" SELECT m.id, m.num_member, nvl(m.novelcnt, 0) novelcnt, ") //, m.num_member, m.num_member
-	.append(" nvl((SELECT MAX(h.visit) FROM history h WHERE m.num_member = h.num_member), m.join) AS visit, ")
-	.append(" m.join, nvl(m.stop, sysdate-1) stop FROM member m "); 
+	.append(" SELECT m.id, m.num_member, ") //, m.num_member, m.num_member
+	.append(" (SELECT COUNT(*) FROM novel where num_member=m.num_member) AS novelcnt, ")
+	.append(" NVL((SELECT MAX(h.visit) FROM history h WHERE m.num_member = h.num_member),m.join) AS visit, ")
+	.append(" m.join, NVL(m.stop, sysdate-1) AS stop FROM member m CROSS JOIN dual "); 
 	
 	
 	pstmt=con.prepareStatement(selectMemberManage.toString());
 	rs = pstmt.executeQuery();
 	
+		
 
 	MemberManageVO mmVO = null;
+	
+	
+
 	while(rs.next()) { // 레코드가 존재하는지 알 수 없지만 존재한 다면 모든 레코드를 가져와야 한다.
 		//커서 다음에 레코드가 존재하면 TRUE를 반환하여 커서의 위치를 아래로 이동
 		/*
