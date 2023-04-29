@@ -33,29 +33,12 @@
 			System.out.println(novelNum + ", " +userNum + ", 좋아요 완료 ");
 			response.sendRedirect("/project2/episode/novel.jsp?num_novel=" + novelNum);
 			
-			/* if(insertLike > 0){
-				System.out.println(novelNum + ", " +userNum + ", 좋아요 완료 ");
-				response.sendRedirect("/project2/episode/novel.jsp?num_novel=" + novelNum); 
-			}else{
-				System.out.println(novelNum + ", " +userNum + ", 좋아요 실패 ");
-				response.sendRedirect("/project2/episode/novel.jsp?num_novel=" + novelNum); 
-			} */
 			return;
 		}
+		
 		int deleteLike = episodeDAO.deleteLike(userNum, novelNum);
 		System.out.println(novelNum + ", " +userNum + ", 좋아요 취소 완료 ");
 		response.sendRedirect("/project2/episode/novel.jsp?num_novel=" + novelNum);
-		
-		/* else if("0".equals(good)){
-			int deleteLike = episodeDAO.deleteLike(userNum, novelNum);
-			if(deleteLike > 0){
-				System.out.println(novelNum + ", " +userNum + ", 좋아요 취소 완료 ");
-				response.sendRedirect("/project2/episode/novel.jsp?num_novel=" + novelNum);
-			}else{
-				System.out.println(novelNum + ", " +userNum + ", 좋아요 취소 실패 ");
-				response.sendRedirect("/project2/episode/novel.jsp?num_novel=" + novelNum);
-			}
-		} */
 		
 	}catch(SQLException e){
 		e.printStackTrace();
