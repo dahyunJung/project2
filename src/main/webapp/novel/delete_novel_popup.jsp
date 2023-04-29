@@ -20,22 +20,20 @@
   justify-content: center;
   height: 100%;
 }
-</style>	
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</style>
 <script type="text/javascript">
 function del() {
-	<%
-	NewNovelDAO nDAO=new NewNovelDAO();
-	nDAO.deleteNovel(Integer.parseInt(request.getParameter("num_novel")));
-	%>
+	frm.submit();
 	opener.parent.location="my_novel_space.jsp?order_novel=0";
-	window.close();
 }
 </script>
-	
 
 </head>
+
+<form id="frm" method="post" action="delete_novel_process.jsp">
+<input type="hidden" name="num_novel" value="<%= request.getParameter("num_novel")%>">
+</form>	
+
 <body style="width: 500px; height: 350px;">
 
 		<div 
