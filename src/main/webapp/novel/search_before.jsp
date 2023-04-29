@@ -74,7 +74,7 @@ function selectNovel(num_novel){
                                                 %>
                         
                         <c:forEach var="select" items="${selList}" >
-                           <div class="px-18 py-12 desktop:px-0 desktop:py-24">
+                           <div class="px-18 py-12 desktop:px-0 desktop:py-24" style="border: 1px solid #333">
                               <div
                                  class="flex items-center flex-row w-full flex-row-reverse"
                                  data-testid="skeleton">

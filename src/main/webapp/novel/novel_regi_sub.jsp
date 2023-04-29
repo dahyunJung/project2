@@ -57,26 +57,53 @@ if("POST".equals(request.getMethod())){
 	//File saveDirectory=new File("/");
 	int totalMaxSize=500*1024*1024;	//500mb제한
 	
-	MultipartRequest mr=new MultipartRequest(request,saveDirectory.getAbsolutePath(),totalMaxSize,"UTF-8",new DefaultFileRenamePolicy());
-	
-	String id=mr.getParameter("id");
-	String age=mr.getParameter("age");
-	String title=mr.getParameter("title");
-	String story=mr.getParameter("story");
-	String open=mr.getParameter("open");
-	
-	String photoName=mr.getFilesystemName("filephoto");
-	
-	File uploadFile=new File(saveDirectory.getAbsolutePath()+"/"+photoName);
-	if(photoName==null){	//이미지가 없다면 photoName을 기본값으로 바꾼다
-		photoName="photo_default.png";
-	}
-	NewNovelDAO nDAO=new NewNovelDAO();
 	try{
-		NewNovelVO nVO=new NewNovelVO(id, title, photoName, story, Integer.parseInt(age) , Integer.parseInt(open), 0);
-		nDAO.insertNewNovel(nVO);
-	}catch(SQLException se){
-		se.printStackTrace();
+		MultipartRequest mr=new MultipartRequest(request,saveDirectory.getAbsolutePath(),totalMaxSize,"UTF-8",new DefaultFileRenamePolicy());
+		
+		String id=mr.getParameter("id");
+		String age=mr.getParameter("age");
+		String title=mr.getParameter("title");
+		String story=mr.getParameter("story");
+		String open=mr.getParameter("open");
+		
+		String photoName=mr.getFilesystemName("filephoto");
+		
+		File uploadFile=new File(saveDirectory.getAbsolutePath()+"/"+photoName);
+		if(photoName==null){	//이미지가 없다면 photoName을 기본값으로 바꾼다
+			photoName="photo_default.png";
+		}
+		NewNovelDAO nDAO=new NewNovelDAO();
+		try{
+			NewNovelVO nVO=new NewNovelVO(id, title, photoName, story, Integer.parseInt(age) , Integer.parseInt(open), 0);
+			nDAO.insertNewNovel(nVO);
+		}catch(SQLException se){
+			se.printStackTrace();
+		}//end catch
+
+	}catch(IllegalArgumentException iae){
+		
+		saveDirectory=new File("D:/Users/user/git/project2/src/main/webapp/_next/static/images/novel_thumb/");
+		MultipartRequest mr=new MultipartRequest(request,saveDirectory.getAbsolutePath(),totalMaxSize,"UTF-8",new DefaultFileRenamePolicy());
+		
+		String id=mr.getParameter("id");
+		String age=mr.getParameter("age");
+		String title=mr.getParameter("title");
+		String story=mr.getParameter("story");
+		String open=mr.getParameter("open");
+		
+		String photoName=mr.getFilesystemName("filephoto");
+		
+		File uploadFile=new File(saveDirectory.getAbsolutePath()+"/"+photoName);
+		if(photoName==null){	//이미지가 없다면 photoName을 기본값으로 바꾼다
+			photoName="photo_default.png";
+		}
+		NewNovelDAO nDAO=new NewNovelDAO();
+		try{
+			NewNovelVO nVO=new NewNovelVO(id, title, photoName, story, Integer.parseInt(age) , Integer.parseInt(open), 0);
+			nDAO.insertNewNovel(nVO);
+		}catch(SQLException se){
+			se.printStackTrace();
+		}//end catch
 	}//end catch
 }//end if
 %>

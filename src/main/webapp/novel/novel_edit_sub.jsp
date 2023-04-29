@@ -56,35 +56,70 @@ if("POST".equals(request.getMethod())){
 	File saveDirectory=new File("C:/Users/user/git/project2/src/main/webapp/_next/static/images/novel_thumb/");
 	int totalMaxSize=500*1024*1024;	//500mb제한
 	
-	MultipartRequest mr=new MultipartRequest(request,saveDirectory.getAbsolutePath(),totalMaxSize,"UTF-8",new DefaultFileRenamePolicy());
-	
-	String id=mr.getParameter("id");
-	String age=mr.getParameter("age");
-	String title=mr.getParameter("title");
-	String story=mr.getParameter("story");
-	String open=mr.getParameter("open");
-	String end=mr.getParameter("end");
-	String num_novel=mr.getParameter("num_novel");
-	
-	String hidden=mr.getParameter("filephoto");
-	String photoName=mr.getFilesystemName("upphoto");
-	
-	if(photoName==null){	//update 이미지가 없다면 photoName을 기존과 같은 값으로 바꾼다
-		photoName=hidden;
-	}else{	//update 이미지가 있다면 기존에 저장된 이미지를 지운다
-		File uploadFile=new File(saveDirectory.getAbsolutePath()+"/"+hidden);
-		uploadFile.delete();
-	}
-	
-	NewNovelDAO nDAO=new NewNovelDAO();
 	try{
-		NewNovelVO nVO=new NewNovelVO(id, title, photoName, story, Integer.parseInt(age) , Integer.parseInt(open), Integer.parseInt(end));
-		nDAO.editNovel(nVO,num_novel);
-	}catch(SQLException se){
-		se.printStackTrace();
+		MultipartRequest mr=new MultipartRequest(request,saveDirectory.getAbsolutePath(),totalMaxSize,"UTF-8",new DefaultFileRenamePolicy());
+		
+		String id=mr.getParameter("id");
+		String age=mr.getParameter("age");
+		String title=mr.getParameter("title");
+		String story=mr.getParameter("story");
+		String open=mr.getParameter("open");
+		String end=mr.getParameter("end");
+		String num_novel=mr.getParameter("num_novel");
+		
+		String hidden=mr.getParameter("filephoto");
+		String photoName=mr.getFilesystemName("upphoto");
+		
+		if(photoName==null){	//update 이미지가 없다면 photoName을 기존과 같은 값으로 바꾼다
+			photoName=hidden;
+		}else{	//update 이미지가 있다면 기존에 저장된 이미지를 지운다
+			File uploadFile=new File(saveDirectory.getAbsolutePath()+"/"+hidden);
+			uploadFile.delete();
+		}
+		
+		NewNovelDAO nDAO=new NewNovelDAO();
+		try{
+			NewNovelVO nVO=new NewNovelVO(id, title, photoName, story, Integer.parseInt(age) , Integer.parseInt(open), Integer.parseInt(end));
+			nDAO.editNovel(nVO,num_novel);
+		}catch(SQLException se){
+			se.printStackTrace();
+		}//end catch
+		response.sendRedirect("/project2/novel/novel_list.jsp?num_novel="+num_novel);
+		
+	}catch(IllegalArgumentException iae){
+		
+		saveDirectory=new File("D:/Users/user/git/project2/src/main/webapp/_next/static/images/novel_thumb/");
+		MultipartRequest mr=new MultipartRequest(request,saveDirectory.getAbsolutePath(),totalMaxSize,"UTF-8",new DefaultFileRenamePolicy());
+		
+		String id=mr.getParameter("id");
+		String age=mr.getParameter("age");
+		String title=mr.getParameter("title");
+		String story=mr.getParameter("story");
+		String open=mr.getParameter("open");
+		String end=mr.getParameter("end");
+		String num_novel=mr.getParameter("num_novel");
+		
+		String hidden=mr.getParameter("filephoto");
+		String photoName=mr.getFilesystemName("upphoto");
+		
+		if(photoName==null){	//update 이미지가 없다면 photoName을 기존과 같은 값으로 바꾼다
+			photoName=hidden;
+		}else{	//update 이미지가 있다면 기존에 저장된 이미지를 지운다
+			File uploadFile=new File(saveDirectory.getAbsolutePath()+"/"+hidden);
+			uploadFile.delete();
+		}
+		
+		NewNovelDAO nDAO=new NewNovelDAO();
+		try{
+			NewNovelVO nVO=new NewNovelVO(id, title, photoName, story, Integer.parseInt(age) , Integer.parseInt(open), Integer.parseInt(end));
+			nDAO.editNovel(nVO,num_novel);
+		}catch(SQLException se){
+			se.printStackTrace();
+		}//end catch
+		response.sendRedirect("/project2/novel/novel_list.jsp?num_novel="+num_novel);
+		
 	}//end catch
 
-response.sendRedirect("/project2/novel/novel_list.jsp?num_novel="+num_novel);
 }else{
 response.sendRedirect("http://localhost/project2/login/my_page.jsp");
 }
