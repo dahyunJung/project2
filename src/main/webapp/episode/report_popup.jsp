@@ -41,7 +41,12 @@
 
 </script>
 </head>
-<%
+<%  
+	if(session.getAttribute("user_num_member")==null){
+		response.sendRedirect("../login/loginpage.jsp");
+		return;
+	}	
+
 	int userNum = (Integer)session.getAttribute("user_num_member");
 	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
 	String reportId = request.getParameter("reportId");

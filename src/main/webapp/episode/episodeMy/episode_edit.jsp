@@ -103,25 +103,16 @@ $(function(){
 </head>
 
 <%
-	//int userNum = 3;	//일단 테스트값
-	//int novelNum = 23; 
-	//int epNum = 85;
+	if(session.getAttribute("user_num_member")==null){
+		response.sendRedirect("../login/loginpage.jsp");
+		return;
+	}
+
 	 
 	int userNum = (Integer)session.getAttribute("user_num_member");
 	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
 	int epNum = Integer.parseInt(request.getParameter("epNum")); 
 	
-	
-	// 유저번호 값이 있는지 확인 (세션)
-	if(userNum == 0){
-%>
-		<script type="text/javascript">
-			alert("세션 userNum의 값이 없음");
-			location.href="http://localhost/project2/login/loginpage.jsp";
-			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
-		</script>
-<%
-}	
 
 	if(novelNum == 0){
 %>

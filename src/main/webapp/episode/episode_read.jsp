@@ -23,9 +23,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 <%
-/* if((Integer)session.getAttribute("userNum")==null){
-	    response.sendRedirect("http://localhost/project2/episode/novel_list.jsp");
-	}  */
+if(session.getAttribute("user_num_member")==null){
+	response.sendRedirect("../login/loginpage.jsp");
+	return;
+}
 	
 	int userNum = (Integer)session.getAttribute("user_num_member");
 	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 

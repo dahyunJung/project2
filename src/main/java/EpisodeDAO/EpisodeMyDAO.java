@@ -9,6 +9,7 @@ import java.util.List;
 
 import EpisodeVO.My.CreateEpisodeVO;
 import EpisodeVO.My.EditEpisodeVO;
+import EpisodeVO.My.LookMyEpisodeVO;
 import conn.DbConnection;
 
 public class EpisodeMyDAO {
@@ -18,39 +19,38 @@ public class EpisodeMyDAO {
 	 * views, createDate episode sql: num_episode, num_novel, num_member, title,
 	 * story, open, visit, make
 	 */
-	
-	  // 작성한 소설 제목 출력 (에피소드 작성 )
+
+	// 작성한 소설 제목 출력 (에피소드 작성 )
 	public String selectNovelName(int novelNum) throws SQLException {
-		String novelTitle = "";	  
-		
-		Connection con = null; PreparedStatement pstmt = null; ResultSet rs = null;
+		String novelTitle = "";
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		DbConnection dbConnection = DbConnection.getInstance();
-		
-		try { 
+
+		try {
 			con = dbConnection.getConn();
 			StringBuilder selectNovelTitle = new StringBuilder();
-			
-			selectNovelTitle.append(" select title ")
-							.append(" from novel ")
-							.append(" where num_novel=?" );
-	  
+
+			selectNovelTitle.append(" select title ").append(" from novel ").append(" where num_novel=?");
+
 			pstmt = con.prepareStatement(selectNovelTitle.toString());
-			pstmt.setInt(1, novelNum); 
+			pstmt.setInt(1, novelNum);
 			rs = pstmt.executeQuery();
-			
+
 			System.out.println(selectNovelTitle);
 			System.out.println(novelNum);
-	  
-			if(rs.next()) { 
-				novelTitle = rs.getString("title"); 
+
+			if (rs.next()) {
+				novelTitle = rs.getString("title");
 			}
-		}finally { 
-			dbConnection.dbClose(null, pstmt, con); 
-		}// end finally
-	 
-		return novelTitle; 
+		} finally {
+			dbConnection.dbClose(null, pstmt, con);
+		} // end finally
+
+		return novelTitle;
 	} // selectNovelName
-	 
 
 	// 에피소드 생성
 	public void insertEpisode(CreateEpisodeVO ceVO) throws SQLException {
@@ -67,10 +67,10 @@ public class EpisodeMyDAO {
 
 			// 4. 쿼리문 생성객체 얻기
 			StringBuilder insertEpisode = new StringBuilder();
-			
+
 			// epNum 자동증가, 에피소드 등록시 무조건 공개로 시작, 뷰수는 0,
 			insertEpisode.append(" insert into episode(num_episode,num_novel,num_member,title,story,open,visit,make) ")
-						 .append(" values (num_episode.nextval,?,?,?,?,1,0,sysdate) ");
+					.append(" values (num_episode.nextval,?,?,?,?,1,0,sysdate) ");
 
 			pstmt = con.prepareStatement(insertEpisode.toString());
 
@@ -79,8 +79,8 @@ public class EpisodeMyDAO {
 			pstmt.setInt(2, ceVO.getUserNum());
 			pstmt.setString(3, ceVO.getEpTitle());
 			pstmt.setString(4, ceVO.getDetail());
-			
-			System.out.println("INSERT novelNum: " + ceVO.getNovelNum()+", userNum: "+ ceVO.getUserNum());
+
+			System.out.println("INSERT novelNum: " + ceVO.getNovelNum() + ", userNum: " + ceVO.getUserNum());
 
 			// 6. 쿼리문 수행 수 결과 얻기
 			pstmt.executeQuery();
@@ -89,7 +89,6 @@ public class EpisodeMyDAO {
 			dbConnection.dbClose(null, pstmt, con);
 		} // end finally
 	}// insertEpisode
-	
 
 	// 에피소드 수정, userNum은 세션, epNum은 파라미터
 	public int updateEpisode(EditEpisodeVO edVO) throws SQLException {
@@ -104,9 +103,8 @@ public class EpisodeMyDAO {
 
 			StringBuilder editEpisode = new StringBuilder();
 
-			editEpisode.append(" update episode ")
-						.append(" set title=?,story=?,open=? ")
-						.append(" where num_member=? and num_novel=? and num_episode=? ");
+			editEpisode.append(" update episode ").append(" set title=?,story=?,open=? ")
+					.append(" where num_member=? and num_novel=? and num_episode=? ");
 
 			pstmt = con.prepareStatement(editEpisode.toString());
 
@@ -133,7 +131,6 @@ public class EpisodeMyDAO {
 		return cnt;
 	}// updateEpisode
 
-	
 	// 에피소드 삭제
 	public int deleteEpisode(int userNum, int novelNum, int epNum) throws SQLException {
 		int cnt = 0;
@@ -148,7 +145,7 @@ public class EpisodeMyDAO {
 			StringBuilder deleteEpisode = new StringBuilder();
 
 			deleteEpisode.append(" delete from episode ")
-						.append(" where num_member=? and num_novel=? and num_episode=? ");
+					.append(" where num_member=? and num_novel=? and num_episode=? ");
 
 			pstmt = con.prepareStatement(deleteEpisode.toString());
 
@@ -170,7 +167,44 @@ public class EpisodeMyDAO {
 		return cnt;
 	}// deleteEpisode
 
+	// 내가 작성한 에피소드 내용보여주는 창 (수정)
+	public LookMyEpisodeVO selectEpisode(int userNum, int novelNum, int epNum)throws SQLException { 
+		LookMyEpisodeVO leVO = null;
+	  
+		Connection con = null; PreparedStatement pstmt = null; ResultSet rs = null;
+	  
+		DbConnection dbConnection = DbConnection.getInstance();
+		  
+		try { 
+			con = dbConnection.getConn();
+		  
+		StringBuilder selectEpisode = new StringBuilder(); 
+		selectEpisode.append(" select n.title novelTitle, e.title epTitle, e.story epDetail, e.open open ") 
+		.append(" from episode e, novel n ")
+		.append(" where n.num_novel=e.num_novel and e.num_member=? and e.num_novel=? and e.num_episode=? ");
+		  
+		pstmt = con.prepareStatement(selectEpisode.toString());
+		  
+		pstmt.setInt(1, userNum); pstmt.setInt(2, novelNum); pstmt.setInt(3, epNum);
+		  
+		rs = pstmt.executeQuery();
+		  
+		if (rs.next()) { 
+			leVO = new LookMyEpisodeVO();
+			leVO.setNovelTitle(rs.getString("novelTitle"));
+			leVO.setEpTitle(rs.getString("epTitle"));
+			leVO.setEpDetail(rs.getString("epDetail")); 
+		}
+		
+		System.out.println("select userNum-" + userNum + "novelNum-" + novelNum + "epNum-" + epNum+" "+leVO.getOpenStatus());
+		
+		} finally { 
+			dbConnection.dbClose(null, pstmt, con); 
+		} // end finally 
+		return leVO; 
+	  }// selectEpisode.
 	
+
 	// 내 소설에 해당하는 모든 에피소드 리스트 가져오기
 	public List<CreateEpisodeVO> selectEpisodeAll(int userNum, int novelNum) throws SQLException {
 		List<CreateEpisodeVO> epList = new ArrayList<CreateEpisodeVO>();
