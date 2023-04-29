@@ -57,7 +57,7 @@
                 <div id="text2">로그인 후 비밀번호를 변경해주세요</div>
                 </div>
             <div id="buttonId">
-                <input type="button"class="button" value="로그인" onclick="loginpage()">
+                <input type="button"class="button" value="로그인" onclick="loginpage()" style='cursor:pointer'>
             </div>
 
        </div>

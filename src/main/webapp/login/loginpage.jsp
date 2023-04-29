@@ -99,7 +99,7 @@ $(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이
                </table>
                
                <div id="loginButton">
-                <input type="button" class="input_button" id="loginBtn" value="로그인">
+                <input type="button" class="input_button" id="loginBtn" value="로그인" style='cursor:pointer'>
                </div>
                <div id="newmember">
                 <a href="#void" onclick="window.location.href='new_member.jsp'">회원가입</a>

@@ -142,9 +142,9 @@ String email2 = email_part[1];
                 </tr>
             </table>
             <div id="buttonId">
-                <input type="button"class="button" value="확인" id="change">
-                <input type="button"class="button" value="비밀번호변경" style="width: 150px" onclick="popup()">
-                <input type="button"class="button" value="취소" onclick="cancel()">
+                <input type="button"class="button" value="확인" id="change" style='cursor:pointer'>
+                <input type="button"class="button" value="비밀번호변경" style="width: 150px" onclick="popup()" style='cursor:pointer'>
+                <input type="button"class="button" value="취소" onclick="cancel()" style='cursor:pointer'>
             </div>
            </div>
        </div>

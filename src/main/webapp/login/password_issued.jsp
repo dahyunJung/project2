@@ -85,8 +85,8 @@
                 </form>
                 </div>
             <div id="buttonId">
-                <input type="button"class="button" value="확인" id="btn">
-                <input type="button"class="button" value="취소" onclick="window.close()">
+                <input type="button"class="button" value="확인" id="btn" style='cursor:pointer'>
+                <input type="button"class="button" value="취소" onclick="window.close()" style='cursor:pointer'>
             </div>
            </div>
        </div>

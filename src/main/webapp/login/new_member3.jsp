@@ -70,7 +70,7 @@ font-size: 25px; font-weight: bold; text-align: center;line-height: 2;}
                 </div>
 
             <div id="buttonId">
-                <input type="button"class="button" value="확인" onclick="window.location.href='loginpage.jsp'">
+                <input type="button"class="button" value="확인" onclick="window.location.href='loginpage.jsp'" style='cursor:pointer'>
             </div>
            </div>
        </div>

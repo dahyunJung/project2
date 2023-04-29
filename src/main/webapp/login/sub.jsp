@@ -79,10 +79,10 @@
                </tr>
                </table>
                <div id="loginButton">
-                <input type="button" class="input_button" value="변경" id="change">
+                <input type="button" class="input_button" value="변경" id="change" style='cursor:pointer'>
                </div>
                <div id="loginButton2">
-                <input type="button" class="input_button" value="취소" onclick="cancel()">
+                <input type="button" class="input_button" value="취소" onclick="cancel()" style='cursor:pointer'>
                </div>
             </div>
         
