@@ -27,12 +27,11 @@ public class ManagerDAO {
 		try {
 			con = dbCon.getConn();
 			StringBuilder selectMemberInfo = new StringBuilder();//필요없는 값이 있긴함 report_cnt빼도 됨
-			selectMemberInfo.append("	select m.id, m.name, m.birth, m.phone, m.email, m.photo, m.join, m.stop, ")
-					.append("	m.novelcnt, count(r.num_report) as report_cnt, ")
-					.append("	h.visit as visitdate ").append("	from member m ")
-					.append("	left join report r on r.id = m.id ")
-					.append("	left join history h on h.num_member = m.num_member ").append("	where m.id = ? ")
-					.append("	group by m.id, m.name, m.birth, m.phone, m.email, m.photo, m.join, m.stop, m.novelcnt,  h.visit ");
+			selectMemberInfo.append("	SELECT m.id, m.name, m.birth, m.phone, m.email, m.photo, m.join, m.stop, ")
+					.append("	NVL((SELECT COUNT(*) FROM report where num_member=m.num_member),0) AS report_cnt, ")
+					.append("	 nvl((SELECT COUNT(*) FROM novel where num_member=m.num_member),0) AS novelcnt, ")
+					.append("	NVL((SELECT MAX(h.visit) FROM history h WHERE m.num_member = h.num_member),m.join) AS visitdate ")
+					.append("	FROM member m CROSS JOIN dual where m.id=? ");
 
 			pstmt = con.prepareStatement(selectMemberInfo.toString());
 			pstmt.setString(1, id);
