@@ -48,7 +48,7 @@ $(function(){
 		 
  	});
 	
-	 	$("#phone").on("keyup", function() {
+	 	$("#phone").on("keyup", function() { // 전화번호에 숫자가 아닌 글자가 써졌을 때
 	   if (!$.isNumeric($(this).val())) {
 	alert("숫자만 써주세요.");
 	    $(this).val("");
@@ -65,12 +65,10 @@ $(function(){
 		}else{
 			 $("#email2").attr("readonly",true);
 			$("#email2").val($("#email_select").val());
-			alert($("#email2").val());
 		}
 	});
 	
 	$("#idBtn").click(function(){
-		alert("a");
 		 if($("#name").val()=="" || $("#id").val()=="" || $("#pw").val()=="" || $("#pw_chk").val()=="" || $("#birthDate").val()==""
 			 || $("#phone").val()=="" || $("#email").val()=="" || $("#email2").val()==""){
 			 alert("빈칸을 모두 채워주세요");
