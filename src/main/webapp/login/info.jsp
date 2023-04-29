@@ -83,6 +83,7 @@ String id=(String)session.getAttribute("user_id");
 
 LoginDAO lDAO = new LoginDAO();
 InfoVO iVO = lDAO.selectInfo(id);
+String phone = iVO.getPhone();
 
 String[] email_part = iVO.getEmail().split("@");
 String email1 = email_part[0];
@@ -119,7 +120,7 @@ String email2 = email_part[1];
                     <td align="center"class="td1">생년월일</td><td><input type="date" value="<%=iVO.getBirth()%>" readonly></td>
                 </tr>
                 <tr>
-                    <td align="center"class="td1">전화번호</td><td><input type="text" value="<%=iVO.getPhone()%>" id="phone" name="phone" placeholder="전화번호"></td>
+                    <td align="center"class="td1">전화번호</td><td><input type="text" value="<%=phone%>" id="phone" name="phone" placeholder="전화번호"></td>
                 </tr>
                 <tr>
                     <td align="center"class="td1">이메일</td><td><input type="text"  id="email1" name="email1" value="<%=email1%>" placeholder="이메일"> @ 

@@ -355,6 +355,46 @@ public int updatePass(String id, String pw)throws SQLException {
 		}
 			
   }
+  
+  public boolean selectPhoneDup(String phone)throws SQLException{
+	  boolean phoneDup = false;
+	  String phoneResult =""; 
+	  
+	  Connection con =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		DbConnection dbCon =DbConnection.getInstance();
+		
+		try {
+			con= dbCon.getConn();
+			String sql = "select phone from member where phone=?";
+			
+		
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,phone);
+			
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				phoneResult = rs.getString("phone");
+			}
+			
+			if(phoneResult == "") {
+				phoneDup = true;
+			}
+			
+		}finally {
+			dbCon.dbClose(rs, pstmt, con);
+		}
+			
+	  
+	  
+	  return phoneDup;
+	  
+	  
+  }
 }
 
 

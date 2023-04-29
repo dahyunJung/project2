@@ -32,8 +32,8 @@ select{width: 150px;height: 25px;border-radius: 3px; background-color: #e8f0fe;b
     border: none;border-bottom: 2px solid #CCC;}
 
 #buttonId{width: 300px; height: 40px;position: absolute; top: 300px;display: flex;justify-content: center;}
-.button{width:100px;height: 100%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 10px;margin-right: 10px;}
-.button1{width:100px;height: 60%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 10px;margin-right: 10px;}
+.button{width:100px;height: 100%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 10px;margin-right: 10px;  background-color: #808080;}
+.button1{width:100px;height: 60%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 10px;margin-right: 10px;  background-color: #808080;}
 
 </style>
 <!-- jQuery CDN 시작 -->
@@ -54,6 +54,8 @@ $(function(){
 	    $(this).val("");
 	  } 
 	}); 
+	 	
+	 	
 	
 	
 	$("#email_select").change(function(){

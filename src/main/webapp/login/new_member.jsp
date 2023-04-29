@@ -35,7 +35,7 @@ textarea{width: 700px; height: 400px;}
 #term2{width: 1000px;height: 400px;display: flex;justify-content: center;position: absolute; bottom: 200px;}
 #checkBox2{width: 200px; height: 30px; position: absolute;top: 520px;left: 760px;}
 #buttonId{width: 300px; height: 40px;position: absolute; top: 600px;display: flex;justify-content: center;}
-.button{width:100px;height: 100%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 10px;margin-right: 10px;}
+.button{width:100px;height: 100%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 10px;margin-right: 10px;  background-color: #808080;}
 
 
 </style>

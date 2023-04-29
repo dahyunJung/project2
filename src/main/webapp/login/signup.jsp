@@ -1,3 +1,4 @@
+<%@page import="oracle.net.aso.j"%>
 <%@page import="LoginDAO.LoginDAO"%>
 <%@page import="java.util.Date"%>
 <%@page import="kr.co.sist.util.cipher.DataEncrypt"%>
@@ -83,6 +84,16 @@ jVO.setEmail(jVO.getEmail());
 try{
 LoginDAO lDAO = new LoginDAO();
 	
+	boolean dupPhone = lDAO.selectPhoneDup(jVO.getPhone());
+
+	if(!dupPhone){
+		%>
+		<script>alert("전화번호가 중복됩니다");
+		history.back();
+		</script>
+		<% 
+	}
+
 	lDAO.insertMember(jVO);
 
 response.sendRedirect("new_member3.jsp");

@@ -37,10 +37,10 @@
 <!-- jQuery CDN 끝 -->
 
 <script type="text/javascript">
-function idsearch_pop(){
+function idsearch_pop(){ // 아이디 찾기 popup
 	window.open("id_search.jsp","아이디 찾기","height=750px,width=650px,top= 300px, left=500px");
 }
-function password_pop(){
+function password_pop(){//임시비밀번호 발급 popup
 	window.open("password_issued.jsp","임시비밀번호 발급","height=750px,width=650px,top= 300px, left=500px");
 }
 $(function(){	
@@ -53,6 +53,13 @@ $("#loginBtn").click(function(){
 	}else{
 		$("#frm").submit();
 	}
+});
+
+$(document).keypress(function(event) { //엔터를 누르면 로그인 버튼이 눌려진다
+    if (event.which == 13) {
+        event.preventDefault();
+        $("#loginBtn").click();
+    }
 });
 });
 </script>
