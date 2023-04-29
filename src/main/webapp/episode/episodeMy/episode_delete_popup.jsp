@@ -38,13 +38,6 @@
 	int userNum = (Integer)session.getAttribute("user_num_member");
 	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
 	int epNum = Integer.parseInt(request.getParameter("epNum"));
-	
-	/* private int userNum; // 유저 번호 (fk) 세션 
-	private int epNum; // 에피소드 번호 (pk)
-	private int novelNum; // 소설 번호 (fk) 
-	private String epTitle; // 소설 제목
-	private String detail; // 에피소드 내용
-	private boolean openStatus; // 에피소드 공개여부 */
 %>
 
 <body>

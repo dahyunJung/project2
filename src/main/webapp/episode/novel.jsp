@@ -188,6 +188,7 @@ $(function(){
 								
 								
 								<!-- 신고 버튼 -->
+								<%-- <img id="reportImg" src=<%= epDAO.cntReport(userNum, novelNum)>= 1 ? "0":"http://localhost/project2/_next/static/images/good_off.png"%> alt="좋아요"/> --%>
 								<img id="reportImg" src="http://localhost/project2/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/>
 								
 								<form action="report_popup.jsp" id="reportFrm" method="post">

@@ -19,19 +19,13 @@
 			System.out.println(epNum+", "+removeCnt + ", 삭제 실패");
 			response.sendRedirect("/project2/login/loginpage.jsp");
 			
-			/* response.sendRedirect("http://localhost/project2/login/loginpage.jsp"); */
-			
-	
-			
 		}else{
 			System.out.println(epNum+", "+removeCnt + ", 삭제 완료");
 		%>
 			<script type="text/javascript">
-
-			window.close();
+				window.close();
 			</script>
 		<%
-	
 		}
 		
 	}catch(SQLException e){

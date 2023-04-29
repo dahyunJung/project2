@@ -42,7 +42,7 @@
 	            $("#reportCode").val(value);
 	            $("#reportFrm").submit();
 	            alert( $("#reportCode").val()+"신고되었습니다.");
-	            opener.parent.location.href="http://localhost/project2/novel/novel_list.jsp?num_novel=" + <%=request.getParameter("num_novel")%>;
+	            opener.parent.location.href="http://localhost/project2/episode/novel.jsp?num_novel=" + <%=request.getParameter("num_novel")%>;
 	        }
 	        else {
 	            alert('선택된 신고항목이 없습니다.');
