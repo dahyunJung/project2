@@ -1,6 +1,7 @@
 package EpisodeVO.User;
 
 public class LookNovelVO {
+	
 	private String novelTitle;
 	private String age; //이용가
 	private String id;

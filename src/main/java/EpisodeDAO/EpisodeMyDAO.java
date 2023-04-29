@@ -9,7 +9,6 @@ import java.util.List;
 
 import EpisodeVO.My.CreateEpisodeVO;
 import EpisodeVO.My.EditEpisodeVO;
-import EpisodeVO.My.LookMyEpisodeVO;
 import conn.DbConnection;
 
 public class EpisodeMyDAO {
@@ -19,39 +18,6 @@ public class EpisodeMyDAO {
 	 * views, createDate episode sql: num_episode, num_novel, num_member, title,
 	 * story, open, visit, make
 	 */
-	
-	// 자신이 쓴 소설인지 확인
-	public int userCheck(int novelNum) throws SQLException {
-		int userNum = 0;
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		DbConnection dbConnection = DbConnection.getInstance();
-		
-		try {
-			con = dbConnection.getConn();
-			
-			String checkId = " select num_member from novel where num_novel = ? ";
-				
-			pstmt=con.prepareStatement(checkId);
-			
-			pstmt.setInt(1, novelNum);
-				
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				userNum = rs.getInt("num_member");
-			}
-				
-		}finally {
-			dbConnection.dbClose(rs, pstmt, con);
-		}
-		
-		return userNum;
-	}//userCheck
-
 	
 	  // 작성한 소설 제목 출력 (에피소드 작성 )
 	public String selectNovelName(int novelNum) throws SQLException {
@@ -203,47 +169,6 @@ public class EpisodeMyDAO {
 
 		return cnt;
 	}// deleteEpisode
-
-	
-	// 내가 작성한 에피소드 내용보여주는 창 (수정)
-	public LookMyEpisodeVO selectEpisode(int userNum, int novelNum, int epNum) throws SQLException {
-		LookMyEpisodeVO leVO = null;
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		DbConnection dbConnection = DbConnection.getInstance();
-
-		try {
-			con = dbConnection.getConn();
-
-			StringBuilder selectEpisode = new StringBuilder();
-			selectEpisode.append(" select n.title novelTitle, e.title epTitle, e.story epDetail, e.open open ")
-						 .append(" from episode e, novel n ")
-						 .append(" where n.num_novel=e.num_novel and e.num_member=? and e.num_novel=? and e.num_episode=? ");
-
-			pstmt = con.prepareStatement(selectEpisode.toString());
-
-			pstmt.setInt(1, userNum);
-			pstmt.setInt(2, novelNum);
-			pstmt.setInt(3, epNum);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				leVO = new LookMyEpisodeVO();
-				leVO.setNovelTitle(rs.getString("novelTitle"));
-				leVO.setEpTitle(rs.getString("epTitle"));
-				leVO.setEpDetail(rs.getString("epDetail"));
-			}
-			System.out.println("select userNum-" + userNum + "novelNum-" + novelNum + "epNum-" + epNum+" "+leVO.getOpenStatus());
-
-		} finally {
-			dbConnection.dbClose(null, pstmt, con);
-		} // end finally
-		return leVO;
-	}// selectEpisode
 
 	
 	// 내 소설에 해당하는 모든 에피소드 리스트 가져오기

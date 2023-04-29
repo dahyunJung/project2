@@ -21,14 +21,10 @@ request.setCharacterEncoding("UTF-8");
 
 <%
 	// 공개여부 전환
-	int userNum = 3;
-	//int novelNum = 23;
-	
+	int userNum = (Integer)session.getAttribute("user_num_member");
+	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
 	String report = request.getParameter("report");
 	String reportId = request.getParameter("reportId");
-	
-	//int userNum = Integer.parseInt(request.getParameter("userNum"));
-	int novelNum = Integer.parseInt(request.getParameter("novelNum"));
 
 	 EpisodeDAO epDAO = new EpisodeDAO();
 	 
@@ -40,10 +36,12 @@ request.setCharacterEncoding("UTF-8");
 			epDAO.insertReport(rVO);
 			
 			System.out.println(reportCnt + ", 신고 완료 ");
+			response.sendRedirect("/project2/episode/novel.jsp?num_novel=" + novelNum);
 			
 		}else{
 			System.out.println(rVO.getNovelNum()+", "+reportCnt + ", 신고 실패");
 			System.out.println("error");
+			response.sendRedirect("/project2/episode/novel.jsp?num_novel=" + novelNum);
 		}
 		
 	}catch(SQLException e){

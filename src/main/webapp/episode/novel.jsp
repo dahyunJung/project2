@@ -90,23 +90,6 @@ $(function(){
 		}
 	});//ajax
 	
-	
-	/* $.ajax({
-		url : "like_process.jsp",
-		data : ,
-		dataType : "JSON",
-		error : function(xhr){
-			alert("서버에서 문제가 발생했습니다. 다시 시도해주세요.");
-			console.log(xhr.status);
-		},
-		success : function(jsonArr){
-			var len = jsonArr.length;
-			var article="";
-			let cnt=0;
-		}
-	});//ajax */
-	
-	
 	// 조아요 공개
 	$("#goodImg").click(function(){
 		var good = "http://localhost/project2/_next/static/images/good_on.png";
@@ -119,14 +102,13 @@ $(function(){
 			alert("좋아요 취소");
 			$("#good").val(0);  // 좋아요 취소
 		} 
-		alert($("#good").val())
 		$("#likeFrm").submit();
 	}); //private
 	
 	// 신고하기
 	$("#reportImg").click(function(){
-		window.open("/project2/episode/report_popup.jsp","popup","width=500,height=803,resizable=no,top="
-				+(window.screenY+100)	+",left="+(window.screenX+100)); 
+		window.open("report_popup.jsp","popup","width=500,height=803,resizable=no,top="+(window.screenY+100) +",left="+(window.screenX+100));
+		/* $("#reportFrm").submit(); */
 		//window.close();
 	});
 	
@@ -191,7 +173,10 @@ $(function(){
 									id="firstEp" type="button" >첫회 읽기</button>
 									&nbsp;&nbsp;&nbsp;
 									
-								<!-- 좋아요 버튼 -->
+								<!-- 좋아요 -->
+								<label><%= epDAO.cntLike(novelNum) %></label>
+ 								<img id="goodImg" src=<%= epDAO.confirmLike(userNum, novelNum)== 1 ? "http://localhost/project2/_next/static/images/good_on.png":"http://localhost/project2/_next/static/images/good_off.png"%> alt="좋아요"/>
+
 								<form action="like_process.jsp" id="likeFrm" method="post">
 									<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>"/>
 									<input type="hidden" id="num_novel" name="num_novel" value="<%= novelNum %>" />
@@ -199,23 +184,19 @@ $(function(){
 									<input type="hidden" id="good" name="good" value=""/>
 								</form>	
 								
-								<!-- 좋아요 -->
-								<label><%= epDAO.cntLike(novelNum) %></label>
-								<!-- <img id="goodImg" src="http://localhost/project2/_next/static/images/good_off.png" alt="좋아요"/>
-								  ? 'http://localhost/project2/_next/static/images/good_on.png':'http://localhost/project2/_next/static/images/good_off.png'	 
-								-->
- 								<img id="goodImg" src=<%= epDAO.confirmLike(userNum, novelNum)== 1 ? "http://localhost/project2/_next/static/images/good_on.png":"http://localhost/project2/_next/static/images/good_off.png"%> alt="좋아요"/>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								
+								
 								<!-- 신고 버튼 -->
-								<form action="report_process.jsp?num_novel=<%= novelNum %>" id="reportFrm" method="post">
+								<img id="reportImg" src="http://localhost/project2/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/>
+								
+								<form action="report_popup.jsp" id="reportFrm" method="post">
 									<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>"/>
 									<input type="hidden" id="num_novel" name="num_novel" value="<%= novelNum %>" />
-									<input type="hidden" id="report" name="report" value=""/>
+									<!-- <input type="hidden" id="report" name="report" value=""/> -->
 									<input type="hidden" id="reportId" name="reportId" value="<%= selectNovelVO.getId() %>"/>
 								</form>
 								
-								<img id="reportImg" src="http://localhost/project2/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/>
 							</div>
 						
 						</div>

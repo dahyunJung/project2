@@ -35,7 +35,6 @@
 	        else {
 	            alert('선택된 신고항목이 없습니다.');
 	        }
-			
 		}); //report
 		
 	});// ready
@@ -44,8 +43,7 @@
 </head>
 <%
 	int userNum = (Integer)session.getAttribute("user_num_member");
-	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
-	
+	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
 	String reportId = request.getParameter("reportId");
 %>
 
