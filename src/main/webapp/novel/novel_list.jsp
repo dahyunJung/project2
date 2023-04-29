@@ -46,7 +46,7 @@ $(function () {
 		$("#del_frm").submit();
 	})
 	 $.ajax({
-			url : "../episode/episode_jsonarr_data.jsp",
+			url : "novel_jsonarr_data.jsp",
 			data : "num_novel=<%=request.getParameter("num_novel")%>",
 			dataType : "JSON",
 			error : function(xhr){
