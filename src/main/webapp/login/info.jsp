@@ -42,7 +42,7 @@ input{width: 150px;height: 20px;border-radius: 3px; background-color: #e8f0fe;bo
     border: none;border-bottom: 2px solid #CCC;}
 
 #buttonId{width: 300px; height: 40px;position: absolute; top: 300px;display: flex;justify-content: center;}
-.button{width:100px;height: 100%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 20px;}
+.button{width:100px;height: 100%; background-color: #808080; border-radius: 10px;margin-left: 20px;}
 
 </style>
 <!-- jQuery CDN 시작 -->

@@ -3,7 +3,7 @@
 
 
 <!DOCTYPE html>
-<html lang="ko" style="height: 1700px;">
+<html lang="ko" style="height: 1400px;">
 <head>
 <meta charSet="utf-8" />
 <meta name="viewport"
@@ -19,14 +19,14 @@
 <noscript data-n-css=""></noscript>
 
 <style type="text/css">
-#wrap{ width: 1000px;height: 1800px;margin: 0px auto;}
+#wrap{ width: 1000px;height: 1600px;margin: 0px auto;}
 
-#container{width:1000px; height: 1400px; position: relative;display: flex;justify-content: center;align-items: center;top: 100px;}
+#container{width:1000px; height: 1400px; position: relative;display: flex;justify-content: center;align-items: center;top: 100px; border: 2px solid;}
 #terms1{width: 1000px;height: 400px;display: flex;justify-content: center;position: absolute; bottom: 600px;}
 #text_new{width: 200px;height: 50px;position: absolute; bottom: 750px;text-align: center;}
 #text_service{width: 200px;height: 50px;position: absolute; bottom: 450px;text-align: center;}
 #img{width: 400px; height: 150px; position: absolute;bottom: 550px ; background-size : 100% 100%;}
-#term1{position: absolute; width: 1300px;height: 700px;display: flex;justify-content: center;align-items: center;bottom: 100px;}
+#term1{position: absolute; width: 1000px;height: 700px;display: flex;justify-content: center;align-items: center;bottom: 100px;}
 textarea{width: 700px; height: 400px;}
  #checkBox1{width: 200px; height: 30px; position: absolute; top: 160px; left: 760px;} 
 
