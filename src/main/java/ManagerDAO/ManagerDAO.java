@@ -150,12 +150,12 @@ public class ManagerDAO {
 			con = dbCon.getConn();
 
 			StringBuilder selectAll = new StringBuilder();
-			selectAll.append("	select distinct n.num_novel, n.title, n.likes, n.make, m.id, max(r.report_date) as report_date, ")
-						.append("	(select count(*) from report where num_novel = n.num_novel) as num_report	")
-						.append("	from novel n	")
-						.append("	left join report r on n.num_novel = r.num_novel	")
-						.append("	left join member m on n.num_member = m.num_member	")
-						.append("	group by n.num_novel, n.title, n.likes, n.make, m.id	");
+			selectAll.append("	SELECT DISTINCT n.num_novel, n.title, ")
+						.append("	 (SELECT COUNT(*) FROM liken WHERE num_novel = n.num_novel) AS likes ,n.make, m.id,	")
+						.append("	 (SELECT MAX(report_date) FROM report WHERE num_novel = n.num_novel) AS report_date,	")
+						.append("	(SELECT COUNT(*) FROM report WHERE num_novel = n.num_novel) AS num_report	")
+						.append("	FROM novel n	")
+						.append("	LEFT JOIN member m ON n.num_member = m.num_member	");
 			
 			pstmt = con.prepareStatement(selectAll.toString());
 			rs = pstmt.executeQuery();
