@@ -37,9 +37,13 @@
 			var detail = $("#detail").val();
 			
 			// 소설 제목수 검사
+			// 소설 제목수 검사
 			if(epTitle.length == 0 || epTitle == ""){
-				alert("소설의 제목을 입력해주세요");
+				alert("에피소드 제목을 입력해주세요");
 				$("#epTitle").focus();
+				return;
+			}else if(epTitle.length >= 20){
+				alert("에피소드 제목은 20글자를 넘길 수 없습니다.");
 				return;
 			}
 			

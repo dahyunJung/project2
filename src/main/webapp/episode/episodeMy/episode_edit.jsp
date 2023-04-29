@@ -40,7 +40,6 @@
 		<script type="text/javascript">
 			alert("파라미터 novelNum의 값이 없음");
 			location.href="http://localhost/project2/home/main.jsp";
-			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 		</script>
 <%
 }	
@@ -50,7 +49,6 @@
 		<script type="text/javascript">
 			alert("파라미터 epNum의 값이 없음");
 			location.href="http://localhost/project2/novel/novel_list.jsp?num_novel=" + num_novel;
-			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
 		</script>
 <%
 }	
@@ -91,6 +89,9 @@ $(function(){
 			alert("에피소드 제목을 입력해주세요");
 			$("#epTitle").focus();
 			return;
+		}else if(epTitle.length >= 20){
+			alert("에피소드 제목은 20글자를 넘길 수 없습니다.");
+			return;
 		}
 		
 		if( epTitle.trim() == ""){
@@ -120,15 +121,15 @@ $(function(){
 	// 에피소드 공개
 	$("#private").click(function(){
 		if($(this).val() == "공개"){			// 버튼이 공개로 되어있으면 비공개로 전환
-			$(this).val("비공개");
+		/* if($(this).val() == "공개"){			// 버튼이 공개로 되어있으면 비공개로 전환 */
 			$("#openStatus").val(0);
+			$(this).val("비공개");
 			alert("비공개 되었습니다!");
 		}else if($(this).val() == "비공개"){	// 버튼이 비공개로 되어있으면 공개로 전환
-			$(this).val("공개");
 			$("#openStatus").val(1);
+			$(this).val("공개");
 			alert("공개 되었습니다!");
 		}
-		
 	}); //private
 	
 	
@@ -168,7 +169,7 @@ $(function(){
 				<div class="mt-16 ml-auto desktop:mt-0">
 					<div class="flex items-center justify-end">
 						<input type="button" id="edit" value="수정" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>&nbsp;
-						<input type="button" id="private" value="<%= (selectVO.getOpenStatus() == true) ? "공개":"비공개" %>" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>&nbsp;
+						<input type="button" id="private" value="<%= selectVO.getOpenStatus() ? "비공개":"공개" %>" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>&nbsp;
 						<input type="button" id="delete" value="삭제" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>
 					</div>
 				</div>
