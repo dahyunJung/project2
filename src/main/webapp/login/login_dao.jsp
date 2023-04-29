@@ -60,7 +60,6 @@ if(sVO.getId()==null){
 	session.setAttribute("user_name", sVO.getName());
 	session.setAttribute("user_photo", sVO.getPhoto());
 	session.setMaxInactiveInterval(60*60*1);
-	System.out.println(sVO.getPhoto());
 
 	 request.getRequestDispatcher("../home/main.jsp").forward(request, response); 
 	  /* request.getRequestDispatcher("my_page.jsp").forward(request, response);   */

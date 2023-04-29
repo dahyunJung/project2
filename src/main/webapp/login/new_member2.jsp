@@ -145,7 +145,6 @@ $(function(){
             <div id="buttonId">
                 <input type="button"class="button" value="확인" id = "idBtn" name="idBtn" style='cursor:pointer'>
                 <input type="button"class="button" value="취소" onclick="window.location.href='loginpage.jsp'" style='cursor:pointer'>
-
                 
             </div>
            </div>

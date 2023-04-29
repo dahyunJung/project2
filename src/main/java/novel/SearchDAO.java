@@ -35,7 +35,7 @@ public class SearchDAO {
 			.append(" ) e ON n.num_novel = e.num_novel	")
 			.append(" WHERE n.title LIKE '%")
 			.append(search)
-			.append("%'");
+			.append("%' and n.open=1");
 			
 			pstmt=con.prepareStatement(sb.toString());
 

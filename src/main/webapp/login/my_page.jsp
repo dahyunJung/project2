@@ -55,7 +55,7 @@
 .name{width: 200px; height: 30px;text-align: center; font-size: 20px;font-weight: bold;}
 #input_button1{position: absolute; top:420px;left: 100px;}
 #input_button2{position: absolute; top:420px;right: 100px;}
-.button{width: 400px; height: 170px;text-align: left; font-size: 20px; font-weight: bold;background-color: #C0FAF8; border-radius: 30px;}
+.button{width: 400px; height: 170px;text-align: left; font-size: 20px; font-weight: bold;background-color: #FFFFFF; border-radius: 30px;}
 
 
 </style>
@@ -115,7 +115,7 @@ $(function(){
 			let file = event.target.files[0];
 			console.log('file',file);
 			if(file.size >maxSize){
-				alert("2MB 이하의 이미지파일을 올려주세요");
+				alert("1MB 이하의 이미지파일을 올려주세요");
 				return;
 			}else{
 				
