@@ -24,7 +24,7 @@
 	// 공개여부 전환
 	String open=request.getParameter("openStatus");
 	edVO.setOpenStatus("1".equals(open));
-	edVO.setNovelNum(novelNum);
+	/* edVO.setNovelNum(novelNum); */
 
 	EpisodeMyDAO emDAO = new EpisodeMyDAO();
 
@@ -32,12 +32,11 @@
 		int editCnt = emDAO.updateEpisode(edVO);
 		
 		if(editCnt > 0){
-	System.out.println(editCnt + ", 수정 완료 ");
-	
-	response.sendRedirect("../novel/novel_list.jsp?num_novel=" + novelNum);		
+			System.out.println(editCnt + ", 수정 완료 ");
+			response.sendRedirect("../novel/novel_list.jsp?num_novel=" + novelNum);		
 		}else{
-	System.out.println(edVO.getEpNum()+", "+editCnt + ", 수정 실패");
-	System.out.println("error");
+			System.out.println(edVO.getEpNum()+", "+editCnt + ", 수정 실패");
+			response.sendRedirect("../novel/novel_list.jsp?num_novel=" + novelNum);
 		}
 		
 	}catch(SQLException e){
