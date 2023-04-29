@@ -17,7 +17,7 @@ try{
     List<LoginHistoryVO> lhList = mDAO.selectHistory();
     
     JSONObject jsonObj = null;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     /*기존 for문
     InjectionVO iVO = null;
     for( int i=0; i<list.size(); i++ ){

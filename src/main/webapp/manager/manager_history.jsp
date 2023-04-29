@@ -88,7 +88,10 @@
 			let cnt = 0;
 			//tr이 하나 이상이면 넣지 않는다.
 			
+
+			
 			$.each( jsonArr, function(idx, jsonObj) {
+
 				cnt++;
 			tbody+="<tr><td>"+
 			jsonObj.id+"</td><td>"+
