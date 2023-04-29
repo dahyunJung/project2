@@ -81,7 +81,6 @@
 	int userNum = (Integer)session.getAttribute("user_num_member");
 	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
 	
-
 	// 소설 제목 출력
 	EpisodeMyDAO mDAO = new EpisodeMyDAO();
 %>
@@ -96,7 +95,7 @@
 			
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
-					<a href="/project2/episode/novel_list.jsp">
+					<a href="http://localhost/project2/novel/novel_list.jsp?num_novel=<%=num_novel %>">
 						<img width="20" height="20" src="http://localhost/project2/_next/static/images/list.png" />
 					</a>
 				</div>
