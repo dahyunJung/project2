@@ -69,7 +69,6 @@
 			</div>
 			<br><br><br>
 			
-			<label><%=userNum %><%=num_novel %><%=id %></label>
 			
 		<form id="reportFrm" action="report_process.jsp" method="post">
 			<input type="hidden" id="num_novel" name="num_novel" value="<%= num_novel %>" />
