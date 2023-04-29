@@ -150,12 +150,13 @@ public class ManagerDAO {
 			con = dbCon.getConn();
 
 			StringBuilder selectAll = new StringBuilder();
-			selectAll.append("	select distinct n.num_novel, n.title, n.likes, n.make, max(r.id) as id, max(r.report_date) as report_date, ")
-					.append(" (select count(*) from report where num_novel = n.num_novel) as num_report	")
-					.append("	from novel n		")
-					.append("	left join report r on n.num_novel = r.num_novel	")
-					.append("	group by n.num_novel, n.title, n.likes, n.make	");
-		
+			selectAll.append("	select distinct n.num_novel, n.title, n.likes, n.make, m.id, max(r.report_date) as report_date, ")
+						.append("	(select count(*) from report where num_novel = n.num_novel) as num_report	")
+						.append("	from novel n	")
+						.append("	left join report r on n.num_novel = r.num_novel	")
+						.append("	left join member m on n.num_member = m.num_member	")
+						.append("	group by n.num_novel, n.title, n.likes, n.make, m.id	");
+			
 			pstmt = con.prepareStatement(selectAll.toString());
 			rs = pstmt.executeQuery();
 
@@ -169,7 +170,7 @@ public class ManagerDAO {
 			dbCon.dbClose(rs, pstmt, con);
 		} // end finally
 		return list;
-	}// selectNovelManageAll
+	}// selectNovelManageAll			  
 
 	
 	// 신고된 소설 삭제

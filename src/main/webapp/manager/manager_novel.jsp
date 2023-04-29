@@ -47,12 +47,12 @@
 		padding: 10px;
 	}
 	
-	#myTable{
+/* 	#myTable{
 		width:800px;
 		text-align: center;
 		border: 1px solid #E6E6E6;
 		margin: 0px auto;
-	}
+	} */
 	
 	tr, td{
 		padding: 7px;
@@ -107,11 +107,11 @@ $(function(){
 				
 				$("#myTable tbody").html(tbody);
 				
-				    $("#myTable").DataTable({
-				      paging: true, // 페이지네이션 기능 활성화
-				      lengthChange: true, // 페이지당 보여질 데이터 수 조정 기능 활성화
-				      searching: true // 검색 기능 활성화
-				    });
+			    $("#myTable").DataTable({
+			      paging: true, // 페이지네이션 기능 활성화
+			      lengthChange: true, // 페이지당 보여질 데이터 수 조정 기능 활성화
+			      searching: true // 검색 기능 활성화
+			    });
 			}
 		});//ajax
 });//ready
