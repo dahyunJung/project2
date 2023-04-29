@@ -200,9 +200,12 @@ function privatePop(novelNum){
 							</div>
 							<section class="flex flex-col desktop:mb-96">
 
-								<article>
-								<!-- 해당 id의 novel_info페이지로 이동인데  -->
-									<a href="/project2/novel/novel_info.jsp?title=<%=title%>" 
+									<%
+									if (nVO.getReportCnt() != 0 ) {
+									%>
+									<article>
+									<a href="/project2/episode/novel.jsp?num_novel=<%=nVO.getNovelNum()%>" 
+<%-- 									<a href="/project2/novel/novel_info.jsp?title=<%=title%>"  --%>
 										class="flex border-black/10 bg-white px-18 visited:bg-grey10 desktop:border-b-1 desktop:px-30">
 										<div
 											class="border-b-1 border-black/10 desktop:border-0 flex flex-1 py-16 desktop:py-22">
@@ -220,29 +223,14 @@ function privatePop(novelNum){
 											</div>
 										</div>
 									</a>
-								</article>
+									</article>
+								<%
+								} else {
+								%>
+								<div class="text-center my-20" style="font-size: 20px">신고된
+									정보가 없습니다</div>
+								<% } %>
 
-								<div class="flex items-center justify-center py-8 mx-auto my-40">
-									<a
-										class="flex h-34 w-34 items-center justify-center pointer-events-none mr-20 !w-24 opacity-40"
-										href="/novels/30275658?page=-1"><svg width="24"
-											height="24" viewBox="0 0 24 24" fill="none"
-											xmlns="http://www.w3.org/2000/svg" role="img"
-											class="rotate-180" title="prev">
-											<path fill-rule="evenodd" clip-rule="evenodd"
-												d="M18.0605 12.0001L8.99989 21.0608L7.93923 20.0001L15.9392 12.0001L7.93923 4.00011L8.99989 2.93945L18.0605 12.0001Z"
-												fill="currentColor"></path></svg></a><a
-										class="flex h-34 w-34 items-center justify-center mx-4"
-										href="/novels/30275658?page=0"><div
-											class="flex typo-g-sm1 flex h-full w-full items-center justify-center rounded-full bg-black !font-bold text-white">1</div></a><a
-										class="flex h-34 w-34 items-center justify-center pointer-events-none ml-20 !w-24 opacity-40"
-										href="/novels/30275658?page=1"><svg width="24" height="24"
-											viewBox="0 0 24 24" fill="none"
-											xmlns="http://www.w3.org/2000/svg" role="img" title="next">
-											<path fill-rule="evenodd" clip-rule="evenodd"
-												d="M18.0605 12.0001L8.99989 21.0608L7.93923 20.0001L15.9392 12.0001L7.93923 4.00011L8.99989 2.93945L18.0605 12.0001Z"
-												fill="currentColor"></path></svg></a>
-								</div>
 							</section>
 						</div>
 					</section>
