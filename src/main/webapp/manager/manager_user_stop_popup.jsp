@@ -52,13 +52,12 @@ Date curDate = Date.from(currentDate.atStartOfDay().atZone(java.time.ZoneId.syst
 try{
 int mcnt = 0;
 if( date.before(curDate)==true ){
-mcnt = mDAO.forcedStop61(request.getParameter("id"));
-//out.print("61일 정지"); //61일 정지의 이유는 db값에 들어가는 중지값이 null이 들어가면 안되기에 nvl로 오늘자를 기준으로 하루전으로 기본값을 설정했기에
-// 정지를 당하지 않은 사람에 대해서는 61일 정지 부여
+mcnt = mDAO.forcedStop(request.getParameter("id"));
+// db값에 들어가는 중지값이 null이 들어가면 안되기에 nvl로 오늘자를 기준으로 하루전으로 기본값을 설정
 }
 else{
 	mcnt = mDAO.forcedStop60(request.getParameter("id"));
-	//out.print("60일 정지");
+	//out.print("60일 추가정지");
 	
 }
 

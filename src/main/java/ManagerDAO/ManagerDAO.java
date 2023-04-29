@@ -60,34 +60,6 @@ public class ManagerDAO {
 		return mVO;
 	}// selectMemberInfoAll
 
-	// 강제 중지 61일
-	public int forcedStop61(String id) throws SQLException {
-		int result = 0;
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		DbConnection dbCon = DbConnection.getInstance();
-		try {
-
-			con = dbCon.getConn();
-			StringBuilder updateQuery = new StringBuilder();
-			updateQuery.append(" update member set stop");
-			updateQuery.append("=(select stop from member where id=? )+61 ");
-			updateQuery.append(" where id = ? ");
-
-			pstmt = con.prepareStatement(updateQuery.toString());
-			pstmt.setString(1, id);
-			pstmt.setString(2, id);
-			result = pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			dbCon.dbClose(null, pstmt, con);
-		}
-		return result;
-	}// forcedStop61
-
 	// 강제 중지 60일
 	public int forcedStop60(String id) throws SQLException {
 		int result = 0;
@@ -106,6 +78,33 @@ public class ManagerDAO {
 			pstmt = con.prepareStatement(updateQuery.toString());
 			pstmt.setString(1, id);
 			pstmt.setString(2, id);
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbCon.dbClose(null, pstmt, con);
+		}
+		return result;
+	}// forcedStop61
+
+	// 강제 중지
+	public int forcedStop(String id) throws SQLException {
+		int result = 0;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		DbConnection dbCon = DbConnection.getInstance();
+		try {
+
+			con = dbCon.getConn();
+			StringBuilder updateQuery = new StringBuilder();
+			updateQuery.append(" update member set stop");
+			updateQuery.append("=sysdate+60 ");
+			updateQuery.append(" where id = ? ");
+
+			pstmt = con.prepareStatement(updateQuery.toString());
+			pstmt.setString(1, id);
 			result = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
