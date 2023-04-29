@@ -121,7 +121,7 @@ if("POST".equals(request.getMethod())){
 	}//end catch
 
 }else{
-response.sendRedirect("http://localhost/project2/login/my_page.jsp");
+response.sendRedirect("/project2/login/my_page.jsp");
 }
 
 %>

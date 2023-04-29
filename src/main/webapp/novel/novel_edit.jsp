@@ -186,7 +186,7 @@ if("POST".equals(request.getMethod())){
 											<div>
 												<div class="flex">
 													<div>
-														<img src="http://localhost/project2/_next/static/images/novel_thumb/<%=nVO.getFilephoto()%>" id="photo" style="width: 100px;height: 150px"/>
+														<img src="/project2/_next/static/images/novel_thumb/<%=nVO.getFilephoto()%>" id="photo" style="width: 100px;height: 150px"/>
 													</div>
 													<input type="file" name="upphoto" id="filephoto" style="display: none;">
 													<input type="hidden" name="filephoto" value="<%=nVO.getFilephoto()%>" style="display: none;">

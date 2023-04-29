@@ -107,7 +107,7 @@ if("POST".equals(request.getMethod())){
 	}//end catch
 }//end if
 %>
-<form action="http://localhost/project2/novel/my_novel_space.jsp" id="frm" method="post">
+<form action="my_novel_space.jsp" id="frm" method="post">
 <input type="hidden" name="order_novel" value="0"/>
 </form>
 <script type="text/javascript">
