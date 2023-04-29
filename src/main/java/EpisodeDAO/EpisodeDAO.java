@@ -344,6 +344,7 @@ public class EpisodeDAO {
 		return cnt;
 	}// insertLike
 
+	
 	// 좋아요 취소(삭제)
 	public int deleteLike(int userNum, int novelNum) throws SQLException {
 		int cnt = 0;
@@ -377,6 +378,7 @@ public class EpisodeDAO {
 		return cnt;
 	}// deleteLike
 	
+	
 	// 좋아요 개수
 	public int cntLike(int novelNum) throws SQLException{
 		int cnt = 0;
@@ -407,6 +409,7 @@ public class EpisodeDAO {
 		return cnt;
 	}
 
+	
 	// 좋아요되어 있으면 좋아요 화면에 표시
 	public int confirmLike(int userNum, int novelNum) throws SQLException {
 		int cnt = 0;

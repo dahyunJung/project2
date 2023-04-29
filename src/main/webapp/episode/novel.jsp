@@ -20,13 +20,12 @@
 <style data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&display=swap"></style>
 
 <%
-if(session.getAttribute("user_num_member")==null){
-	response.sendRedirect("../login/loginpage.jsp");
-	return;
-}
+	if(session.getAttribute("user_num_member")==null){
+		response.sendRedirect("../login/loginpage.jsp");
+		return;
+	}
+
 	int userNum = (Integer)session.getAttribute("user_num_member");
-	//int userNum = 3;
-	//int novelNum = 44;
 	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
 	if(novelNum == 0){
 %>
@@ -115,14 +114,11 @@ $(function(){
 		
 		if($(this).attr("src") == cancelGood){	
 			alert("좋아요");
-			//$(this).attr("src", good);
 			$("#good").val(1); // 좋아요?
 		}else if($(this).attr("src") == good){	
 			alert("좋아요 취소");
-			//$(this).attr("src", cancelGood);
 			$("#good").val(0);  // 좋아요 취소
 		} 
-		
 		alert($("#good").val())
 		$("#likeFrm").submit();
 	}); //private
@@ -176,7 +172,7 @@ $(function(){
 					<div class="flex flex-[0_0_auto]">
 						<div class="flex relative shrink-0 items-start overflow-hidden h-181 w-116" style="height: 181px;">
 							<span style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 116px; height: 181px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
-							<img src="/project2/_next/static/images/ +<%= selectNovelVO.getThumbnail() %>" decoding="async"
+							<img src="http://localhost/project2/_next/static/images/novel_thumb/<%= selectNovelVO.getThumbnail() %>" decoding="async"
 								data-nimg="fixed" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;">
 							</span>
 						</div>
@@ -203,13 +199,18 @@ $(function(){
 									<input type="hidden" id="good" name="good" value=""/>
 								</form>	
 								
-								<label><%=epDAO.confirmLike(userNum, novelNum) %></label>
-								<img id="goodImg" src="<%= (epDAO.confirmLike(userNum, novelNum) == 1) ? "http://localhost/project2/_next/static/images/good_on.png":"http://localhost/project2/_next/static/images/good_off.png" %>" alt="좋아요"/>
-								
+								<!-- 좋아요 -->
+								<label><%= epDAO.cntLike(novelNum) %></label>
+								<!-- <img id="goodImg" src="http://localhost/project2/_next/static/images/good_off.png" alt="좋아요"/>
+								  ? 'http://localhost/project2/_next/static/images/good_on.png':'http://localhost/project2/_next/static/images/good_off.png'	 
+								-->
+ 								<img id="goodImg" src=<%= epDAO.confirmLike(userNum, novelNum)== 1 ? "http://localhost/project2/_next/static/images/good_on.png":"http://localhost/project2/_next/static/images/good_off.png"%> alt="좋아요"/>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								
 								<!-- 신고 버튼 -->
-								<form action="report_process.jsp" id="reportFrm" method="post">
+								<form action="report_process.jsp?num_novel=<%= novelNum %>" id="reportFrm" method="post">
+									<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>"/>
+									<input type="hidden" id="num_novel" name="num_novel" value="<%= novelNum %>" />
 									<input type="hidden" id="report" name="report" value=""/>
 									<input type="hidden" id="reportId" name="reportId" value="<%= selectNovelVO.getId() %>"/>
 								</form>

@@ -11,19 +11,19 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	
+	int userNum = (Integer)session.getAttribute("user_num_member");
 	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
-	//int userNum = (Integer)session.getAttribute("num_novel");
-	int userNum = 7;
-	
-	System.out.println("좋아요할 소설번호: "+novelNum);
-	
 	String id = request.getParameter("id");
 	String good = request.getParameter("good");
+		
+	System.out.println("좋아요할 소설번호: "+ novelNum);
 	
 	EpisodeDAO episodeDAO = new EpisodeDAO();
 
 	lVO.setNovelNum(novelNum);
-	
+	System.out.println("novelNum: " + novelNum);
+	System.out.println("userNum: " + userNum);
+	System.out.println("id: " + id);
 	System.out.println("good: " + good);
 
 	try{
