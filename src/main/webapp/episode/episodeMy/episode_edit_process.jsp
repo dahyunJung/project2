@@ -19,7 +19,10 @@
 <jsp:setProperty property="*" name="edVO"/>
 
 <%
+	int userNum = (Integer)session.getAttribute("user_num_member");
 	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
+	int epNum = Integer.parseInt(request.getParameter("epNum")); 
+	
 
 	// 공개여부 전환
 	String open=request.getParameter("openStatus");

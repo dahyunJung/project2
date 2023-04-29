@@ -110,7 +110,6 @@ $(function(){
 
 	 
 	int userNum = (Integer)session.getAttribute("user_num_member");
-	System.out.println(request.getParameter("num_novel"));
 	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
 	int epNum = Integer.parseInt(request.getParameter("epNum")); 
 	
@@ -179,9 +178,16 @@ $(function(){
 					<div class="flex flex-col mx-18 mt-30 max-w-[648px] desktop:mx-auto desktop:mt-64">
 						
 						<input type="hidden" id="num_novel" name="num_novel" value="<%= novelNum %>" />
-						<input type="hidden" id="user_num_member" name="user_num_member" value="<%= userNum %>" />
+						<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
 						<input type="hidden" id="epNum" name="epNum" value="<%= epNum %>" />
-						<input type="hidden" id="openStatus" name="openStatus"/>
+						<input type="hidden" id="openStatus" name="openStatus" value=""/>
+						
+						<!-- private int userNum; // 유저 번호 (fk) 세션 
+						private int epNum; // 에피소드 번호 (pk)
+						private int novelNum; // 소설 번호 (fk) 
+						private String epTitle; // 소설 제목
+						private String detail; // 에피소드 내용
+						private boolean openStatus; // 에피소드 공개여부 -->
 						
 						<!-- 에피소드 제목 -->
 						<input type="text" class="mb-24 border-0 border-b-1 border-black/10 px-0 pt-0 pb-16 text-24 outline-none desktop:pb-36 desktop:text-36"
