@@ -11,9 +11,6 @@
     info="프로필 사진 변경을 위한 DAO"
     %>
     <%
-		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-		response.setDateHeader("Expires", 0); // Proxies.
     
     String user_num_member = session.getAttribute("user_num_member").toString();
   //1. 저장디렉토리를 설정
@@ -64,6 +61,9 @@
     if (originalFile.exists()) {
         originalFile.delete();
     }
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setDateHeader("Expires", 0); // Proxies.
     
     response.sendRedirect("my_page.jsp");
     	%>
