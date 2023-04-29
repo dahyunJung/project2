@@ -43,8 +43,8 @@
 function stopPop(){
 	if(confirm("정지기한은 2달입니다. 정지시키시겠습니까? \n이미 정지되었다면 기한이 늘어납니다.")){
 	    // 확인 버튼을 누르면 실행될 코드
-	window.open("manager_user_stop_popup.jsp?id="+$("#hid").val()+"&stop="+$("#hstop").val() ,"popup","width= 502; height= 250;,top="
-			+(window.screenY+100)	+",left="+(window.screenX+100));
+	window.open("manager_user_stop_popup.jsp?id="+$("#hid").val()+"&stop="+$("#hstop").val() ,"popup","width= 200; height= 30;,top="
+			+(window.screenY+500)	+",left="+(window.screenX+700));
 	} else {
 	    // 취소 버튼을 누르면 실행될 코드
 	}
@@ -53,8 +53,8 @@ function stopPop(){
 function cancelStopPop(){
 	if(confirm("정지를 해지하시겠습니까?")){
 	    // 확인 버튼을 누르면 실행될 코드
-		window.open("manager_user_stop_cancel_popup.jsp?id="+$("#hid").val()+"&stop="+$("#hstop").val() ,"popup","width= 502; height= 250;,top="
-				+(window.screenY+100)	+",left="+(window.screenX+100));
+		window.open("manager_user_stop_cancel_popup.jsp?id="+$("#hid").val()+"&stop="+$("#hstop").val() ,"popup","width= 200; height= 30;,top="
+				+(window.screenY+500)	+",left="+(window.screenX+700));
 	} else {
 	    // 취소 버튼을 누르면 실행될 코드
 	    
