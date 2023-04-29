@@ -107,7 +107,6 @@ $(function(){
 		response.sendRedirect("../login/loginpage.jsp");
 		return;
 	}
-
 	 
 	int userNum = (Integer)session.getAttribute("user_num_member");
 	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
@@ -177,7 +176,7 @@ $(function(){
 				<div class="h-0 flex-[1_1_auto] overflow-auto">
 					<div class="flex flex-col mx-18 mt-30 max-w-[648px] desktop:mx-auto desktop:mt-64">
 						
-						<input type="hidden" id="num_novel" name="num_novel" value="<%= novelNum %>" />
+						<input type="hidden" id="novelNum" name="novelNum" value="<%= novelNum %>" />
 						<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
 						<input type="hidden" id="epNum" name="epNum" value="<%= epNum %>" />
 						<input type="hidden" id="openStatus" name="openStatus" value=""/>
@@ -196,7 +195,6 @@ $(function(){
 							id="detail" name="detail" rows="50" maxlength="2000" placeholder="내용을 입력하세요"><%= selectVO.getEpDetail() %> </textarea>
 					</div>
 				</div>
-			<!-- </form> -->		
 			
 			<!-- 글자수 -->
 			<div>

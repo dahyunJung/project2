@@ -103,8 +103,9 @@ public class EpisodeMyDAO {
 
 			StringBuilder editEpisode = new StringBuilder();
 
-			editEpisode.append(" update episode ").append(" set title=?,story=?,open=? ")
-					.append(" where num_member=? and num_novel=? and num_episode=? ");
+			editEpisode.append(" update episode ")
+						.append(" set title=?,story=?,open=? ")
+						.append(" where num_member=? and num_novel=? and num_episode=? ");
 
 			pstmt = con.prepareStatement(editEpisode.toString());
 
