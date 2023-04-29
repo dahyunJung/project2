@@ -24,7 +24,7 @@
 
 <%
 	EpisodeMyDAO emDAO = new EpisodeMyDAO();
-	/* ceVO.setNovelNum(novelNum); */
+	ceVO.setNovelNum(novelNum);
 	
 	try{
 		emDAO.insertEpisode(ceVO);

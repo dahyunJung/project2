@@ -36,7 +36,8 @@
 	/* edVO.setNovelNum(num_novel); */
 
 	EpisodeMyDAO emDAO = new EpisodeMyDAO();
-	/* edVO.setNovelNum(novelNum); */
+	edVO.setNovelNum(novelNum);
+	edVO.setEpNum(epNum);
 
 	try{
 		int editCnt = emDAO.updateEpisode(edVO);
