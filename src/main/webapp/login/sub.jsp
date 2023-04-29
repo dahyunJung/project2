@@ -48,6 +48,8 @@
 			let pw_dup=$("#pw_dup").val();
 			if(pw == null || pw == "" || pw_dup == null || pw_dup == ""){
 				alert("비밀번호를 입력해주세요.");
+			}else if(pw.length < 8){
+				alert("비밀번호는 8자 이상 써주세요");
 			}else if(pw !=pw_dup){
 				alert("비밀번호가 같지 않습니다.");
 			}else{

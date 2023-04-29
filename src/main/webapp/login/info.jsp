@@ -60,12 +60,20 @@ function cancel(){
 		$("#email_select").change(function() {
 			if ($(this).val() == "self") { //직접 입력시
 				$("#email2").removeAttr("readonly").focus(); // input text 활성화
-				$("#email2").val("");
+				$("#email2").val();
 
 			} else {
 				$("#email2").attr("readonly", true).val($(this).val());
 			}
 		});
+		
+		$("#phone").on("keyup", function() { // 전화번호에 숫자가 아닌 글자가 써졌을 때
+			   if (!$.isNumeric($(this).val())) {
+			alert("숫자만 써주세요.");
+			    $(this).val($("#ogPhone").val());
+			  } 
+			}); 
+		
 		$("#change").click(function(){
 			let phone = $("#phone").val();
 			let email1 = $("#email1").val();
@@ -120,7 +128,7 @@ String email2 = email_part[1];
                     <td align="center"class="td1">생년월일</td><td><input type="date" value="<%=iVO.getBirth()%>" readonly></td>
                 </tr>
                 <tr>
-                    <td align="center"class="td1">전화번호</td><td><input type="text" value="<%=phone%>" id="phone" name="phone" placeholder="전화번호"></td>
+                    <td align="center"class="td1">전화번호</td><td><input type="text" value="<%=phone%>" id="phone" name="phone" placeholder="전화번호"><input type="hidden" value="<%=phone%>" id="ogPhone"></td>
                 </tr>
                 <tr>
                     <td align="center"class="td1">이메일</td><td><input type="text"  id="email1" name="email1" value="<%=email1%>" placeholder="이메일"> @ 
