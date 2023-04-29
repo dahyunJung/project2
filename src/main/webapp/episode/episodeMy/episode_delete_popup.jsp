@@ -20,10 +20,9 @@
 <script type="text/javascript">
 
 	$(function(){
-		
 		$("#delete").click(function(){
-			alert("삭제되었습니다.");
 			$("#removeFrm").submit();
+			opener.parent.location.href="http://localhost/project2/novel/novel_list.jsp?num_novel=" + <%=request.getParameter("num_novel")%>;
 		}); //delete
 		
 	});// ready
@@ -33,12 +32,19 @@
 <%
 	if(session.getAttribute("user_num_member")==null){
 		response.sendRedirect("../login/loginpage.jsp");
-		return;
+		return; 
 	}
-
-	int userNum = (Integer)session.getAttribute("userNum");
-	int novelNum = Integer.parseInt(request.getParameter("novelNum")); 
-	int epNum = Integer.parseInt(request.getParameter("epNum")); 
+ 
+	int userNum = (Integer)session.getAttribute("user_num_member");
+	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
+	int epNum = Integer.parseInt(request.getParameter("epNum"));
+	
+	/* private int userNum; // 유저 번호 (fk) 세션 
+	private int epNum; // 에피소드 번호 (pk)
+	private int novelNum; // 소설 번호 (fk) 
+	private String epTitle; // 소설 제목
+	private String detail; // 에피소드 내용
+	private boolean openStatus; // 에피소드 공개여부 */
 %>
 
 <body>
@@ -51,9 +57,9 @@
 		</div>
 		</div>
 		
-		<form id="removeFrm" action="novel_delete_process.jsp" method="post">
+		<form id="removeFrm" action="episode_delete_process.jsp" method="post">
 		
-			<input type="hidden" id="novelNum" name="novelNum" value="<%= novelNum %>" />
+			<input type="hidden" id="num_novel" name="num_novel" value="<%= num_novel %>" />
 			<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
 			<input type="hidden" id="epNum" name="epNum" value="<%= epNum %>" />		
 					

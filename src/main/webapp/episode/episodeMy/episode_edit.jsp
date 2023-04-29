@@ -23,6 +23,49 @@
 <link rel="stylesheet" type="text/css" href="/project2/_next/static/css/font.css" />
 <!-- jQuery CDN설정 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<%
+	if(session.getAttribute("user_num_member")==null){
+		response.sendRedirect("../login/loginpage.jsp");
+		return;
+	}
+	 
+	int userNum = (Integer)session.getAttribute("user_num_member");
+	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
+	int epNum = Integer.parseInt(request.getParameter("epNum")); 
+	
+
+	if(num_novel == 0){
+%>
+		<script type="text/javascript">
+			alert("파라미터 novelNum의 값이 없음");
+			location.href="http://localhost/project2/home/main.jsp";
+			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
+		</script>
+<%
+}	
+
+	if(epNum == 0){
+%>
+		<script type="text/javascript">
+			alert("파라미터 epNum의 값이 없음");
+			location.href="http://localhost/project2/novel/novel_list.jsp?num_novel=" + num_novel;
+			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
+		</script>
+<%
+}	
+	
+	// 선택한 회차 화면에 출력
+	EpisodeMyDAO mDAO = new EpisodeMyDAO();
+	LookMyEpisodeVO selectVO = null;
+	try{
+		// 에피소드 화면 출력
+		selectVO = mDAO.selectEpisode(userNum, num_novel, epNum);
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+%>
+
 <script type="text/javascript">
 
 $(function(){
@@ -91,7 +134,7 @@ $(function(){
 	
 	// 에피소드 삭제
 	$("#delete").click(function(){
-		window.open("delete_popup.jsp","popup","width=400,height=300,resizable=no,top="
+		window.open("episode_delete_popup.jsp?num_novel=<%=num_novel%>&epNum=<%=epNum%>","popup","width=400,height=300,resizable=no,top="
 				+(window.screenY+100)	+",left="+(window.screenX+100)); 
 		window.close();
 	}); //delete 
@@ -102,47 +145,7 @@ $(function(){
 </script>
 </head>
 
-<%
-	if(session.getAttribute("user_num_member")==null){
-		response.sendRedirect("../login/loginpage.jsp");
-		return;
-	}
-	 
-	int userNum = (Integer)session.getAttribute("user_num_member");
-	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
-	int epNum = Integer.parseInt(request.getParameter("epNum")); 
-	
 
-	if(num_novel == 0){
-%>
-		<script type="text/javascript">
-			alert("파라미터 novelNum의 값이 없음");
-			location.href="http://localhost/project2/home/main.jsp";
-			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
-		</script>
-<%
-}	
-
-	if(epNum == 0){
-%>
-		<script type="text/javascript">
-			alert("파라미터 epNum의 값이 없음");
-			location.href="http://localhost/project2/novel/novel_list.jsp?num_novel=" + novelNum;
-			//response.sendRedirect("http://localhost/project2/login/loginpage.jsp");
-		</script>
-<%
-}	
-	
-	// 선택한 회차 화면에 출력
-	EpisodeMyDAO mDAO = new EpisodeMyDAO();
-	LookMyEpisodeVO selectVO = null;
-	try{
-		// 에피소드 화면 출력
-		selectVO = mDAO.selectEpisode(userNum, num_novel, epNum);
-	}catch(SQLException e){
-		e.printStackTrace();
-	}
-%>
 					
 <body>
 	<div id="__next" data-reactroot="">
@@ -180,13 +183,6 @@ $(function(){
 						<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
 						<input type="hidden" id="epNum" name="epNum" value="<%= epNum %>" />
 						<input type="hidden" id="openStatus" name="openStatus" value=""/>
-						
-						<!-- private int userNum; // 유저 번호 (fk) 세션 
-						private int epNum; // 에피소드 번호 (pk)
-						private int novelNum; // 소설 번호 (fk) 
-						private String epTitle; // 소설 제목
-						private String detail; // 에피소드 내용
-						private boolean openStatus; // 에피소드 공개여부 -->
 						
 						<!-- 에피소드 제목 -->
 						<input type="text" class="mb-24 border-0 border-b-1 border-black/10 px-0 pt-0 pb-16 text-24 outline-none desktop:pb-36 desktop:text-36"

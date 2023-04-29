@@ -48,7 +48,7 @@
 	}	
 
 	int userNum = (Integer)session.getAttribute("user_num_member");
-	int novelNum = Integer.parseInt(request.getParameter("num_novel")); 
+	int num_novel = Integer.parseInt(request.getParameter("num_novel")); 
 	String reportId = request.getParameter("reportId");
 %>
 
@@ -67,7 +67,7 @@
 			<br><br><br>
 			
 		<form id="reportFrm" action="report_process.jsp" method="post">
-			<input type="hidden" id="novelNum" name="novelNum" value="<%= novelNum %>" />
+			<input type="hidden" id="num_novel" name="num_novel" value="<%= num_novel %>" />
 			<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
 			<input type="hidden" id="reportId" name="reportId" value="<%= reportId %>" />
 			<input type="hidden" id="reportCode" name="reportCode" value="" />

@@ -146,7 +146,7 @@ public class EpisodeMyDAO {
 			StringBuilder deleteEpisode = new StringBuilder();
 
 			deleteEpisode.append(" delete from episode ")
-					.append(" where num_member=? and num_novel=? and num_episode=? ");
+						.append(" where num_member=? and num_novel=? and num_episode=? ");
 
 			pstmt = con.prepareStatement(deleteEpisode.toString());
 
