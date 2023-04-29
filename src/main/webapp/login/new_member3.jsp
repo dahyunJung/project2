@@ -39,7 +39,7 @@ font-size: 25px; font-weight: bold; text-align: center;line-height: 2;}
 
 
 #buttonId{width: 300px; height: 40px;position: absolute; top: 300px;display: flex;justify-content: center;}
-.button{width:100px;height: 100%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 20px;}
+.button{width:100px;height: 100%; background-color: rgb(95, 95, 255); border-radius: 10px;margin-left: 20px;  background-color: #808080;}
 
 
 </style>
