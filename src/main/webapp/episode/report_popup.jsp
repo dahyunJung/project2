@@ -20,17 +20,29 @@
 </style>	
 
 <noscript data-n-css=""></noscript>
+
+<%  
+	if(session.getAttribute("user_num_member")==null){
+		response.sendRedirect("../login/loginpage.jsp");
+		return;
+	}	
+
+	int userNum = (Integer)session.getAttribute("user_num_member");
+	int num_novel = Integer.parseInt(request.getParameter("num_novel")); 
+	String id = request.getParameter("id");
+%>
+
 <script type="text/javascript">
 
 	$(function(){
 		
-		$("#report").click(function(){
+		$("#reportBtn").click(function(){
 			var value = $("input[type=radio][name=report]:checked").val();
 	        if (value) {
 	            $("#reportCode").val(value);
 	            $("#reportFrm").submit();
 	            alert( $("#reportCode").val()+"신고되었습니다.");
-	            window.close();
+	            opener.parent.location.href="http://localhost/project2/novel/novel_list.jsp?num_novel=" + <%=request.getParameter("num_novel")%>;
 	        }
 	        else {
 	            alert('선택된 신고항목이 없습니다.');
@@ -41,16 +53,7 @@
 
 </script>
 </head>
-<%  
-	if(session.getAttribute("user_num_member")==null){
-		response.sendRedirect("../login/loginpage.jsp");
-		return;
-	}	
 
-	int userNum = (Integer)session.getAttribute("user_num_member");
-	int num_novel = Integer.parseInt(request.getParameter("num_novel")); 
-	String reportId = request.getParameter("reportId");
-%>
 
 <body>
 	<div class="flex rounded-t-0 relative z-1 max-h-[100%] flex-col overflow-hidden bg-white"
@@ -66,10 +69,12 @@
 			</div>
 			<br><br><br>
 			
+			<label><%=userNum %><%=num_novel %><%=id %></label>
+			
 		<form id="reportFrm" action="report_process.jsp" method="post">
 			<input type="hidden" id="num_novel" name="num_novel" value="<%= num_novel %>" />
 			<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
-			<input type="hidden" id="reportId" name="reportId" value="<%= reportId %>" />
+			<input type="hidden" id="id" name="id" value="<%= id %>" />
 			<input type="hidden" id="reportCode" name="reportCode" value="" />
 			
 			<div>
@@ -82,6 +87,8 @@
 				<label><input type="radio" name="report" value="7" />권리침해 신고</label><br>
 			</div>
 			
+			
+			
 		</form>
 		</div>
 		</div>
@@ -93,7 +100,7 @@
 					type="button" id="cancel" style="font-weight: bold" onclick="javascript:window.close()">취소</button>
 				
 				<button class="flex items-center justify-center border-1 appearance-none bg-black border-black text-white disabled:border-grey20 disabled:bg-grey20 disabled:text-grey60 px-24 py-12 typo-md2-b flex-1"
-					type="button" id="report" style="font-weight: bold">신고</button>
+					type="button" id="reportBtn" style="font-weight: bold">신고</button>
 			</div>
 			
 		</div>

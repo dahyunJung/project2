@@ -107,7 +107,7 @@ $(function(){
 	
 	// 신고하기
 	$("#reportImg").click(function(){
-		window.open("report_popup.jsp","popup","width=500,height=803,resizable=no,top="+(window.screenY+100) +",left="+(window.screenX+100));
+		window.open("report_popup.jsp?num_novel=<%=novelNum%>&id=<%= selectNovelVO.getId() %>","popup","width=500,height=803,resizable=no,top="+(window.screenY+100) +",left="+(window.screenX+100));
 		/* $("#reportFrm").submit(); */
 		//window.close();
 	});
@@ -193,8 +193,7 @@ $(function(){
 								<form action="report_popup.jsp" id="reportFrm" method="post">
 									<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>"/>
 									<input type="hidden" id="num_novel" name="num_novel" value="<%= novelNum %>" />
-									<!-- <input type="hidden" id="report" name="report" value=""/> -->
-									<input type="hidden" id="reportId" name="reportId" value="<%= selectNovelVO.getId() %>"/>
+									<input type="hidden" id="id" name=id value="<%= selectNovelVO.getId() %>"/>
 								</form>
 								
 							</div>
