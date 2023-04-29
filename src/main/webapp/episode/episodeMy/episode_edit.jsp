@@ -109,11 +109,11 @@ $(function(){
 	}
 	 
 	int userNum = (Integer)session.getAttribute("user_num_member");
-	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
+	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
 	int epNum = Integer.parseInt(request.getParameter("epNum")); 
 	
 
-	if(novelNum == 0){
+	if(num_novel == 0){
 %>
 		<script type="text/javascript">
 			alert("파라미터 novelNum의 값이 없음");
@@ -138,7 +138,7 @@ $(function(){
 	LookMyEpisodeVO selectVO = null;
 	try{
 		// 에피소드 화면 출력
-		selectVO = mDAO.selectEpisode(userNum, novelNum, epNum);
+		selectVO = mDAO.selectEpisode(userNum, num_novel, epNum);
 	}catch(SQLException e){
 		e.printStackTrace();
 	}
@@ -153,7 +153,7 @@ $(function(){
 		<form id="editFrm" action="episode_edit_process.jsp" method="post" class="flex flex-col h-full">
 			<header class="flex relative h-90 flex-wrap items-start justify-center border-b-1 border-black/10 bg-white px-20 desktop:h-74 desktop:items-center desktop:px-24">
 				<div>
-					<a href="http://localhost/project2/novel/novel_list.jsp?num_novel=<%= novelNum%>">
+					<a href="http://localhost/project2/novel/novel_list.jsp?num_novel=<%= num_novel%>">
 						<img width="20" height="20" src="/project2/_next/static/images/list.png" />
 					</a>
 				</div>
@@ -176,7 +176,7 @@ $(function(){
 				<div class="h-0 flex-[1_1_auto] overflow-auto">
 					<div class="flex flex-col mx-18 mt-30 max-w-[648px] desktop:mx-auto desktop:mt-64">
 						
-						<input type="hidden" id="novelNum" name="novelNum" value="<%= novelNum %>" />
+						<input type="hidden" id="num_novel" name="num_novel" value="<%= num_novel %>" />
 						<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
 						<input type="hidden" id="epNum" name="epNum" value="<%= epNum %>" />
 						<input type="hidden" id="openStatus" name="openStatus" value=""/>

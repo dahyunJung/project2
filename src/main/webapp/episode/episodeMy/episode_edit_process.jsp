@@ -20,14 +20,14 @@
 
 <%
 	int userNum = (Integer)session.getAttribute("user_num_member");
-	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
+	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
 	int epNum = Integer.parseInt(request.getParameter("epNum")); 
 	
 
 	// 공개여부 전환
 	String open=request.getParameter("openStatus");
 	edVO.setOpenStatus("1".equals(open));
-	/* edVO.setNovelNum(novelNum); */
+	/* edVO.setNovelNum(num_novel); */
 
 	EpisodeMyDAO emDAO = new EpisodeMyDAO();
 
@@ -36,10 +36,10 @@
 		
 		if(editCnt > 0){
 			System.out.println(editCnt + ", 수정 완료 ");
-			response.sendRedirect("../../novel/novel_list.jsp?num_novel="+novelNum);		
+			response.sendRedirect("../../novel/novel_list.jsp?num_novel="+num_novel);		
 		}else{
 			System.out.println(edVO.getEpNum()+", "+editCnt + ", 수정 실패");
-			response.sendRedirect("../../novel/novel_list.jsp?num_novel="+novelNum);
+			response.sendRedirect("../../novel/novel_list.jsp?num_novel="+num_novel);
 		}
 		
 	}catch(SQLException e){
