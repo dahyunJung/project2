@@ -5,13 +5,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<script type="text/javascript">
-
-</script>
-</head>
 <%
 request.setCharacterEncoding("UTF-8");
 %>
@@ -20,28 +13,29 @@ request.setCharacterEncoding("UTF-8");
 <jsp:setProperty property="*" name="rVO"/>
 
 <%
-	// 공개여부 전환
 	int userNum = (Integer)session.getAttribute("user_num_member");
 	int num_novel = Integer.parseInt(request.getParameter("num_novel"));
-	int epNum = Integer.parseInt(request.getParameter("epNum")); 
-	
 	String report = request.getParameter("report");
-	String reportId = request.getParameter("reportId");
-
+	String id = request.getParameter("id");
+	
 	 EpisodeDAO epDAO = new EpisodeDAO();
+	 rVO.setNovelNum(num_novel);
 	 
 	 try{
+		int reportCnt=epDAO.insertReport(rVO);
 		 
-		int reportCnt=0;
+		System.out.println(userNum+","+num_novel+","+report+","+id);
 		
-		System.out.println(reportId);
 		if(reportCnt > 0){
-			epDAO.insertReport(rVO);
-			
 			System.out.println(reportCnt + ", 신고 완료 ");
-			System.out.println(userNum+", "+num_novel+", "+epNum+", "+report+", "+reportId);
+			System.out.println(userNum+", "+num_novel+", "+report+", "+id);
 			
-			response.sendRedirect("/project2/episode/novel.jsp?num_novel=" + num_novel);
+			%>
+			<script type="text/javascript">
+
+				window.close();
+			</script>
+		<%
 			
 		}else{
 			System.out.println(rVO.getNovelNum()+", "+reportCnt + ", 신고 실패");
@@ -52,9 +46,3 @@ request.setCharacterEncoding("UTF-8");
 		e.printStackTrace();
 	}
 %>
-
-
-<body>
-
-</body>
-</html>
