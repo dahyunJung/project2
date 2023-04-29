@@ -66,6 +66,11 @@ if(sVO.getId()==null){
 	  /* request.getRequestDispatcher("my_page.jsp").forward(request, response);   */
 	//db값에 들어가는 중지값이 null이 들어가면 안되기에 nvl로 오늘자를 기준으로 하루전으로 기본값을 설정했기에
 	//정지를 당하지 않은 사람
+	}else{
+		%>
+		<script>alert("정지된 아이디입니다.");
+		history.back();</script>
+		<%
 	}
 
 }
