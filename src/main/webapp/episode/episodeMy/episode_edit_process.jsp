@@ -20,9 +20,11 @@
 
 <%
 	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
-// 공개여부 전환
+
+	// 공개여부 전환
 	String open=request.getParameter("openStatus");
 	edVO.setOpenStatus("1".equals(open));
+	edVO.setNovelNum(novelNum);
 
 	EpisodeMyDAO emDAO = new EpisodeMyDAO();
 
@@ -32,7 +34,7 @@
 		if(editCnt > 0){
 	System.out.println(editCnt + ", 수정 완료 ");
 	
-	response.sendRedirect("http://localhost/project2/novel/novel_list.jsp?num_novel=" + novelNum);		
+	response.sendRedirect("../novel/novel_list.jsp?num_novel=" + novelNum);		
 		}else{
 	System.out.println(edVO.getEpNum()+", "+editCnt + ", 수정 실패");
 	System.out.println("error");

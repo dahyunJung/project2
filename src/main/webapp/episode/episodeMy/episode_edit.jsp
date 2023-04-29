@@ -91,7 +91,7 @@ $(function(){
 	
 	// 에피소드 삭제
 	$("#delete").click(function(){
-		window.open("/project2/episode/delete_popup.jsp","popup","width=400,height=300,resizable=no,top="
+		window.open("delete_popup.jsp","popup","width=400,height=300,resizable=no,top="
 				+(window.screenY+100)	+",left="+(window.screenX+100)); 
 		window.close();
 	}); //delete 
@@ -110,6 +110,7 @@ $(function(){
 
 	 
 	int userNum = (Integer)session.getAttribute("user_num_member");
+	System.out.println(request.getParameter("num_novel"));
 	int novelNum = Integer.parseInt(request.getParameter("num_novel"));
 	int epNum = Integer.parseInt(request.getParameter("epNum")); 
 	
@@ -177,8 +178,8 @@ $(function(){
 				<div class="h-0 flex-[1_1_auto] overflow-auto">
 					<div class="flex flex-col mx-18 mt-30 max-w-[648px] desktop:mx-auto desktop:mt-64">
 						
-						<input type="hidden" id="novelNum" name="novelNum" value="<%= novelNum %>" />
-						<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
+						<input type="hidden" id="num_novel" name="num_novel" value="<%= novelNum %>" />
+						<input type="hidden" id="user_num_member" name="user_num_member" value="<%= userNum %>" />
 						<input type="hidden" id="epNum" name="epNum" value="<%= epNum %>" />
 						<input type="hidden" id="openStatus" name="openStatus"/>
 						
