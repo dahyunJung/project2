@@ -118,7 +118,7 @@ session.setAttribute("sesId", idChk);
  */
 
 session.setAttribute("sesId", idChk);
-session.setAttribute("user_num_member", idChk);
+session.setAttribute("user_num_member", 0);
 //session.setMaxInactiveInterval(60*60);
 
 if(id.equals(idChk) && password.equals(pwChk) ){
