@@ -250,13 +250,14 @@ public class ManagerDAO {
 			con = dbCon.getConn();
 			StringBuilder selectReportInfo = new StringBuilder();
 			selectReportInfo
-					.append(" select distinct n.title , n.photo , n.story , n.age , count(r.num_report) as reportcnt, m.id , r.reason_code, n.num_novel ")
+					.append(" select distinct n.title , n.photo , n.story , n.age ,  ")
+					.append(" (SELECT COUNT(*) FROM report WHERE num_novel = n.num_novel) AS reportcnt , m.id , r.reason_code, n.num_novel ")
 					.append(" from novel n ")
 					.append(" join member m on n.num_member = m.num_member ")
 					.append(" left join report r on n.num_novel = r.num_novel ")
 					.append(" where n.title = ? ")
 					.append(" group by n.title, n.photo, n.story, n.age, m.id, r.reason_code, n.num_novel  ");
-			 
+			
 			pstmt = con.prepareStatement(selectReportInfo.toString());
 			pstmt.setString(1, title);
 			rs = pstmt.executeQuery();
