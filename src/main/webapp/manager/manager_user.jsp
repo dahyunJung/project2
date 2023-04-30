@@ -85,7 +85,7 @@
 	         tbody += "<tr><td>" +
 	          jsonObj.num_member + "</td><td><a href='manager_user_spc.jsp?id=" +
 	          jsonObj.id + "'>" + jsonObj.id + "</a></td><td><a href='manager_user_spc.jsp?id=" +
-	          jsonObj.id + "'>" +  jsonObj.novelCnt + "</a></td><td><a href='manager_user_spc.jsp?=" +
+	          jsonObj.id + "'>" +  jsonObj.novelCnt + "</a></td><td><a href='manager_user_spc.jsp?id=" +
 	          jsonObj.id + "'>" + jsonObj.visitDate + "</a></td><td><a href='manager_user_spc.jsp?id=" +
 	          jsonObj.id + "'>" + jsonObj.joinDate + "</a></td><td><a href='manager_user_spc.jsp?id=" +
 	          jsonObj.id + "'>" + jsonObj.stopDate + "</a></td></tr>"; 
