@@ -172,7 +172,7 @@ public class EpisodeDAO {
 	}// countEp
 	
 	
-	// 첫 에피소드 보여주기
+	// 첫 화 보여주기
 	public int selectFirstEp(int novelNum) throws SQLException {
 		int first = 0;
 
@@ -184,10 +184,12 @@ public class EpisodeDAO {
 
 		try {
 			con = dbConnection.getConn();
+			
+			StringBuilder selectFirst = new StringBuilder();
+			selectFirst.append(" SELECT DISTINCT FIRST_VALUE(NUM_EPISODE) OVER(ORDER BY NUM_EPISODE) AS first ")
+			.append(" from episode where num_novel=? ");
 
-			String selectFir = " select num_episode from episode where rownum=1 and num_novel=? and open=1 ORDER BY NUM_EPISODE ASC ";
-
-			pstmt = con.prepareStatement(selectFir);
+			pstmt = con.prepareStatement(selectFirst.toString());
 			pstmt.setInt(1, novelNum);
 
 			rs = pstmt.executeQuery();
