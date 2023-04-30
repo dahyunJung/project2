@@ -41,7 +41,7 @@
 	        if (value) {
 	            $("#reportCode").val(value);
 	            $("#reportFrm").submit();
-	            alert( $("#reportCode").val()+"신고되었습니다.");
+	            alert( "신고되었습니다.");
 	            opener.parent.location.href="http://localhost/project2/episode/novel.jsp?num_novel=" + <%=request.getParameter("num_novel")%>;
 	        }
 	        else {

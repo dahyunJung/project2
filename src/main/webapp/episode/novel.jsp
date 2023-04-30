@@ -188,6 +188,7 @@ $(function(){
 								
 								<!-- 신고 버튼 -->
 								<img id="reportImg" src="http://localhost/project2/_next/static/images/report.png" style="width: 40px; height: 40px;" alt="신고"/>
+								<label><%= epDAO.cntReport(novelNum) %></label>
 								
 								<form action="report_popup.jsp" id="reportFrm" method="post">
 									<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>"/>

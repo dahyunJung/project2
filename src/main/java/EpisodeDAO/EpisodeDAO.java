@@ -487,8 +487,8 @@ public class EpisodeDAO {
 	}//insertReport
 	
 	
-	
-	public int cntReport(int userNum, int novelNum) throws SQLException { 
+	// 신고 수
+	public int cntReport(int novelNum) throws SQLException { 
 		 int cnt = 0;
 		 
 		 Connection con = null; 
@@ -498,10 +498,10 @@ public class EpisodeDAO {
 	  
 		 try { 
 			 con = dbConnection.getConn();
-			  String selectReport = " select count(*) FROM report WHERE NUM_MEMBER=? and NUM_NOVEL=?";
+			  String selectReport = " select count(*) FROM report WHERE NUM_NOVEL=?";
 	  
 			  pstmt = con.prepareStatement(selectReport);
-			  pstmt.setInt(1, userNum); pstmt.setInt(2, novelNum);
+			  pstmt.setInt(1, novelNum);
 	  
 			  rs = pstmt.executeQuery();
 	  
@@ -509,7 +509,7 @@ public class EpisodeDAO {
 				  cnt = rs.getInt(1); 
 			  }
 	  
-			  System.out.println(userNum + ", " + novelNum + ", 신고 " + (cnt==0? "안함":"함"));
+			  System.out.println(novelNum + ", 신고 " + (cnt==0? "안함":"함"));
 		 }finally { // 7. 연결 끊기 
 			 dbConnection.dbClose(null, pstmt, con); } // end
 		 
