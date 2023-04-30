@@ -226,8 +226,26 @@ function privatePop(novelNum){
 								<%
 								 } else { 
 								%>
-								<div class="text-center my-20" style="font-size: 20px">신고된
-									정보가 없습니다</div>
+								<article>
+									<a href="/project2/episode/novel.jsp?num_novel=<%=nVO.getNovelNum()%>" 
+										class="flex border-black/10 bg-white px-18 visited:bg-grey10 desktop:border-b-1 desktop:px-30">
+										<div
+											class="border-b-1 border-black/10 desktop:border-0 flex flex-1 py-16 desktop:py-22">
+											<div
+												class="flex flex-col flex-1 justify-between desktop:mr-16 desktop:flex-row desktop:items-center">
+												<div class="flex flex-col flex-1">
+													<div
+														class="flex mb-14 mt-0 flex-1 items-center desktop:mb-16 desktop:mt-2 typo-md2 text-black desktop:typo-lg2 max-h-[28px] overflow-hidden">
+														<div class="truncate after:inline-block after:w-0 shrink"
+															style="text-align: center;">
+															신고된 정보가 없습니다.
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</a>
+									</article>
 								 <% } %> 
 
 							</section>
