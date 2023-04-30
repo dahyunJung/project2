@@ -108,7 +108,6 @@ $(function(){
 	// 신고하기
 	$("#reportImg").click(function(){
 		window.open("report_popup.jsp?num_novel=<%=novelNum%>&id=<%= selectNovelVO.getId() %>","popup","width=500,height=803,resizable=no,top="+(window.screenY+100) +",left="+(window.screenX+100));
-		/* $("#reportFrm").submit(); */
 		//window.close();
 	});
 	

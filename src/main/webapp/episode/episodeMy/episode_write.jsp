@@ -37,7 +37,6 @@
 			var detail = $("#detail").val();
 			
 			// 소설 제목수 검사
-			// 소설 제목수 검사
 			if(epTitle.length == 0 || epTitle == ""){
 				alert("에피소드 제목을 입력해주세요");
 				$("#epTitle").focus();
@@ -71,7 +70,6 @@
 		});
 		
 	});
-	
 	
 </script>
 </head>

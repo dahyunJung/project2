@@ -7,7 +7,7 @@ public class EditEpisodeVO {
 	private int novelNum; // 소설 번호 (fk) 
 	private String epTitle; // 소설 제목
 	private String detail; // 에피소드 내용
-	private boolean openStatus; // 에피소드 공개여부
+	private int openStatus; // 에피소드 공개여부
 	
 	
 	public int getUserNum() {
@@ -50,14 +50,13 @@ public class EditEpisodeVO {
 		this.detail = detail;
 	}
 
-	public boolean getOpenStatus() {
+	public int getOpenStatus() {
 		return openStatus;
 	}
 
-	public void setOpenStatus(boolean openStatus) {
+	public void setOpenStatus(int openStatus) {
 		this.openStatus = openStatus;
 	}
 
-	
 	
 }

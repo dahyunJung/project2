@@ -14,12 +14,7 @@ import conn.DbConnection;
 
 public class EpisodeMyDAO {
 
-	/*
-	 * CreateEpisodeVO: novelNum, epNum, userNum, epTitle, detail, openStatus,
-	 * views, createDate episode sql: num_episode, num_novel, num_member, title,
-	 * story, open, visit, make
-	 */
-
+	
 	// 작성한 소설 제목 출력 (에피소드 작성 )
 	public String selectNovelName(int novelNum) throws SQLException {
 		String novelTitle = "";
@@ -31,11 +26,9 @@ public class EpisodeMyDAO {
 
 		try {
 			con = dbConnection.getConn();
-			StringBuilder selectNovelTitle = new StringBuilder();
+			String selectNovelTitle = " select title from novel where num_novel=? ";
 
-			selectNovelTitle.append(" select title ").append(" from novel ").append(" where num_novel=?");
-
-			pstmt = con.prepareStatement(selectNovelTitle.toString());
+			pstmt = con.prepareStatement(selectNovelTitle);
 			pstmt.setInt(1, novelNum);
 			rs = pstmt.executeQuery();
 
@@ -70,7 +63,7 @@ public class EpisodeMyDAO {
 
 			// epNum 자동증가, 에피소드 등록시 무조건 공개로 시작, 뷰수는 0,
 			insertEpisode.append(" insert into episode(num_episode,num_novel,num_member,title,story,open,visit,make) ")
-					.append(" values (num_episode.nextval,?,?,?,?,1,0,sysdate) ");
+						 .append(" values (num_episode.nextval,?,?,?,?,1,0,sysdate) ");
 
 			pstmt = con.prepareStatement(insertEpisode.toString());
 
@@ -112,7 +105,7 @@ public class EpisodeMyDAO {
 			// 5. 바인드 변수값 설정
 			pstmt.setString(1, edVO.getEpTitle());
 			pstmt.setString(2, edVO.getDetail());
-			pstmt.setBoolean(3, edVO.getOpenStatus());
+			pstmt.setInt(3, edVO.getOpenStatus());
 			pstmt.setInt(4, edVO.getUserNum());
 			pstmt.setInt(5, edVO.getNovelNum());
 			pstmt.setInt(6, edVO.getEpNum());
@@ -168,6 +161,7 @@ public class EpisodeMyDAO {
 		return cnt;
 	}// deleteEpisode
 
+	
 	// 내가 작성한 에피소드 내용보여주는 창 (수정)
 	public LookMyEpisodeVO selectEpisode(int userNum, int novelNum, int epNum)throws SQLException { 
 		LookMyEpisodeVO leVO = null;
@@ -195,6 +189,7 @@ public class EpisodeMyDAO {
 			leVO.setNovelTitle(rs.getString("novelTitle"));
 			leVO.setEpTitle(rs.getString("epTitle"));
 			leVO.setEpDetail(rs.getString("epDetail")); 
+			leVO.setOpenStatus(rs.getInt("open"));
 		}
 		
 		System.out.println("select userNum-" + userNum + "novelNum-" + novelNum + "epNum-" + epNum+" "+leVO.getOpenStatus());
@@ -231,7 +226,7 @@ public class EpisodeMyDAO {
 			while (rs.next()) {
 				ceVO = new CreateEpisodeVO();
 				ceVO.setEpTitle(rs.getString("title"));
-				ceVO.setOpenStatus(rs.getBoolean("open"));
+				ceVO.setOpenStatus(rs.getInt("open"));
 				ceVO.setViews(rs.getInt("view"));
 				ceVO.setCreateDate(rs.getDate("make"));
 

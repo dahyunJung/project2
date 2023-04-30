@@ -153,7 +153,7 @@ public class EpisodeDAO {
 		try {
 			con = dbConnection.getConn();
 
-			String countEp = " select count(*) from episode where num_novel=? ";
+			String countEp = " select count(*) from episode where num_novel=? and open=1";
 
 			pstmt = con.prepareStatement(countEp);
 			pstmt.setInt(1, novelNum);
@@ -485,29 +485,34 @@ public class EpisodeDAO {
 	}//insertReport
 	
 	
-	/*
-	 * public int cntReport(int userNum, int novelNum) throws SQLException { int cnt
-	 * = 0;
-	 * 
-	 * Connection con = null; PreparedStatement pstmt = null; DbConnection
-	 * dbConnection = DbConnection.getInstance(); ResultSet rs = null;
-	 * 
-	 * try { con = dbConnection.getConn();
-	 * 
-	 * String selectReport =
-	 * " select count(*) FROM report WHERE NUM_MEMBER=? and NUM_NOVEL=?";
-	 * 
-	 * pstmt = con.prepareStatement(selectReport);
-	 * 
-	 * pstmt.setInt(1, userNum); pstmt.setInt(2, novelNum);
-	 * 
-	 * rs = pstmt.executeQuery();
-	 * 
-	 * if (rs.next()) { cnt = rs.getInt(1); }
-	 * 
-	 * System.out.println(userNum + ", " + novelNum + ", 신고 " + (cnt==0? "안함":"함"));
-	 * } finally { // 7. 연결 끊기 dbConnection.dbClose(null, pstmt, con); } // end
-	 * finally return cnt; }//cntReport
-	 */
+	
+	public int cntReport(int userNum, int novelNum) throws SQLException { 
+		 int cnt = 0;
+		 
+		 Connection con = null; 
+		 PreparedStatement pstmt = null; 
+		 DbConnection dbConnection = DbConnection.getInstance(); 
+		 ResultSet rs = null;
+	  
+		 try { 
+			 con = dbConnection.getConn();
+			  String selectReport = " select count(*) FROM report WHERE NUM_MEMBER=? and NUM_NOVEL=?";
+	  
+			  pstmt = con.prepareStatement(selectReport);
+			  pstmt.setInt(1, userNum); pstmt.setInt(2, novelNum);
+	  
+			  rs = pstmt.executeQuery();
+	  
+			  if (rs.next()) { 
+				  cnt = rs.getInt(1); 
+			  }
+	  
+			  System.out.println(userNum + ", " + novelNum + ", 신고 " + (cnt==0? "안함":"함"));
+		 }finally { // 7. 연결 끊기 
+			 dbConnection.dbClose(null, pstmt, con); } // end
+		 
+	  return cnt; 
+  }//cntReport
+	 
 
 }

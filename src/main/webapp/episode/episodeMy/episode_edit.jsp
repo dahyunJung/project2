@@ -121,7 +121,6 @@ $(function(){
 	// 에피소드 공개
 	$("#private").click(function(){
 		if($(this).val() == "공개"){			// 버튼이 공개로 되어있으면 비공개로 전환
-		/* if($(this).val() == "공개"){			// 버튼이 공개로 되어있으면 비공개로 전환 */
 			$("#openStatus").val(0);
 			$(this).val("비공개");
 			alert("비공개 되었습니다!");
@@ -130,7 +129,7 @@ $(function(){
 			$(this).val("공개");
 			alert("공개 되었습니다!");
 		}
-	}); //private
+	}); //private 
 	
 	
 	// 에피소드 삭제
@@ -169,7 +168,7 @@ $(function(){
 				<div class="mt-16 ml-auto desktop:mt-0">
 					<div class="flex items-center justify-end">
 						<input type="button" id="edit" value="수정" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>&nbsp;
-						<input type="button" id="private" value="<%= selectVO.getOpenStatus() ? "비공개":"공개" %>" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>&nbsp;
+						<input type="button" id="private" value="<%= selectVO.getOpenStatus() == 1 ? "공개":"비공개" %>" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>&nbsp;
 						<input type="button" id="delete" value="삭제" class="typo-sm1 shrink-0 appearance-none rounded-50 border-1 py-6 px-14 bg-black border-black text-white"/>
 					</div>
 				</div>
@@ -183,7 +182,7 @@ $(function(){
 						<input type="hidden" id="num_novel" name="num_novel" value="<%= num_novel %>" />
 						<input type="hidden" id="userNum" name="userNum" value="<%= userNum %>" />
 						<input type="hidden" id="epNum" name="epNum" value="<%= epNum %>" />
-						<input type="hidden" id="openStatus" name="openStatus" value=""/>
+						<input type="hidden" id="openStatus" name="openStatus" value="<%= selectVO.getOpenStatus() %>"/>
 						
 						<!-- 에피소드 제목 -->
 						<input type="text" class="mb-24 border-0 border-b-1 border-black/10 px-0 pt-0 pb-16 text-24 outline-none desktop:pb-36 desktop:text-36"

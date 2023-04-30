@@ -5,7 +5,7 @@ public class LookMyEpisodeVO {
 	private String novelTitle;
 	private String epTitle;
 	private String epDetail;
-	private boolean openStatus;
+	private int openStatus;
 	
 	public String getNovelTitle() {
 		return novelTitle;
@@ -31,13 +31,13 @@ public class LookMyEpisodeVO {
 		this.epDetail = epDetail;
 	}
 
-	public boolean getOpenStatus() {
+	public int getOpenStatus() {
 		return openStatus;
 	}
 
-	public void setOpenStatus(boolean openStatus) {
+	public void setOpenStatus(int openStatus) {
 		this.openStatus = openStatus;
 	}
-	
+
 
 }

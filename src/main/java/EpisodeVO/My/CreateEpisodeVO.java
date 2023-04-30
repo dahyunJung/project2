@@ -9,7 +9,7 @@ public class CreateEpisodeVO {
 	private int userNum; // 유저 번호 (fk) 세션
 	private String epTitle; // 소설 제목 (fk)
 	private String detail; // 에피소드 내용
-	private boolean openStatus; // 에피소드 공개여부
+	private int openStatus; // 에피소드 공개여부
 	private int views; // 조회수 시작은 0으로
 	private Date createDate; // 에피소드 작성일자
 
@@ -53,11 +53,12 @@ public class CreateEpisodeVO {
 		this.detail = detail;
 	}
 	
-	public boolean getOpenStatus() {
+
+	public int getOpenStatus() {
 		return openStatus;
 	}
 
-	public void setOpenStatus(boolean openStatus) {
+	public void setOpenStatus(int openStatus) {
 		this.openStatus = openStatus;
 	}
 
