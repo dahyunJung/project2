@@ -200,9 +200,9 @@ function privatePop(novelNum){
 							</div>
 							<section class="flex flex-col desktop:mb-96">
 
-									<%-- <%
+									 <%
 									if (nVO.getReportCnt() != 0 ) {
-									%> --%>
+									%> 
 									<article>
 									<a href="/project2/episode/novel.jsp?num_novel=<%=nVO.getNovelNum()%>" 
 										class="flex border-black/10 bg-white px-18 visited:bg-grey10 desktop:border-b-1 desktop:px-30">
@@ -224,11 +224,11 @@ function privatePop(novelNum){
 									</a>
 									</article>
 								<%
-								/* } else { */
+								 } else { 
 								%>
 								<div class="text-center my-20" style="font-size: 20px">신고된
 									정보가 없습니다</div>
-								<%-- <% } %> --%>
+								 <% } %> 
 
 							</section>
 						</div>

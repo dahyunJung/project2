@@ -250,7 +250,8 @@ public class ManagerDAO {
 			StringBuilder selectReportInfo = new StringBuilder();
 			selectReportInfo
 			.append("	select n.title, n.photo, n.story, n.age, m.id, ")
-			.append("	(select reason_code from report where num_novel = n.num_novel group by reason_code order by count(*) desc fetch first 1 row only) as reason_code, ")
+			.append("	(select reason_code from report where num_novel = n.num_novel group by reason_code ")
+			.append("	order by count(*) desc fetch first 1 row only) as reason_code, ")//FETCH FIRST 1 ROW ONLY : ORDER BY로 정렬된 결과 중 첫 번째 행만 반환
 			.append("	(select count(*) from report where num_novel = n.num_novel) as reportcnt, ")
 			.append("	n.num_novel ")
 			.append("	from novel n ")
