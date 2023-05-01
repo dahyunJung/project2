@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -82,12 +83,12 @@ function selectNovel(num_novel){
                                     class="relative overflow-hidden rounded-3 bg-grey10 w-80 h-122 desktop:h-125 ml-16" style="background-color: #fff"></div>
                                  <div class="flex flex-col w-full flex-1" onclick="selectNovel('${select.num_novel}')">
                                                                         <div class="typo-md2 flex items-center desktop:typo-md1 !typo-md2 mb-6 desktop:!typo-md3 desktop:mb-4">
-                                                                            <span class="truncate" style="font-size: 18px">${select.subject}</span>
+                                                                            <span class="truncate" style="font-size: 18px">&nbsp;${select.subject}</span>
                                                                         </div>
-                                                                        <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2">${select.id}</p><br/>
+                                                                        <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2">&nbsp;${select.id}</p><br/>
                                                                         <div class="flex flex-wrap items-center text-grey60">
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                <span class="typo-g-sm2 -mb-[0.2em] ml-4"><fmt:formatDate value="${select.make}" pattern="yyyy-MM-dd HH:mm"/></span>
+                                                                                <span class="typo-g-sm2 -mb-[0.2em] ml-4">&nbsp;<fmt:formatDate value="${select.make}" pattern="yyyy-MM-dd HH:mm"/></span>
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
