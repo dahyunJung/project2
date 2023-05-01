@@ -5,6 +5,7 @@
 
 // 세션에서 아이디 삭제
 session.removeAttribute("sesId");
+session.removeAttribute("user_num_member");
 
 // 로그인 페이지로 이동
 response.sendRedirect("http://localhost/project2/manager/manager_login.jsp");
