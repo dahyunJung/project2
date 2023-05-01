@@ -11,6 +11,7 @@
 <head>
 <meta charSet="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+<title>창작공간 | 소설조아</title>
 <meta name="next-head-count" content="2" />
 <link rel="preconnect" href="https://fonts.gstatic.com"	crossorigin="anonymous" />
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
@@ -81,7 +82,7 @@ if(session.getAttribute("user_id")!=null){
 													type="button">
 													 <form action="/project2/novel/novel_regi.jsp" id="new_novel" method="post">
 													 </form>
-													<span class="">새 작품 등록</span>
+													<span class="">새 소설 등록</span>
 												</button></a>
 										</div>
 									</div>

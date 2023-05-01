@@ -5,6 +5,7 @@
 <head>
 <meta charSet="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+<title>소설 등록 안내 | 소설조아</title>
 <meta name="next-head-count" content="2" />
 <link rel="preconnect" href="https://fonts.gstatic.com"	crossorigin="anonymous" />
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
@@ -35,10 +36,10 @@
 				class="flex-1 overflow-y-scroll scrollbar-hide desktop:px-10 desktop:pt-10">
 				<h5
 					class="typo-lg2 mb-12 !font-bold desktop:typo-lg1 desktop:mb-16 desktop:mb-24"
-					style="font-weight: bold;font-size: 22px;">새 작품 등록 안내</h5>
+					style="font-weight: bold;font-size: 22px;">새 소설 등록 안내</h5>
 				<div class="typo-md1 break-all">
 					<h6 class="typo-md3-b mb-8 desktop:mb-6" style="font-weight: bold; font-size: 15px;">1.
-						작품/ 회차 제목 작성 시 주의 사항</h6>
+						소설/ 회차 제목 작성 시 주의 사항</h6>
 					<p class="typo-sm1 mb-24 text-grey70" style="font-size: 14px">
 						스테이지는 금칙어 정책에 따라 운영합니다. 금칙어가 포함된 경우 등록이 거부되거나, 관리자에 의해 수정을 권고받을 수
 						있습니다.<br>저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 소설조아 이용약관 및 관련
@@ -46,7 +47,7 @@
 						제목은 사이트 노출 및 검색 결과에서 제외될 수 있습니다.
 					</p>
 					<h6 class="typo-md3-b mb-8 desktop:mb-6" style="font-weight: bold;font-size: 15px;">2.
-						작품 내용 작성 시 주의 사항</h6>
+						소설 내용 작성 시 주의 사항</h6>
 					<p class="typo-sm1 mb-24 text-grey70" style="font-size: 14px">소설조아는 금칙어 정책에 따라 운영합니다.
 						금칙어가 포함된 경우 등록이 거부되거나, 관리자에 의해 수정을 권고받을 수 있습니다.
 					<ol class="mt-0 mb-0 list-decimal pl-16" style="font-size: 14px">
@@ -68,7 +69,7 @@
 					<h6 class="typo-md3-b mb-8 desktop:mb-6" style="font-weight: bold;font-size: 15px;">3.
 						작가 활동을 하시는 회원은 본 주의 사항을 지켜야 합니다.</h6>
 					<p class="typo-sm1 text-grey70" style="font-size: 14px">
-						해당 내용을 숙지하지 않아 생기는 모든 불이익은 회원에게 있습니다.<br>소설조아는 등록된 작품을 엄격히
+						해당 내용을 숙지하지 않아 생기는 모든 불이익은 회원에게 있습니다.<br>소설조아는 등록된 소설을 엄격히
 						관리합니다. <br>본 주의 사항이 지켜지지 않는 게시물의 경우 수정을 권고하거나 사전 통보 없이 비공개 및
 						삭제 처리할 수 있으며, 게재한 회원의 경우 경고/ 계정 정지 조치될 수 있습니다.<br>(성인물 및 홍보성,
 						도배성이 강한 글을 게시한 회원은 별도 경고 없이 계정 이용이 정지될 수 있습니다.)

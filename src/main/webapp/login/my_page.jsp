@@ -7,7 +7,7 @@
 <meta charSet="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
-<title>좋아요 작품 | 카카오페이지 스테이지</title>
+<title>마이페이지 | 소설조아</title>
 <link rel="preconnect" href="https://fonts.gstatic.com"
 	crossorigin="anonymous" />
 <link rel="stylesheet"

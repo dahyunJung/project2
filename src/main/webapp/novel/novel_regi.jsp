@@ -5,6 +5,7 @@
 <head>
 <meta charSet="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+<title>소설 등록 | 소설조아</title>
 <meta name="next-head-count" content="2" />
 <link rel="preconnect" href="https://fonts.gstatic.com"	crossorigin="anonymous" />
 <link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:500,700&amp;display=swap" />
@@ -123,7 +124,7 @@ if("POST".equals(request.getMethod())){
 						<div class="flex flex-col flex-1">
 							<div class="border-b-2 pb-12 desktop:pb-16">
 								<h1 class="typo-dp3 mt-8 desktop:typo-dp2 desktop:mt-16">새
-									작품 등록</h1>
+									소설 등록</h1>
 							</div>
 							<form class="w-full" name="frm" method="post" action="novel_regi_sub.jsp" enctype="multipart/form-data">
 								<div class="typo-md3 pt-30">
@@ -167,7 +168,7 @@ if("POST".equals(request.getMethod())){
 										<div
 											class="flex flex-col items-start desktop:flex-row desktop:items-center mb-28 desktop:mb-32">
 											<label
-												class="flex typo-md3-b mb-8 w-full flex-[0_0_auto] desktop:typo-md3 desktop:mr-48 desktop:mb-0 desktop:w-124">작품
+												class="flex typo-md3-b mb-8 w-full flex-[0_0_auto] desktop:typo-md3 desktop:mr-48 desktop:mb-0 desktop:w-124">소설
 												제목<span class="typo-md3 ml-3 text-secondary-text">*</span>
 											</label>
 											<div class="w-full desktop:max-w-[600px]">
@@ -183,7 +184,7 @@ if("POST".equals(request.getMethod())){
 										<div
 											class="flex flex-col items-start desktop:flex-row desktop:items-start mb-32">
 											<label
-												class="flex typo-md3-b mb-8 w-full flex-[0_0_auto] desktop:typo-md3 desktop:mr-48 desktop:mb-0 desktop:w-124">작품
+												class="flex typo-md3-b mb-8 w-full flex-[0_0_auto] desktop:typo-md3 desktop:mr-48 desktop:mb-0 desktop:w-124">소설
 												표지<span class="typo-md3 ml-3 text-secondary-text">*</span>
 											</label>
 											<div>
@@ -201,7 +202,7 @@ if("POST".equals(request.getMethod())){
 										<div
 											class="flex flex-col items-start desktop:flex-row desktop:items-start mb-24 desktop:mb-32">
 											<label
-												class="flex typo-md3-b mb-8 w-full flex-[0_0_auto] desktop:typo-md3 desktop:mr-48 desktop:mb-0 desktop:w-124">작품
+												class="flex typo-md3-b mb-8 w-full flex-[0_0_auto] desktop:typo-md3 desktop:mr-48 desktop:mb-0 desktop:w-124">소설
 												소개</label>
 											<div class="w-full">
 												<div
@@ -266,7 +267,7 @@ if("POST".equals(request.getMethod())){
 													</div>
 												</div>
 												<p class="break-words text-14" style="word-break: keep-all;">이
-													작품은 Kakaopage STAGE에서만 독점으로 연재하겠습니다. (선택)</p></label>
+													소설은 Kakaopage STAGE에서만 독점으로 연재하겠습니다. (선택)</p></label>
 										</div>
 									</div>
 									<div class="w-full">
@@ -301,7 +302,7 @@ if("POST".equals(request.getMethod())){
 														d="M8.32 10.2H9.97C9.97 9.64 10.2 9.28 10.93 8.71C11.58 8.21 11.94 7.62 11.94 6.88C11.94 5.52 10.96 4.53 9.23 4.53C7.61 4.53 6.47 5.61 6.47 7.05H8.21C8.21 6.54 8.57 6.07 9.24 6.07C9.87 6.07 10.23 6.38 10.23 6.88C10.23 7.36 9.91 7.66 9.32 8.11C8.59 8.66 8.32 9.21 8.32 10.2ZM9.2 13.04C9.81 13.04 10.26 12.6 10.26 11.99C10.26 11.38 9.81 10.93 9.2 10.93C8.59 10.93 8.14 11.38 8.14 11.99C8.14 12.6 8.59 13.04 9.2 13.04Z"
 														fill="#999999"></path></svg>
 												<p class="break-words mt-3" style="word-break: keep-all;">kakaopage
-													STAGE에서 완결까지 꾸준히 연재해주시겠다고 약속해주신 작품 중, 작품 완결 후 우수 작품을 선정하여
+													STAGE에서 완결까지 꾸준히 연재해주시겠다고 약속해주신 소설 중,소설품 완결 후 우수 소설을 선정하여
 													지원금을 드립니다. (선택사항)</p>
 											</div>
 										</div>

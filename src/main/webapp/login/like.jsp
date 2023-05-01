@@ -13,7 +13,7 @@
 <meta charSet="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
-<title>좋아요 작품 | 카카오페이지 스테이지</title>
+<title>좋아요 소설 | 소설조아</title>
 <link rel="preconnect" href="https://fonts.gstatic.com"
 	crossorigin="anonymous" />
 <link rel="stylesheet"
@@ -76,7 +76,7 @@ function deleteNovel(num_novel){
 								class="flex mx-auto w-full max-w-default flex-row flex-wrap desktop:px-22 px-18 relative py-20">
 								<form id="frm" name="frm" action="/project2/login/like.jsp"
 									class="flex mt-16 w-full items-center border-none border-black/10 max-w-full-view first:mt-0">
-									<div class="typo-md3 w-103 flex-[0_0_auto] px-0" style="font-size: 20px">좋아요 작품</div>
+									<div class="typo-md3 w-103 flex-[0_0_auto] px-0" style="font-size: 20px">좋아요 소설</div>
 									
 												<select id="order_novel" name="order_novel" class="w-full typo-sm1 desktop:text-grey70" style="width: 50px; margin-left: 500px">
 													<option value="0" <%=(request.getParameter("order_novel").equals("0"))?"selected":""%>>최신 순</option>
