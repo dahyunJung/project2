@@ -88,11 +88,11 @@ function selectNovel(num_novel){
                                                                         <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2">&nbsp;${select.id}</p><br/>
                                                                         <div class="flex flex-wrap items-center text-grey60">
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                <span class="typo-g-sm2 -mb-[0.2em] ml-4">&nbsp;<fmt:formatDate value="${select.make}" pattern="yyyy-MM-dd HH:mm"/></span>
+                                                                                &nbsp;최신화 : ${select.episode} 화
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                최신화 : ${select.episode}화
+                                                                                <span class="typo-g-sm2 -mb-[0.2em] ml-4">&nbsp;<fmt:formatDate value="${select.make}" pattern="yyyy-MM-dd HH:mm"/></span>
                                                                             </span>
                                                                         </div>
                                  </div>
