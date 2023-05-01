@@ -135,9 +135,11 @@ $(function(){
 	<div class="z-1">
 					
 	<!-- header -->
+	<%if(session.getAttribute("user_num_member")!="0"){ %>
 	<div>
 		<jsp:include page="../_next/header_user_login_search.jsp"/>
-	</div>						
+	</div>		
+	<%} %>				
 	</div>
 	
 	<main class="flex-1">
