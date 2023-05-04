@@ -46,6 +46,11 @@
                                             	RankingDAO rDAO=new RankingDAO();
                                             	try{
                                             		List<RankingVO> list=rDAO.selectRanking(0);
+                                            		if(list.isEmpty()){
+                                            		%>
+                                            		작성된 에피소드가 없습니다.
+                                            		<%
+                                            		}else{
                                             %>
                                             <div class="grid grid-cols-1 gap-y-16 px-0 desktop:grid-cols-2 desktop:gap-x-34 desktop:gap-y-24 desktop:pl-30">
                                                 <div class="col-span-2">
@@ -79,7 +84,7 @@
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                관심<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(0).getLike()%></span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(0).getLike()%></span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60" style="-webkit-line-clamp:4"><%=list.get(0).getStory()%></p>
@@ -121,7 +126,7 @@
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                관심<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2"><%=list.get(j).getStory()%></p>
@@ -178,7 +183,7 @@
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                관심<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
                                                                             </span>
                                                                         </div>
                                                         </div>
@@ -187,6 +192,7 @@
                                             <%} %>
                                             </div>
                                             <%
+                                            		}//else
                                             	}catch(SQLException se){
                                             		se.printStackTrace();
                                             	}
@@ -234,7 +240,7 @@
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                관심<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(0).getLike()%></span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(0).getLike()%></span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60" style="-webkit-line-clamp:4"><%=list.get(0).getStory()%></p>
@@ -277,7 +283,7 @@
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                관심<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2"><%=list.get(j).getStory()%></p>
@@ -334,7 +340,7 @@
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                관심<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
                                                                             </span>
                                                                         </div>
                                                         </div>
@@ -390,7 +396,7 @@
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                관심<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(0).getLike()%></span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(0).getLike()%></span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60" style="-webkit-line-clamp:4"><%=list.get(0).getStory()%></p>
@@ -433,7 +439,7 @@
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                관심<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
                                                                             </span>
                                                                         </div>
                                                                         <p class="truncate-webkit typo-sm1 text-grey60 !typo-sm2 mt-8 h-36" style="-webkit-line-clamp:2"><%=list.get(j).getStory()%></p>
@@ -490,7 +496,7 @@
                                                                             </span>
                                                                             <span class="mx-4 text-10 !mx-6 mb-1 block text-black/10 desktop:!mx-8">|</span>
                                                                             <span class="typo-sm2 flex items-center">
-                                                                                관심<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
+                                                                                좋아요<span class="typo-g-sm2 -mb-[0.2em] ml-4"><%=list.get(j).getLike()%></span>
                                                                             </span>
                                                                         </div>
                                                         </div>
