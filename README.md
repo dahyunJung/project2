@@ -23,8 +23,27 @@
 ![image](https://github.com/dahyunJung/project2/assets/43868558/4916445c-fd3f-47a4-9cba-cf4f54bbb345)
 ![image](https://github.com/dahyunJung/project2/assets/43868558/1946bb3d-9924-4a55-8071-3e00ec15fc2e)
 ![image](https://github.com/dahyunJung/project2/assets/43868558/a08fff0c-bf38-4bef-b0f3-04d88294912d)
+![image](https://github.com/dahyunJung/project2/assets/43868558/c3ed3c06-7181-4b85-866f-ec2e505e19d0)
+![image](https://github.com/dahyunJung/project2/assets/43868558/f957c8c7-1050-4ce5-934b-ac3645d546ee)
 
 
+## 홈화면
+![image](https://github.com/dahyunJung/project2/assets/43868558/aac353b1-b607-4d4f-b688-d0774929cb3e)
+![image](https://github.com/dahyunJung/project2/assets/43868558/7d4b2eb0-f378-40bf-bf41-1f373a9e94f6)
+![image](https://github.com/dahyunJung/project2/assets/43868558/5c9f019a-90bf-4c8c-924e-0d868997d690)
+
+![image](https://github.com/dahyunJung/project2/assets/43868558/c79312f3-41af-4ea8-9030-5427e7beeb19)
+![image](https://github.com/dahyunJung/project2/assets/43868558/10d72443-c785-4add-9d1f-bf158b746d82)
+![image](https://github.com/dahyunJung/project2/assets/43868558/2dd5d2b7-aaeb-46eb-be17-f9e2d77d6e59)
+![image](https://github.com/dahyunJung/project2/assets/43868558/17edf820-16d0-4b4a-8a95-2e14b9a8446e)
+![image](https://github.com/dahyunJung/project2/assets/43868558/43d42a23-e036-42d7-b762-b3cea2e6f3f6)
+![image](https://github.com/dahyunJung/project2/assets/43868558/4e0a1b37-0377-4ff2-8e23-289fd4cc328c)
+![image](https://github.com/dahyunJung/project2/assets/43868558/e4a5ca36-b431-4f45-affb-80fe1f03764f)
+![image](https://github.com/dahyunJung/project2/assets/43868558/e1e3d803-7c43-4634-96f7-a6486d34c1a6)
+![image](https://github.com/dahyunJung/project2/assets/43868558/f80196e5-f7d0-468f-9c6e-54a236232794)
+
+
+![Uploading image.png…]()
 
 
 
