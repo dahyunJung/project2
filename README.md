@@ -43,9 +43,5 @@
 ![image](https://github.com/dahyunJung/project2/assets/43868558/f80196e5-f7d0-468f-9c6e-54a236232794)
 
 
-![Uploading image.png…]()
-
-
-
-
+![image](https://github.com/dahyunJung/project2/assets/43868558/2c4a17ae-ff05-4a20-b03e-8ed94ca3ec31)
 
