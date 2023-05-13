@@ -144,7 +144,6 @@ $(function(){
            <form action = "my_page_profile.jsp" method="post" enctype="multipart/form-data" id="frm" name="frm">
     <div id="wrap">
 
-
        <div id="container">
            <div id="frame">
             <div id="text_mypage"><%=session.getAttribute("user_id") %>님의 마이페이지</div>
