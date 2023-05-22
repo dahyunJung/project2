@@ -46,6 +46,7 @@
                                             	RankingDAO rDAO=new RankingDAO();
                                             	try{
                                             		List<RankingVO> list=rDAO.selectRanking(0);
+   
                                             		if(list.isEmpty()){
                                             		%>
                                             		작성된 에피소드가 없습니다.
@@ -208,6 +209,11 @@
                                             <%
                                             	try{
                                             		List<RankingVO> list=rDAO.selectRanking(1);
+                                            		if(list.isEmpty()){
+                                                		%>
+                                                		작성된 에피소드가 없습니다.
+                                                		<%
+                                                		}else{
                                             %>
                                             <div class="grid grid-cols-1 gap-y-16 px-0 desktop:grid-cols-2 desktop:gap-x-34 desktop:gap-y-24 desktop:pl-30">
                                                 <div class="col-span-2">
@@ -348,7 +354,7 @@
                                                 </div>
                                             <%} %>
                                             </div>
-                                            <%
+                                            <%}
                                             	}catch(SQLException se){
                                             		se.printStackTrace();
                                             	}
@@ -364,6 +370,11 @@
                                             <%
                                             	try{
                                             		List<RankingVO> list=rDAO.selectRanking(2);
+                                            		if(list.isEmpty()){
+                                                		%>
+                                                		작성된 에피소드가 없습니다.
+                                                		<%
+                                                		}else{
                                             %>
                                             <div class="grid grid-cols-1 gap-y-16 px-0 desktop:grid-cols-2 desktop:gap-x-34 desktop:gap-y-24 desktop:pl-30">
                                                 <div class="col-span-2">
@@ -505,6 +516,7 @@
                                             <%} %>
                                             </div>
                                             <%
+                                                		}
                                             	}catch(SQLException se){
                                             		se.printStackTrace();
                                             	}
